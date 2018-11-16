@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://runindark.com/2018/11/16/designpattern/</loc>
+    
+    <lastmod>2018-11-16T11:30:47.297Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://runindark.com/2018/11/16/MVC/</loc>
     
-    <lastmod>2018-11-16T11:05:59.938Z</lastmod>
+    <lastmod>2018-11-16T11:28:59.841Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://runindark.com/2018/11/16/FromUrlToPage/</loc>
     
     <lastmod>2018-11-16T11:04:02.831Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://runindark.com/2018/11/16/designpattern/</loc>
-    
-    <lastmod>2018-11-16T11:03:16.035Z</lastmod>
     
   </url>
   
