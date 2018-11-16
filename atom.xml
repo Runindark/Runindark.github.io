@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2018-11-16T10:40:40.854Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://runindark.com/"/>
+  <updated>2018-11-16T11:05:59.938Z</updated>
+  <id>http://runindark.com/</id>
   
   <author>
     <name>夜小猫</name>
@@ -17,17 +17,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>从url到网页到底发生了什么</title>
-    <link href="http://yoursite.com/2018/11/16/FromUrlToPage/"/>
-    <id>http://yoursite.com/2018/11/16/FromUrlToPage/</id>
-    <published>2018-11-16T10:19:34.160Z</published>
-    <updated>2018-11-16T10:40:40.854Z</updated>
-    
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="url是什么"><a href="#url是什么" class="headerlink" title="url是什么"></a>url是什么</h2><blockquote><p>URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，<br>也是互联网上标准资源的地址，这个点到为止不再赘述。</p></blockquote><h2 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h2><h3 id="什么是DNS解析"><a href="#什么是DNS解析" class="headerlink" title="什么是DNS解析"></a>什么是DNS解析</h3><blockquote><p>然后下一步我们需要dns解析，什么dns解析呢，就是把url翻译成机器可识别的数字格式，<br>类似我们所熟悉的192.168.1这样子，这样子才是可以被解析的。</p></blockquote><h3 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h3><blockquote><p>这个过程也是在专门的解析服务器上自动解析的，dns解析会有四个步骤，</p></blockquote><h4 id="第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"><a href="#第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）" class="headerlink" title="第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"></a>第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）</h4><h4 id="第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"><a href="#第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）" class="headerlink" title="第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"></a>第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）</h4><h4 id="第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"><a href="#第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。" class="headerlink" title="第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"></a>第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。</h4><h4 id="之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"><a href="#之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，" class="headerlink" title="之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"></a>之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，</h4><h4 id="一些需要注意的地方"><a href="#一些需要注意的地方" class="headerlink" title="一些需要注意的地方"></a>一些需要注意的地方</h4><blockquote><p>值得注意的是浏览器是边传输边渲染的，当然没有遇到js之前，js是单线程，而且js可以对html网页进行更改，大家所看到的很好的特效，都是js在进行<br>这时我们的页面就加载完成啦。至于通信协议也是很简单，就是传递给服务器的协议，当然服务器向浏览器传输也要遵循http你要通过才能传递，这<br>是一种规范也是一种手段。还有就是渲染过程也是可以了解一下的，渲染以树的方法渲染着呢，dom树，解析css和js交互。 再细化就是前台和后端了，后<br>端可以直接用servlet来传递协议（虽然springmvc里面是dispatcherservlet，或者说是controller，但是实质还是servlet，接口几乎全适用）但<br>是这样子传输还是存在问题，这样前后端交互总这样，数据更新不同步，所以ajax就出现了，实现机理也简单，就是在传递给servlet之前，需要多传递<br>一个ajax。。如此就可以不必要必须走服务器，走异步交互啦，技术方面就是jquery。。emm。。大概能总结的就这么多。。希望大伙给我指出错误。</p></blockquote></the>]]></content>
+    <title></title>
+    <link href="http://runindark.com/2018/11/16/MVC/"/>
+    <id>http://runindark.com/2018/11/16/MVC/</id>
+    <published>2018-11-16T11:05:59.938Z</published>
+    <updated>2018-11-16T11:05:59.938Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;&lt;/excerpt&gt;&lt;/p&gt;
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>单例设计模式，MVC，监听者模式</title>
+    <link href="http://runindark.com/2018/11/16/designpattern/"/>
+    <id>http://runindark.com/2018/11/16/designpattern/</id>
+    <published>2018-11-16T10:52:36.160Z</published>
+    <updated>2018-11-16T11:03:16.035Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="目前的了解三种设计模式"><a href="#目前的了解三种设计模式" class="headerlink" title="目前的了解三种设计模式"></a>目前的了解三种设计模式</h2><h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><p>单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。</p><p>###监听者模式，<br>怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="大名鼎鼎的MVC"><a href="#大名鼎鼎的MVC" class="headerlink" title="大名鼎鼎的MVC"></a>大名鼎鼎的MVC</h3><blockquote><p>大名鼎鼎的开发模式了，spring为了web还专门引出分支springmvc，可见一斑了，<br>m是model，v是view，c是controller。<br>用springmvc作为典例说一下哈，m就是模型对象，是一种概念吧，传参，用的mode，modeandview应该都不陌生，<br>还有就是bean的配置都是model的东西，在这里可以理解成封装好的project的应用模型，view，<br>就是给用户看到的东西呗，js，html，css这些前端的东西嘛。<br>controller，这个是核心了，也就是真正的后端完善逻辑部分的核心控制器了，springmvc中直接明确给controller极高的地位置，<br>dispatchercontroller，这个可不虚名，model传来的的参数，view的视图，在中央核心控制器中都可以实现，所以听名字就可以看出来重要性了，<br>最后总结一下，其实mvc就是把图和逻辑分开，逻辑把参数和真实逻辑又分开的一种开发模式，这样导致程序的可维护性增加，逻辑出错找逻辑，参数出<br>错找model，视图修改找view</p></blockquote></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;目前的了解三种设计模式&quot;&gt;&lt;a href=&quot;#目前的了解三种设计模式&quot; class=&quot;headerlink&quot; title=&quot;目前的了解三种设计模式&quot;&gt;&lt;/a&gt;目前的了解三种设计模式&lt;/h2&gt;&lt;h3 id=&quot;单例设计模式&quot;&gt;&lt;a href=&quot;#单例设计模式&quot; class=&quot;headerlink&quot; title=&quot;单例设计模式&quot;&gt;&lt;/a&gt;单例设计模式&lt;/h3&gt;&lt;p&gt;单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。&lt;/p&gt;
+&lt;p&gt;###监听者模式，&lt;br&gt;怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>从url到网页到底发生了什么</title>
+    <link href="http://runindark.com/2018/11/16/FromUrlToPage/"/>
+    <id>http://runindark.com/2018/11/16/FromUrlToPage/</id>
+    <published>2018-11-16T10:19:34.160Z</published>
+    <updated>2018-11-16T11:04:02.831Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="url是什么"><a href="#url是什么" class="headerlink" title="url是什么"></a>url是什么</h2><blockquote><p>URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，<br>也是互联网上标准资源的地址，这个点到为止不再赘述。<br><a id="more"></a></p></blockquote><the rest="" of="" contents="" |="" 余下全文=""><h2 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h2><h3 id="什么是DNS解析"><a href="#什么是DNS解析" class="headerlink" title="什么是DNS解析"></a>什么是DNS解析</h3><blockquote><p>然后下一步我们需要dns解析，什么dns解析呢，就是把url翻译成机器可识别的数字格式，<br>类似我们所熟悉的192.168.1这样子，这样子才是可以被解析的。</p></blockquote><h3 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h3><blockquote><p>这个过程也是在专门的解析服务器上自动解析的，dns解析会有四个步骤，</p></blockquote><h4 id="第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"><a href="#第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）" class="headerlink" title="第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"></a>第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）</h4><h4 id="第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"><a href="#第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）" class="headerlink" title="第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"></a>第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）</h4><h4 id="第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"><a href="#第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。" class="headerlink" title="第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"></a>第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。</h4><h4 id="之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"><a href="#之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，" class="headerlink" title="之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"></a>之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，</h4><h4 id="一些需要注意的地方"><a href="#一些需要注意的地方" class="headerlink" title="一些需要注意的地方"></a>一些需要注意的地方</h4><blockquote><p>值得注意的是浏览器是边传输边渲染的，当然没有遇到js之前，js是单线程，而且js可以对html网页进行更改，大家所看到的很好的特效，都是js在进行<br>这时我们的页面就加载完成啦。<br>至于通信协议也是很简单，就是传递给服务器的协议，当然服务器向浏览器传输也要遵循http你要通过才能传递，这是一种规范也是一种手段。<br>还有就是渲染过程也是可以了解一下的，渲染以树的方法渲染着呢，dom树，解析css和js交互。<br>再细化就是前台和后端了，后端可以直接用servlet来传递协议（虽然springmvc里面是dispatcherservlet，或者说是controller，<br>但是实质还是servlet，接口几乎全适用）但是这样子传输还是存在问题，这样前后端交互总这样，数据更新不同步，所以ajax就出现了，<br>实现机理也简单,就是在传递给servlet之前，需要多传递一个ajax。如此就可以不必要必须走服务器，走异步交互啦，技术方面就是jquery。</p></blockquote></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;url是什么&quot;&gt;&lt;a href=&quot;#url是什么&quot; class=&quot;headerlink&quot; title=&quot;url是什么&quot;&gt;&lt;/a&gt;url是什么&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，&lt;br&gt;也是互联网上标准资源的地址，这个点到为止不再赘述。&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
     
     </summary>
     
@@ -36,8 +72,8 @@
   
   <entry>
     <title>hexo + github 博客搭建教程</title>
-    <link href="http://yoursite.com/2018/11/15/My%20first%20blog/"/>
-    <id>http://yoursite.com/2018/11/15/My first blog/</id>
+    <link href="http://runindark.com/2018/11/15/My%20first%20blog/"/>
+    <id>http://runindark.com/2018/11/15/My first blog/</id>
     <published>2018-11-15T10:39:21.035Z</published>
     <updated>2018-11-16T10:17:08.549Z</updated>
     
@@ -61,8 +97,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/11/15/hello-world/"/>
-    <id>http://yoursite.com/2018/11/15/hello-world/</id>
+    <link href="http://runindark.com/2018/11/15/hello-world/"/>
+    <id>http://runindark.com/2018/11/15/hello-world/</id>
     <published>2018-11-15T07:25:23.946Z</published>
     <updated>2018-11-16T06:20:42.287Z</updated>
     
