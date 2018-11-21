@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2018-11-16T11:28:59.841Z</updated>
+  <updated>2018-11-21T05:41:17.974Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://runindark.com/2018/11/21/FiveLayerNetworkProtoco/"/>
+    <id>http://runindark.com/2018/11/21/FiveLayerNetworkProtoco/</id>
+    <published>2018-11-21T05:01:46.999Z</published>
+    <updated>2018-11-21T05:41:17.974Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>Five layer network protoco</p><h2 id="五层网络协议"><a href="#五层网络协议" class="headerlink" title="五层网络协议"></a>五层网络协议</h2><p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="三种模型-（包含五层网络协议）"><a href="#三种模型-（包含五层网络协议）" class="headerlink" title="三种模型 （包含五层网络协议）"></a>三种模型 （包含五层网络协议）</h2><h3 id="OSI七层体系结构"><a href="#OSI七层体系结构" class="headerlink" title="OSI七层体系结构"></a>OSI七层体系结构</h3><blockquote><p>应用层 ： 报文<br>表示层 ： 确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取<br>会话层 ： 从网络到具体的本地设备之间联系<br>运输层 ： 数据协议等基本信息<br>网络层 ： 网络系统中主机之间的数据的传输和路径的选择<br>数据链路层 ： 规范数据的传输到物理设备<br>物理层 ： 最底层，就是我们所见到的网络接口光纤等<br><a id="more"></a></p></blockquote><the rest="" of="" contents="" |="" 余下全文=""><h3 id="TCP-IP四层体系结构"><a href="#TCP-IP四层体系结构" class="headerlink" title="TCP/IP四层体系结构"></a>TCP/IP四层体系结构</h3><blockquote><p>应用层<br>运输层<br>网际层<br>网络接口层</p></blockquote><h3 id="五层网络结构"><a href="#五层网络结构" class="headerlink" title="五层网络结构"></a>五层网络结构</h3><blockquote><p>应用层 ： 顾名思义，向用户提供最直接的网络服务，如HTTP，SMTP， FTP等<br>运输层 ： TCP，UDP两种协议传输数据<br>网络层 ： 1.）把运输层中的报文段封装成包进行传输  2.）选测路由，通过路由找到合适的主机<br>数据链路层 ： 规范数据传输到物理设备<br>物理层 ： 最底层，网络接口光纤等</p></blockquote><h3 id="三种模型的联系和关系"><a href="#三种模型的联系和关系" class="headerlink" title="三种模型的联系和关系"></a>三种模型的联系和关系</h3><p>这里提及一点所谓的五层网络协议其实并不是特别准确的描述，只是OSI和TCP/IP体系结构的综合表述</p><p>具体关系如下 ：<br><img src="/image/五层网络协议/01.png" alt=""></p><h4 id="TCP-和-UDP-补充"><a href="#TCP-和-UDP-补充" class="headerlink" title="TCP 和 UDP 补充"></a>TCP 和 UDP 补充</h4><p>如上介绍，TCP和UDP是存在于运输层的两种传输协议，而报文段的传送也主要是以来于这两种协议，那么二者的区别呢</p><blockquote><p>(1) 传输控制协议TCP(Transmission Control Protocol)：面向连接的，数据传输的单位是报文段，能够提供可靠的交付。<br>(2) 用户数据包协议UDP(User Datagram Protocol)：无连接的，数据传输的单位是用户数据报，不保证提供可靠的交付，只能提供“尽最大努力交付”。</p></blockquote><h4 id="二者的比较"><a href="#二者的比较" class="headerlink" title="二者的比较"></a>二者的比较</h4><blockquote><p>由于TCP一定需要连接，所以TCP与UDP相比也更加的安全<br>TCP的连接保证安全的代价也是更大的，也导致了TCP的传输效率低的问题，相比起来的话，UDP则具备速度快，连接简单，消耗资源低的优点<br>UDP的丢包率更低<br>总而言之TCP与UDP的根本却别在于是否需要连接</p></blockquote></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;Five layer network protoco&lt;/p&gt;
+&lt;h2 id=&quot;五层网络协议&quot;&gt;&lt;a href=&quot;#五层网络协议&quot; class=&quot;headerlink&quot; title=&quot;五层网络协议&quot;&gt;&lt;/a&gt;五层网络协议&lt;/h2&gt;&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;三种模型-（包含五层网络协议）&quot;&gt;&lt;a href=&quot;#三种模型-（包含五层网络协议）&quot; class=&quot;headerlink&quot; title=&quot;三种模型 （包含五层网络协议）&quot;&gt;&lt;/a&gt;三种模型 （包含五层网络协议）&lt;/h2&gt;&lt;h3 id=&quot;OSI七层体系结构&quot;&gt;&lt;a href=&quot;#OSI七层体系结构&quot; class=&quot;headerlink&quot; title=&quot;OSI七层体系结构&quot;&gt;&lt;/a&gt;OSI七层体系结构&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;应用层 ： 报文&lt;br&gt;表示层 ： 确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取&lt;br&gt;会话层 ： 从网络到具体的本地设备之间联系&lt;br&gt;运输层 ： 数据协议等基本信息&lt;br&gt;网络层 ： 网络系统中主机之间的数据的传输和路径的选择&lt;br&gt;数据链路层 ： 规范数据的传输到物理设备&lt;br&gt;物理层 ： 最底层，就是我们所见到的网络接口光纤等&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>MVC续谈</title>
