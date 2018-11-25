@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://runindark.com/2018/11/24/NeedToWait/</loc>
+    
+    <lastmod>2018-11-25T07:10:38.194Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://runindark.com/tags/index.html</loc>
+    
+    <lastmod>2018-11-24T14:23:48.275Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://runindark.com/2018/11/21/FiveLayerNetworkProtoco/</loc>
     
     <lastmod>2018-11-21T05:41:17.974Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://runindark.com/2018/11/15/hello-world/</loc>
     
     <lastmod>2018-11-16T06:20:42.287Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://runindark.com/tags/index.html</loc>
-    
-    <lastmod>2018-11-16T04:11:23.774Z</lastmod>
     
   </url>
   
