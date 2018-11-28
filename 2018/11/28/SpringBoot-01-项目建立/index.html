@@ -15,17 +15,23 @@
 
 
 
-<meta name="description" content="url是什么 URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，也是互联网上标准资源的地址，这个点到为止不再赘述。">
+<meta name="description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从url到网页到底发生了什么">
-<meta property="og:url" content="http://runindark.com/2018/11/16/FromUrlToPage/index.html">
+<meta property="og:title" content="SpringBoot-01-项目建立">
+<meta property="og:url" content="http://runindark.com/2018/11/28/SpringBoot-01-项目建立/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
-<meta property="og:description" content="url是什么 URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，也是互联网上标准资源的地址，这个点到为止不再赘述。">
+<meta property="og:description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-16T11:04:02.831Z">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/01.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/02.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/03.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/04.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/05.png">
+<meta property="og:updated_time" content="2018-11-28T14:54:51.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从url到网页到底发生了什么">
-<meta name="twitter:description" content="url是什么 URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，也是互联网上标准资源的地址，这个点到为止不再赘述。">
+<meta name="twitter:title" content="SpringBoot-01-项目建立">
+<meta name="twitter:description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
+<meta name="twitter:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/01.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>从url到网页到底发生了什么 | Cat&#39;s blog</title>
+<title>SpringBoot-01-项目建立 | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -266,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-FromUrlToPage" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SpringBoot-01-项目建立" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/16/FromUrlToPage/" class="article-date">
-      <time datetime="2018-11-16T10:19:34.160Z" itemprop="datePublished">2018-11-16</time>
+      <a href="/2018/11/28/SpringBoot-01-项目建立/" class="article-date">
+      <time datetime="2018-11-28T13:43:34.581Z" itemprop="datePublished">2018-11-28</time>
 </a>
 
 
@@ -285,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      从url到网页到底发生了什么
+      SpringBoot-01-项目建立
     </h1>
   
 
@@ -303,21 +309,35 @@
       
           
         <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<h2 id="url是什么"><a href="#url是什么" class="headerlink" title="url是什么"></a>url是什么</h2><blockquote>
-<p>URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，<br>也是互联网上标准资源的地址，这个点到为止不再赘述。<br><a id="more"></a></p>
-</blockquote>
+<h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。<br><a id="more"></a></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-
-<h2 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h2><h3 id="什么是DNS解析"><a href="#什么是DNS解析" class="headerlink" title="什么是DNS解析"></a>什么是DNS解析</h3><blockquote>
-<p>然后下一步我们需要dns解析，什么dns解析呢，就是把url翻译成机器可识别的数字格式，<br>类似我们所熟悉的192.168.1这样子，这样子才是可以被解析的。</p>
+<h2 id="学习springboot你需要什么知识储备"><a href="#学习springboot你需要什么知识储备" class="headerlink" title="学习springboot你需要什么知识储备"></a>学习springboot你需要什么知识储备</h2><blockquote>
+<p>不要轻举妄动，框架的学习要一步一步的走，直接跨越，直接上手springboot，你也许觉得照猫画虎，框架的使用很简单，但是只有表面功夫<br>是远远不够的，沉住气，你需要学习  <strong>javaEE , springmvc</strong><br>至于持久层mybatis可以暂时跳过，spring一些属性注入方式也可以暂时不看，但是前两者的一定要看。<br>至于要看的课程的话 推荐一个老师，淘宝买课认识的，大家可以去看下 <a href="http://www.monkey1024.com/" target="_blank" rel="noopener">monkey1024</a><br>要资源的话不要找我，尊重一个老师的劳动成果，几十的东西，大家买一下，支持一个</p>
 </blockquote>
-<h3 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h3><blockquote>
-<p>这个过程也是在专门的解析服务器上自动解析的，dns解析会有四个步骤，</p>
+<p>##开发工具(IDE)</p>
+<blockquote>
+<p>我推荐哈，idea很舒服，简单明了，之前有用过pycharm和clion的都可以直接上手的，毕竟一个公司设计的东西，eclipse怎么说呢，很好的ide，但是<br>容易抽风，如果身边有常用eclipse的人，他们口头都会挂上一句“重启大法好”，所以入门直接使用idea就很好了，我的教程也全是基于idea的，下载过<br>程省略，<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">IDEA</a></p>
 </blockquote>
-<h4 id="第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"><a href="#第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）" class="headerlink" title="第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"></a>第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）</h4><h4 id="第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"><a href="#第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）" class="headerlink" title="第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"></a>第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）</h4><h4 id="第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"><a href="#第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。" class="headerlink" title="第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"></a>第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。</h4><h4 id="之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"><a href="#之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，" class="headerlink" title="之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"></a>之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，</h4><h4 id="一些需要注意的地方"><a href="#一些需要注意的地方" class="headerlink" title="一些需要注意的地方"></a>一些需要注意的地方</h4><blockquote>
-<p>值得注意的是浏览器是边传输边渲染的，当然没有遇到js之前，js是单线程，而且js可以对html网页进行更改，大家所看到的很好的特效，都是js在进行<br>这时我们的页面就加载完成啦。<br>至于通信协议也是很简单，就是传递给服务器的协议，当然服务器向浏览器传输也要遵循http你要通过才能传递，这是一种规范也是一种手段。<br>还有就是渲染过程也是可以了解一下的，渲染以树的方法渲染着呢，dom树，解析css和js交互。<br>再细化就是前台和后端了，后端可以直接用servlet来传递协议（虽然springmvc里面是dispatcherservlet，或者说是controller，<br>但是实质还是servlet，接口几乎全适用）但是这样子传输还是存在问题，这样前后端交互总这样，数据更新不同步，所以ajax就出现了，<br>实现机理也简单,就是在传递给servlet之前，需要多传递一个ajax。如此就可以不必要必须走服务器，走异步交互啦，技术方面就是jquery。</p>
+<h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><p>项目的教程全部如图咯~<br><img src="/image/Springboot/springboot-01-项目建立/01.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/02.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/03.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/04.png" alt=""></p>
+<h2 id="目录分析"><a href="#目录分析" class="headerlink" title="目录分析"></a>目录分析</h2><p><img src="/image/Springboot/springboot-01-项目建立/05.png" alt=""><br>如图我们来看一下我们的初始化目录，该写什么，能写在哪里，之间的调用方式和执行流程都和目录关系密切<br>（只列举我们要用到的，或者说常用的，其他的有些我也其实不清楚，有的直接删除也不影响）</p>
+<h3 id="src"><a href="#src" class="headerlink" title="src:"></a>src:</h3><p>这个就是我们的源码区域</p>
+<h4 id="java"><a href="#java" class="headerlink" title="java:"></a>java:</h4><blockquote>
+<p>要写的controller，DAO ， impl等</p>
 </blockquote>
+<h4 id="resource"><a href="#resource" class="headerlink" title="resource:"></a>resource:</h4><blockquote>
+<p>顾名思义就是我们的一些资源文件，其下的static就是我们所说的静态资源，包括css,html,js,image等等</p>
+</blockquote>
+<h3 id="templates："><a href="#templates：" class="headerlink" title="templates："></a>templates：</h3><blockquote>
+<p>也是顾名思义就是模板，也是我们的一些模板引擎，例如 JSP、Velocity、Freemarker、Thymeleaf<br>我后期会更新的也是thymeleaf，当然也是springboot官方推荐的</p>
+</blockquote>
+<h3 id="test"><a href="#test" class="headerlink" title="test:"></a>test:</h3><blockquote>
+<p>有点类似junit服务，就是一个测试的地方，springboot直接将这个整合进来，很方便</p>
+</blockquote>
+<h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><blockquote>
+<p>这个其实没什么好说的，就是maven资源管理的文件，所有的依赖就是写在这里的</p>
+</blockquote>
+<h2 id="讲完了，一些后话"><a href="#讲完了，一些后话" class="headerlink" title="讲完了，一些后话"></a>讲完了，一些后话</h2><p>这个教程不是完全针对0基础的初学者的，正如我说的，你需要足够的知识储备才建议去学习springboot，当然了也有一些名词是大家没有听说过的<br>但是，稍安勿躁，大家目前需要大致的了解，对于一些特定的内容比如模板引擎，日志驱动sel4j等一系列内容都会出教程。</p>
 </the>
       
     </div>
@@ -326,13 +346,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/16/FromUrlToPage/">从url到网页到底发生了什么</a></p>
+        <p><span>本文标题:</span><a href="/2018/11/28/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
-        <p><span>发布时间:</span>2018-11-16, 18:19:34</p>
-        <p><span>最后更新:</span>2018-11-16, 19:04:02</p>
+        <p><span>发布时间:</span>2018-11-28, 21:43:34</p>
+        <p><span>最后更新:</span>2018-11-28, 22:54:51</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/16/FromUrlToPage/" title="从url到网页到底发生了什么">http://runindark.com/2018/11/16/FromUrlToPage/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/11/16/FromUrlToPage/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/28/SpringBoot-01-项目建立/" title="SpringBoot-01-项目建立">http://runindark.com/2018/11/28/SpringBoot-01-项目建立/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/11/28/SpringBoot-01-项目建立/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -344,16 +364,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/16/designpattern/">
-                    单例设计模式，MVC，监听者模式
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/11/15/My first blog/">
-                    hexo + github 博客搭建教程
+                <a href="/2018/11/24/NeedToWait/">
+                    生活在继续，你要等
                 </a>
             </div>
         
@@ -365,7 +379,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#url是什么"><span class="toc-number">1.</span> <span class="toc-text">url是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS解析"><span class="toc-number">2.</span> <span class="toc-text">DNS解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是DNS解析"><span class="toc-number">2.1.</span> <span class="toc-text">什么是DNS解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS解析过程"><span class="toc-number">2.2.</span> <span class="toc-text">DNS解析过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）"><span class="toc-number">2.2.1.</span> <span class="toc-text">第一个则是查找浏览器缓存（不同浏览器不同一般是两到三十分钟左右）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）"><span class="toc-number">2.2.2.</span> <span class="toc-text">第二个则是在本地系统查找缓存（本地也会有缓存，比如tomcat的localhost：8080）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。"><span class="toc-number">2.2.3.</span> <span class="toc-text">第三个是在路由器查找缓存（没错，部分路由器是具有缓存功能的）第四个则是ISP查找（这个比较厉害，直接查向运营商最高服务器）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，"><span class="toc-number">2.2.4.</span> <span class="toc-text">之后就是通过tcp链接服务器了，服务器这时才会开始处理请求，向我们的浏览器传递数据，</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些需要注意的地方"><span class="toc-number">2.2.5.</span> <span class="toc-text">一些需要注意的地方</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面的话"><span class="toc-number">1.</span> <span class="toc-text">说在前面的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习springboot你需要什么知识储备"><span class="toc-number">2.</span> <span class="toc-text">学习springboot你需要什么知识储备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目创建"><span class="toc-number">3.</span> <span class="toc-text">项目创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录分析"><span class="toc-number">4.</span> <span class="toc-text">目录分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#src"><span class="toc-number">4.1.</span> <span class="toc-text">src:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java"><span class="toc-number">4.1.1.</span> <span class="toc-text">java:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resource"><span class="toc-number">4.1.2.</span> <span class="toc-text">resource:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#templates："><span class="toc-number">4.2.</span> <span class="toc-text">templates：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test"><span class="toc-number">4.3.</span> <span class="toc-text">test:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pom-xml"><span class="toc-number">4.4.</span> <span class="toc-text">pom.xml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲完了，一些后话"><span class="toc-number">5.</span> <span class="toc-text">讲完了，一些后话</span></a></li></ol>
         
     </div>
     <style>
@@ -401,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"从url到网页到底发生了什么　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SpringBoot-01-项目建立　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -417,7 +431,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/11/16/FromUrlToPage/" data-title="从url到网页到底发生了什么" data-url="http://runindark.com/2018/11/16/FromUrlToPage/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/11/28/SpringBoot-01-项目建立/" data-title="SpringBoot-01-项目建立" data-url="http://runindark.com/2018/11/28/SpringBoot-01-项目建立/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -440,15 +454,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/16/designpattern/" title="上一篇: 单例设计模式，MVC，监听者模式">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/11/15/My first blog/" title="下一篇: hexo + github 博客搭建教程">
+            <a href="/2018/11/24/NeedToWait/" title="下一篇: 生活在继续，你要等">
                 <i class="fa fa-angle-right"></i>
             </a>
         

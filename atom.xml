@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2018-11-25T07:10:38.194Z</updated>
+  <updated>2018-11-28T14:54:51.175Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot-01-项目建立</title>
+    <link href="http://runindark.com/2018/11/28/SpringBoot-01-%E9%A1%B9%E7%9B%AE%E5%BB%BA%E7%AB%8B/"/>
+    <id>http://runindark.com/2018/11/28/SpringBoot-01-项目建立/</id>
+    <published>2018-11-28T13:43:34.581Z</published>
+    <updated>2018-11-28T14:54:51.175Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="学习springboot你需要什么知识储备"><a href="#学习springboot你需要什么知识储备" class="headerlink" title="学习springboot你需要什么知识储备"></a>学习springboot你需要什么知识储备</h2><blockquote><p>不要轻举妄动，框架的学习要一步一步的走，直接跨越，直接上手springboot，你也许觉得照猫画虎，框架的使用很简单，但是只有表面功夫<br>是远远不够的，沉住气，你需要学习  <strong>javaEE , springmvc</strong><br>至于持久层mybatis可以暂时跳过，spring一些属性注入方式也可以暂时不看，但是前两者的一定要看。<br>至于要看的课程的话 推荐一个老师，淘宝买课认识的，大家可以去看下 <a href="http://www.monkey1024.com/" target="_blank" rel="noopener">monkey1024</a><br>要资源的话不要找我，尊重一个老师的劳动成果，几十的东西，大家买一下，支持一个</p></blockquote><p>##开发工具(IDE)</p><blockquote><p>我推荐哈，idea很舒服，简单明了，之前有用过pycharm和clion的都可以直接上手的，毕竟一个公司设计的东西，eclipse怎么说呢，很好的ide，但是<br>容易抽风，如果身边有常用eclipse的人，他们口头都会挂上一句“重启大法好”，所以入门直接使用idea就很好了，我的教程也全是基于idea的，下载过<br>程省略，<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">IDEA</a></p></blockquote><h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><p>项目的教程全部如图咯~<br><img src="/image/Springboot/springboot-01-项目建立/01.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/02.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/03.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/04.png" alt=""></p><h2 id="目录分析"><a href="#目录分析" class="headerlink" title="目录分析"></a>目录分析</h2><p><img src="/image/Springboot/springboot-01-项目建立/05.png" alt=""><br>如图我们来看一下我们的初始化目录，该写什么，能写在哪里，之间的调用方式和执行流程都和目录关系密切<br>（只列举我们要用到的，或者说常用的，其他的有些我也其实不清楚，有的直接删除也不影响）</p><h3 id="src"><a href="#src" class="headerlink" title="src:"></a>src:</h3><p>这个就是我们的源码区域</p><h4 id="java"><a href="#java" class="headerlink" title="java:"></a>java:</h4><blockquote><p>要写的controller，DAO ， impl等</p></blockquote><h4 id="resource"><a href="#resource" class="headerlink" title="resource:"></a>resource:</h4><blockquote><p>顾名思义就是我们的一些资源文件，其下的static就是我们所说的静态资源，包括css,html,js,image等等</p></blockquote><h3 id="templates："><a href="#templates：" class="headerlink" title="templates："></a>templates：</h3><blockquote><p>也是顾名思义就是模板，也是我们的一些模板引擎，例如 JSP、Velocity、Freemarker、Thymeleaf<br>我后期会更新的也是thymeleaf，当然也是springboot官方推荐的</p></blockquote><h3 id="test"><a href="#test" class="headerlink" title="test:"></a>test:</h3><blockquote><p>有点类似junit服务，就是一个测试的地方，springboot直接将这个整合进来，很方便</p></blockquote><h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><blockquote><p>这个其实没什么好说的，就是maven资源管理的文件，所有的依赖就是写在这里的</p></blockquote><h2 id="讲完了，一些后话"><a href="#讲完了，一些后话" class="headerlink" title="讲完了，一些后话"></a>讲完了，一些后话</h2><p>这个教程不是完全针对0基础的初学者的，正如我说的，你需要足够的知识储备才建议去学习springboot，当然了也有一些名词是大家没有听说过的<br>但是，稍安勿躁，大家目前需要大致的了解，对于一些特定的内容比如模板引擎，日志驱动sel4j等一系列内容都会出教程。</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;说在前面的话&quot;&gt;&lt;a href=&quot;#说在前面的话&quot; class=&quot;headerlink&quot; title=&quot;说在前面的话&quot;&gt;&lt;/a&gt;说在前面的话&lt;/h2&gt;&lt;p&gt;一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>生活在继续，你要等</title>
