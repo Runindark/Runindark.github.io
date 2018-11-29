@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2018-11-28T14:54:51.175Z</updated>
+  <updated>2018-11-29T11:44:29.485Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot-01-项目建立</title>
+    <link href="http://runindark.com/2018/11/29/SpringBoot-02-%E6%8E%A7%E5%88%B6%E5%99%A8%E5%92%8C%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/</id>
+    <published>2018-11-29T10:48:54.098Z</published>
+    <updated>2018-11-29T11:44:29.485Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>对于一个后端来说，其实很简单的，说的明白一些就是接受和处理前端的数据，同时也要发送整理好的数据给前端网页，但是，在springboot，如何进行<br>前后端数据的交互，就是要涉及到springboot了 。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="中央核心控制器-DispatcherServlet"><a href="#中央核心控制器-DispatcherServlet" class="headerlink" title="中央核心控制器 DispatcherServlet"></a>中央核心控制器 DispatcherServlet</h2><p>上面提到的，前后端数据的交互的核心就是我们controller了，在springmvc中，这个东西可是最为关键和核心的内容,如下是dispatcherServlet<br>在springmvc中的注册信息，（这里带大家看一下，毕竟这是springmvc中的东西，在我们的springboot中是看不到的）</p><blockquote><servlet><br>   <servlet-name>springMVC</servlet-name><br>   <!-- spring MVC中的核心控制器 --><br>   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class><br>   <init-param><br>       <param-name>contextConfigLocation</param-name><br>       <param-value>classpath:springmvc.xml</param-value><br>   </init-param><br>   <load-on-startup>1</load-on-startup><br></servlet></blockquote><p>说到底，我们的controller的实质还是一个servlet，在javaEE中，我们的使用常用的HTTPServlet，因此<strong>HTTPServletRequest</strong>，<strong>HTTPServletResponse</strong>放在controller中是完全适用的。</p><p>我们后端的绝大多数操作也将会放在controller中进行，所以务必注意，包括之后的皆接口的名字，导包信息，都要谨慎 。</p><h2 id="第一个controller"><a href="#第一个controller" class="headerlink" title="第一个controller"></a>第一个controller</h2><p><img src="/image/Springboot/springboot-02-控制器和注解/01.png" alt=""></p><p>大家可以先观察一下我们的controller的类是放在什么位置的，然后我加上源码分析一下 。</p><blockquote><p>package com.yuliao.wordsmemory;</p><p>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RestController;</p><p>//controller注解<br>@RestController<br>public class Words {</p><p>   //映射注解<br>   @RequestMapping(“/printWords”)</p><p>   public String printWords (){</p><pre><code>//输出到前台的数据return &quot;HelloWorld&quot; ;</code></pre><p>   }</p><p>}</p></blockquote><h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><blockquote><p>其实RestController是两个注解的合体，我们之所以可以在controller使用return语句返回 “HelloWorld” 到前台其实是一个叫<br>@ResponseBody的注解在起作用分析底层底层源码是可以看到的，所以在这里我们可以写一个等式  </p><p>@RestController = @Controller + @ResponseBody </p></blockquote><h3 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h3><blockquote><p>RequestMapping就是我们所说的映射，这个就是在网页静态地址规范controller作用范围，就如刚刚我们的代码所写的，我们启动服务器以后<br>我们需要在浏览器中查找  </p></blockquote><p><img src="/image/Springboot/springboot-02-控制器和注解/02.png" alt=""></p><h2 id="一些要说的东西"><a href="#一些要说的东西" class="headerlink" title="一些要说的东西"></a>一些要说的东西</h2><p>这里的注解只是很简单的给大家介绍一下如何向前台传递数据，至于如何从前台获取数据稍后也会更新，对于注解这是我们最常用的几个，但是这些数量<br>对于我们来说是远远不够的，包括去掉@ResponseBody传递数据将会有什么用，这些都暂时没有提及。</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;说在前面的话&quot;&gt;&lt;a href=&quot;#说在前面的话&quot; class=&quot;headerlink&quot; title=&quot;说在前面的话&quot;&gt;&lt;/a&gt;说在前面的话&lt;/h2&gt;&lt;p&gt;对于一个后端来说，其实很简单的，说的明白一些就是接受和处理前端的数据，同时也要发送整理好的数据给前端网页，但是，在springboot，如何进行&lt;br&gt;前后端数据的交互，就是要涉及到springboot了 。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SpringBoot-01-项目建立</title>
