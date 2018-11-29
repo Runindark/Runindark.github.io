@@ -24,7 +24,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://runindark.com/image/Springboot/springboot-02-控制器和注解/01.png">
 <meta property="og:image" content="http://runindark.com/image/Springboot/springboot-02-控制器和注解/02.png">
-<meta property="og:updated_time" content="2018-11-29T11:44:29.485Z">
+<meta property="og:updated_time" content="2018-11-29T12:16:19.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot-01-项目建立">
 <meta name="twitter:description" content="说在前面的话对于一个后端来说，其实很简单的，说的明白一些就是接受和处理前端的数据，同时也要发送整理好的数据给前端网页，但是，在springboot，如何进行前后端数据的交互，就是要涉及到springboot了 。">
@@ -336,6 +336,7 @@ return &quot;HelloWorld&quot; ;
 <p>RequestMapping就是我们所说的映射，这个就是在网页静态地址规范controller作用范围，就如刚刚我们的代码所写的，我们启动服务器以后<br>我们需要在浏览器中查找  </p>
 </blockquote>
 <p><img src="/image/Springboot/springboot-02-控制器和注解/02.png" alt=""></p>
+<h3 id="数据的传输"><a href="#数据的传输" class="headerlink" title="数据的传输"></a>数据的传输</h3><p>在我们的springboot中默认的数据传输类型是json格式的，当我们创建一个类的时候，利用 return 返回到前台的时候，会自动变成json的数据类型，<br>javabean自动序列化成json数据类型是有 jackson&gt;fastjson&gt;gson&gt;json-lib ，我们使用的是jackso，所以一些我们的常用的注解有以下集中<br>指定字段不返回： @JsonIgnore<br>指定日期格式： @JsonFormat()<br>指定别名： @JsonProperty</p>
 <h2 id="一些要说的东西"><a href="#一些要说的东西" class="headerlink" title="一些要说的东西"></a>一些要说的东西</h2><p>这里的注解只是很简单的给大家介绍一下如何向前台传递数据，至于如何从前台获取数据稍后也会更新，对于注解这是我们最常用的几个，但是这些数量<br>对于我们来说是远远不够的，包括去掉@ResponseBody传递数据将会有什么用，这些都暂时没有提及。</p>
 </the>
       
@@ -348,7 +349,7 @@ return &quot;HelloWorld&quot; ;
         <p><span>本文标题:</span><a href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-01-项目建立</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
         <p><span>发布时间:</span>2018-11-29, 18:48:54</p>
-        <p><span>最后更新:</span>2018-11-29, 19:44:29</p>
+        <p><span>最后更新:</span>2018-11-29, 20:16:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/11/29/SpringBoot-02-控制器和注解/" title="SpringBoot-01-项目建立">http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -378,7 +379,7 @@ return &quot;HelloWorld&quot; ;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面的话"><span class="toc-number">1.</span> <span class="toc-text">说在前面的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中央核心控制器-DispatcherServlet"><span class="toc-number">2.</span> <span class="toc-text">中央核心控制器 DispatcherServlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一个controller"><span class="toc-number">3.</span> <span class="toc-text">第一个controller</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RestController"><span class="toc-number">3.1.</span> <span class="toc-text">@RestController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestMapping"><span class="toc-number">3.2.</span> <span class="toc-text">@RequestMapping</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些要说的东西"><span class="toc-number">4.</span> <span class="toc-text">一些要说的东西</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面的话"><span class="toc-number">1.</span> <span class="toc-text">说在前面的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中央核心控制器-DispatcherServlet"><span class="toc-number">2.</span> <span class="toc-text">中央核心控制器 DispatcherServlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一个controller"><span class="toc-number">3.</span> <span class="toc-text">第一个controller</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RestController"><span class="toc-number">3.1.</span> <span class="toc-text">@RestController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestMapping"><span class="toc-number">3.2.</span> <span class="toc-text">@RequestMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据的传输"><span class="toc-number">3.3.</span> <span class="toc-text">数据的传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些要说的东西"><span class="toc-number">4.</span> <span class="toc-text">一些要说的东西</span></a></li></ol>
         
     </div>
     <style>
