@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2018-11-29T12:16:19.967Z</updated>
+  <updated>2018-11-29T12:46:17.497Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot-03-目录结构再谈</title>
+    <link href="http://runindark.com/2018/11/29/SpringBoot-03-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%86%8D%E8%B0%88/"/>
+    <id>http://runindark.com/2018/11/29/SpringBoot-03-目录结构再谈/</id>
+    <published>2018-11-29T12:21:03.531Z</published>
+    <updated>2018-11-29T12:46:17.497Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="重读目录结构"><a href="#重读目录结构" class="headerlink" title="重读目录结构"></a>重读目录结构</h2><p>使用一个框架，也同时意味着去遵守一个框架的标准，包括目录的结构，目录名，虽然之前我简单的有提过我们的目录结构，但是只是很粗浅的说，<br>其实目录结构大多数的博主是不会提及的，自己也踩过雷，也当是在这个方面有过很多的纠结，所以觉得有必要重新拿起目录结构深究一下。</p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><blockquote><p>src/main/java：存放代码<br>src/main/resources<br>static: 存放静态文件，比如 css、js、image,<br>templates:存放静态页面jsp,html,tpl<br>config:存放配置文件,application.properties<br>resources:</p></blockquote><p>可以看到这就是我们的完整的目录信息，至于至于源码区域我们不用多说，以后会常常用到，所以不是这次说的重点。<br>对于config，我有说过springboot其实封装好了大多数的东西，但是有些默认的参数是我们不需要的，那么调节或者<br>说更改参数就是在config下的文件进行修改，距离写出的application.properties只是系统自动生成的文件之一，今后<br>我们还会使用到yaml和xml，当然yaml会更加的方便我们的书写，也更加的快速</p><h2 id="静态资源目录"><a href="#静态资源目录" class="headerlink" title="静态资源目录"></a>静态资源目录</h2><p>我们可以看到可以存放资源的目录有很多，这些目录的名字都是系统中默认写好的名字，我们不要去做任何的修改，springboot在启动的时候会自动的<br>从我们的文件目录下去寻找自己锁需要的文件，如果随意的更改我们的文件名字，就会导致无法获取我们所需要的静态资源从而导致404这类错误，当然<br>springboot查询目录也是有自己的优先级的，下面就是优先级的排布</p><blockquote><p>META/resources &gt; resources &gt; static &gt; public</p></blockquote><p>有些东西需要注意一下，在springboot中，其实高优先级与低优先级之间不是覆盖的关系，而是互补的，举个例子来说<br>如果你在高优先级更改端口号，那么低优先级再更改端口号是没有意义的<br>但是如果你在低优先级中书写了其他的内容，那么依然生效</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;重读目录结构&quot;&gt;&lt;a href=&quot;#重读目录结构&quot; class=&quot;headerlink&quot; title=&quot;重读目录结构&quot;&gt;&lt;/a&gt;重读目录结构&lt;/h2&gt;&lt;p&gt;使用一个框架，也同时意味着去遵守一个框架的标准，包括目录的结构，目录名，虽然之前我简单的有提过我们的目录结构，但是只是很粗浅的说，&lt;br&gt;其实目录结构大多数的博主是不会提及的，自己也踩过雷，也当是在这个方面有过很多的纠结，所以觉得有必要重新拿起目录结构深究一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SpringBoot-01-项目建立</title>
