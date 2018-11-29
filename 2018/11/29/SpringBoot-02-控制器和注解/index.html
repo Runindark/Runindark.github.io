@@ -17,16 +17,16 @@
 
 <meta name="description" content="说在前面的话对于一个后端来说，其实很简单的，说的明白一些就是接受和处理前端的数据，同时也要发送整理好的数据给前端网页，但是，在springboot，如何进行前后端数据的交互，就是要涉及到springboot了 。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot-01-项目建立">
+<meta property="og:title" content="SpringBoot-02-控制器和注解">
 <meta property="og:url" content="http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
 <meta property="og:description" content="说在前面的话对于一个后端来说，其实很简单的，说的明白一些就是接受和处理前端的数据，同时也要发送整理好的数据给前端网页，但是，在springboot，如何进行前后端数据的交互，就是要涉及到springboot了 。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://runindark.com/image/Springboot/springboot-02-控制器和注解/01.png">
 <meta property="og:image" content="http://runindark.com/image/Springboot/springboot-02-控制器和注解/02.png">
-<meta property="og:updated_time" content="2018-11-29T12:16:19.967Z">
+<meta property="og:updated_time" content="2018-11-29T14:35:42.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot-01-项目建立">
+<meta name="twitter:title" content="SpringBoot-02-控制器和注解">
 <meta name="twitter:description" content="说在前面的话对于一个后端来说，其实很简单的，说的明白一些就是接受和处理前端的数据，同时也要发送整理好的数据给前端网页，但是，在springboot，如何进行前后端数据的交互，就是要涉及到springboot了 。">
 <meta name="twitter:image" content="http://runindark.com/image/Springboot/springboot-02-控制器和注解/01.png">
 
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SpringBoot-01-项目建立 | Cat&#39;s blog</title>
+<title>SpringBoot-02-控制器和注解 | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -288,7 +288,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringBoot-01-项目建立
+      SpringBoot-02-控制器和注解
     </h1>
   
 
@@ -346,12 +346,12 @@ return &quot;HelloWorld&quot; ;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-01-项目建立</a></p>
+        <p><span>本文标题:</span><a href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
         <p><span>发布时间:</span>2018-11-29, 18:48:54</p>
-        <p><span>最后更新:</span>2018-11-29, 20:16:19</p>
+        <p><span>最后更新:</span>2018-11-29, 22:35:42</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/29/SpringBoot-02-控制器和注解/" title="SpringBoot-01-项目建立">http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/</a>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/29/SpringBoot-02-控制器和注解/" title="SpringBoot-02-控制器和注解">http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -421,7 +421,7 @@ return &quot;HelloWorld&quot; ;
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SpringBoot-01-项目建立　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SpringBoot-02-控制器和注解　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +437,7 @@ return &quot;HelloWorld&quot; ;
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/11/29/SpringBoot-02-控制器和注解/" data-title="SpringBoot-01-项目建立" data-url="http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/11/29/SpringBoot-02-控制器和注解/" data-title="SpringBoot-02-控制器和注解" data-url="http://runindark.com/2018/11/29/SpringBoot-02-控制器和注解/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -474,7 +474,7 @@ return &quot;HelloWorld&quot; ;
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/NeedToWait/">生活在继续，你要等</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/NeedToWait/">生活在继续，你要等</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/hello-world/">Hello World</a></li></ul>
 
 
 
