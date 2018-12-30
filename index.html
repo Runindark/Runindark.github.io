@@ -269,6 +269,181 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-springBoot-06-连接数据池Druid" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/27/springBoot-06-连接数据池Druid/" class="article-date">
+      <time datetime="2018-12-27T14:17:41.926Z" itemprop="datePublished">2018-12-27</time>
+</a>
+
+ 
+    <a href="/2018/12/27/springBoot-06-连接数据池Druid/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count" data-thread-key="2018/12/27/springBoot-06-连接数据池Druid/"></span>
+        
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/27/springBoot-06-连接数据池Druid/">springboor2.0x中关于数据连接池Druid的连接</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="application-yml的配置参数"><a href="#application-yml的配置参数" class="headerlink" title="application.yml的配置参数"></a>application.yml的配置参数</h3><p>spring:<br>  datasource:</p>
+<hr>
+<blockquote>
+<h1 id="数据源基本配置"><a href="#数据源基本配置" class="headerlink" title="数据源基本配置"></a>数据源基本配置</h1><p>   username: root<br>   password: 123456<br>   driver-class-name: com.mysql.jdbc.Driver<br>   url: jdbc:mysql://localhost:3306/ssm_crud<br>   type: com.alibaba.druid.pool.DruidDataSource</p>
+<hr>
+<h1 id="数据源其他配置-初始化参数"><a href="#数据源其他配置-初始化参数" class="headerlink" title="数据源其他配置  初始化参数"></a>数据源其他配置  初始化参数</h1><p>   initialSize: 5<br>   minIdle: 5<br>   maxActive: 20<br>   maxWait: 60000<br>  timeBetweenEvictionRunsMillis: 60000<br>   minEvictableIdleTimeMillis: 300000<br>  validationQuery: SELECT 1 FROM DUAL<br>   testWhileIdle: true<br>   testOnBorrow: false<br>   testOnReturn: false<br>   poolPreparedStatements: true</p>
+<h1 id="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"><a href="#配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙" class="headerlink" title="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"></a>配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙</h1><p>   filters: stat,wall,log4j<br>   maxPoolPreparedStatementPerConnectionSize: 20<br>   useGlobalDataSourceStat: true<br>   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</p>
+</blockquote>
+<h3 id="配置config类"><a href="#配置config类" class="headerlink" title="配置config类"></a>配置config类</h3><p>由于数据连接池中的属性默认是tomcat的数据连接池，但是使用Druid需要配置其servlet以及filter</p>
+<h2 id="配置-01-DataSource"><a href="#配置-01-DataSource" class="headerlink" title="配置-01-DataSource"></a>配置-01-DataSource</h2><p>— java</p>
+<blockquote>
+<p>@ConfigurationProperties(prefix = “spring.datasource”)  //前缀：自定义数据源<br>   @Bean<br>   //自定义一个数据源<br>   public DataSource druid(){</p>
+<pre><code>return new DruidDataSource() ;
+</code></pre><p>   }</p>
+</blockquote>
+<hr>
+<h2 id="配置-02-Servlet"><a href="#配置-02-Servlet" class="headerlink" title="配置-02-Servlet"></a>配置-02-Servlet</h2><p>— java</p>
+<blockquote>
+<p>@Bean<br>   public ServletRegistrationBean statViewServlet(){<br>       ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),”/druid/*”);</p>
+<pre><code>Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();
+initParams.put(&quot;loginUsername&quot;, &quot;admin&quot;) ;
+initParams.put(&quot;loginPassword&quot;, &quot;123456&quot;) ;
+initParams.put(&quot;allow&quot;, &quot;&quot;); //默认允许所有的访问
+
+bean.setInitParameters(initParams);
+return  bean ;
+</code></pre><p>   }</p>
+</blockquote>
+<hr>
+<h2 id="配置-03-filter"><a href="#配置-03-filter" class="headerlink" title="配置-03-filter"></a>配置-03-filter</h2><blockquote>
+<p> @Bean<br>   public FilterRegistrationBean webStatFilter(){</p>
+<pre><code>FilterRegistrationBean bean = new FilterRegistrationBean() ;
+Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;() ;
+bean.setFilter(new WebStatFilter());
+
+//不去拦截的文件
+initParams.put(&quot;exclusions&quot;, &quot;*.js,*.css,/druid/*&quot;) ;
+bean.setInitParameters(initParams);
+bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+return bean ;
+</code></pre><p>   }</p>
+</blockquote>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>务必注意@Bean的配置，必须填入到AOP容器中，才会生效配置</p>
+<p>在写配置类时候务必需要 @Configeration</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-springboot新版本特性记录" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/18/springboot新版本特性记录/" class="article-date">
+      <time datetime="2018-12-18T12:07:52.141Z" itemprop="datePublished">2018-12-18</time>
+</a>
+
+ 
+    <a href="/2018/12/18/springboot新版本特性记录/#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count" data-thread-key="2018/12/18/springboot新版本特性记录/"></span>
+        
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/18/springboot新版本特性记录/">springboor2.0新特性记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="EmbeddedServletContainerCustomizer"><a href="#EmbeddedServletContainerCustomizer" class="headerlink" title="EmbeddedServletContainerCustomizer"></a>EmbeddedServletContainerCustomizer</h2><blockquote>
+<p>EmbeddedServletContainerCustomizer =&gt; WebServerFactoryCustomizer ;</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SpringBoot-05-配置文件" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -805,148 +980,6 @@
       
         <p class="article-more-link">
           <a href="/2018/11/16/MVC/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-designpattern" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/16/designpattern/" class="article-date">
-      <time datetime="2018-11-16T10:52:36.160Z" itemprop="datePublished">2018-11-16</time>
-</a>
-
- 
-    <a href="/2018/11/16/designpattern/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-            <span class="ds-thread-count" data-thread-key="2018/11/16/designpattern/"></span>
-        
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/designpattern/">单例设计模式，MVC，监听者模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<h2 id="目前的了解三种设计模式"><a href="#目前的了解三种设计模式" class="headerlink" title="目前的了解三种设计模式"></a>目前的了解三种设计模式</h2><h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><p>单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。</p>
-<h3 id="监听者模式，"><a href="#监听者模式，" class="headerlink" title="监听者模式，"></a>监听者模式，</h3><p>怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。<br></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/11/16/designpattern/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-FromUrlToPage" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/16/FromUrlToPage/" class="article-date">
-      <time datetime="2018-11-16T10:19:34.160Z" itemprop="datePublished">2018-11-16</time>
-</a>
-
- 
-    <a href="/2018/11/16/FromUrlToPage/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-            <span class="ds-thread-count" data-thread-key="2018/11/16/FromUrlToPage/"></span>
-        
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/FromUrlToPage/">从url到网页到底发生了什么</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<h2 id="url是什么"><a href="#url是什么" class="headerlink" title="url是什么"></a>url是什么</h2><blockquote>
-<p>URL其实就是我们常说的网址，作用也是顾名思义就是定位效果，而术语则是资源定位符，<br>也是互联网上标准资源的地址，这个点到为止不再赘述。<br></p></blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/11/16/FromUrlToPage/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

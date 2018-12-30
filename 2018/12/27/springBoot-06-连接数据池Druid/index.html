@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解">
+<meta name="description" content="application.yml的配置参数spring:  datasource:   数据源基本配置   username: root   password: 123456   driver-class-name: com.mysql.jdbc.Driver   url: jdbc:mysql://localhost:3306/ssm_crud   type: com.alibaba.druid.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot-05-配置文件">
-<meta property="og:url" content="http://runindark.com/2018/11/29/SpringBoot-05-配置文件/index.html">
+<meta property="og:title" content="springboor2.0x中关于数据连接池Druid的连接">
+<meta property="og:url" content="http://runindark.com/2018/12/27/springBoot-06-连接数据池Druid/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
-<meta property="og:description" content="springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解">
+<meta property="og:description" content="application.yml的配置参数spring:  datasource:   数据源基本配置   username: root   password: 123456   driver-class-name: com.mysql.jdbc.Driver   url: jdbc:mysql://localhost:3306/ssm_crud   type: com.alibaba.druid.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-29T15:04:59.179Z">
+<meta property="og:updated_time" content="2018-12-27T14:25:52.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot-05-配置文件">
-<meta name="twitter:description" content="springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解">
+<meta name="twitter:title" content="springboor2.0x中关于数据连接池Druid的连接">
+<meta name="twitter:description" content="application.yml的配置参数spring:  datasource:   数据源基本配置   username: root   password: 123456   driver-class-name: com.mysql.jdbc.Driver   url: jdbc:mysql://localhost:3306/ssm_crud   type: com.alibaba.druid.">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SpringBoot-05-配置文件 | Cat&#39;s blog</title>
+<title>springboor2.0x中关于数据连接池Druid的连接 | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -266,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-SpringBoot-05-配置文件" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-springBoot-06-连接数据池Druid" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/29/SpringBoot-05-配置文件/" class="article-date">
-      <time datetime="2018-11-29T14:52:42.919Z" itemprop="datePublished">2018-11-29</time>
+      <a href="/2018/12/27/springBoot-06-连接数据池Druid/" class="article-date">
+      <time datetime="2018-12-27T14:17:41.926Z" itemprop="datePublished">2018-12-27</time>
 </a>
 
 
@@ -285,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringBoot-05-配置文件
+      springboor2.0x中关于数据连接池Druid的连接
     </h1>
   
 
@@ -302,29 +302,51 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <excerpt in="" index="" |="" 首页摘要=""> 
+        <h3 id="application-yml的配置参数"><a href="#application-yml的配置参数" class="headerlink" title="application.yml的配置参数"></a>application.yml的配置参数</h3><p>spring:<br>  datasource:</p>
+<hr>
+<blockquote>
+<h1 id="数据源基本配置"><a href="#数据源基本配置" class="headerlink" title="数据源基本配置"></a>数据源基本配置</h1><p>   username: root<br>   password: 123456<br>   driver-class-name: com.mysql.jdbc.Driver<br>   url: jdbc:mysql://localhost:3306/ssm_crud<br>   type: com.alibaba.druid.pool.DruidDataSource</p>
+<hr>
+<h1 id="数据源其他配置-初始化参数"><a href="#数据源其他配置-初始化参数" class="headerlink" title="数据源其他配置  初始化参数"></a>数据源其他配置  初始化参数</h1><p>   initialSize: 5<br>   minIdle: 5<br>   maxActive: 20<br>   maxWait: 60000<br>  timeBetweenEvictionRunsMillis: 60000<br>   minEvictableIdleTimeMillis: 300000<br>  validationQuery: SELECT 1 FROM DUAL<br>   testWhileIdle: true<br>   testOnBorrow: false<br>   testOnReturn: false<br>   poolPreparedStatements: true</p>
+<h1 id="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"><a href="#配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙" class="headerlink" title="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"></a>配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙</h1><p>   filters: stat,wall,log4j<br>   maxPoolPreparedStatementPerConnectionSize: 20<br>   useGlobalDataSourceStat: true<br>   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</p>
+</blockquote>
+<h3 id="配置config类"><a href="#配置config类" class="headerlink" title="配置config类"></a>配置config类</h3><p>由于数据连接池中的属性默认是tomcat的数据连接池，但是使用Druid需要配置其servlet以及filter</p>
+<h2 id="配置-01-DataSource"><a href="#配置-01-DataSource" class="headerlink" title="配置-01-DataSource"></a>配置-01-DataSource</h2><p>— java</p>
+<blockquote>
+<p>@ConfigurationProperties(prefix = “spring.datasource”)  //前缀：自定义数据源<br>   @Bean<br>   //自定义一个数据源<br>   public DataSource druid(){</p>
+<pre><code>return new DruidDataSource() ;
+</code></pre><p>   }</p>
+</blockquote>
+<hr>
+<h2 id="配置-02-Servlet"><a href="#配置-02-Servlet" class="headerlink" title="配置-02-Servlet"></a>配置-02-Servlet</h2><p>— java</p>
+<blockquote>
+<p>@Bean<br>   public ServletRegistrationBean statViewServlet(){<br>       ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),”/druid/*”);</p>
+<pre><code>Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();
+initParams.put(&quot;loginUsername&quot;, &quot;admin&quot;) ;
+initParams.put(&quot;loginPassword&quot;, &quot;123456&quot;) ;
+initParams.put(&quot;allow&quot;, &quot;&quot;); //默认允许所有的访问
 
-<p>springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解</p>
-<a id="more"></a>
-<the rest="" of="" contents="" |="" 余下全文="">
+bean.setInitParameters(initParams);
+return  bean ;
+</code></pre><p>   }</p>
+</blockquote>
+<hr>
+<h2 id="配置-03-filter"><a href="#配置-03-filter" class="headerlink" title="配置-03-filter"></a>配置-03-filter</h2><blockquote>
+<p> @Bean<br>   public FilterRegistrationBean webStatFilter(){</p>
+<pre><code>FilterRegistrationBean bean = new FilterRegistrationBean() ;
+Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;() ;
+bean.setFilter(new WebStatFilter());
 
+//不去拦截的文件
+initParams.put(&quot;exclusions&quot;, &quot;*.js,*.css,/druid/*&quot;) ;
+bean.setInitParameters(initParams);
+bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+return bean ;
+</code></pre><p>   }</p>
+</blockquote>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>务必注意@Bean的配置，必须填入到AOP容器中，才会生效配置</p>
+<p>在写配置类时候务必需要 @Configeration</p>
 
-<h2 id="配置文件的几种类型"><a href="#配置文件的几种类型" class="headerlink" title="配置文件的几种类型"></a>配置文件的几种类型</h2><h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><blockquote>
-<p>学习spring的第一个配置文件就是xml文件了，在我们的maven工程中pom.xml大家应该都不陌生了<br>语法直接看看百度就好，也没什么要说的，有点类似html，写起来个人觉得繁琐了一些</p>
-</blockquote>
-<h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><blockquote>
-<p>在我们的springboot中的/config/application.properties就是这个类型的文件，语法特别的简单易懂</p>
-</blockquote>
-<h3 id="yaml"><a href="#yaml" class="headerlink" title="yaml"></a>yaml</h3><blockquote>
-<p>如果利用markdown的小伙伴使用这个的话一定不陌生了，利用space来进行区域的划分，速度快，唯独语法上要求key：必须带有空格<br>个人更新博客的时候有被类似的要求坑害过，但是不能直接给yaml差评</p>
-</blockquote>
-<h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><blockquote>
-<p>springboot中默认的文件传输，速度快，短小精悍。</p>
-</blockquote>
-<h3 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h3><p>这些语言其实只是一个工具，每种语言的诞生都是有自己的含义的，只要用的习惯就好，博主比较懒，一般就是application.properties中直接更改了，<br>或者也用用yaml，这个不重要，大家自我定夺 。</p>
-<h2 id="springboot中默认的属性"><a href="#springboot中默认的属性" class="headerlink" title="springboot中默认的属性"></a>springboot中默认的属性</h2><p><a href="https://docs.spring.io/spring-boot/docs/2.1.0.BUILD-SNAPSHOT/reference/htmlsingle/#common-application-properties" target="_blank" rel="noopener">官方默认属性查看</a></p>
-<p><strong>如果需要修改，直接复制对应的配置文件，加到application.properties里面</strong></p>
-</the></excerpt>
       
     </div>
     
@@ -332,13 +354,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/29/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></p>
+        <p><span>本文标题:</span><a href="/2018/12/27/springBoot-06-连接数据池Druid/">springboor2.0x中关于数据连接池Druid的连接</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
-        <p><span>发布时间:</span>2018-11-29, 22:52:42</p>
-        <p><span>最后更新:</span>2018-11-29, 23:04:59</p>
+        <p><span>发布时间:</span>2018-12-27, 22:17:41</p>
+        <p><span>最后更新:</span>2018-12-27, 22:25:52</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/29/SpringBoot-05-配置文件/" title="SpringBoot-05-配置文件">http://runindark.com/2018/11/29/SpringBoot-05-配置文件/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/11/29/SpringBoot-05-配置文件/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/27/springBoot-06-连接数据池Druid/" title="springboor2.0x中关于数据连接池Druid的连接">http://runindark.com/2018/12/27/springBoot-06-连接数据池Druid/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/12/27/springBoot-06-连接数据池Druid/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -350,16 +372,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/12/18/springboot新版本特性记录/">
-                    springboor2.0新特性记录
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/11/29/SpringBoot-04-热部署/">
-                    SpringBoot-04-热部署
+                <a href="/2018/12/18/springboot新版本特性记录/">
+                    springboor2.0新特性记录
                 </a>
             </div>
         
@@ -371,9 +387,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件的几种类型"><span class="toc-number">1.</span> <span class="toc-text">配置文件的几种类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xml"><span class="toc-number">1.1.</span> <span class="toc-text">xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#properties"><span class="toc-number">1.2.</span> <span class="toc-text">properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yaml"><span class="toc-number">1.3.</span> <span class="toc-text">yaml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json"><span class="toc-number">1.4.</span> <span class="toc-text">json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个人总结"><span class="toc-number">1.5.</span> <span class="toc-text">个人总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#springboot中默认的属性"><span class="toc-number">2.</span> <span class="toc-text">springboot中默认的属性</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-yml的配置参数"><span class="toc-number">1.</span> <span class="toc-text">application.yml的配置参数</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#数据源基本配置"><span class="toc-number"></span> <span class="toc-text">数据源基本配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据源其他配置-初始化参数"><span class="toc-number"></span> <span class="toc-text">数据源其他配置  初始化参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"><span class="toc-number"></span> <span class="toc-text">配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置config类"><span class="toc-number">1.</span> <span class="toc-text">配置config类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-01-DataSource"><span class="toc-number"></span> <span class="toc-text">配置-01-DataSource</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-02-Servlet"><span class="toc-number"></span> <span class="toc-text">配置-02-Servlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-03-filter"><span class="toc-number"></span> <span class="toc-text">配置-03-filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number"></span> <span class="toc-text">注意事项</span></a>
         
-    </div>
+    </li></div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -407,7 +423,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SpringBoot-05-配置文件　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"springboor2.0x中关于数据连接池Druid的连接　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -423,7 +439,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/11/29/SpringBoot-05-配置文件/" data-title="SpringBoot-05-配置文件" data-url="http://runindark.com/2018/11/29/SpringBoot-05-配置文件/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/12/27/springBoot-06-连接数据池Druid/" data-title="springboor2.0x中关于数据连接池Druid的连接" data-url="http://runindark.com/2018/12/27/springBoot-06-连接数据池Druid/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -446,15 +462,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/12/18/springboot新版本特性记录/" title="上一篇: springboor2.0新特性记录">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/11/29/SpringBoot-04-热部署/" title="下一篇: SpringBoot-04-热部署">
+            <a href="/2018/12/18/springboot新版本特性记录/" title="下一篇: springboor2.0新特性记录">
                 <i class="fa fa-angle-right"></i>
             </a>
         

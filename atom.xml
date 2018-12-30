@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2018-11-29T15:04:59.179Z</updated>
+  <updated>2018-12-27T14:25:52.114Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboor2.0x中关于数据连接池Druid的连接</title>
+    <link href="http://runindark.com/2018/12/27/springBoot-06-%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E6%B1%A0Druid/"/>
+    <id>http://runindark.com/2018/12/27/springBoot-06-连接数据池Druid/</id>
+    <published>2018-12-27T14:17:41.926Z</published>
+    <updated>2018-12-27T14:25:52.114Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="application-yml的配置参数"><a href="#application-yml的配置参数" class="headerlink" title="application.yml的配置参数"></a>application.yml的配置参数</h3><p>spring:<br>  datasource:</p><hr><blockquote><h1 id="数据源基本配置"><a href="#数据源基本配置" class="headerlink" title="数据源基本配置"></a>数据源基本配置</h1><p>   username: root<br>   password: 123456<br>   driver-class-name: com.mysql.jdbc.Driver<br>   url: jdbc:mysql://localhost:3306/ssm_crud<br>   type: com.alibaba.druid.pool.DruidDataSource</p><hr><h1 id="数据源其他配置-初始化参数"><a href="#数据源其他配置-初始化参数" class="headerlink" title="数据源其他配置  初始化参数"></a>数据源其他配置  初始化参数</h1><p>   initialSize: 5<br>   minIdle: 5<br>   maxActive: 20<br>   maxWait: 60000<br>  timeBetweenEvictionRunsMillis: 60000<br>   minEvictableIdleTimeMillis: 300000<br>  validationQuery: SELECT 1 FROM DUAL<br>   testWhileIdle: true<br>   testOnBorrow: false<br>   testOnReturn: false<br>   poolPreparedStatements: true</p><h1 id="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"><a href="#配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙" class="headerlink" title="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"></a>配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙</h1><p>   filters: stat,wall,log4j<br>   maxPoolPreparedStatementPerConnectionSize: 20<br>   useGlobalDataSourceStat: true<br>   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</p></blockquote><h3 id="配置config类"><a href="#配置config类" class="headerlink" title="配置config类"></a>配置config类</h3><p>由于数据连接池中的属性默认是tomcat的数据连接池，但是使用Druid需要配置其servlet以及filter</p><h2 id="配置-01-DataSource"><a href="#配置-01-DataSource" class="headerlink" title="配置-01-DataSource"></a>配置-01-DataSource</h2><p>— java</p><blockquote><p>@ConfigurationProperties(prefix = “spring.datasource”)  //前缀：自定义数据源<br>   @Bean<br>   //自定义一个数据源<br>   public DataSource druid(){</p><pre><code>return new DruidDataSource() ;</code></pre><p>   }</p></blockquote><hr><h2 id="配置-02-Servlet"><a href="#配置-02-Servlet" class="headerlink" title="配置-02-Servlet"></a>配置-02-Servlet</h2><p>— java</p><blockquote><p>@Bean<br>   public ServletRegistrationBean statViewServlet(){<br>       ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),”/druid/*”);</p><pre><code>Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();initParams.put(&quot;loginUsername&quot;, &quot;admin&quot;) ;initParams.put(&quot;loginPassword&quot;, &quot;123456&quot;) ;initParams.put(&quot;allow&quot;, &quot;&quot;); //默认允许所有的访问bean.setInitParameters(initParams);return  bean ;</code></pre><p>   }</p></blockquote><hr><h2 id="配置-03-filter"><a href="#配置-03-filter" class="headerlink" title="配置-03-filter"></a>配置-03-filter</h2><blockquote><p> @Bean<br>   public FilterRegistrationBean webStatFilter(){</p><pre><code>FilterRegistrationBean bean = new FilterRegistrationBean() ;Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;() ;bean.setFilter(new WebStatFilter());//不去拦截的文件initParams.put(&quot;exclusions&quot;, &quot;*.js,*.css,/druid/*&quot;) ;bean.setInitParameters(initParams);bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));return bean ;</code></pre><p>   }</p></blockquote><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>务必注意@Bean的配置，必须填入到AOP容器中，才会生效配置</p><p>在写配置类时候务必需要 @Configeration</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;application-yml的配置参数&quot;&gt;&lt;a href=&quot;#application-yml的配置参数&quot; class=&quot;headerlink&quot; title=&quot;application.yml的配置参数&quot;&gt;&lt;/a&gt;application.yml的配置参数&lt;/h3&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>springboor2.0新特性记录</title>
+    <link href="http://runindark.com/2018/12/18/springboot%E6%96%B0%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/"/>
+    <id>http://runindark.com/2018/12/18/springboot新版本特性记录/</id>
+    <published>2018-12-18T12:07:52.141Z</published>
+    <updated>2018-12-18T12:09:40.168Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="EmbeddedServletContainerCustomizer"><a href="#EmbeddedServletContainerCustomizer" class="headerlink" title="EmbeddedServletContainerCustomizer"></a>EmbeddedServletContainerCustomizer</h2><blockquote><p>EmbeddedServletContainerCustomizer =&gt; WebServerFactoryCustomizer ;</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;EmbeddedServletContainerCustomizer&quot;&gt;&lt;a href=&quot;#EmbeddedServletContainerCustomizer&quot; class=&quot;headerlink&quot; title=&quot;EmbeddedServletContainer
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SpringBoot-05-配置文件</title>
