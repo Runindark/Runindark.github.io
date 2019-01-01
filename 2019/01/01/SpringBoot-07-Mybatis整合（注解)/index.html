@@ -17,14 +17,14 @@
 
 <meta name="description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springboor2.0x中关于数据连接池Druid的连接">
+<meta property="og:title" content="springboot整合Mybatis">
 <meta property="og:url" content="http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
 <meta property="og:description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-01T10:03:50.793Z">
+<meta property="og:updated_time" content="2019-01-01T10:15:29.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springboor2.0x中关于数据连接池Druid的连接">
+<meta name="twitter:title" content="springboot整合Mybatis">
 <meta name="twitter:description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>springboor2.0x中关于数据连接池Druid的连接 | Cat&#39;s blog</title>
+<title>springboot整合Mybatis | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      springboor2.0x中关于数据连接池Druid的连接
+      springboot整合Mybatis
     </h1>
   
 
@@ -433,12 +433,12 @@ public eword[] getWordByID() ;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/">springboor2.0x中关于数据连接池Druid的连接</a></p>
+        <p><span>本文标题:</span><a href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
         <p><span>发布时间:</span>2019-01-01, 17:25:14</p>
-        <p><span>最后更新:</span>2019-01-01, 18:03:50</p>
+        <p><span>最后更新:</span>2019-01-01, 18:15:29</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/" title="springboor2.0x中关于数据连接池Druid的连接">http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/</a>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/" title="springboot整合Mybatis">http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/</a>
             <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -454,7 +454,7 @@ public eword[] getWordByID() ;
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2018/12/27/springBoot-06-连接数据池Druid/">
-                    springboor2.0x中关于数据连接池Druid的连接
+                    springboot2.0x中关于数据连接池Druid的连接
                 </a>
             </div>
         
@@ -502,7 +502,7 @@ public eword[] getWordByID() ;
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"springboor2.0x中关于数据连接池Druid的连接　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"springboot整合Mybatis　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -518,7 +518,7 @@ public eword[] getWordByID() ;
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/01/01/SpringBoot-07-Mybatis整合（注解)/" data-title="springboor2.0x中关于数据连接池Druid的连接" data-url="http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/01/01/SpringBoot-07-Mybatis整合（注解)/" data-title="springboot整合Mybatis" data-url="http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -547,13 +547,13 @@ public eword[] getWordByID() ;
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/12/27/springBoot-06-连接数据池Druid/" title="下一篇: springboor2.0x中关于数据连接池Druid的连接">
+            <a href="/2018/12/27/springBoot-06-连接数据池Druid/" title="下一篇: springboot2.0x中关于数据连接池Druid的连接">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/">springboor2.0x中关于数据连接池Druid的连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/27/springBoot-06-连接数据池Druid/">springboor2.0x中关于数据连接池Druid的连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/18/springboot新版本特性记录/">springboor2.0新特性记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/NeedToWait/">生活在继续，你要等</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/27/springBoot-06-连接数据池Druid/">springboot2.0x中关于数据连接池Druid的连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/18/springboot新版本特性记录/">springboor2.0新特性记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/28/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/24/NeedToWait/">生活在继续，你要等</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/15/hello-world/">Hello World</a></li></ul>
 
 
 
