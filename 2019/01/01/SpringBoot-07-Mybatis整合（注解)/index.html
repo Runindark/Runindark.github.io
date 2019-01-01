@@ -15,23 +15,17 @@
 
 
 
-<meta name="description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
+<meta name="description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot-01-项目建立">
-<meta property="og:url" content="http://runindark.com/2018/11/28/SpringBoot-01-项目建立/index.html">
+<meta property="og:title" content="springboor2.0x中关于数据连接池Druid的连接">
+<meta property="og:url" content="http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
-<meta property="og:description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
+<meta property="og:description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/01.png">
-<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/02.png">
-<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/03.png">
-<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/04.png">
-<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/05.png">
-<meta property="og:updated_time" content="2018-11-28T14:54:51.175Z">
+<meta property="og:updated_time" content="2019-01-01T10:03:50.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot-01-项目建立">
-<meta name="twitter:description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
-<meta name="twitter:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/01.png">
+<meta name="twitter:title" content="springboor2.0x中关于数据连接池Druid的连接">
+<meta name="twitter:description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -63,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SpringBoot-01-项目建立 | Cat&#39;s blog</title>
+<title>springboor2.0x中关于数据连接池Druid的连接 | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-SpringBoot-01-项目建立" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SpringBoot-07-Mybatis整合（注解)" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/28/SpringBoot-01-项目建立/" class="article-date">
-      <time datetime="2018-11-28T13:43:34.581Z" itemprop="datePublished">2018-11-28</time>
+      <a href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/" class="article-date">
+      <time datetime="2019-01-01T09:25:14.276Z" itemprop="datePublished">2019-01-01</time>
 </a>
 
 
@@ -291,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringBoot-01-项目建立
+      springboor2.0x中关于数据连接池Druid的连接
     </h1>
   
 
@@ -309,35 +303,128 @@
       
           
         <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。<br><a id="more"></a></p>
+<h3 id="Mybatis框架介绍"><a href="#Mybatis框架介绍" class="headerlink" title="Mybatis框架介绍"></a>Mybatis框架介绍</h3><blockquote>
+<p>Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应<br>Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐<br>（本节仍然使用druid连接池，配置文件依然使用yaml）<br><a id="more"></a></p>
+</blockquote>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h2 id="学习springboot你需要什么知识储备"><a href="#学习springboot你需要什么知识储备" class="headerlink" title="学习springboot你需要什么知识储备"></a>学习springboot你需要什么知识储备</h2><blockquote>
-<p>不要轻举妄动，框架的学习要一步一步的走，直接跨越，直接上手springboot，你也许觉得照猫画虎，框架的使用很简单，但是只有表面功夫<br>是远远不够的，沉住气，你需要学习  <strong>javaEE , springmvc</strong><br>至于持久层mybatis可以暂时跳过，spring一些属性注入方式也可以暂时不看，但是前两者的一定要看。<br>至于要看的课程的话 推荐一个老师，淘宝买课认识的，大家可以去看下 <a href="http://www.monkey1024.com/" target="_blank" rel="noopener">monkey1024</a><br>要资源的话不要找我，尊重一个老师的劳动成果，几十的东西，大家买一下，支持一个</p>
-</blockquote>
-<p>##开发工具(IDE)</p>
+
+<h3 id="maven依赖介绍"><a href="#maven依赖介绍" class="headerlink" title="maven依赖介绍"></a>maven依赖介绍</h3><blockquote>
+<!--JDBC的配置-->
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;5.1.3.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+
+
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!--数据库连接池 Druid--&gt;
+&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;druid&lt;/artifactId&gt;
+    &lt;version&gt;1.1.10&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></blockquote>
+<p>以上的三个依赖是之前我们配置druid的时候就已经搞定的依赖，下面这个mybatis依赖，注意看</p>
 <blockquote>
-<p>我推荐哈，idea很舒服，简单明了，之前有用过pycharm和clion的都可以直接上手的，毕竟一个公司设计的东西，eclipse怎么说呢，很好的ide，但是<br>容易抽风，如果身边有常用eclipse的人，他们口头都会挂上一句“重启大法好”，所以入门直接使用idea就很好了，我的教程也全是基于idea的，下载过<br>程省略，<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">IDEA</a></p>
+ <dependency><br>           <groupid>org.mybatis.spring.boot</groupid><br>           <artifactid>mybatis-spring-boot-starter</artifactid><br>           <version>1.3.2</version><br> </dependency>
 </blockquote>
-<h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><p>项目的教程全部如图咯~<br><img src="/image/Springboot/springboot-01-项目建立/01.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/02.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/03.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/04.png" alt=""></p>
-<h2 id="目录分析"><a href="#目录分析" class="headerlink" title="目录分析"></a>目录分析</h2><p><img src="/image/Springboot/springboot-01-项目建立/05.png" alt=""><br>如图我们来看一下我们的初始化目录，该写什么，能写在哪里，之间的调用方式和执行流程都和目录关系密切<br>（只列举我们要用到的，或者说常用的，其他的有些我也其实不清楚，有的直接删除也不影响）</p>
-<h3 id="src"><a href="#src" class="headerlink" title="src:"></a>src:</h3><p>这个就是我们的源码区域</p>
-<h4 id="java"><a href="#java" class="headerlink" title="java:"></a>java:</h4><blockquote>
-<p>要写的controller，DAO ， impl等</p>
+<p>mybatis的依赖并不是由springboot官方写好的starter而是自身去适应springboot而开发的starter</p>
+<h3 id="配置文件-yml"><a href="#配置文件-yml" class="headerlink" title="配置文件 .yml"></a>配置文件 .yml</h3><p>同样的，这里接着druid的配置就欧克了</p>
+<p>— yaml<br>spring:<br>  datasource:<br>    username: root<br>    password: 123456<br>    url: jdbc:mysql://47.106.103.49/Etree<br>    driver-class-name: com.mysql.jdbc.Driver<br>    type: com.alibaba.druid.pool.DruidDataSource</p>
+<pre><code>#   数据源其他配置
+initialSize: 5
+minIdle: 5
+maxActive: 20
+maxWait: 60000
+timeBetweenEvictionRunsMillis: 60000
+minEvictableIdleTimeMillis: 300000
+validationQuery: SELECT 1 FROM DUAL
+testWhileIdle: true
+testOnBorrow: false
+testOnReturn: false
+poolPreparedStatements: true
+#   配置监控统计拦截的filters，去掉后监控界面sql无法统计，&apos;wall&apos;用于防火墙
+filters: stat,wall
+maxPoolPreparedStatementPerConnectionSize: 20
+useGlobalDataSourceStat: true
+connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+</code></pre><hr>
+<h3 id="书写Mapper映射"><a href="#书写Mapper映射" class="headerlink" title="书写Mapper映射"></a>书写Mapper映射</h3><h4 id="1-首先我们需要创建一个model"><a href="#1-首先我们需要创建一个model" class="headerlink" title="1.首先我们需要创建一个model"></a>1.首先我们需要创建一个model</h4><p>这里我们是单词，所以创建eword 类<br>— java<br>public class eword {</p>
+<pre><code>private String English ;
+private String Quality ;
+private String Meaning ;
+private String Level ;
+private String U_phon ;
+
+public String getEnglish() {
+    return English;
+}
+
+public void setEnglish(String english) {
+    English = english;
+}
+
+public String getQuality() {
+    return Quality;
+}
+
+public void setQuality(String quality) {
+    Quality = quality;
+}
+
+public String getMeaning() {
+    return Meaning;
+}
+
+public void setMeaning(String meaning) {
+    Meaning = meaning;
+}
+
+public String getLevel() {
+    return Level;
+}
+
+public void setLevel(String level) {
+    Level = level;
+}
+
+public String getU_phon() {
+    return U_phon;
+}
+
+public void setU_phon(String u_phon) {
+    U_phon = u_phon;
+}
+</code></pre><h2 id=""><a href="#" class="headerlink" title="}"></a>}</h2><h4 id="2-创建mapper"><a href="#2-创建mapper" class="headerlink" title="2.创建mapper"></a>2.创建mapper</h4><p>注意mapper 的实现是需要interface接口的</p>
+<p>— java<br>import org.apache.ibatis.annotations.Mapper;<br>import org.apache.ibatis.annotations.Result;<br>import org.apache.ibatis.annotations.Results;<br>import org.apache.ibatis.annotations.Select;</p>
+<p>@Mapper</p>
+<p>public interface level4Word {</p>
+<pre><code>@Results({
+        @Result(column=&quot;aw_english&quot;,property=&quot;English&quot;),
+        @Result(column=&quot;aw_meaning1&quot;,property=&quot;Meaning&quot;),
+        @Result(column = &quot;aw_vocQuality&quot;,property = &quot;Quality&quot;),
+        @Result(column = &quot;aw_level1&quot;,property = &quot;Level&quot;),
+        @Result(column = &quot;aw_UKphonogram&quot;,property = &quot;U_phon&quot;)
+        })
+@Select(&quot;select * from allword&quot;)
+public eword[] getWordByID() ;
+</code></pre><h2 id="-1"><a href="#-1" class="headerlink" title="}"></a>}</h2><h4 id="3-常用的注解"><a href="#3-常用的注解" class="headerlink" title="3.常用的注解"></a>3.常用的注解</h4><blockquote>
+<p>@Insert  —  插入<br>@Delete  —  删除<br>@Update  —  更新<br>@Select  —  查找<br>@Param   —  入参<br>@Results —  字段统一 ： 这个部分其实和<resultmap>一样，就是为了解决字段名和实体类参数名不一样选用的<br>                         使用方法如上就是@Results（@Result（），····）</resultmap></p>
 </blockquote>
-<h4 id="resource"><a href="#resource" class="headerlink" title="resource:"></a>resource:</h4><blockquote>
-<p>顾名思义就是我们的一些资源文件，其下的static就是我们所说的静态资源，包括css,html,js,image等等</p>
-</blockquote>
-<h3 id="templates："><a href="#templates：" class="headerlink" title="templates："></a>templates：</h3><blockquote>
-<p>也是顾名思义就是模板，也是我们的一些模板引擎，例如 JSP、Velocity、Freemarker、Thymeleaf<br>我后期会更新的也是thymeleaf，当然也是springboot官方推荐的</p>
-</blockquote>
-<h3 id="test"><a href="#test" class="headerlink" title="test:"></a>test:</h3><blockquote>
-<p>有点类似junit服务，就是一个测试的地方，springboot直接将这个整合进来，很方便</p>
-</blockquote>
-<h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><blockquote>
-<p>这个其实没什么好说的，就是maven资源管理的文件，所有的依赖就是写在这里的</p>
-</blockquote>
-<h2 id="讲完了，一些后话"><a href="#讲完了，一些后话" class="headerlink" title="讲完了，一些后话"></a>讲完了，一些后话</h2><p>这个教程不是完全针对0基础的初学者的，正如我说的，你需要足够的知识储备才建议去学习springboot，当然了也有一些名词是大家没有听说过的<br>但是，稍安勿躁，大家目前需要大致的了解，对于一些特定的内容比如模板引擎，日志驱动sel4j等一系列内容都会出教程。</p>
 </the>
       
     </div>
@@ -346,13 +433,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/28/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></p>
+        <p><span>本文标题:</span><a href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/">springboor2.0x中关于数据连接池Druid的连接</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
-        <p><span>发布时间:</span>2018-11-28, 21:43:34</p>
-        <p><span>最后更新:</span>2018-11-28, 22:54:51</p>
+        <p><span>发布时间:</span>2019-01-01, 17:25:14</p>
+        <p><span>最后更新:</span>2019-01-01, 18:03:50</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/28/SpringBoot-01-项目建立/" title="SpringBoot-01-项目建立">http://runindark.com/2018/11/28/SpringBoot-01-项目建立/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2018/11/28/SpringBoot-01-项目建立/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/01/SpringBoot-07-Mybatis整合（注解)/" title="springboor2.0x中关于数据连接池Druid的连接">http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -364,16 +451,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/29/SpringBoot-02-控制器和注解/">
-                    SpringBoot-02-控制器和注解
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/11/24/NeedToWait/">
-                    生活在继续，你要等
+                <a href="/2018/12/27/springBoot-06-连接数据池Druid/">
+                    springboor2.0x中关于数据连接池Druid的连接
                 </a>
             </div>
         
@@ -385,7 +466,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面的话"><span class="toc-number">1.</span> <span class="toc-text">说在前面的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习springboot你需要什么知识储备"><span class="toc-number">2.</span> <span class="toc-text">学习springboot你需要什么知识储备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目创建"><span class="toc-number">3.</span> <span class="toc-text">项目创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录分析"><span class="toc-number">4.</span> <span class="toc-text">目录分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#src"><span class="toc-number">4.1.</span> <span class="toc-text">src:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java"><span class="toc-number">4.1.1.</span> <span class="toc-text">java:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resource"><span class="toc-number">4.1.2.</span> <span class="toc-text">resource:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#templates："><span class="toc-number">4.2.</span> <span class="toc-text">templates：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test"><span class="toc-number">4.3.</span> <span class="toc-text">test:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pom-xml"><span class="toc-number">4.4.</span> <span class="toc-text">pom.xml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲完了，一些后话"><span class="toc-number">5.</span> <span class="toc-text">讲完了，一些后话</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis框架介绍"><span class="toc-number">1.</span> <span class="toc-text">Mybatis框架介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maven依赖介绍"><span class="toc-number">2.</span> <span class="toc-text">maven依赖介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件-yml"><span class="toc-number">3.</span> <span class="toc-text">配置文件 .yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#书写Mapper映射"><span class="toc-number">4.</span> <span class="toc-text">书写Mapper映射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-首先我们需要创建一个model"><span class="toc-number">4.1.</span> <span class="toc-text">1.首先我们需要创建一个model</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text">}</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建mapper"><span class="toc-number">0.1.</span> <span class="toc-text">2.创建mapper</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number"></span> <span class="toc-text">}</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常用的注解"><span class="toc-number">0.1.</span> <span class="toc-text">3.常用的注解</span></a></li></ol></li>
         
     </div>
     <style>
@@ -421,7 +502,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SpringBoot-01-项目建立　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"springboor2.0x中关于数据连接池Druid的连接　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +518,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2018/11/28/SpringBoot-01-项目建立/" data-title="SpringBoot-01-项目建立" data-url="http://runindark.com/2018/11/28/SpringBoot-01-项目建立/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/01/01/SpringBoot-07-Mybatis整合（注解)/" data-title="springboor2.0x中关于数据连接池Druid的连接" data-url="http://runindark.com/2019/01/01/SpringBoot-07-Mybatis整合（注解)/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -460,15 +541,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/29/SpringBoot-02-控制器和注解/" title="上一篇: SpringBoot-02-控制器和注解">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/11/24/NeedToWait/" title="下一篇: 生活在继续，你要等">
+            <a href="/2018/12/27/springBoot-06-连接数据池Druid/" title="下一篇: springboor2.0x中关于数据连接池Druid的连接">
                 <i class="fa fa-angle-right"></i>
             </a>
         
