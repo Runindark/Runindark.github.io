@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2019-01-04T01:30:36.805Z</updated>
+  <updated>2019-02-26T19:10:05.101Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云踩坑记录系列-navicat连接服务器上mysql</title>
+    <link href="http://runindark.com/2019/02/26/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-01-navicat%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://runindark.com/2019/02/26/服务器踩坑记录-01-navicat连接服务器/</id>
+    <published>2019-02-26T13:11:18.711Z</published>
+    <updated>2019-02-26T19:10:05.101Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="第二次踩坑阿里云服务器"><a href="#第二次踩坑阿里云服务器" class="headerlink" title="第二次踩坑阿里云服务器"></a>第二次踩坑阿里云服务器</h2><p>是的，阿里云服务器上的mysql数据库不是随随便便就能连上的，需要配置安全组，同时docker上的mysql有点小问题，似乎就无法使用mysql 的一系列的命令了，绝望，好了踩坑实战记录。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="云主机的区别"><a href="#云主机的区别" class="headerlink" title="云主机的区别"></a>云主机的区别</h2><blockquote><p>ecs 和 轻量级应用主机是有区别的！！！</p><ol><li>轻量级的云主机是有自带的mysql 的需要重置才可以，否则的话是自带的mysql数据库会导致3306端<br>口的占用，而且workpress是默认的东西。需要重置更改centous系统才可以。</li></ol></blockquote><h2 id="安全组的配置"><a href="#安全组的配置" class="headerlink" title="安全组的配置"></a>安全组的配置</h2><blockquote><p>Esc是需要配置安全组的<br>轻量级的应用云主机是直接在防火墙部分设置就好</p></blockquote><h2 id="对于数据库的版本问题（5-7-8-x-版本的区别）"><a href="#对于数据库的版本问题（5-7-8-x-版本的区别）" class="headerlink" title="对于数据库的版本问题（5.7 / 8.x 版本的区别）"></a>对于数据库的版本问题（5.7 / 8.x 版本的区别）</h2><ol><li><p>对于5.7的安装版本 </p><blockquote><p>$ docker pull mysql:5.7      //拉取镜像</p><p>$ docker run -p 3306:3306 –name mysql \<br>-v /usr/local/docker/mysql/conf:/etc/mysql \<br>-v /usr/local/docker/mysql/logs:/var/log/mysql \<br>-v /usr/local/docker/mysql/data:/var/lib/mysql \<br>-e MYSQL_ROOT_PASSWORD=123456 \<br>-d mysql<br>根据上面的指令就可以完成自己的mysql的镜像的绑定了</p></blockquote></li><li><p>对于8.x版本的数据库就更简单了 </p><blockquote><p>先ps一点东西哈  默认的 $ docker pull mysql<br>这个的默认是要的latest也就是最近的版本目前的版本是8 class=”x所以一定要注意”&gt;&lt;/这个的默认是要的latest也就是最近的版本目前的版本是8.x<br>$ docker pull mysql<br>$ docker run –name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql<br>然后就欧克了</p></blockquote></li><li><p>刚刚从大佬那里知道，原来centos也就是中国用，国际流行的还是uubuntu，所以朋友们，用ubuntu吧，hhh</p></li></ol><h2 id="还有了解的东西"><a href="#还有了解的东西" class="headerlink" title="还有了解的东西"></a>还有了解的东西</h2><blockquote><p>狗东西centos7.x的版本是带有防火墙，说到防火墙这个东西有点玄学了，我目前的状态是把防火墙关闭了。<br>所以建议哈，navicat这类工具无法连接上的，可以试试把防火墙关了 （看评论说tomcat会受到这个的影响）<br>systemctl start firewalld    //开启<br>systemctl stop firewalld       //关闭<br>systemctl status firewalld   //查看状态<br>systemctl disable firewalld  //开机关闭<br>systemctl enable firewalld   //开机启动</p></blockquote></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第二次踩坑阿里云服务器&quot;&gt;&lt;a href=&quot;#第二次踩坑阿里云服务器&quot; class=&quot;headerlink&quot; title=&quot;第二次踩坑阿里云服务器&quot;&gt;&lt;/a&gt;第二次踩坑阿里云服务器&lt;/h2&gt;&lt;p&gt;是的，阿里云服务器上的mysql数据库不是随随便便就能连上的，需要配置安全组，同时docker上的mysql有点小问题，似乎就无法使用mysql 的一系列的命令了，绝望，好了踩坑实战记录。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>springboot Redis缓存服务</title>
+    <link href="http://runindark.com/2019/02/02/SpringBoot-08-redis%E7%BC%93%E5%AD%98%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://runindark.com/2019/02/02/SpringBoot-08-redis缓存服务/</id>
+    <published>2019-02-01T16:30:15.458Z</published>
+    <updated>2019-02-01T16:34:41.672Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h3 id="Springboot中的缓存机制讲解"><a href="#Springboot中的缓存机制讲解" class="headerlink" title="Springboot中的缓存机制讲解"></a>Springboot中的缓存机制讲解</h3><blockquote><p>web的大型工程的开发中，请求不可能每一次直接穿透到数据区进行数据访问，由于占用的系统资源过大，会导致系统资源负载过大而出现一系列问题<br><a id="more"></a></p></blockquote><the rest="" of="" contents="" |="" 余下全文=""><h3 id="常见的缓存服务"><a href="#常见的缓存服务" class="headerlink" title="常见的缓存服务"></a>常见的缓存服务</h3><p>nosql , redis , MC ,mongodb , hive …</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Springboot中的缓存机制讲解&quot;&gt;&lt;a href=&quot;#Springboot中的缓存机制讲解&quot; class=&quot;headerlink&quot; title=&quot;Springboot中的缓存机制讲解&quot;&gt;&lt;/a&gt;Springboot中的缓存机制讲解&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;web的大型工程的开发中，请求不可能每一次直接穿透到数据区进行数据访问，由于占用的系统资源过大，会导致系统资源负载过大而出现一系列问题&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>springboot整合Mybatis</title>
