@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="博主的个人介绍 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的， 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。 自己很幸运，能来到现在的学校，不是">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cat&#39;s blog">
-<meta property="og:url" content="http://runindark.com/about/index.html">
+<meta name="description" content="对于我们的开发来说，如果每一次更新文件或者源码，都需要去重启服务的话，对我们的开发和执行效率来说实在是太慢了。springboot由于自身整合了tomcat所以速度更快一些，如果是学习过springmvc的话，每次都去重启tomcat服务器是特别慢的，热部署也就应运而生了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot-04-热部署">
+<meta property="og:url" content="http://runindark.com/2019/03/22/SpringBoot-04-热部署/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
-<meta property="og:description" content="博主的个人介绍 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的， 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。 自己很幸运，能来到现在的学校，不是">
+<meta property="og:description" content="对于我们的开发来说，如果每一次更新文件或者源码，都需要去重启服务的话，对我们的开发和执行效率来说实在是太慢了。springboot由于自身整合了tomcat所以速度更快一些，如果是学习过springmvc的话，每次都去重启tomcat服务器是特别慢的，热部署也就应运而生了。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-15T17:46:34.237Z">
+<meta property="og:updated_time" content="2018-11-29T14:41:17.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cat&#39;s blog">
-<meta name="twitter:description" content="博主的个人介绍 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的， 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。 自己很幸运，能来到现在的学校，不是">
+<meta name="twitter:title" content="SpringBoot-04-热部署">
+<meta name="twitter:description" content="对于我们的开发来说，如果每一次更新文件或者源码，都需要去重启服务的话，对我们的开发和执行效率来说实在是太慢了。springboot由于自身整合了tomcat所以速度更快一些，如果是学习过springmvc的话，每次都去重启tomcat服务器是特别慢的，热部署也就应运而生了。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Cat&#39;s blog</title>
+<title>SpringBoot-04-热部署 | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,7 +67,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -266,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SpringBoot-04-热部署" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/about/index.html" class="article-date">
-      <time datetime="2019-03-22T09:19:48.259Z" itemprop="datePublished">2019-03-22</time>
+      <a href="/2019/03/22/SpringBoot-04-热部署/" class="article-date">
+      <time datetime="2019-03-22T09:19:48.215Z" itemprop="datePublished">2019-03-22</time>
 </a>
 
 
@@ -281,40 +281,123 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringBoot-04-热部署
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <excerpt in="" index="" |="" 首页摘要=""> 
 
+<p>对于我们的开发来说，如果每一次更新文件或者源码，都需要去重启服务的话，对我们的开发和执行效率来说实在是太慢了。<br>springboot由于自身整合了tomcat所以速度更快一些，如果是学习过springmvc的话，每次都去重启tomcat服务器是特别<br>慢的，热部署也就应运而生了。</p>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
 
-          
-        <h3 id="博主的个人介绍"><a href="#博主的个人介绍" class="headerlink" title="博主的个人介绍"></a>博主的个人介绍</h3><p> 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的，<br> 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。<br> 自己很幸运，能来到现在的学校，不是985，不是211，很普通但是却很舒服，也许这就是传说中的缘分，真的觉得自己很幸运结交到这些朋友，还有很<br> 多的特别耐心的老师。<br> 我本身自己比较喜欢折腾，生活也是有惊喜，也有特别多的失落，遇到很多事情，也有自己对生活的理解，都会不定时的更新在博客上，也算是作为日<br> 记的存在。<br> 也是由于喜欢折腾，所以也接触了很多的语言和各个方面，现在自己所学的方向是web方向，博客内容是更多的其实是笔记的存在，如果大家看到，看<br> 到我的错误，希望大家可以联系我让我改正，努力的路上很孤独，愿大家可以共勉。<br> 自称夜小猫，是因为总是熬夜，然后还喜欢折腾，当然了也不排除强制卖萌的心态，或多或少都有吧。<br> runindark.com 寓意“黑暗中奔跑”，大家共勉，努力的路上很孤独，很苦，也很暗，但是路够黑，光才够亮，言尽于此，同行共勉。</p>
-
+<h2 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h2><p><a href="https://docs.spring.io/spring-boot/docs/2.1.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-devtools" target="_blank" rel="noopener">热部署官网</a></p>
+<p>依赖代码</p>
+<blockquote>
+<dependencies><br>   <dependency><br>       <groupid>org.springframework.boot</groupid><br>       <artifactid>spring-boot-devtools</artifactid><br>       <optional>true</optional><br>   </dependency><br></dependencies>
+</blockquote>
+<h3 id="热部署基本操作"><a href="#热部署基本操作" class="headerlink" title="热部署基本操作"></a>热部署基本操作</h3><ol>
+<li>更改源码后直接 ctrl+s 执行保存操作更新</li>
+<li>在application.properties中更改一些路径不被热部署<blockquote>
+<p>spring.devtools.restart.exclude= (文件路径)</p>
+</blockquote>
+</li>
+<li>如果你不想每次执行保存操作后就进行热部署，那么可以用 “trigger.txt” 文件修改<blockquote>
+<p>在application.properties中添加如下代码<br>spring.devtools.restart.trigger-file=trigger.txt<br>创建 “trigger.txt” 文件<br>这样你只有在保存trigger.txt文件的时候进行热部署 </p>
+</blockquote>
+</li>
+</ol>
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><blockquote>
+<ol>
+<li>在springboot中热部署你修改的java源码中的内容，但是静态目录的内容是不会被加载的</li>
+<li>热部署的实质是监听，他会捕捉 你 <strong>ctrl + s</strong>的操作，也就是文件保存的操作，将触发热部署</li>
+<li>热部署是主动进行的，如果你的保存操作被执行，那么你将会看到日志信息的更新 </li>
+</ol>
+</blockquote>
+<h4 id="为什么提早讲述热部署"><a href="#为什么提早讲述热部署" class="headerlink" title="为什么提早讲述热部署"></a>为什么提早讲述热部署</h4><p>我觉得热部署其实是很简单的一种骚操作，没有什么太高大上的东西，但是具有足够的基础和底层理论的积累，<br>可以看看jvm的classloader的部分（惭愧：目前自己没看过）<br>而且提早进行热部署可以提早的进行熟悉，对后面的整合会更加自如</p>
+</the></excerpt>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/03/22/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
+        <p><span>发布时间:</span>2019-03-22, 17:19:48</p>
+        <p><span>最后更新:</span>2018-11-29, 22:41:17</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/22/SpringBoot-04-热部署/" title="SpringBoot-04-热部署">http://runindark.com/2019/03/22/SpringBoot-04-热部署/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/03/22/SpringBoot-04-热部署/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/03/22/springboot新版本特性记录/">
+                    springboor2.0新特性记录
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/03/22/SpringBoot-03-目录结构再谈/">
+                    SpringBoot-03-目录结构再谈
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#热部署"><span class="toc-number">1.</span> <span class="toc-text">热部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#热部署基本操作"><span class="toc-number">1.1.</span> <span class="toc-text">热部署基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项："><span class="toc-number">1.1.1.</span> <span class="toc-text">注意事项：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么提早讲述热部署"><span class="toc-number">1.1.2.</span> <span class="toc-text">为什么提早讲述热部署</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -332,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SpringBoot-04-热部署　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -348,7 +431,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="about/index.html" data-title="" data-url="http://runindark.com/about/index.html"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/22/SpringBoot-04-热部署/" data-title="SpringBoot-04-热部署" data-url="http://runindark.com/2019/03/22/SpringBoot-04-热部署/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -366,6 +449,26 @@
 </div>
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/03/22/springboot新版本特性记录/" title="上一篇: springboor2.0新特性记录">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/03/22/SpringBoot-03-目录结构再谈/" title="下一篇: SpringBoot-03-目录结构再谈">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SourceRead/">源码阅读分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/服务器踩坑记录-01-navicat连接服务器/">阿里云踩坑记录系列-navicat连接服务器上mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/springBoot-06-连接数据池Druid/">springboot2.0x中关于数据连接池Druid的连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-08-redis缓存服务/">springboot Redis缓存服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/springboot新版本特性记录/">springboor2.0新特性记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></li></ul>
 
 
 

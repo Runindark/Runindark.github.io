@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="夜小猫">
+
+
+
+<meta name="description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot-01-项目建立">
+<meta property="og:url" content="http://runindark.com/2019/03/22/SpringBoot-01-项目建立/index.html">
+<meta property="og:site_name" content="Cat&#39;s blog">
+<meta property="og:description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/01.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/02.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/03.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/04.png">
+<meta property="og:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/05.png">
+<meta property="og:updated_time" content="2018-11-28T14:54:51.175Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot-01-项目建立">
+<meta name="twitter:description" content="说在前面的话一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。">
+<meta name="twitter:image" content="http://runindark.com/image/Springboot/springboot-01-项目建立/01.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Cat&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/cat_甜甜猫_lovely_128px_530835_easyicon.net.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>SpringBoot-01-项目建立 | Cat&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/ss.jpeg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">夜小猫</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/1414776384@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://geowind.org/?tdsourcetag=s_pcqq_aiomsg">Geowind</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/Runindark?tab=repositories">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.monkey1024.com/">Monkey老师</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">初学web</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">夜小猫</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/ss.jpeg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">夜小猫</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/1414776384@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-SpringBoot-01-项目建立" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/22/SpringBoot-01-项目建立/" class="article-date">
+      <time datetime="2019-03-22T09:19:48.195Z" itemprop="datePublished">2019-03-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringBoot-01-项目建立
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
+<h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>一头扎入框架的我也慢慢的开始接触springboot的旷阔领域中，之前学习了太多的理论知识，实践能力着实不堪，立下flag以求自己能坚持下去，同时开始稳定更新博客，从头到尾的去把springboot的教程出一份，作为自己的笔记也作为经验之谈，写的不好的地方大家多多指出，谢谢。<br><a id="more"></a></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="学习springboot你需要什么知识储备"><a href="#学习springboot你需要什么知识储备" class="headerlink" title="学习springboot你需要什么知识储备"></a>学习springboot你需要什么知识储备</h2><blockquote>
+<p>不要轻举妄动，框架的学习要一步一步的走，直接跨越，直接上手springboot，你也许觉得照猫画虎，框架的使用很简单，但是只有表面功夫<br>是远远不够的，沉住气，你需要学习  <strong>javaEE , springmvc</strong><br>至于持久层mybatis可以暂时跳过，spring一些属性注入方式也可以暂时不看，但是前两者的一定要看。<br>至于要看的课程的话 推荐一个老师，淘宝买课认识的，大家可以去看下 <a href="http://www.monkey1024.com/" target="_blank" rel="noopener">monkey1024</a><br>要资源的话不要找我，尊重一个老师的劳动成果，几十的东西，大家买一下，支持一个</p>
+</blockquote>
+<p>##开发工具(IDE)</p>
+<blockquote>
+<p>我推荐哈，idea很舒服，简单明了，之前有用过pycharm和clion的都可以直接上手的，毕竟一个公司设计的东西，eclipse怎么说呢，很好的ide，但是<br>容易抽风，如果身边有常用eclipse的人，他们口头都会挂上一句“重启大法好”，所以入门直接使用idea就很好了，我的教程也全是基于idea的，下载过<br>程省略，<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">IDEA</a></p>
+</blockquote>
+<h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><p>项目的教程全部如图咯~<br><img src="/image/Springboot/springboot-01-项目建立/01.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/02.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/03.png" alt=""><br><img src="/image/Springboot/springboot-01-项目建立/04.png" alt=""></p>
+<h2 id="目录分析"><a href="#目录分析" class="headerlink" title="目录分析"></a>目录分析</h2><p><img src="/image/Springboot/springboot-01-项目建立/05.png" alt=""><br>如图我们来看一下我们的初始化目录，该写什么，能写在哪里，之间的调用方式和执行流程都和目录关系密切<br>（只列举我们要用到的，或者说常用的，其他的有些我也其实不清楚，有的直接删除也不影响）</p>
+<h3 id="src"><a href="#src" class="headerlink" title="src:"></a>src:</h3><p>这个就是我们的源码区域</p>
+<h4 id="java"><a href="#java" class="headerlink" title="java:"></a>java:</h4><blockquote>
+<p>要写的controller，DAO ， impl等</p>
+</blockquote>
+<h4 id="resource"><a href="#resource" class="headerlink" title="resource:"></a>resource:</h4><blockquote>
+<p>顾名思义就是我们的一些资源文件，其下的static就是我们所说的静态资源，包括css,html,js,image等等</p>
+</blockquote>
+<h3 id="templates："><a href="#templates：" class="headerlink" title="templates："></a>templates：</h3><blockquote>
+<p>也是顾名思义就是模板，也是我们的一些模板引擎，例如 JSP、Velocity、Freemarker、Thymeleaf<br>我后期会更新的也是thymeleaf，当然也是springboot官方推荐的</p>
+</blockquote>
+<h3 id="test"><a href="#test" class="headerlink" title="test:"></a>test:</h3><blockquote>
+<p>有点类似junit服务，就是一个测试的地方，springboot直接将这个整合进来，很方便</p>
+</blockquote>
+<h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><blockquote>
+<p>这个其实没什么好说的，就是maven资源管理的文件，所有的依赖就是写在这里的</p>
+</blockquote>
+<h2 id="讲完了，一些后话"><a href="#讲完了，一些后话" class="headerlink" title="讲完了，一些后话"></a>讲完了，一些后话</h2><p>这个教程不是完全针对0基础的初学者的，正如我说的，你需要足够的知识储备才建议去学习springboot，当然了也有一些名词是大家没有听说过的<br>但是，稍安勿躁，大家目前需要大致的了解，对于一些特定的内容比如模板引擎，日志驱动sel4j等一系列内容都会出教程。</p>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/03/22/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
+        <p><span>发布时间:</span>2019-03-22, 17:19:48</p>
+        <p><span>最后更新:</span>2018-11-28, 22:54:51</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/22/SpringBoot-01-项目建立/" title="SpringBoot-01-项目建立">http://runindark.com/2019/03/22/SpringBoot-01-项目建立/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/03/22/SpringBoot-01-项目建立/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/03/22/hello-world/">
+                    Hello World
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/03/22/SpringBoot-02-控制器和注解/">
+                    SpringBoot-02-控制器和注解
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面的话"><span class="toc-number">1.</span> <span class="toc-text">说在前面的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习springboot你需要什么知识储备"><span class="toc-number">2.</span> <span class="toc-text">学习springboot你需要什么知识储备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目创建"><span class="toc-number">3.</span> <span class="toc-text">项目创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录分析"><span class="toc-number">4.</span> <span class="toc-text">目录分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#src"><span class="toc-number">4.1.</span> <span class="toc-text">src:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java"><span class="toc-number">4.1.1.</span> <span class="toc-text">java:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resource"><span class="toc-number">4.1.2.</span> <span class="toc-text">resource:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#templates："><span class="toc-number">4.2.</span> <span class="toc-text">templates：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test"><span class="toc-number">4.3.</span> <span class="toc-text">test:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pom-xml"><span class="toc-number">4.4.</span> <span class="toc-text">pom.xml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲完了，一些后话"><span class="toc-number">5.</span> <span class="toc-text">讲完了，一些后话</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"SpringBoot-01-项目建立　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/22/SpringBoot-01-项目建立/" data-title="SpringBoot-01-项目建立" data-url="http://runindark.com/2019/03/22/SpringBoot-01-项目建立/"></div>
+    <script>
+        var duoshuoQuery = {short_name:""};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/03/22/hello-world/" title="上一篇: Hello World">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/03/22/SpringBoot-02-控制器和注解/" title="下一篇: SpringBoot-02-控制器和注解">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SourceRead/">源码阅读分享</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/服务器踩坑记录-01-navicat连接服务器/">阿里云踩坑记录系列-navicat连接服务器上mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/springBoot-06-连接数据池Druid/">springboot2.0x中关于数据连接池Druid的连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-08-redis缓存服务/">springboot Redis缓存服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/springboot新版本特性记录/">springboor2.0新特性记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 夜小猫
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 2;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+            
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
