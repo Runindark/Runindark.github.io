@@ -116,6 +116,26 @@
   </entry>
   
   <entry>
+    <title>springboot Redis缓存服务</title>
+    <link href="http://runindark.com/2019/03/22/SpringBoot-08-redis%E7%BC%93%E5%AD%98%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://runindark.com/2019/03/22/SpringBoot-08-redis缓存服务/</id>
+    <published>2019-03-22T09:19:48.231Z</published>
+    <updated>2019-02-01T16:34:41.672Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h3 id="Springboot中的缓存机制讲解"><a href="#Springboot中的缓存机制讲解" class="headerlink" title="Springboot中的缓存机制讲解"></a>Springboot中的缓存机制讲解</h3><blockquote><p>web的大型工程的开发中，请求不可能每一次直接穿透到数据区进行数据访问，由于占用的系统资源过大，会导致系统资源负载过大而出现一系列问题<br><a id="more"></a></p></blockquote><the rest="" of="" contents="" |="" 余下全文=""><h3 id="常见的缓存服务"><a href="#常见的缓存服务" class="headerlink" title="常见的缓存服务"></a>常见的缓存服务</h3><p>nosql , redis , MC ,mongodb , hive …</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Springboot中的缓存机制讲解&quot;&gt;&lt;a href=&quot;#Springboot中的缓存机制讲解&quot; class=&quot;headerlink&quot; title=&quot;Springboot中的缓存机制讲解&quot;&gt;&lt;/a&gt;Springboot中的缓存机制讲解&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;web的大型工程的开发中，请求不可能每一次直接穿透到数据区进行数据访问，由于占用的系统资源过大，会导致系统资源负载过大而出现一系列问题&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title></title>
     <link href="http://runindark.com/2019/03/22/FiveLayerNetworkProtoco/"/>
     <id>http://runindark.com/2019/03/22/FiveLayerNetworkProtoco/</id>
@@ -138,19 +158,39 @@
   </entry>
   
   <entry>
-    <title>springboot Redis缓存服务</title>
-    <link href="http://runindark.com/2019/03/22/SpringBoot-08-redis%E7%BC%93%E5%AD%98%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://runindark.com/2019/03/22/SpringBoot-08-redis缓存服务/</id>
-    <published>2019-03-22T09:19:48.231Z</published>
-    <updated>2019-02-01T16:34:41.672Z</updated>
+    <title>单例设计模式，MVC，监听者模式</title>
+    <link href="http://runindark.com/2019/03/22/designpattern/"/>
+    <id>http://runindark.com/2019/03/22/designpattern/</id>
+    <published>2019-03-22T09:19:48.223Z</published>
+    <updated>2018-11-16T11:30:47.297Z</updated>
     
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h3 id="Springboot中的缓存机制讲解"><a href="#Springboot中的缓存机制讲解" class="headerlink" title="Springboot中的缓存机制讲解"></a>Springboot中的缓存机制讲解</h3><blockquote><p>web的大型工程的开发中，请求不可能每一次直接穿透到数据区进行数据访问，由于占用的系统资源过大，会导致系统资源负载过大而出现一系列问题<br><a id="more"></a></p></blockquote><the rest="" of="" contents="" |="" 余下全文=""><h3 id="常见的缓存服务"><a href="#常见的缓存服务" class="headerlink" title="常见的缓存服务"></a>常见的缓存服务</h3><p>nosql , redis , MC ,mongodb , hive …</p></the>]]></content>
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="目前的了解三种设计模式"><a href="#目前的了解三种设计模式" class="headerlink" title="目前的了解三种设计模式"></a>目前的了解三种设计模式</h2><h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><p>单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。</p><h3 id="监听者模式，"><a href="#监听者模式，" class="headerlink" title="监听者模式，"></a>监听者模式，</h3><p>怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="大名鼎鼎的MVC"><a href="#大名鼎鼎的MVC" class="headerlink" title="大名鼎鼎的MVC"></a>大名鼎鼎的MVC</h3><blockquote><p>大名鼎鼎的开发模式了，spring为了web还专门引出分支springmvc，可见一斑了，<br>m是model，v是view，c是controller。<br>用springmvc作为典例说一下哈，m就是模型对象，是一种概念吧，传参，用的mode，modeandview应该都不陌生，<br>还有就是bean的配置都是model的东西，在这里可以理解成封装好的project的应用模型，view，<br>就是给用户看到的东西呗，js，html，css这些前端的东西嘛。<br>controller，这个是核心了，也就是真正的后端完善逻辑部分的核心控制器了，springmvc中直接明确给controller极高的地位置，<br>dispatchercontroller，这个可不虚名，model传来的的参数，view的视图，在中央核心控制器中都可以实现，所以听名字就可以看出来重要性了，<br>最后总结一下，其实mvc就是把图和逻辑分开，逻辑把参数和真实逻辑又分开的一种开发模式，这样导致程序的可维护性增加，逻辑出错找逻辑，参数出<br>错找model，视图修改找view</p></blockquote></the>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Springboot中的缓存机制讲解&quot;&gt;&lt;a href=&quot;#Springboot中的缓存机制讲解&quot; class=&quot;headerlink&quot; title=&quot;Springboot中的缓存机制讲解&quot;&gt;&lt;/a&gt;Springboot中的缓存机制讲解&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;web的大型工程的开发中，请求不可能每一次直接穿透到数据区进行数据访问，由于占用的系统资源过大，会导致系统资源负载过大而出现一系列问题&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&quot;目前的了解三种设计模式&quot;&gt;&lt;a href=&quot;#目前的了解三种设计模式&quot; class=&quot;headerlink&quot; title=&quot;目前的了解三种设计模式&quot;&gt;&lt;/a&gt;目前的了解三种设计模式&lt;/h2&gt;&lt;h3 id=&quot;单例设计模式&quot;&gt;&lt;a href=&quot;#单例设计模式&quot; class=&quot;headerlink&quot; title=&quot;单例设计模式&quot;&gt;&lt;/a&gt;单例设计模式&lt;/h3&gt;&lt;p&gt;单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。&lt;/p&gt;
+&lt;h3 id=&quot;监听者模式，&quot;&gt;&lt;a href=&quot;#监听者模式，&quot; class=&quot;headerlink&quot; title=&quot;监听者模式，&quot;&gt;&lt;/a&gt;监听者模式，&lt;/h3&gt;&lt;p&gt;怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot-05-配置文件</title>
+    <link href="http://runindark.com/2019/03/22/SpringBoot-05-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>http://runindark.com/2019/03/22/SpringBoot-05-配置文件/</id>
+    <published>2019-03-22T09:19:48.223Z</published>
+    <updated>2018-11-29T15:04:59.179Z</updated>
+    
+    <content type="html"><![CDATA[<excerpt in="" index="" |="" 首页摘要=""> <p>springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解</p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><h2 id="配置文件的几种类型"><a href="#配置文件的几种类型" class="headerlink" title="配置文件的几种类型"></a>配置文件的几种类型</h2><h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><blockquote><p>学习spring的第一个配置文件就是xml文件了，在我们的maven工程中pom.xml大家应该都不陌生了<br>语法直接看看百度就好，也没什么要说的，有点类似html，写起来个人觉得繁琐了一些</p></blockquote><h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><blockquote><p>在我们的springboot中的/config/application.properties就是这个类型的文件，语法特别的简单易懂</p></blockquote><h3 id="yaml"><a href="#yaml" class="headerlink" title="yaml"></a>yaml</h3><blockquote><p>如果利用markdown的小伙伴使用这个的话一定不陌生了，利用space来进行区域的划分，速度快，唯独语法上要求key：必须带有空格<br>个人更新博客的时候有被类似的要求坑害过，但是不能直接给yaml差评</p></blockquote><h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><blockquote><p>springboot中默认的文件传输，速度快，短小精悍。</p></blockquote><h3 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h3><p>这些语言其实只是一个工具，每种语言的诞生都是有自己的含义的，只要用的习惯就好，博主比较懒，一般就是application.properties中直接更改了，<br>或者也用用yaml，这个不重要，大家自我定夺 。</p><h2 id="springboot中默认的属性"><a href="#springboot中默认的属性" class="headerlink" title="springboot中默认的属性"></a>springboot中默认的属性</h2><p><a href="https://docs.spring.io/spring-boot/docs/2.1.0.BUILD-SNAPSHOT/reference/htmlsingle/#common-application-properties" target="_blank" rel="noopener">官方默认属性查看</a></p><p><strong>如果需要修改，直接复制对应的配置文件，加到application.properties里面</strong></p></the></excerpt>]]></content>
+    
+    <summary type="html">
+    
+      &lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; 
+
+&lt;p&gt;springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解&lt;/p&gt;&lt;/excerpt&gt;
     
     </summary>
     
@@ -198,6 +238,27 @@
   </entry>
   
   <entry>
+    <title>springboor2.0新特性记录</title>
+    <link href="http://runindark.com/2019/03/22/springboot%E6%96%B0%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/"/>
+    <id>http://runindark.com/2019/03/22/springboot新版本特性记录/</id>
+    <published>2019-03-22T09:19:48.223Z</published>
+    <updated>2018-12-18T12:09:40.168Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="EmbeddedServletContainerCustomizer"><a href="#EmbeddedServletContainerCustomizer" class="headerlink" title="EmbeddedServletContainerCustomizer"></a>EmbeddedServletContainerCustomizer</h2><blockquote><p>EmbeddedServletContainerCustomizer =&gt; WebServerFactoryCustomizer ;</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;EmbeddedServletContainerCustomizer&quot;&gt;&lt;a href=&quot;#EmbeddedServletContainerCustomizer&quot; class=&quot;headerlink&quot; title=&quot;EmbeddedServletContainer
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>hexo + github 博客搭建教程</title>
     <link href="http://runindark.com/2019/03/22/My%20first%20blog/"/>
     <id>http://runindark.com/2019/03/22/My first blog/</id>
@@ -216,67 +277,6 @@
 我们不使用这种方法，但是github也可以当作一个服务器来看待，我们就可以托管到github上使得我们
 的博客可以访问。
 &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot-05-配置文件</title>
-    <link href="http://runindark.com/2019/03/22/SpringBoot-05-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>http://runindark.com/2019/03/22/SpringBoot-05-配置文件/</id>
-    <published>2019-03-22T09:19:48.223Z</published>
-    <updated>2018-11-29T15:04:59.179Z</updated>
-    
-    <content type="html"><![CDATA[<excerpt in="" index="" |="" 首页摘要=""> <p>springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解</p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><h2 id="配置文件的几种类型"><a href="#配置文件的几种类型" class="headerlink" title="配置文件的几种类型"></a>配置文件的几种类型</h2><h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><blockquote><p>学习spring的第一个配置文件就是xml文件了，在我们的maven工程中pom.xml大家应该都不陌生了<br>语法直接看看百度就好，也没什么要说的，有点类似html，写起来个人觉得繁琐了一些</p></blockquote><h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><blockquote><p>在我们的springboot中的/config/application.properties就是这个类型的文件，语法特别的简单易懂</p></blockquote><h3 id="yaml"><a href="#yaml" class="headerlink" title="yaml"></a>yaml</h3><blockquote><p>如果利用markdown的小伙伴使用这个的话一定不陌生了，利用space来进行区域的划分，速度快，唯独语法上要求key：必须带有空格<br>个人更新博客的时候有被类似的要求坑害过，但是不能直接给yaml差评</p></blockquote><h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><blockquote><p>springboot中默认的文件传输，速度快，短小精悍。</p></blockquote><h3 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h3><p>这些语言其实只是一个工具，每种语言的诞生都是有自己的含义的，只要用的习惯就好，博主比较懒，一般就是application.properties中直接更改了，<br>或者也用用yaml，这个不重要，大家自我定夺 。</p><h2 id="springboot中默认的属性"><a href="#springboot中默认的属性" class="headerlink" title="springboot中默认的属性"></a>springboot中默认的属性</h2><p><a href="https://docs.spring.io/spring-boot/docs/2.1.0.BUILD-SNAPSHOT/reference/htmlsingle/#common-application-properties" target="_blank" rel="noopener">官方默认属性查看</a></p><p><strong>如果需要修改，直接复制对应的配置文件，加到application.properties里面</strong></p></the></excerpt>]]></content>
-    
-    <summary type="html">
-    
-      &lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; 
-
-&lt;p&gt;springboot中含有大量的配置文件，但是究竟有哪些属性被配置，或者需要配置，作为开发者都应该有个大致的了解&lt;/p&gt;&lt;/excerpt&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>单例设计模式，MVC，监听者模式</title>
-    <link href="http://runindark.com/2019/03/22/designpattern/"/>
-    <id>http://runindark.com/2019/03/22/designpattern/</id>
-    <published>2019-03-22T09:19:48.223Z</published>
-    <updated>2018-11-16T11:30:47.297Z</updated>
-    
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="目前的了解三种设计模式"><a href="#目前的了解三种设计模式" class="headerlink" title="目前的了解三种设计模式"></a>目前的了解三种设计模式</h2><h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><p>单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。</p><h3 id="监听者模式，"><a href="#监听者模式，" class="headerlink" title="监听者模式，"></a>监听者模式，</h3><p>怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="大名鼎鼎的MVC"><a href="#大名鼎鼎的MVC" class="headerlink" title="大名鼎鼎的MVC"></a>大名鼎鼎的MVC</h3><blockquote><p>大名鼎鼎的开发模式了，spring为了web还专门引出分支springmvc，可见一斑了，<br>m是model，v是view，c是controller。<br>用springmvc作为典例说一下哈，m就是模型对象，是一种概念吧，传参，用的mode，modeandview应该都不陌生，<br>还有就是bean的配置都是model的东西，在这里可以理解成封装好的project的应用模型，view，<br>就是给用户看到的东西呗，js，html，css这些前端的东西嘛。<br>controller，这个是核心了，也就是真正的后端完善逻辑部分的核心控制器了，springmvc中直接明确给controller极高的地位置，<br>dispatchercontroller，这个可不虚名，model传来的的参数，view的视图，在中央核心控制器中都可以实现，所以听名字就可以看出来重要性了，<br>最后总结一下，其实mvc就是把图和逻辑分开，逻辑把参数和真实逻辑又分开的一种开发模式，这样导致程序的可维护性增加，逻辑出错找逻辑，参数出<br>错找model，视图修改找view</p></blockquote></the>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
-&lt;h2 id=&quot;目前的了解三种设计模式&quot;&gt;&lt;a href=&quot;#目前的了解三种设计模式&quot; class=&quot;headerlink&quot; title=&quot;目前的了解三种设计模式&quot;&gt;&lt;/a&gt;目前的了解三种设计模式&lt;/h2&gt;&lt;h3 id=&quot;单例设计模式&quot;&gt;&lt;a href=&quot;#单例设计模式&quot; class=&quot;headerlink&quot; title=&quot;单例设计模式&quot;&gt;&lt;/a&gt;单例设计模式&lt;/h3&gt;&lt;p&gt;单例模式其实显而易见，就是突出一个单字，一切运行过程核心集中于一个类，采用该模式开发，也是要求一个类只有一个对象，或者说只有一个实例。&lt;/p&gt;
-&lt;h3 id=&quot;监听者模式，&quot;&gt;&lt;a href=&quot;#监听者模式，&quot; class=&quot;headerlink&quot; title=&quot;监听者模式，&quot;&gt;&lt;/a&gt;监听者模式，&lt;/h3&gt;&lt;p&gt;怎么讲呢？监听者模式其实更像是按照树的思路创建出的一种设计模式，简单的说起来就是子类被父类监听，逐级向上传递，期中需要三个对象，事件，事件源，事件监听器。相对应的还有一个观察者模式，emm，个人理解哈，讲真，观察者模式就是监听者模式简化。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>springboor2.0新特性记录</title>
-    <link href="http://runindark.com/2019/03/22/springboot%E6%96%B0%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7%E8%AE%B0%E5%BD%95/"/>
-    <id>http://runindark.com/2019/03/22/springboot新版本特性记录/</id>
-    <published>2019-03-22T09:19:48.223Z</published>
-    <updated>2018-12-18T12:09:40.168Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="EmbeddedServletContainerCustomizer"><a href="#EmbeddedServletContainerCustomizer" class="headerlink" title="EmbeddedServletContainerCustomizer"></a>EmbeddedServletContainerCustomizer</h2><blockquote><p>EmbeddedServletContainerCustomizer =&gt; WebServerFactoryCustomizer ;</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;EmbeddedServletContainerCustomizer&quot;&gt;&lt;a href=&quot;#EmbeddedServletContainerCustomizer&quot; class=&quot;headerlink&quot; title=&quot;EmbeddedServletContainer
-      
     
     </summary>
     
@@ -304,6 +304,24 @@
   </entry>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://runindark.com/2019/03/22/hello-world/"/>
+    <id>http://runindark.com/2019/03/22/hello-world/</id>
+    <published>2019-03-22T09:19:48.207Z</published>
+    <updated>2018-11-16T06:20:42.287Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;&lt;/excerpt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot-03-目录结构再谈</title>
     <link href="http://runindark.com/2019/03/22/SpringBoot-03-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%86%8D%E8%B0%88/"/>
     <id>http://runindark.com/2019/03/22/SpringBoot-03-目录结构再谈/</id>
@@ -316,24 +334,6 @@
     
       &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
 &lt;h2 id=&quot;重读目录结构&quot;&gt;&lt;a href=&quot;#重读目录结构&quot; class=&quot;headerlink&quot; title=&quot;重读目录结构&quot;&gt;&lt;/a&gt;重读目录结构&lt;/h2&gt;&lt;p&gt;使用一个框架，也同时意味着去遵守一个框架的标准，包括目录的结构，目录名，虽然之前我简单的有提过我们的目录结构，但是只是很粗浅的说，&lt;br&gt;其实目录结构大多数的博主是不会提及的，自己也踩过雷，也当是在这个方面有过很多的纠结，所以觉得有必要重新拿起目录结构深究一下。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://runindark.com/2019/03/22/hello-world/"/>
-    <id>http://runindark.com/2019/03/22/hello-world/</id>
-    <published>2019-03-22T09:19:48.207Z</published>
-    <updated>2018-11-16T06:20:42.287Z</updated>
-    
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p></the>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;&lt;/excerpt&gt;&lt;/p&gt;
     
     </summary>
     
