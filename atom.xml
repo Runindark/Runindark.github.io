@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2019-03-22T09:25:06.615Z</updated>
+  <updated>2019-03-23T09:35:40.556Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SpringCloud-Netflix-01-微服务简介</title>
+    <link href="http://runindark.com/2019/03/23/SpringCloud-Netflix-01-%E7%AE%80%E8%BF%B0/"/>
+    <id>http://runindark.com/2019/03/23/SpringCloud-Netflix-01-简述/</id>
+    <published>2019-03-23T09:35:40.556Z</published>
+    <updated>2019-03-23T09:35:40.556Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>经历了springboot的单体地狱之后。直接进军springcloud系列，开始着手接触微服务这个新世界，很好，javaweb仍然在颠覆我之前的学习。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>谈起微服务，不得不说起分布式架构的东西，从开始接触微服务，其实才真正的迈入高性能开发的世界，不得不说，如果springboot是自动装配的完美题，那么微服务架构才是真正面向当今大型网络的开发方式，代码的管理不再是面向模块的编程而是面向项目编程，更加准确的说是面向服务编程。</p><p>顾名思义微服无就是，更小的服务，和物理所学的微元法相似，把一个大型的互联网项目拆分成一个个小读注册项目，这样实现大型的功能需求，而且通过高并发，高可用的机制，同时伴随gitlab的使用，成为一个真正的云端开发项目</p><h3 id="springcloud微服务构建"><a href="#springcloud微服务构建" class="headerlink" title="springcloud微服务构建"></a>springcloud微服务构建</h3><h4 id="依赖统一管理"><a href="#依赖统一管理" class="headerlink" title="依赖统一管理"></a>依赖统一管理</h4><p>对于springboot项目，我们常常使用maven作为管理工具，在单体应用中，ｍａｖｅｎ管理ｊａｒ包依赖，为我们节省了很多的事情，但是，面对微服务，我们面对将会是是大量的项目，成百上千，如果反复一个项目一个项目的配置依赖环境，那么势必会造成很多的冗余依赖，所以提取出共享的依赖统一集中管理，这样才能有更高的效率和更好的管理方式。</p><h4 id="服务注册与发现"><a href="#服务注册与发现" class="headerlink" title="服务注册与发现"></a>服务注册与发现</h4><p>微服务拆分了太多的小项目，但是是多个服务集中去处理一套事务，因此我们需要存在某种中间件去管理所有的微服务项目，这就是服务注册与发现。<br>用此来保证我们的服务管理和集成。Netflix中则是EurekaServer。</p><h4 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h4><p>既然存在了服务的管理机制，那么我们就开始向我们的事务，提供服务了，这里有EurekaClient来作为服务的提供者</p><h4 id="服务消费者"><a href="#服务消费者" class="headerlink" title="服务消费者"></a>服务消费者</h4><p>既然有服务提供者，必然存在服务的消费者，用大量的消费者来完成我们的事务的需求。Ｒｉｂｂｏｎ，Ｆｅｉｇｎ。</p><h4 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h4><p>还是回到微服务问题，大量服务的出现，我们不可能保证每一个服务都是可以正常的，不会发生宕机的，因此我们需要对宕机的程序进行管理，自动终止，我们称之为熔断机制。Hystrix</p><h4 id="服务追踪"><a href="#服务追踪" class="headerlink" title="服务追踪"></a>服务追踪</h4><p>服务追踪，其实简单的说就是服务的监控，对于每一个服务的流量等问题进行集中的监控　，致力于收集服务的定时数据，以解决微服务架构中的延迟问题，包括数据的收集、存储、查找和展现。ZipKin</p><p>####　使用路由网关实现统一访问接口<br>每一个微服务都有相对应的端口，每一次的配置我们如果一一对应那么势必变得极其繁琐，我们希望用一个统一的路由网关去管理不同的微服务，如此才能更加简化配置信息，而配置信息则存储在ｇｉｔｌａｂ上，这样方便多人开发去使用不同的项目配置。</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;说在前面的话&quot;&gt;&lt;a href=&quot;#说在前面的话&quot; class=&quot;headerlink&quot; title=&quot;说在前面的话&quot;&gt;&lt;/a&gt;说在前面的话&lt;/h2&gt;&lt;p&gt;经历了springboot的单体地狱之后。直接进军springcloud系列，开始着手接触微服务这个新世界，很好，javaweb仍然在颠覆我之前的学习。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>源码阅读分享</title>
     <link href="http://runindark.com/2019/03/22/SourceRead/"/>
     <id>http://runindark.com/2019/03/22/SourceRead/</id>
-    <published>2019-03-22T09:25:06.615Z</published>
-    <updated>2019-03-22T09:25:06.615Z</updated>
+    <published>2019-03-22T10:20:08.240Z</published>
+    <updated>2019-03-22T10:20:08.240Z</updated>
     
     <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>从学习java web开始到现在，也算是一个老油条了，但是学完之后确实存在一些失落，更多读觉得自己只是在照猫画虎，没有深层的东西，这里开始分享一些源码读阅读或者文章给大家呈现<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""></the>]]></content>
     
