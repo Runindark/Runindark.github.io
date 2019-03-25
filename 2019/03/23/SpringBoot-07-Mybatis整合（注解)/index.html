@@ -15,19 +15,17 @@
 
 
 
-<meta name="description" content="说在前面的话经历了springboot的单体地狱之后。直接进军springcloud系列，开始着手接触微服务这个新世界，很好，javaweb仍然在颠覆我之前的学习。">
+<meta name="description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud-Netflix-01-微服务简介">
-<meta property="og:url" content="http://runindark.com/2019/03/23/SpringCloud-Netflix-01-简述/index.html">
+<meta property="og:title" content="springboot整合Mybatis">
+<meta property="og:url" content="http://runindark.com/2019/03/23/SpringBoot-07-Mybatis整合（注解)/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
-<meta property="og:description" content="说在前面的话经历了springboot的单体地狱之后。直接进军springcloud系列，开始着手接触微服务这个新世界，很好，javaweb仍然在颠覆我之前的学习。">
+<meta property="og:description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://runindark.com/image/springcloud-netflix/01.png">
-<meta property="og:updated_time" content="2019-03-23T12:45:57.911Z">
+<meta property="og:updated_time" content="2019-02-01T16:30:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringCloud-Netflix-01-微服务简介">
-<meta name="twitter:description" content="说在前面的话经历了springboot的单体地狱之后。直接进军springcloud系列，开始着手接触微服务这个新世界，很好，javaweb仍然在颠覆我之前的学习。">
-<meta name="twitter:image" content="http://runindark.com/image/springcloud-netflix/01.png">
+<meta name="twitter:title" content="springboot整合Mybatis">
+<meta name="twitter:description" content="Mybatis框架介绍 Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐（本节仍然使用druid连接池，配置文件依然使用yaml）">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -59,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>SpringCloud-Netflix-01-微服务简介 | Cat&#39;s blog</title>
+<title>springboot整合Mybatis | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -268,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-SpringCloud-Netflix-01-简述" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SpringBoot-07-Mybatis整合（注解)" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/03/23/SpringCloud-Netflix-01-简述/" class="article-date">
-      <time datetime="2019-03-23T12:16:05.752Z" itemprop="datePublished">2019-03-23</time>
+      <a href="/2019/03/23/SpringBoot-07-Mybatis整合（注解)/" class="article-date">
+      <time datetime="2019-03-23T12:16:06.218Z" itemprop="datePublished">2019-03-23</time>
 </a>
 
 
@@ -287,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringCloud-Netflix-01-微服务简介
+      springboot整合Mybatis
     </h1>
   
 
@@ -305,36 +303,80 @@
       
           
         <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<h2 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h2><p>经历了springboot的单体地狱之后。直接进军springcloud系列，开始着手接触微服务这个新世界，很好，javaweb仍然在颠覆我之前的学习。<br><a id="more"></a></p>
+<h3 id="Mybatis框架介绍"><a href="#Mybatis框架介绍" class="headerlink" title="Mybatis框架介绍"></a>Mybatis框架介绍</h3><blockquote>
+<p>Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应<br>Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐<br>（本节仍然使用druid连接池，配置文件依然使用yaml）<br><a id="more"></a></p>
+</blockquote>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><h3 id="目前微服务的三套方案"><a href="#目前微服务的三套方案" class="headerlink" title="目前微服务的三套方案"></a>目前微服务的三套方案</h3><ol>
-<li>springcloud-netflix ：影响力极大的一个微服务解决方案</li>
-<li>springcloud-alibaba ： 阿里巴巴公司的一套微服务生态</li>
-<li>dubbo + zoomkeeper ： 效果奇佳的决绝方案，但是确实部分机制，需要第三方</li>
-</ol>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>谈起微服务，不得不说起分布式架构的东西，从开始接触微服务，其实才真正的迈入高性能开发的世界，不得不说，如果springboot是自动装配的完美题，那么微服务架构才是真正面向当今大型网络的开发方式，代码的管理不再是面向模块的编程而是面向项目编程，更加准确的说是面向服务编程。</p>
-<p>顾名思义微服无就是，更小的服务，和物理所学的微元法相似，把一个大型的互联网项目拆分成一个个小读注册项目，这样实现大型的功能需求，而且通过高并发，高可用的机制，同时伴随gitlab的使用，成为一个真正的云端开发项目</p>
-<h3 id="微服务和分布式解决的问题"><a href="#微服务和分布式解决的问题" class="headerlink" title="微服务和分布式解决的问题"></a>微服务和分布式解决的问题</h3><p>我们总是说微服务，谈论分布式，可是说到及微服务和分布式到底解决了什么问题呢。</p>
-<h4 id="分布式解决的问题"><a href="#分布式解决的问题" class="headerlink" title="分布式解决的问题"></a>分布式解决的问题</h4><p>分布式架构的提出，解决了单体应用低聚合，高耦合的问题，单体应用会导致单一的项目代码过度繁杂，耦合度高，而且无法实现高并发，高可用的效果，所以分布式架构的提出，就是为了击破传统的构建项目方式。</p>
-<h4 id="微服务解决的问题"><a href="#微服务解决的问题" class="headerlink" title="微服务解决的问题"></a>微服务解决的问题</h4><ol>
-<li>服务的通信</li>
-<li>对应用服务的拆分</li>
-<li>服务应用的部署访问</li>
-<li>服务的熔断处理</li>
-</ol>
-<h3 id="springcloud微服务构建"><a href="#springcloud微服务构建" class="headerlink" title="springcloud微服务构建"></a>springcloud微服务构建</h3><h4 id="依赖统一管理"><a href="#依赖统一管理" class="headerlink" title="依赖统一管理"></a>依赖统一管理</h4><p>对于springboot项目，我们常常使用maven作为管理工具，在单体应用中，maven管理jar包依赖，为我们节省了很多的事情，但是，面对微服务，我们面对将会是是大量的项目，成百上千，如果反复一个项目一个项目的配置依赖环境，那么势必会造成很多的冗余依赖，所以提取出共享的依赖统一集中管理，这样才能有更高的效率和更好的管理方式。</p>
-<h4 id="服务注册与发现"><a href="#服务注册与发现" class="headerlink" title="服务注册与发现"></a>服务注册与发现</h4><p>微服务拆分了太多的小项目，但是是多个服务集中去处理一套事务，因此我们需要存在某种中间件去管理所有的微服务项目，这就是服务注册与发现。<br>用此来保证我们的服务管理和集成。Netflix中则是EurekaServer。</p>
-<h4 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h4><p>既然存在了服务的管理机制，那么我们就开始向我们的事务，提供服务了，这里有EurekaClient来作为服务的提供者</p>
-<h4 id="服务消费者"><a href="#服务消费者" class="headerlink" title="服务消费者"></a>服务消费者</h4><p>既然有服务提供者，必然存在服务的消费者，用大量的消费者来完成我们的事务的需求。Ribbon，Feign。</p>
-<h4 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h4><p>还是回到微服务问题，大量服务的出现，我们不可能保证每一个服务都是可以正常的，不会发生宕机的，因此我们需要对宕机的程序进行管理，自动终止，我们称之为熔断机制。Hystrix</p>
-<h4 id="服务追踪"><a href="#服务追踪" class="headerlink" title="服务追踪"></a>服务追踪</h4><p>服务追踪，其实简单的说就是服务的监控，对于每一个服务的流量等问题进行集中的监控　，致力于收集服务的定时数据，以解决微服务架构中的延迟问题，包括数据的收集、存储、查找和展现。ZipKin</p>
-<p>####　使用路由网关实现统一访问接口<br>每一个微服务都有相对应的端口，每一次的配置我们如果一一对应那么势必变得极其繁琐，我们希望用一个统一的路由网关去管理不同的微服务，如此才能更加简化配置信息，而配置信息则存储在ｇitlab上，这样方便多人开发去使用不同的项目配置。</p>
+
+<h3 id="maven依赖介绍"><a href="#maven依赖介绍" class="headerlink" title="maven依赖介绍"></a>maven依赖介绍</h3><blockquote>
+<!--JDBC的配置-->
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;5.1.3.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+
+
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!--数据库连接池 Druid--&gt;
+&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;druid&lt;/artifactId&gt;
+    &lt;version&gt;1.1.10&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></blockquote>
+<p>以上的三个依赖是之前我们配置druid的时候就已经搞定的依赖，下面这个mybatis依赖，注意看</p>
 <blockquote>
-<p><img src="/image/springcloud-netflix/01.png" alt="如图"></p>
+ <dependency><br>           <groupid>org.mybatis.spring.boot</groupid><br>           <artifactid>mybatis-spring-boot-starter</artifactid><br>           <version>1.3.2</version><br> </dependency>
 </blockquote>
-<h2 id="SpringCloud-Netflix"><a href="#SpringCloud-Netflix" class="headerlink" title="SpringCloud-Netflix"></a>SpringCloud-Netflix</h2><h3 id="目前的情况"><a href="#目前的情况" class="headerlink" title="目前的情况"></a>目前的情况</h3><p>2018年12月12日，Netflix宣布Spring Cloud Netflix 系列技术栈进入维护模式（不再添加新特性）<br>最近，Netflix 宣布 Hystrix 正在进入维护模式。自 2016 年以来，Ribbon 已处于类似状态。虽然 Hystrix 和 Ribbon 现已处于维护模式，但它们仍然在 Netflix 大规模部署。<br>Hystrix Dashboard 和 Turbine 已被 Atlas 取代。这些项目的最后一次提交分别是 2 年前和 4 年前。Zuul1 和 Archaius1 都被后来不兼容的版本所取代。</p>
-<h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>Spring Cloud 为开发人员提供了快速构建分布式系统中一些常见模式的工具（例如配置管理，服务发现，断路器，智能路由，微代理，控制总线）。分布式系统的协调导致了样板模式, 使用 Spring Cloud 开发人员可以快速地支持实现这些模式的服务和应用程序。他们将在任何分布式环境中运行良好，包括开发人员自己的笔记本电脑，裸机数据中心，以及 Cloud Foundry 等托管平台。</p>
+<p>mybatis的依赖并不是由springboot官方写好的starter而是自身去适应springboot而开发的starter</p>
+<h3 id="配置文件-yml"><a href="#配置文件-yml" class="headerlink" title="配置文件 .yml"></a>配置文件 .yml</h3><p>同样的，这里接着druid的配置就欧克了</p>
+<blockquote>
+<p>spring:<br> datasource:<br>   username: root<br>   password: 123456<br>   url: jdbc:mysql://47.106.103.49/Etree<br>   driver-class-name: com.mysql.jdbc.Driver<br>   type: com.alibaba.druid.pool.DruidDataSource</p>
+<h1 id="数据源其他配置"><a href="#数据源其他配置" class="headerlink" title="数据源其他配置"></a>数据源其他配置</h1><p>   initialSize: 5<br>   minIdle: 5<br>   maxActive: 20<br>   maxWait: 60000<br>   timeBetweenEvictionRunsMillis: 60000<br>   minEvictableIdleTimeMillis: 300000<br>   validationQuery: SELECT 1 FROM DUAL<br>   testWhileIdle: true<br>   testOnBorrow: false<br>   testOnReturn: false<br>   poolPreparedStatements: true</p>
+<h1 id="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"><a href="#配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙" class="headerlink" title="配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"></a>配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙</h1><p>   filters: stat,wall<br>   maxPoolPreparedStatementPerConnectionSize: 20<br>   useGlobalDataSourceStat: true<br>   connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</p>
+</blockquote>
+<hr>
+<h3 id="书写Mapper映射"><a href="#书写Mapper映射" class="headerlink" title="书写Mapper映射"></a>书写Mapper映射</h3><h4 id="1-首先我们需要创建一个model"><a href="#1-首先我们需要创建一个model" class="headerlink" title="1.首先我们需要创建一个model"></a>1.首先我们需要创建一个model</h4><p>这里我们是单词，所以创建eword 类</p>
+<blockquote>
+<p>public class eword {</p>
+<p>   private String English ;<br>   private String Quality ;<br>   private String Meaning ;<br>   private String Level ;<br>   private String U_phon ;</p>
+<p>   public String getEnglish() {<br>       return English;<br>   }</p>
+<p>   public void setEnglish(String english) {<br>       English = english;<br>   }</p>
+<p>   public String getQuality() {<br>       return Quality;<br>   }</p>
+<p>   public void setQuality(String quality) {<br>       Quality = quality;<br>   }</p>
+<p>   public String getMeaning() {<br>       return Meaning;<br>   }</p>
+<p>   public void setMeaning(String meaning) {<br>       Meaning = meaning;<br>   }</p>
+<p>   public String getLevel() {<br>       return Level;<br>   }</p>
+<p>   public void setLevel(String level) {<br>       Level = level;<br>   }</p>
+<p>   public String getU_phon() {<br>       return U_phon;<br>   }</p>
+<p>   public void setU_phon(String u_phon) {<br>       U_phon = u_phon;<br>   }<br>}</p>
+</blockquote>
+<hr>
+<h4 id="2-创建mapper"><a href="#2-创建mapper" class="headerlink" title="2.创建mapper"></a>2.创建mapper</h4><p>注意mapper 的实现是需要interface接口的</p>
+<blockquote>
+<p>import org.apache.ibatis.annotations.Mapper;<br>import org.apache.ibatis.annotations.Result;<br>import org.apache.ibatis.annotations.Results;<br>import org.apache.ibatis.annotations.Select;</p>
+<p>@Mapper</p>
+<p>public interface level4Word {</p>
+<p>   @Results({<br>           @Result(column=”aw_english”,property=”English”),<br>           @Result(column=”aw_meaning1”,property=”Meaning”),<br>           @Result(column = “aw_vocQuality”,property = “Quality”),<br>           @Result(column = “aw_level1”,property = “Level”),<br>           @Result(column = “aw_UKphonogram”,property = “U_phon”)<br>           })<br>   @Select(“select * from allword”)<br>   public eword[] getWordByID() ;<br>}</p>
+</blockquote>
+<hr>
+<h4 id="3-常用的注解"><a href="#3-常用的注解" class="headerlink" title="3.常用的注解"></a>3.常用的注解</h4><blockquote>
+<p>@Insert  —  插入<br>@Delete  —  删除<br>@Update  —  更新<br>@Select  —  查找<br>@Param   —  入参<br>@Results —  字段统一 ： 这个部分其实和<resultmap>一样，就是为了解决字段名和实体类参数名不一样选用的<br>                         使用方法如上就是@Results（@Result（），····）</resultmap></p>
+</blockquote>
 </the>
       
     </div>
@@ -343,13 +385,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/03/23/SpringCloud-Netflix-01-简述/">SpringCloud-Netflix-01-微服务简介</a></p>
+        <p><span>本文标题:</span><a href="/2019/03/23/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
-        <p><span>发布时间:</span>2019-03-23, 20:16:05</p>
-        <p><span>最后更新:</span>2019-03-23, 20:45:57</p>
+        <p><span>发布时间:</span>2019-03-23, 20:16:06</p>
+        <p><span>最后更新:</span>2019-02-02, 00:30:09</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/03/23/SpringCloud-Netflix-01-简述/" title="SpringCloud-Netflix-01-微服务简介">http://runindark.com/2019/03/23/SpringCloud-Netflix-01-简述/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/03/23/SpringCloud-Netflix-01-简述/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/23/SpringBoot-07-Mybatis整合（注解)/" title="springboot整合Mybatis">http://runindark.com/2019/03/23/SpringBoot-07-Mybatis整合（注解)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/03/23/SpringBoot-07-Mybatis整合（注解)/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -362,15 +404,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/03/23/SpringBoot-01-项目建立/">
-                    SpringBoot-01-项目建立
+                <a href="/2019/03/23/springBoot-06-连接数据池Druid/">
+                    springboot2.0x中关于数据连接池Druid的连接
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/03/23/SourceRead/">
-                    源码阅读分享
+                <a href="/2019/03/23/SpringBoot-08-redis缓存服务/">
+                    springboot Redis缓存服务
                 </a>
             </div>
         
@@ -382,9 +424,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面的话"><span class="toc-number">1.</span> <span class="toc-text">说在前面的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-number">2.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目前微服务的三套方案"><span class="toc-number">2.1.</span> <span class="toc-text">目前微服务的三套方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">2.2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务和分布式解决的问题"><span class="toc-number">2.3.</span> <span class="toc-text">微服务和分布式解决的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式解决的问题"><span class="toc-number">2.3.1.</span> <span class="toc-text">分布式解决的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微服务解决的问题"><span class="toc-number">2.3.2.</span> <span class="toc-text">微服务解决的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springcloud微服务构建"><span class="toc-number">2.4.</span> <span class="toc-text">springcloud微服务构建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#依赖统一管理"><span class="toc-number">2.4.1.</span> <span class="toc-text">依赖统一管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务注册与发现"><span class="toc-number">2.4.2.</span> <span class="toc-text">服务注册与发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务提供者"><span class="toc-number">2.4.3.</span> <span class="toc-text">服务提供者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务消费者"><span class="toc-number">2.4.4.</span> <span class="toc-text">服务消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务熔断"><span class="toc-number">2.4.5.</span> <span class="toc-text">服务熔断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务追踪"><span class="toc-number">2.4.6.</span> <span class="toc-text">服务追踪</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud-Netflix"><span class="toc-number">3.</span> <span class="toc-text">SpringCloud-Netflix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目前的情况"><span class="toc-number">3.1.</span> <span class="toc-text">目前的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简介-1"><span class="toc-number">3.2.</span> <span class="toc-text">简介</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mybatis框架介绍"><span class="toc-number">1.</span> <span class="toc-text">Mybatis框架介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maven依赖介绍"><span class="toc-number">2.</span> <span class="toc-text">maven依赖介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件-yml"><span class="toc-number">3.</span> <span class="toc-text">配置文件 .yml</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#数据源其他配置"><span class="toc-number"></span> <span class="toc-text">数据源其他配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙"><span class="toc-number"></span> <span class="toc-text">配置监控统计拦截的filters，去掉后监控界面sql无法统计，’wall’用于防火墙</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#书写Mapper映射"><span class="toc-number">1.</span> <span class="toc-text">书写Mapper映射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-首先我们需要创建一个model"><span class="toc-number">1.1.</span> <span class="toc-text">1.首先我们需要创建一个model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建mapper"><span class="toc-number">1.2.</span> <span class="toc-text">2.创建mapper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常用的注解"><span class="toc-number">1.3.</span> <span class="toc-text">3.常用的注解</span></a></li></ol></li></ol>
         
-    </div>
+    </li></div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -418,7 +460,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"SpringCloud-Netflix-01-微服务简介　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"springboot整合Mybatis　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -434,7 +476,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/23/SpringCloud-Netflix-01-简述/" data-title="SpringCloud-Netflix-01-微服务简介" data-url="http://runindark.com/2019/03/23/SpringCloud-Netflix-01-简述/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/23/SpringBoot-07-Mybatis整合（注解)/" data-title="springboot整合Mybatis" data-url="http://runindark.com/2019/03/23/SpringBoot-07-Mybatis整合（注解)/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -457,7 +499,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/03/23/SpringBoot-01-项目建立/" title="上一篇: SpringBoot-01-项目建立">
+            <a href="/2019/03/23/springBoot-06-连接数据池Druid/" title="上一篇: springboot2.0x中关于数据连接池Druid的连接">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -465,7 +507,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/03/23/SourceRead/" title="下一篇: 源码阅读分享">
+            <a href="/2019/03/23/SpringBoot-08-redis缓存服务/" title="下一篇: springboot Redis缓存服务">
                 <i class="fa fa-angle-right"></i>
             </a>
         

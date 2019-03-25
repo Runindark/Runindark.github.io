@@ -15,17 +15,20 @@
 
 
 
-<meta name="description" content="博主的个人介绍 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的， 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。 自己很幸运，能来到现在的学校，不是">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cat&#39;s blog">
-<meta property="og:url" content="http://runindark.com/about/index.html">
+<meta name="description" content="mvc，mvp，mvvm理解 mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联使得开发变得条理性极强，同时由于独立性使得可维护性很高简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVC续谈">
+<meta property="og:url" content="http://runindark.com/2019/03/23/MVC/index.html">
 <meta property="og:site_name" content="Cat&#39;s blog">
-<meta property="og:description" content="博主的个人介绍 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的， 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。 自己很幸运，能来到现在的学校，不是">
+<meta property="og:description" content="mvc，mvp，mvvm理解 mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联使得开发变得条理性极强，同时由于独立性使得可维护性很高简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-15T17:46:34.000Z">
+<meta property="og:image" content="http://runindark.com/image/mvc详解/01.png">
+<meta property="og:image" content="http://runindark.com/image/mvc详解/02.png">
+<meta property="og:updated_time" content="2018-11-16T11:28:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cat&#39;s blog">
-<meta name="twitter:description" content="博主的个人介绍 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的， 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。 自己很幸运，能来到现在的学校，不是">
+<meta name="twitter:title" content="MVC续谈">
+<meta name="twitter:description" content="mvc，mvp，mvvm理解 mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联使得开发变得条理性极强，同时由于独立性使得可维护性很高简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型">
+<meta name="twitter:image" content="http://runindark.com/image/mvc详解/01.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Cat&#39;s blog</title>
+<title>MVC续谈 | Cat&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,7 +70,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -266,11 +269,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-MVC" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/about/index.html" class="article-date">
-      <time datetime="2019-03-23T12:16:06.388Z" itemprop="datePublished">2019-03-23</time>
+      <a href="/2019/03/23/MVC/" class="article-date">
+      <time datetime="2019-03-23T12:16:05.899Z" itemprop="datePublished">2019-03-23</time>
 </a>
 
 
@@ -281,40 +284,106 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MVC续谈
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
+<h2 id="mvc，mvp，mvvm理解"><a href="#mvc，mvp，mvvm理解" class="headerlink" title="mvc，mvp，mvvm理解"></a>mvc，mvp，mvvm理解</h2><blockquote>
+<p>mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联<br>使得开发变得条理性极强，同时由于独立性使得可维护性很高<br>简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型<br><a id="more"></a></p>
+</blockquote>
+<the rest="" of="" contents="" |="" 余下全文="">
 
-
-          
-        <h3 id="博主的个人介绍"><a href="#博主的个人介绍" class="headerlink" title="博主的个人介绍"></a>博主的个人介绍</h3><p> 一个普普通通的本科学生，机缘巧合或者说更多的是缘分，让我走上了计算机这条路上，很喜欢自己的专业，也很喜欢自己的现在做学的，<br> 和所能做的，也很期待自己的未来，我不知道自己以后是什么样子，只是期待自己可以变的更像自己所想象的样子，和普通的大学生一样，也调皮，也不懂事，也贪玩，但是也更希望自己能够努力，身边优秀的朋友真的很多，只希望自己不会被甩的太远。<br> 自己很幸运，能来到现在的学校，不是985，不是211，很普通但是却很舒服，也许这就是传说中的缘分，真的觉得自己很幸运结交到这些朋友，还有很<br> 多的特别耐心的老师。<br> 我本身自己比较喜欢折腾，生活也是有惊喜，也有特别多的失落，遇到很多事情，也有自己对生活的理解，都会不定时的更新在博客上，也算是作为日<br> 记的存在。<br> 也是由于喜欢折腾，所以也接触了很多的语言和各个方面，现在自己所学的方向是web方向，博客内容是更多的其实是笔记的存在，如果大家看到，看<br> 到我的错误，希望大家可以联系我让我改正，努力的路上很孤独，愿大家可以共勉。<br> 自称夜小猫，是因为总是熬夜，然后还喜欢折腾，当然了也不排除强制卖萌的心态，或多或少都有吧。<br> runindark.com 寓意“黑暗中奔跑”，大家共勉，努力的路上很孤独，很苦，也很暗，但是路够黑，光才够亮，言尽于此，同行共勉。</p>
-
+<h2 id="mvc，mvp，mvvm理解-1"><a href="#mvc，mvp，mvvm理解-1" class="headerlink" title="mvc，mvp，mvvm理解"></a>mvc，mvp，mvvm理解</h2><blockquote>
+<p>mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联，使<br>得开发变得条理性极强，同时由于独立性使得可维护性很高，<br>简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型，<br>在然后就是servlet作为controller了，交互有两种方式，v-&gt;c-&gt;m，v-&gt;m-&gt;c，这样子完成对数据的处理，也就是所谓的后端流程，<br>在javaee中的建包方法就很好的体现了这点，分别是，dao包，service包，和servlet包（实际上还有一个dbutil是用来折腾jdbc的，不赘述了）<br>dao就是model，service和servlet就是controller了，service是服务层，就是一个调用接口的过程，servlet就是真正的controller了，其实这些<br>包下面还有impl子包，这样子的话实现与声明分离，可维护行也提高。再继续举例子，就是Python的flask框架了，他的分离更加简单，<br>static静态资源库，home//admin，前台和后台的分离，init初始化，run开始。也是完全走着mvc的风格。总而言之mvc就是让模块分离的一种设计思想</p>
+</blockquote>
+<p>##mvvm和mvp,这两个直接看图吧。没啥好讲的了。。<br><img src="/image/mvc详解/01.png" alt=""><br><img src="/image/mvc详解/02.png" alt=""></p>
+<blockquote>
+<p>说一下缺点，看了一下那篇英文的和那个中文的mvc已死的博客，其实双方都是担忧一个controller臃肿的问题，没错，如果太多的处理量都传递给<br>controller那么势必变得繁杂，更可怕是提高耦合度，所以他们想利用一个content模块来分担controllet的压力，更多的数据处理放在content，<br>更多的逻辑处理放在controller，尽管没有成型，但是博主们都给出了类似这样子的思路。<br>不过话讲回来，mvc始终是经典，现在仍然是主流，学习的时候用mvc的思路去分析，还是十分必要的。</p>
+</blockquote>
+</the>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/03/23/MVC/">MVC续谈</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">夜小猫</a></p>
+        <p><span>发布时间:</span>2019-03-23, 20:16:05</p>
+        <p><span>最后更新:</span>2018-11-16, 19:28:59</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/23/MVC/" title="MVC续谈">http://runindark.com/2019/03/23/MVC/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://runindark.com/2019/03/23/MVC/　　作者: 夜小猫" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/03/23/springboot新版本特性记录/">
+                    springboor2.0新特性记录
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/03/23/FromUrlToPage/">
+                    从url到网页到底发生了什么
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mvc，mvp，mvvm理解"><span class="toc-number">1.</span> <span class="toc-text">mvc，mvp，mvvm理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mvc，mvp，mvvm理解-1"><span class="toc-number">2.</span> <span class="toc-text">mvc，mvp，mvvm理解</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -332,7 +401,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"MVC续谈　| Cat's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -348,7 +417,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="about/index.html" data-title="" data-url="http://runindark.com/about/index.html"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/23/MVC/" data-title="MVC续谈" data-url="http://runindark.com/2019/03/23/MVC/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -366,6 +435,26 @@
 </div>
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/03/23/springboot新版本特性记录/" title="上一篇: springboor2.0新特性记录">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/03/23/FromUrlToPage/" title="下一篇: 从url到网页到底发生了什么">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringCloud-Netflix-02-创建项目/">SpringCloud-Netflix-02-创建项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/服务器踩坑记录-01-navicat连接服务器/">阿里云踩坑记录系列-navicat连接服务器上mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/springBoot-06-连接数据池Druid/">springboot2.0x中关于数据连接池Druid的连接</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-08-redis缓存服务/">springboot Redis缓存服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/FiveLayerNetworkProtoco/">FiveLayerNetworkProtoco</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/springboot新版本特性记录/">springboor2.0新特性记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/MVC/">MVC续谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/FromUrlToPage/">从url到网页到底发生了什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/designpattern/">单例设计模式，MVC，监听者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/My first blog/">hexo + github 博客搭建教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-05-配置文件/">SpringBoot-05-配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-04-热部署/">SpringBoot-04-热部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-03-目录结构再谈/">SpringBoot-03-目录结构再谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-02-控制器和注解/">SpringBoot-02-控制器和注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringBoot-01-项目建立/">SpringBoot-01-项目建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SpringCloud-Netflix-01-简述/">SpringCloud-Netflix-01-微服务简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/23/SourceRead/">源码阅读分享</a></li></ul>
 
 
 
