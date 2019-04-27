@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[团队]]></title>
+    <title><![CDATA[Pytorch]]></title>
     <url>%2F2019%2F04%2F19%2Ftest%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[https://github.com/Runindark/Pytorch/blob/master/chapter2/2.1.1.pytorch-basics-tensor.ipynb]]></content>
   </entry>
   <entry>
     <title><![CDATA[Linux命令]]></title>
