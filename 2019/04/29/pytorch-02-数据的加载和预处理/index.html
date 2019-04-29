@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Runindark">
+  
+  
+  <title>神经网络包nn和优化器optm | Cat&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Hexo, Theme-AD">
+  
+
+  
+  <meta name="description" content="pytorm中文手册pytormAPIpytorch官网pytorchCDN加速中文手册">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"OCuFc66d0cFinCcq4woaFKKx-gzGzoHsz","appkey":"Al6ba44bHAyyU7EbkpugUs1L","comment":true,"count":true},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Runindark",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">Runidark</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | With Thinking All</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/Runindark?tab=repositories" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-04-29
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    神经网络包nn和优化器optm
+  </h1>
+  
+  <article class="passage-article">
+    <p></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="import-packages"><a href="#import-packages" class="headerlink" title="import packages"></a>import packages</h2><p>PyTorch通过torch.utils.data对一般常用的数据加载进行了封装，可以很容易地实现多线程数据预读和批量加载。 并且torchvision已经预先实现了常用图像数据集，包括前面使用过的CIFAR-10，ImageNet、COCO、MNIST、LSUN等数据集，可通过torchvision.datasets方便的调用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure></p>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>Dataset是一个抽象类, 为了能够方便的读取，需要将要使用的数据包装为Dataset类。 自定义的Dataset需要继承它并且实现两个成员方法：</p>
+<p><strong>getitem</strong>() 该方法定义用索引(0 到 len(self))获取一条数据或一个样本<br><strong>len</strong>() 该方法返回数据集的总长度</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义一个数据集</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BulldozerDataset</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    <span class="string">""" 数据集演示 """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, csv_file)</span>:</span></span><br><span class="line">        <span class="string">"""实现初始化方法，在初始化的时候将数据读载入"""</span></span><br><span class="line">        self.df=pd.read_csv(csv_file)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        返回df的长度</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> len(self.df)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, idx)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        根据 idx 返回一行数据</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> self.df.iloc[idx].SalePrice</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 至此，我们的数据集已经定义完成了，我们可以实例话一个对象访问他</span></span><br><span class="line">  ds_demo= BulldozerDataset(<span class="string">'median_benchmark.csv'</span>)</span><br><span class="line"> <span class="comment"># 实现了 __len__ 方法所以可以直接使用len获取数据总数</span></span><br><span class="line"> len(ds_demo)</span><br><span class="line"> <span class="comment"># 用索引可以直接访问对应的数据, 对应 __getitem__ 方法</span></span><br><span class="line"> ds_demo[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="数据装载器"><a href="#数据装载器" class="headerlink" title="数据装载器"></a>数据装载器</h2><p>DataLoader为我们提供了对Dataset的读取操作，常用参数有：batch_size(每个batch的大小), shuffle(是否进行shuffle操作), num_workers(加载数据的时候使用几个子进程)，下面做一个简单的操作<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dl = torch.utils.data.DataLoader(ds_demo, batch_size=<span class="number">10</span>, shuffle=<span class="keyword">True</span>, num_workers=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># DataLoader返回的是一个可迭代对象，我们可以使用迭代器分次获取数据</span></span><br><span class="line">idata=iter(dl)</span><br><span class="line">print(next(idata))</span><br></pre></td></tr></table></figure></p>
+<h2 id="torchvision"><a href="#torchvision" class="headerlink" title="torchvision"></a>torchvision</h2><p>torchvision 是PyTorch中专门用来处理图像的库<br>torchvision.datasets<br>torchvision.datasets 可以理解为PyTorch团队自定义的dataset，这些dataset帮我们提前处理好了很多的图片数据集，我们拿来就可以直接使用：</p>
+<p>· MNIST<br>· COCO<br>· Captions<br>· Detection<br>· LSUN<br>· ImageFolder<br>· Imagenet-12<br>· CIFAR<br>· STL10<br>· SVHN<br>· PhotoTour 我们可以直接使用，示例如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torchvision.datasets <span class="keyword">as</span> datasets</span><br><span class="line">trainset = datasets.MNIST(root=<span class="string">'./data'</span>, <span class="comment"># 表示 MNIST 数据的加载的目录</span></span><br><span class="line">                                      train=<span class="keyword">True</span>,  <span class="comment"># 表示是否加载数据库的训练集，false的时候加载测试集</span></span><br><span class="line">                                      download=<span class="keyword">True</span>, <span class="comment"># 表示是否自动下载 MNIST 数据集</span></span><br><span class="line">                                      transform=<span class="keyword">None</span>) <span class="comment"># 表示是否需要对数据进行预处理，none为不进行预处理</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="torchvision-models"><a href="#torchvision-models" class="headerlink" title="torchvision.models"></a>torchvision.models</h3><p>torchvision不仅提供了常用图片数据集，还提供了训练好的模型，可以加载之后，直接使用，或者在进行迁移学习 torchvision.models模块的 子模块中包含以下模型结构。</p>
+<p>· AlexNet<br>· VGG<br>· ResNet<br>· SqueezeNet<br>· DenseNet<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们直接可以使用训练好的模型，当然这个与datasets相同，都是需要从服务器下载的</span></span><br><span class="line"><span class="keyword">import</span> torchvision.models <span class="keyword">as</span> models</span><br><span class="line">resnet18 = models.resnet18(pretrained=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="torchvision-transforms"><a href="#torchvision-transforms" class="headerlink" title="torchvision.transforms"></a>torchvision.transforms</h3><p>ransforms 模块提供了一般的图像转换操作类，用作数据处理和数据增强</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms <span class="keyword">as</span> transforms</span><br><span class="line">transform = transforms.Compose([</span><br><span class="line">    transforms.RandomCrop(<span class="number">32</span>, padding=<span class="number">4</span>),  <span class="comment">#先四周填充0，在把图像随机裁剪成32*32</span></span><br><span class="line">    transforms.RandomHorizontalFlip(),  <span class="comment">#图像一半的概率翻转，一半的概率不翻转</span></span><br><span class="line">    transforms.RandomRotation((<span class="number">-45</span>,<span class="number">45</span>)), <span class="comment">#随机旋转</span></span><br><span class="line">    transforms.ToTensor(),</span><br><span class="line">    transforms.Normalize((<span class="number">0.4914</span>, <span class="number">0.4822</span>, <span class="number">0.4465</span>), (<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>)), <span class="comment">#R,G,B每层的归一化用到的均值和方差</span></span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+</the>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#import-packages"><span class="toc-text">import packages</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dataset"><span class="toc-text">Dataset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据装载器"><span class="toc-text">数据装载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torchvision"><span class="toc-text">torchvision</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#torchvision-models"><span class="toc-text">torchvision.models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torchvision-transforms"><span class="toc-text">torchvision.transforms</span></a></li></ol></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: Runindark</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">http://runindark.com/2019/04/29/pytorch-02-数据的加载和预处理/</a>
+        </div>
+      
+      <div>
+        
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/2019/04/29/pytorch-01-神经网络包nn和优化器optm/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>
