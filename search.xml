@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2019%2F07%2F01%2Fvue%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[docker-compose.yml]]></title>
     <url>%2F2019%2F05%2F19%2Fdocker-compose%2F</url>
     <content type="text"><![CDATA[一些docker-compose-yml文件 Nexcus12345678910version: '3'services: nexus: restart: always image: sonatype/nexus3 container_name: nexus ports: - 8081:8081 volumes: - /usr/local/docker/nexus/data:/nexus-data gitlab123456789101112131415161718192021version: '3'services: web: image: 'gitlab/gitlab-ce' restart: always hostname: '120.79.234.127' environment: TZ: 'Asia/Shanghai' GITLAB_OMNIBUS_CONFIG: | external_url 'http://120.79.234.127:8080' gitlab_rails['gitlab_shell_ssh_port'] = 2222 unicorn['port'] = 8888 nginx['listen_port'] = 8080 ports: - '8080:8080' - '8443:443' - '2222:22' volumes: - /root/user/local/docker/gitlab/config:/etc/gitlab - /root/user/local/docker/gitlab/data:/var/opt/gitlab - /root/user/local/docker/gitlab/logs:/var/log/gitlab]]></content>
@@ -36,9 +41,9 @@
     <content type="text"><![CDATA[根据端口杀死进程1sudo fuser -k -n tcp 80]]></content>
   </entry>
   <entry>
-    <title><![CDATA[vue-cli安装过程]]></title>
+    <title><![CDATA[vue-cli]]></title>
     <url>%2F2019%2F04%2F09%2Fvue-cli%2F</url>
-    <content type="text"><![CDATA[vue-cli 安装 安装node.js过程略 使用1node -v 可以查看 安装cnpm利用淘宝加速镜像1npm install -g cnpm –registry=http://registry.npm.taobao.org 安装vue-cli手脚架1npm install -g vue-cli 初始化vue-cli项目利用 webpack 打包1vue init webpack myvue 根据提示完成代码运行]]></content>
+    <content type="text"><![CDATA[vue-cli 安装 安装node.js过程略 使用1node -v 可以查看 安装cnpm利用淘宝加速镜像1npm install -g cnpm –registry=http://registry.npm.taobao.org 安装vue-cli手脚架1npm install -g vue-cli 初始化vue-cli项目利用 webpack 打包1vue init webpack myvue 根据提示完成代码运行cd myvue cnpm install cnpm run dev]]></content>
   </entry>
   <entry>
     <title><![CDATA[资源整合]]></title>
