@@ -43,7 +43,7 @@
   <entry>
     <title><![CDATA[vue-cli]]></title>
     <url>%2F2019%2F04%2F09%2Fvue-cli%2F</url>
-    <content type="text"><![CDATA[vue-cli 安装 安装node.js过程略 使用1node -v 可以查看 安装cnpm利用淘宝加速镜像1npm install -g cnpm –registry=http://registry.npm.taobao.org 安装vue-cli手脚架1npm install -g vue-cli 初始化vue-cli项目利用 webpack 打包1vue init webpack myvue 根据提示完成代码运行cd myvue cnpm install cnpm run dev]]></content>
+    <content type="text"><![CDATA[vue-cli 安装 安装node.js过程略 使用1node -v 可以查看 安装cnpm利用淘宝加速镜像1npm install -g cnpm –registry=http://registry.npm.taobao.org 安装vue-cli手脚架1npm install -g vue-cli 初始化vue-cli项目利用 webpack 打包1vue init webpack myvue 根据提示完成代码运行12cd myvue``` cnpm install12 cnpm run dev`]]></content>
   </entry>
   <entry>
     <title><![CDATA[资源整合]]></title>
