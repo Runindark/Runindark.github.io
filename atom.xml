@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2019-07-01T08:32:16.937Z</updated>
+  <updated>2019-05-19T10:17:29.344Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://runindark.com/2019/07/01/vue/"/>
-    <id>http://runindark.com/2019/07/01/vue/</id>
-    <published>2019-07-01T08:32:16.937Z</published>
-    <updated>2019-07-01T08:32:16.937Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>docker-compose.yml</title>
@@ -275,9 +261,9 @@
     <link href="http://runindark.com/2019/03/23/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-01-navicat%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://runindark.com/2019/03/23/服务器踩坑记录-01-navicat连接服务器/</id>
     <published>2019-03-23T12:16:06.379Z</published>
-    <updated>2019-02-26T19:10:05.000Z</updated>
+    <updated>2019-07-04T07:23:00.668Z</updated>
     
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="第二次踩坑阿里云服务器"><a href="#第二次踩坑阿里云服务器" class="headerlink" title="第二次踩坑阿里云服务器"></a>第二次踩坑阿里云服务器</h2><p>是的，阿里云服务器上的mysql数据库不是随随便便就能连上的，需要配置安全组，同时docker上的mysql有点小问题，似乎就无法使用mysql 的一系列的命令了，绝望，好了踩坑实战记录。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="云主机的区别"><a href="#云主机的区别" class="headerlink" title="云主机的区别"></a>云主机的区别</h2><blockquote><p>ecs 和 轻量级应用主机是有区别的！！！</p><ol><li>轻量级的云主机是有自带的mysql 的需要重置才可以，否则的话是自带的mysql数据库会导致3306端<br>口的占用，而且workpress是默认的东西。需要重置更改centous系统才可以。</li></ol></blockquote><h2 id="安全组的配置"><a href="#安全组的配置" class="headerlink" title="安全组的配置"></a>安全组的配置</h2><blockquote><p>Esc是需要配置安全组的<br>轻量级的应用云主机是直接在防火墙部分设置就好</p></blockquote><h2 id="对于数据库的版本问题（5-7-8-x-版本的区别）"><a href="#对于数据库的版本问题（5-7-8-x-版本的区别）" class="headerlink" title="对于数据库的版本问题（5.7 / 8.x 版本的区别）"></a>对于数据库的版本问题（5.7 / 8.x 版本的区别）</h2><ol><li><p>对于5.7的安装版本 </p><blockquote><p>$ docker pull mysql:5.7      //拉取镜像</p><p>$ docker run -p 3306:3306 –name mysql \<br>-v /usr/local/docker/mysql/conf:/etc/mysql \<br>-v /usr/local/docker/mysql/logs:/var/log/mysql \<br>-v /usr/local/docker/mysql/data:/var/lib/mysql \<br>-e MYSQL_ROOT_PASSWORD=123456 \<br>-d mysql<br>根据上面的指令就可以完成自己的mysql的镜像的绑定了</p></blockquote></li><li><p>对于8.x版本的数据库就更简单了 </p><blockquote><p>先ps一点东西哈  默认的 $ docker pull mysql<br>这个的默认是要的latest也就是最近的版本目前的版本是8 class=”x所以一定要注意”&gt;&lt;/这个的默认是要的latest也就是最近的版本目前的版本是8.x<br>$ docker pull mysql<br>$ docker run –name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql<br>然后就欧克了</p></blockquote></li><li><p>刚刚从大佬那里知道，原来centos也就是中国用，国际流行的还是uubuntu，所以朋友们，用ubuntu吧，hhh</p></li></ol><h2 id="还有了解的东西"><a href="#还有了解的东西" class="headerlink" title="还有了解的东西"></a>还有了解的东西</h2><blockquote><p>狗东西centos7.x的版本是带有防火墙，说到防火墙这个东西有点玄学了，我目前的状态是把防火墙关闭了。<br>所以建议哈，navicat这类工具无法连接上的，可以试试把防火墙关了 （看评论说tomcat会受到这个的影响）<br>systemctl start firewalld    //开启<br>systemctl stop firewalld       //关闭<br>systemctl status firewalld   //查看状态<br>systemctl disable firewalld  //开机关闭<br>systemctl enable firewalld   //开机启动</p></blockquote></the>]]></content>
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="第二次踩坑阿里云服务器"><a href="#第二次踩坑阿里云服务器" class="headerlink" title="第二次踩坑阿里云服务器"></a>第二次踩坑阿里云服务器</h2><p>是的，阿里云服务器上的mysql数据库不是随随便便就能连上的，需要配置安全组，同时docker上的mysql有点小问题，似乎就无法使用mysql 的一系列的命令了，绝望，好了踩坑实战记录。<br><a id="more"></a></p><the rest="" of="" contents="" |="" 余下全文=""><h2 id="云主机的区别"><a href="#云主机的区别" class="headerlink" title="云主机的区别"></a>云主机的区别</h2><blockquote><p>ecs 和 轻量级应用主机是有区别的！！！</p><ol><li>轻量级的云主机是有自带的mysql 的需要重置才可以，否则的话是自带的mysql数据库会导致3306端<br>口的占用，而且workpress是默认的东西。需要重置更改centous系统才可以。</li></ol></blockquote><h2 id="安全组的配置"><a href="#安全组的配置" class="headerlink" title="安全组的配置"></a>安全组的配置</h2><blockquote><p>Esc是需要配置安全组的<br>轻量级的应用云主机是直接在防火墙部分设置就好</p></blockquote><h2 id="对于数据库的版本问题（5-7-8-x-版本的区别）"><a href="#对于数据库的版本问题（5-7-8-x-版本的区别）" class="headerlink" title="对于数据库的版本问题（5.7 / 8.x 版本的区别）"></a>对于数据库的版本问题（5.7 / 8.x 版本的区别）</h2><ol><li><p>对于5.7的安装版本 </p><blockquote><p>$ docker pull mysql:5.7      //拉取镜像</p><p>$ docker run -p 3306:3306 –name mysql \<br>-v /usr/local/docker/mysql/conf:/etc/mysql \<br>-v /usr/local/docker/mysql/logs:/var/log/mysql \<br>-v /usr/local/docker/mysql/data:/var/lib/mysql \<br>-e MYSQL_ROOT_PASSWORD=123456 \<br>-d mysql<br>根据上面的指令就可以完成自己的mysql的镜像的绑定了</p></blockquote></li><li><p>对于8.x版本的数据库就更简单了 </p><blockquote><p>先ps一点东西哈  默认的 $ docker pull mysql<br>这个的默认是要的latest也就是最近的版本目前的版本是8 class=”x所以一定要注意”&gt;&lt;/这个的默认是要的latest也就是最近的版本目前的版本是8.x<br>$ docker pull mysql<br>$ docker run –name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql<br>然后就欧克了</p></blockquote></li><li><p>刚刚从大佬那里知道，原来centos也就是中国用，国际流行的还是uubuntu，所以朋友们，用ubuntu吧，hhh</p></li></ol><h2 id="还有了解的东西"><a href="#还有了解的东西" class="headerlink" title="还有了解的东西"></a>还有了解的东西</h2><blockquote><p>狗东西centos7.x的版本是带有防火墙，说到防火墙这个东西有点玄学了，我目前的状态是把防火墙关闭了。<br>所以建议哈，navicat这类工具无法连接上的，可以试试把防火墙关了 （看评论说tomcat会受到这个的影响）<br>systemctl start firewalld    //开启<br>systemctl stop firewalld       //关闭<br>systemctl status firewalld   //查看状态<br>systemctl disable firewalld  //开机关闭<br>systemctl enable firewalld   //开机启动</p></blockquote><h2 id="我们也许是时候谈谈操蛋的mysql8了"><a href="#我们也许是时候谈谈操蛋的mysql8了" class="headerlink" title="我们也许是时候谈谈操蛋的mysql8了"></a>我们也许是时候谈谈操蛋的mysql8了</h2><h3 id="发生了什么"><a href="#发生了什么" class="headerlink" title="发生了什么"></a>发生了什么</h3><p>mysql8添加了全新的安全认知，这样的结果就是我们不能成功的用navicat远程连接这个东西，尼玛，就算解决了验证方法，特喵的还不给你权限，你还要自己提权，唉，不说了，踩坑目录如瞎。</p><h3 id="更改安全加密方式"><a href="#更改安全加密方式" class="headerlink" title="更改安全加密方式"></a>更改安全加密方式</h3><ol><li><p>进入容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql bash</span><br></pre></td></tr></table></figure></li><li><p>登陆mysql</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;Lzslov123!&apos;;</span><br></pre></td></tr></table></figure></li><li><p>查看加密方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">select user,plugin from user where user=&apos;root&apos;;</span><br></pre></td></tr></table></figure></li><li><p>更改加密方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user &apos;root&apos;@&apos;localhost&apos; identified with mysql_native_password by &apos;password&apos;;</span><br></pre></td></tr></table></figure></li><li><p>刷新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></li></ol><h3 id="更改权限"><a href="#更改权限" class="headerlink" title="更改权限"></a>更改权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">select user,authentication_string from user;</span><br><span class="line"></span><br><span class="line">update user set authentication_string=&apos;&apos;  where user=&apos;root&apos;;</span><br><span class="line"></span><br><span class="line">alter user&apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;Mysql@123&apos;; </span><br><span class="line"></span><br><span class="line">alter user&apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;Mysql@123&apos;; </span><br><span class="line"></span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY&apos;Mysql@123&apos;;</span><br></pre></td></tr></table></figure></the>]]></content>
     
     <summary type="html">
     
@@ -388,6 +374,26 @@
       
         &lt;h2 id=&quot;EmbeddedServletContainerCustomizer&quot;&gt;&lt;a href=&quot;#EmbeddedServletContainerCustomizer&quot; class=&quot;headerlink&quot; title=&quot;EmbeddedServletContainer
       
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MVC续谈</title>
+    <link href="http://runindark.com/2019/03/23/MVC/"/>
+    <id>http://runindark.com/2019/03/23/MVC/</id>
+    <published>2019-03-23T12:16:05.899Z</published>
+    <updated>2018-11-16T11:28:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p><h2 id="mvc，mvp，mvvm理解"><a href="#mvc，mvp，mvvm理解" class="headerlink" title="mvc，mvp，mvvm理解"></a>mvc，mvp，mvvm理解</h2><blockquote><p>mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联<br>使得开发变得条理性极强，同时由于独立性使得可维护性很高<br>简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型<br><a id="more"></a></p></blockquote><the rest="" of="" contents="" |="" 余下全文=""><h2 id="mvc，mvp，mvvm理解-1"><a href="#mvc，mvp，mvvm理解-1" class="headerlink" title="mvc，mvp，mvvm理解"></a>mvc，mvp，mvvm理解</h2><blockquote><p>mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联，使<br>得开发变得条理性极强，同时由于独立性使得可维护性很高，<br>简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型，<br>在然后就是servlet作为controller了，交互有两种方式，v-&gt;c-&gt;m，v-&gt;m-&gt;c，这样子完成对数据的处理，也就是所谓的后端流程，<br>在javaee中的建包方法就很好的体现了这点，分别是，dao包，service包，和servlet包（实际上还有一个dbutil是用来折腾jdbc的，不赘述了）<br>dao就是model，service和servlet就是controller了，service是服务层，就是一个调用接口的过程，servlet就是真正的controller了，其实这些<br>包下面还有impl子包，这样子的话实现与声明分离，可维护行也提高。再继续举例子，就是Python的flask框架了，他的分离更加简单，<br>static静态资源库，home//admin，前台和后台的分离，init初始化，run开始。也是完全走着mvc的风格。总而言之mvc就是让模块分离的一种设计思想</p></blockquote><p>##mvvm和mvp,这两个直接看图吧。没啥好讲的了。。<br><img src="/image/mvc详解/01.png" alt=""><br><img src="/image/mvc详解/02.png" alt=""></p><blockquote><p>说一下缺点，看了一下那篇英文的和那个中文的mvc已死的博客，其实双方都是担忧一个controller臃肿的问题，没错，如果太多的处理量都传递给<br>controller那么势必变得繁杂，更可怕是提高耦合度，所以他们想利用一个content模块来分担controllet的压力，更多的数据处理放在content，<br>更多的逻辑处理放在controller，尽管没有成型，但是博主们都给出了类似这样子的思路。<br>不过话讲回来，mvc始终是经典，现在仍然是主流，学习的时候用mvc的思路去分析，还是十分必要的。</p></blockquote></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+&lt;h2 id=&quot;mvc，mvp，mvvm理解&quot;&gt;&lt;a href=&quot;#mvc，mvp，mvvm理解&quot; class=&quot;headerlink&quot; title=&quot;mvc，mvp，mvvm理解&quot;&gt;&lt;/a&gt;mvc，mvp，mvvm理解&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;mvc作为经典的开发模式，能经久不衰当然是有独到的过人之处的，简单容易理解model，controller，view三大部分，相互独立，但是也相互关联&lt;br&gt;使得开发变得条理性极强，同时由于独立性使得可维护性很高&lt;br&gt;简单的说一下网页的布局，view就是前端的那些东西，html，css顺一个js，model和数据库以及所需要的对象模型&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
     
     </summary>
     
