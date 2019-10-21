@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ctf杂录]]></title>
     <url>%2F2019%2F10%2F21%2FCTF-%E6%9D%82%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[各种姿势 php特性 $_SERVER[‘QUERY_STRING’]会获取到所有的文件后面传递的所有参数 php自身在解析请求时，会把+和.解析成下划线 数组与数字比较，永远大于数字 字符a在和整形进行弱类型比较时，会被强制转换成整形，其值为0 服务器自身漏洞 在apache2.2.15版本的情况下，test.php.png及.jpg、.gif等均会被解析成php文件来执行，高版本的apach服务器不存在此漏洞 一句话木马 上传点存在白名单验证，从返回包可以得知其是apache2.2.15，apache2.2.15版本具有文件解析漏洞，可以把test.php.png当作php文件来解析执行，apache高版本不存在此漏洞，这里我们可以使用apache2.2.15的解析漏洞来绕过白名单限制 &lt;?php system($_POST[‘cmd’]); ?&gt;之后再利用post 发送数据， cmd = cat /flag 获取flag]]></content>
+    <content type="text"><![CDATA[各种姿势 php特性 $_SERVER[‘QUERY_STRING’]会获取到所有的文件后面传递的所有参数 php自身在解析请求时，会把+和.解析成下划线 数组与数字比较，永远大于数字 字符a在和整形进行弱类型比较时，会被强制转换成整形，其值为0php伪协议用于直接读取用户的根目录的东西 url=php://filter/read=convert.base64-encode/resource=flag 服务器自身漏洞一句话木马 上传点存在白名单验证，从返回包可以得知其是apache2.2.15，apache2.2.15版本具有文件解析漏洞，可以把test.php.png当作php文件来解析执行，apache高版本不存在此漏洞，这里我们可以使用apache2.2.15的解析漏洞来绕过白名单限制 &lt;?php system($_POST[‘cmd’]); ?&gt;之后再利用post 发送数据， cmd = cat /flag 获取flag]]></content>
   </entry>
   <entry>
     <title><![CDATA[ctf攻防之sql注入]]></title>

