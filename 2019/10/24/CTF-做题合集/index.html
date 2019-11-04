@@ -123,6 +123,26 @@
 </li>
 <li>特色<br>$_SERVER[‘REQUEST_URI’]  用来获取url，可以当作get请求</li>
 </ol>
+<h4 id="速度要快"><a href="#速度要快" class="headerlink" title="速度要快"></a>速度要快</h4><p>这个故事告诉我们，这狗题目说快速，就说明手动是绝对不行了，需要走脚本了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">url=<span class="string">"http://120.24.86.145:8002/web6/"</span></span><br><span class="line">r=requests.session()</span><br><span class="line">headers=r.get(url).headers<span class="comment">#因为flag在消息头里</span></span><br><span class="line"> </span><br><span class="line">str=base64.b64decode(headers[<span class="string">'flag'</span>])</span><br><span class="line">str=str.decode()<span class="comment">#为了下一步用split不报错，b64decode后操作的对象是byte类型的字符串，而split函数要用str类型的</span></span><br><span class="line"> </span><br><span class="line">flag = base64.b64decode(str.split(<span class="string">':'</span>)[<span class="number">1</span>])<span class="comment">#获得flag:后的值</span></span><br><span class="line">data=&#123;<span class="string">'margin'</span>:flag&#125;</span><br><span class="line"><span class="keyword">print</span> (r.post(url,data).text)<span class="comment">#post方法传上去</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="cookie欺骗"><a href="#cookie欺骗" class="headerlink" title="cookie欺骗"></a>cookie欺骗</h4><p>靶机： <a href="http://123.206.87.240:8002/web11/index.php?line=&amp;filename=a2V5cy50eHQ=" target="_blank" rel="noopener">http://123.206.87.240:8002/web11/index.php?line=&amp;filename=a2V5cy50eHQ=</a></p>
+<ol>
+<li>铺面的字符串是无效的</li>
+<li>发现在url中看到有base64编码的a2V5cy50eHQ= </li>
+<li>访问后发现依然是无效的字符串</li>
+<li>filenam顾名思义可以尝试伪协议，尝试无效</li>
+<li>盲猜filename是可以读取文件，尝试filename赋值为 index.php </li>
+<li>修改line的数据，发现可以读出一行的数据，写脚本读出index.php的完整代码</li>
+<li><p>脚本： </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$file=base64_decode(<span class="keyword">isset</span>($_GET[<span class="string">'filename'</span>])?$_GET[<span class="string">'filename'</span>]:<span class="string">""</span>);</span><br><span class="line">$line=<span class="keyword">isset</span>($_GET[<span class="string">'line'</span>])?intval($_GET[<span class="string">'line'</span>]):<span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>($file==<span class="string">''</span>) header(<span class="string">"location:index.php?line=&amp;filename=a2V5cy50eHQ="</span>);</span><br><span class="line">$file_list = <span class="keyword">array</span>(</span><br><span class="line"><span class="string">'0'</span> =&gt;<span class="string">'keys.txt'</span>,</span><br><span class="line"><span class="string">'1'</span> =&gt;<span class="string">'index.php'</span>,</span><br><span class="line">);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_COOKIE[<span class="string">'margin'</span>]) &amp;&amp; $_COOKIE[<span class="string">'margin'</span>]==<span class="string">'margin'</span>) &#123;</span><br><span class="line">	$file_list[<span class="number">2</span>]=<span class="string">'keys.php'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(in_array($file, $file_list)) &#123;</span><br><span class="line">	$fa = file($file);</span><br><span class="line">	<span class="keyword">echo</span> $fa[$line];</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>得出结论发现，cookie为margin=margin可以给文件读取的数组赋值给keys.php，则keys.php可能是最终结果隐藏的地方</p>
+</li>
+<li>在burpsuite中更改cookie<blockquote>
+<p>Cookie: margin=margin </p>
+</blockquote>
+</li>
+<li>keys.php进行base64编码后传入给filename,得出结果</li>
+</ol>
 </the>
       
     </div>
