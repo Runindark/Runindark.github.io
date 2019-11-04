@@ -114,6 +114,15 @@
 </li>
 </ol>
 <p>总之是字符串拼接玩出了花·····emm</p>
+<h4 id="备份是个好习惯"><a href="#备份是个好习惯" class="headerlink" title="备份是个好习惯"></a>备份是个好习惯</h4><ol>
+<li>看到备份首先想到 .bak  文件</li>
+<li>利用御剑工具扫描查看到 index.php ,猜测拿到index.php.bak</li>
+<li>套路：<br>1.) 如果两个字符经MD5加密后的值为 0exxxxx形式，就会被认为是科学计数法，且表示的是0*10的xxxx次方，还是零，都是相等的。<blockquote>
+<p>QNKCDZO 240610708 s878926199a s155964671a s214587387a s214587387a<br>2.) 利用==漏洞，数组无法被识别，都是null</p>
+</blockquote>
+</li>
+<li>特色<br>$_SERVER[‘REQUEST_URI’]  用来获取url，可以当作get请求</li>
+</ol>
 </the>
       
     </div>
