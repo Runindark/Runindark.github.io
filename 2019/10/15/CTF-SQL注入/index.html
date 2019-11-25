@@ -121,6 +121,16 @@
 </blockquote>
 </li>
 </ol>
+<h4 id="sql约束攻击"><a href="#sql约束攻击" class="headerlink" title="sql约束攻击"></a>sql约束攻击</h4><p>简单的来说，就是在sql中会因为一些空格来进行绕过，以账号密码注册为例子</p>
+<ol>
+<li>默认后台有admin/password01</li>
+<li>我们注册时候使用admin         /password02</li>
+<li>登陆的时候用admin/password02就可以正常的登陆</li>
+<li>原因说明：<blockquote>
+<p>其实入库的时候会自动减去注册时尾部的空格，但是代码在写的时候却没有去掉空格，所以加上空格之后就不会查重，但是入了库就又重复了</p>
+</blockquote>
+</li>
+</ol>
 <h4 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h4><p>最简单的注入在于，无论你去注入什么，或者搜索或者选择都是会有相应的显示的，但是还有一部分的盲注是没有提示的，你无法得知自己是否sql注入成功，所以插入sql中的sleep（），get_lock()等系列函数，通过时间延迟来判断是否注入成功，以为盲注全靠猜，因此需要脚本来实现盲注 。</p>
 <h4 id="盲注分类"><a href="#盲注分类" class="headerlink" title="盲注分类"></a>盲注分类</h4><p>Time盲注<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM admin WHERE id = 1 AND (SELECTif((SELECT substr(table_name,1,1)  FROM users  limit 0,1)=&apos;e&apos;,sleep(10),null))</span><br></pre></td></tr></table></figure></p>
 <p>•Bool盲注<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM admin WHERE id = 1 and  ascii(substr((SELECT  database()),1,1))&gt;99</span><br></pre></td></tr></table></figure></p>

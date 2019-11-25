@@ -109,6 +109,20 @@
 <blockquote>
 <p>$_POST [用于接收post提交的数据]<br>$_GET [用于获取url地址栏的参数数据]<br>$_FILES [用于文件就收的处理img 最常见]<br>$_COOKIE [用于获取与setCookie()中的name 值]<br>$_SESSION [用于存储session的值或获取session中的值]<br>$_REQUEST [具有get,post的功能，但比较慢]<br>$SERVER[是预定义服务器变量的一种，所有SERVER[是预定义服务器变量的一种，所有_SERVER [是预定义服务器变量的一种，所有_SERVER开头的都<br>$GLOBALS [一个包含了所有全局变量的数组]<br>$_ENV [ 是一个包含服务器端环境变量的数组。它是PHP中一个超级全局变量，我们可以在PHP 程序的任何地方直接访问它]</p>
 </blockquote>
+<h3 id="http系列"><a href="#http系列" class="headerlink" title="http系列"></a>http系列</h3><h4 id="referer-你从哪里来"><a href="#referer-你从哪里来" class="headerlink" title="referer (你从哪里来)"></a>referer (你从哪里来)</h4><blockquote>
+<p>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，<br>告诉服务器我是从哪个页面链接过来的，服务器基此可以获得一些信息用于处理。<br>简而言之，HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，<br>一般会带上Referer，告诉服务器我是从哪个页面链接过来的，服务器藉此可以获得一些信息用于处理。<br>比如从我主页上链接到一个朋友那里，他的服务器就能够从HTTP Referer中统计出每天有多少用户点击我主页上的链接访问他的网站。</p>
+</blockquote>
+<h3 id="绕过问题"><a href="#绕过问题" class="headerlink" title="绕过问题"></a>绕过问题</h3><h4 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h4><ol>
+<li>随便把content-type的内容进行大小写更改<blockquote>
+<p>Content-Type: mULtipart/form-data;  boundary=—————————4827543632391   #修改大小写绕过 </p>
+</blockquote>
+</li>
+<li>然后黄爆爆破尾缀<blockquote>
+<p>改成php+数字的格式，比如php1，php2啥的</p>
+</blockquote>
+</li>
+<li>靶机<br><a href="http://123.206.87.240:8002/web9/" target="_blank" rel="noopener">http://123.206.87.240:8002/web9/</a></li>
+</ol>
 </the>
       
     </div>
