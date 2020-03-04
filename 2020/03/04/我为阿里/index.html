@@ -70,7 +70,8 @@
       
 
       
-        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br>[文章都是搬运艿艿的]<br>[<a href="http://svip.iocoder.cn/Java/Core/Interview/]" target="_blank" rel="noopener">http://svip.iocoder.cn/Java/Core/Interview/]</a></excerpt></p>
+<a id="more"></a>
 <the rest="" of="" contents="" |="" 余下全文="">
 
 <h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><h4 id="什么是面向对象？"><a href="#什么是面向对象？" class="headerlink" title="什么是面向对象？"></a>什么是面向对象？</h4><blockquote>
@@ -109,6 +110,189 @@
 <h4 id="是否可以在-static-环境中访问非-static-变量？"><a href="#是否可以在-static-环境中访问非-static-变量？" class="headerlink" title="是否可以在 static 环境中访问非 static 变量？"></a>是否可以在 static 环境中访问非 static 变量？</h4><blockquote>
 <p>static 变量在 Java 中是属于类的，它在所有的实例中的值是一样的。当类被 Java 虚拟机载入的时候，会对 static 变量进行初始化。<br>如果你的代码尝试不用实例来访问非 static 的变量，编译器会报错，因为这些变量还没有被创建出来，还没有跟任何实例关联上。</p>
 </blockquote>
+<h4 id="char-型变量中能不能存贮一个中文汉字？为什么？"><a href="#char-型变量中能不能存贮一个中文汉字？为什么？" class="headerlink" title="char 型变量中能不能存贮一个中文汉字？为什么？"></a>char 型变量中能不能存贮一个中文汉字？为什么？</h4><blockquote>
+<p>在 Java 语言中，char 类型占 2 个字节，而且 Java 默认采用 Unicode 编码，一个 Unicode 码是 16 位，所以一个 Unicode 码占两个字节，Java 中无论汉字还是英文字母，都是用 Unicode 编码来表<br>示的。所以，在 Java 中，char 类型变量可以存储一个中文汉字。</p>
+</blockquote>
+<h4 id="String、StringBuffer、StringBuilder-的区别？"><a href="#String、StringBuffer、StringBuilder-的区别？" class="headerlink" title="String、StringBuffer、StringBuilder 的区别？"></a>String、StringBuffer、StringBuilder 的区别？</h4><blockquote>
+<ol>
+<li>String ，是只读字符串，也就意味着 String 引用的字符串内容是不能被改变的<br>(每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象。)</li>
+<li>StringBuffer/StringBuilder 类，表示的字符串对象可以直接进行修改。StringBuilder 是 Java 5 中引入的，它和 StringBuffer 的方法完全相同，区别在于它是在单线程环境下使用的，因为它的<br>所有方面都没有被 synchronized 修饰，因此它的效率也比 StringBuffer 要高。<br>(StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象引用。<br>相同情况下使用 StirngBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险)</li>
+</ol>
+</blockquote>
+<h4 id="String-s-new-String-“xyz”-会创建几个对象？"><a href="#String-s-new-String-“xyz”-会创建几个对象？" class="headerlink" title="String s = new String(“xyz”) 会创建几个对象？"></a>String s = new String(“xyz”) 会创建几个对象？</h4><blockquote>
+<p>首先，在 String 池内找，找到 “xyz” 字符串，不创建 “xyz” 对应的 String 对象，否则创建一个对象。<br>然后，遇到 new 关键字，在内存上创建 String 对象，并将其返回给 s ，又一个对象。<br>所以，总共是 1 个或者 2 个对象。</p>
+</blockquote>
+<h4 id="什么是自动拆装箱？"><a href="#什么是自动拆装箱？" class="headerlink" title="什么是自动拆装箱？"></a>什么是自动拆装箱？</h4><blockquote>
+<p>自动装箱和拆箱，就是基本类型和引用类型之间的转换。</p>
+</blockquote>
+<h5 id="为什么要转换？"><a href="#为什么要转换？" class="headerlink" title="为什么要转换？"></a>为什么要转换？</h5><blockquote>
+<p>如果你在 Java5 下进行过编程的话，你一定不会陌生这一点，你不能直接地向集合( Collection )中放入原始类型值，因为集合只接收对象。</p>
+<ol>
+<li>通常这种情况下你的做法是，将这些原始类型的值转换成对象，然后将这些转换的对象放入集合中。使用 Integer、Double、Boolean 等这些类，我们可以将原始类型值转换成对应的对象，但是从某些程度可<br>能使得代码不是那么简洁精炼。</li>
+<li>为了让代码简练，Java5 引入了具有在原始类型和对象类型自动转换的装箱和拆箱机制。<br>但是自动装箱和拆箱并非完美，在使用时需要有一些注意事项，如果没有搞明白自动装箱和拆箱，可能会引起难以察觉的 Bug 。</li>
+</ol>
+</blockquote>
+<h4 id="equals-与-的区别？"><a href="#equals-与-的区别？" class="headerlink" title="equals 与 == 的区别？"></a>equals 与 == 的区别？</h4><blockquote>
+<p>值类型（int,char,long,boolean 等）的话<br>都是用 == 判断相等性。<br>对象引用的话<br>= 判断引用所指的对象是否是同一个。<br>equals 方法，是 Object 的成员函数，有些类会覆盖(override) 这个方法，用于判断对象的等价性。<br>例如 String 类，两个引用所指向的 String 都是 “abc” ，但可能出现他们实际对应的对象并不是同一个（和 JVM 实现方式有关），因此用 == 判断他们可能不相等，但用 equals<br>方法判断一定是相等的。</p>
+</blockquote>
+<h4 id="如何在父类中为子类自动完成所有的-hashCode-和-equals-实现？这么做有何优劣"><a href="#如何在父类中为子类自动完成所有的-hashCode-和-equals-实现？这么做有何优劣" class="headerlink" title="如何在父类中为子类自动完成所有的 hashCode 和 equals 实现？这么做有何优劣"></a>如何在父类中为子类自动完成所有的 hashCode 和 equals 实现？这么做有何优劣</h4><blockquote>
+<p>父类的 equals ，一般情况下是无法满足子类的 equals 的需求。<br>比如所有的对象都继承 Object ，默认使用的是 Object 的 equals 方法，在比较两个对象的时候，是看他们是否指向同一个地址。但是我们的需求是对象的某个属性相同，就相等了，而默认的 equals 方法<br>满足不了当前的需求，所以我们要重写 equals 方法。<br>如果重写了 equals 方法，就必须重写 hashCode 方法，否则就会降低 Map 等集合的索引速度</p>
+</blockquote>
+<h5 id="equals-方法，用于比较对象的内容是否相等"><a href="#equals-方法，用于比较对象的内容是否相等" class="headerlink" title="equals 方法，用于比较对象的内容是否相等"></a>equals 方法，用于比较对象的内容是否相等</h5><blockquote>
+<p>当覆盖了 equals 方法时，比较对象是否相等将通过覆盖后的 equals 方法进行比较（判断对象的内容是否相等）。</p>
+</blockquote>
+<h5 id="hashCode-方法，大多在集合中用到。"><a href="#hashCode-方法，大多在集合中用到。" class="headerlink" title="hashCode 方法，大多在集合中用到。"></a>hashCode 方法，大多在集合中用到。</h5><blockquote>
+<p>将对象放入到集合中时，首先判断要放入对象的 hashCode 值与集合中的任意一个元素的 hashCode 值是否相等，如果不相等直接将该对象放入集合中。<br>如果 hashCode 值相等，然后再通过 equals 方法判断要放入对象与集合中的任意一个对象是否相等，如果 equals 判断不相等，直接将该元素放入到集合中，否则不放入。</p>
+</blockquote>
+<h5 id="有没有可能-2-个不相等的对象有相同的-hashCode？"><a href="#有没有可能-2-个不相等的对象有相同的-hashCode？" class="headerlink" title="有没有可能 2 个不相等的对象有相同的 hashCode？"></a>有没有可能 2 个不相等的对象有相同的 hashCode？</h5><blockquote>
+<p>可能会发生，这个被称为哈希碰撞。当然，相等的对象，即我们重写了 equals 方法，一定也要重写 hashCode 方法，否则将出现我们在 HashMap 中，相等的对象作为 key ，将找不到对应的 value 。<br>· equals 不相等，hashCode 可能相等。<br>· equals 相等，请重写 hashCode 方法，保证 hashCode 相等。</p>
+</blockquote>
+<h4 id="final、finally、finalize-的区别？"><a href="#final、finally、finalize-的区别？" class="headerlink" title="final、finally、finalize 的区别？"></a>final、finally、finalize 的区别？</h4><h5 id="final是修饰符关键字"><a href="#final是修饰符关键字" class="headerlink" title="final是修饰符关键字"></a>final是修饰符关键字</h5><blockquote>
+<p>一个类被声明为 final ，意味着它不能再派生出新的子类，不能作为父类被继承。因此一个类不能既被声明为 abstract 的，又被声明为 final 的。<br>将变量或方法声明为 final ，可以保证它们在使用中不被改变。被声明为 final 的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。被声明为 final 的方法也同样只能使用，不能重写。</p>
+</blockquote>
+<h5 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h5><blockquote>
+<p>异常处理时提供 finally 块来执行任何清除操作。如果抛出一个异常，那么相匹配的 catch 子句就会执行，然后控制就会进入 finally 块（如果有的话）。<br>在以下 4 种特殊情况下，finally块不会被执行：</p>
+<ol>
+<li>在 finally 语句块中发生了异常。</li>
+<li>在前面的代码中用了 System.exit() 退出程序。</li>
+<li>程序所在的线程死亡。</li>
+<li>关闭 CPU 。</li>
+</ol>
+</blockquote>
+<h5 id="finalize-是方法名"><a href="#finalize-是方法名" class="headerlink" title="finalize 是方法名"></a>finalize 是方法名</h5><blockquote>
+<p>Java 允许使用 #finalize() 方法，在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在确定这个对象没有被引用时对这个对象调用的。<br>它是在 Object 类中定义的，因此所有的类都继承了它。<br>子类覆盖 finalize() 方法，以整理系统资源或者执行其他清理工作。</p>
+<p>#finalize() 方法，是在垃圾收集器删除对象之前对这个对象调用的。</p>
+</blockquote>
+<h5 id="String-类能被继承吗，为什么？"><a href="#String-类能被继承吗，为什么？" class="headerlink" title="String 类能被继承吗，为什么？"></a>String 类能被继承吗，为什么？</h5><blockquote>
+<p>不能，因为 String 是 final 修饰</p>
+</blockquote>
+<h4 id="抽象类和接口有什么区别？"><a href="#抽象类和接口有什么区别？" class="headerlink" title="抽象类和接口有什么区别？"></a>抽象类和接口有什么区别？</h4><blockquote>
+<p>从设计层面来说，抽象是对类的抽象，是一种模板设计，接口是行为的抽象，是一种行为的规范。</p>
+</blockquote>
+<h4 id="请详细讲述一下-RandomAccess-接口有什么作用？"><a href="#请详细讲述一下-RandomAccess-接口有什么作用？" class="headerlink" title="请详细讲述一下 RandomAccess 接口有什么作用？"></a>请详细讲述一下 RandomAccess 接口有什么作用？</h4><blockquote>
+<p>RandomAccess 用来当标记的，是一种标记接口，接口的非典型用法。意思是，随机访问任意下标元素都比较快。<br>用处，当要实现某些算法时，会判断当前类是否实现了 RandomAccess 接口，会根据结果选择不同的算法</p>
+</blockquote>
+<h4 id="讲讲类的实例化顺序？"><a href="#讲讲类的实例化顺序？" class="headerlink" title="讲讲类的实例化顺序？"></a>讲讲类的实例化顺序？</h4><ol>
+<li>父类静态变量</li>
+<li>父类静态代码块</li>
+<li>子类静态变量、</li>
+<li>子类静态代码块</li>
+<li>父类非静态变量（父类实例成员变量）</li>
+<li>父类构造函数</li>
+<li>子类非静态变量（子类实例成员变量）</li>
+<li>子类构造函数<h4 id="什么是内部类？"><a href="#什么是内部类？" class="headerlink" title="什么是内部类？"></a>什么是内部类？</h4><blockquote>
+<p>简单的说，就是在一个类、接口或者方法的内部创建另一个类。</p>
+</blockquote>
+<h5 id="内部类的作用是什么？"><a href="#内部类的作用是什么？" class="headerlink" title="内部类的作用是什么？"></a>内部类的作用是什么？</h5><blockquote>
+<p>内部类提供了更好的封装，除了该外围类，其他类都不能访问。</p>
+</blockquote>
+<h5 id="Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口"><a href="#Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口" class="headerlink" title="Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口"></a>Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口</h5><blockquote>
+<p>可以继承其他类或实现其他接口，在 Java 集合的流式操作中，我们常常这么干</p>
+</blockquote>
+<h5 id="内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制"><a href="#内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制" class="headerlink" title="内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制"></a>内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制</h5><blockquote>
+<p>一个内部类对象可以访问创建它的外部类对象的成员，包括私有成员。</p>
+</blockquote>
+<h4 id="什么是-Java-IO-？"><a href="#什么是-Java-IO-？" class="headerlink" title="什么是 Java IO ？"></a>什么是 Java IO ？</h4><blockquote>
+<p>Java IO 相关的类，在 java.io 包下，具体操作分成面向字节(Byte)和面向字符(Character)两种方式</p>
+</blockquote>
+<h5 id="什么是-Java-序列化？"><a href="#什么是-Java-序列化？" class="headerlink" title="什么是 Java 序列化？"></a>什么是 Java 序列化？</h5><blockquote>
+<p>序列化就是一种用来处理对象流的机制，所谓对象流也就是将对象的内容进行流化。<br>· 可以对流化后的对象进行读写操作，也可将流化后的对象传输于网络之间。<br>· 序列化是为了解决在对对象流进行读写操作时所引发的问题。</p>
+</blockquote>
+<h5 id="如何实现-Java-序列化？"><a href="#如何实现-Java-序列化？" class="headerlink" title="如何实现 Java 序列化？"></a>如何实现 Java 序列化？</h5><blockquote>
+<p>将需要被序列化的类，实现 Serializable 接口，该接口没有需要实现的方法，implements Serializable 只是为了标注该对象是可被序列化的。<br>序列化<br>· 然后，使用一个输出流(如：FileOutputStream)来构造一个 ObjectOutputStream(对象流)对象<br>· 接着，使用 ObjectOutputStream 对象的 #writeObject(Object obj) 方法，就可以将参数为 obj 的对象写出(即保存其状态)。<br>反序列化<br>要恢复的话则用输入流</p>
+</blockquote>
+<h5 id="Java-序列话中，如果有些字段不想进行序列化怎么办？"><a href="#Java-序列话中，如果有些字段不想进行序列化怎么办？" class="headerlink" title="Java 序列话中，如果有些字段不想进行序列化怎么办？"></a>Java 序列话中，如果有些字段不想进行序列化怎么办？</h5><blockquote>
+<p>对于不想进行序列化的变量，使用 transient 关键字修饰。</p>
+</blockquote>
+<h4 id="如何实现对象克隆？"><a href="#如何实现对象克隆？" class="headerlink" title="如何实现对象克隆？"></a>如何实现对象克隆？</h4><blockquote>
+<ol>
+<li>实现 Cloneable 接口，并重写 Object 类中的 #clone() 方法。可以实现浅克隆，也可以实现深克隆。</li>
+<li>实现 Serializable 接口，通过对象的序列化和反序列化实现克隆。可以实现真正的深克隆。</li>
+</ol>
+</blockquote>
+<h5 id="浅克隆"><a href="#浅克隆" class="headerlink" title="浅克隆"></a>浅克隆</h5><blockquote>
+<p>浅度克隆对于要克隆的对象，对于其基本数据类型的属性，复制一份给新产生的对象，对于非基本数据类型的属性，仅仅复制一份引用给新产生的对象，即新产生的对象和原始对象中的非基本数据类型的属性指<br>向的是同一个对象</p>
+</blockquote>
+<h5 id="深克隆"><a href="#深克隆" class="headerlink" title="深克隆"></a>深克隆</h5><blockquote>
+<p>在浅度克隆的基础上，对于要克隆的对象中的非基本数据类型的属性对应的类，也实现克隆，这样对于非基本数据类型的属性，复制的不是一份引用，即新产生的对象和原始对象中的非基本数据类型的属性指向<br>的不是同一个对象</p>
+</blockquote>
+<h5 id="深克隆，浅克隆最大的区别在于新生成的克隆对象中的非基本数据类型是否是一个对象"><a href="#深克隆，浅克隆最大的区别在于新生成的克隆对象中的非基本数据类型是否是一个对象" class="headerlink" title="深克隆，浅克隆最大的区别在于新生成的克隆对象中的非基本数据类型是否是一个对象"></a>深克隆，浅克隆最大的区别在于新生成的克隆对象中的非基本数据类型是否是一个对象</h5></li>
+</ol>
+<h4 id="error-和-exception-有什么区别？CheckedException-和-RuntimeException-有什么区别？"><a href="#error-和-exception-有什么区别？CheckedException-和-RuntimeException-有什么区别？" class="headerlink" title="error 和 exception 有什么区别？CheckedException 和 RuntimeException 有什么区别？"></a>error 和 exception 有什么区别？CheckedException 和 RuntimeException 有什么区别？</h4><blockquote>
+<p>Java 的异常体系，基于共同的祖先 java.lang.Throwable 类</p>
+</blockquote>
+<h5 id="Error（错误）"><a href="#Error（错误）" class="headerlink" title="Error（错误）"></a>Error（错误）</h5><blockquote>
+<p>表示系统级的错误和程序不必处理的异常，是 Java 运行环境中的内部错误或者硬件问题。<br>例如：内存资源不足等。<br>对于这种错误，程序基本无能为力，除了退出运行外别无选择，它是由 Java 虚拟机抛出的。</p>
+</blockquote>
+<h5 id="Exception（异常），"><a href="#Exception（异常），" class="headerlink" title="Exception（异常），"></a>Exception（异常），</h5><blockquote>
+<p>表示需要捕捉或者需要程序进行处理的异常，它处理的是因为程序设计的瑕疵而引起的问题或者在外的输入等引起的一般性问题，是程序必须处理的。Exception 又分为运行时异常，受检查异常。<br>RuntimeException(运行时异常)，表示无法让程序恢复的异常，导致的原因通常是因为执行了错误的操作，建议终止逻辑，因此，编译器不检查这些异常。<br>CheckedException(受检查异常)，是表示程序可以处理的异常，也即表示程序可以修复（由程序自己接受异常并且做出处理），所以称之为受检查异常</p>
+</blockquote>
+<h5 id="异常的使用的注意地方？"><a href="#异常的使用的注意地方？" class="headerlink" title="异常的使用的注意地方？"></a>异常的使用的注意地方？</h5><blockquote>
+<ol>
+<li>不要将异常处理用于正常的控制流（设计良好的 API 不应该强迫它的调用者为了正常的控制流而使用异常）。</li>
+<li>对可以恢复的情况使用受检异常，对编程错误使用运行时异常。</li>
+<li>避免不必要的使用受检异常（可以通过一些状态检测手段来避免异常的发生）。</li>
+<li>优先使用标准的异常。</li>
+<li>每个方法抛出的异常都要有文档。</li>
+<li>保持异常的原子性。</li>
+<li>不要在 catch 中忽略掉捕获到的异常。</li>
+</ol>
+</blockquote>
+<h4 id="throw-与-throws-的区别-？"><a href="#throw-与-throws-的区别-？" class="headerlink" title="throw 与 throws 的区别 ？"></a>throw 与 throws 的区别 ？</h4><blockquote>
+<p>throw ，用于在程序中显式地抛出一个异常。<br>throws ，用于指出在该方法中没有处理的异常。每个方法必须显式指明哪些异常没有处理，以便该方法的调用者可以预防可能发生的异常。最后，多个异常用逗号分隔。</p>
+</blockquote>
+<h4 id="异常处理中-finally-语句块的重要性"><a href="#异常处理中-finally-语句块的重要性" class="headerlink" title="异常处理中 finally 语句块的重要性"></a>异常处理中 finally 语句块的重要性</h4><blockquote>
+<p>不管程序是否发生了异常, finally 语句块都会被执行，甚至当没有catch 声明但抛出了一个异常时, finally 语句块也会被执行。<br>finally 语句块通常用于释放资源, 如 I/O 缓冲区, 数据库连接等等</p>
+</blockquote>
+<h4 id="说说反射的用途及实现？"><a href="#说说反射的用途及实现？" class="headerlink" title="说说反射的用途及实现？"></a>说说反射的用途及实现？</h4><blockquote>
+<p><a href="https://www.cnblogs.com/zhaopei/p/reflection.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaopei/p/reflection.html</a></p>
+</blockquote>
+<h5 id="java-反射机制主要提供了以下功能："><a href="#java-反射机制主要提供了以下功能：" class="headerlink" title="java 反射机制主要提供了以下功能："></a>java 反射机制主要提供了以下功能：</h5><blockquote>
+<ol>
+<li>在运行时构造一个类的对象。</li>
+<li>判断一个类所具有的成员变量和方法。</li>
+<li>调用一个对象的方法。</li>
+<li>生成动态代理。</li>
+</ol>
+</blockquote>
+<h5 id="反射的应用很多，很多框架都有用到："><a href="#反射的应用很多，很多框架都有用到：" class="headerlink" title="反射的应用很多，很多框架都有用到："></a>反射的应用很多，很多框架都有用到：</h5><blockquote>
+<p>Spring 框架的 IoC 基于反射创建对象和设置依赖属性。<br>Spring MVC 的请求调用对应方法，也是通过反射。<br>JDBC 的 Class#forName(String className) 方法，也是使用反射。</p>
+</blockquote>
+<h5 id="反射中，Class-forName-和-ClassLoader-区别？"><a href="#反射中，Class-forName-和-ClassLoader-区别？" class="headerlink" title="反射中，Class.forName 和 ClassLoader 区别？"></a>反射中，Class.forName 和 ClassLoader 区别？</h5><p>这两者，都可用来对类进行加载。差别在于：</p>
+<blockquote>
+<ol>
+<li>Class#forName(…) 方法，除了将类的 .class 文件加载到JVM 中之外，还会对类进行解释，执行类中的 static 块。</li>
+<li>ClassLoader 只干一件事情，就是将 .class 文件加载到 JVM 中，不会执行 static 中的内容，只有在 newInstance 才会去执行 static 块。</li>
+<li>Class#forName(name, initialize, loader) 方法，带参函数也可控制是否加载 static 块，并且只有调用了newInstance 方法采用调用构造函数，创建类的对象。</li>
+</ol>
+</blockquote>
+<h5 id="UnsupportedOperationException-是什么？"><a href="#UnsupportedOperationException-是什么？" class="headerlink" title="UnsupportedOperationException 是什么？"></a>UnsupportedOperationException 是什么？</h5><blockquote>
+<p>UnsupportedOperationException ，是用于表明操作不支持的异常。<br>在 JDK 类中已被大量运用，在集合框架java.util.Collections.UnmodifiableCollection 将会在所有 add 和 remove 操作中抛出这个异常</p>
+</blockquote>
+<h4 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h4><blockquote>
+<p>Java注解又称为标注，是Java从1.5开始支持加入源码的特殊语法元数据；Java中的类、方法、变量、参数、包都可以被注解。</p>
+</blockquote>
+<h4 id="什么时候用断言（assert）？"><a href="#什么时候用断言（assert）？" class="headerlink" title="什么时候用断言（assert）？"></a>什么时候用断言（assert）？</h4><blockquote>
+<p>断言，在软件开发中是一种常用的调试方式，很多开发语言中都支持这种机制。</p>
+</blockquote>
+<blockquote>
+<p>一般来说，断言用于保证程序最基本、关键的正确性。断言检查通常在开发和测试时开启。为了保证程序的执行效率，在软件发布后断言检查通常是关闭的。<br>断言是一个包含布尔表达式的语句，在执行这个语句时假定该表达式为true；如果表达式的值为 false ，那么系统会报告一个AssertionError 错误。断言的使用如下面的代码所示：</p>
+</blockquote>
+<blockquote>
+<p>assert(a &gt; 0); // throws an AssertionError if a &lt;= 0<br>断言可以有两种形式：<br>assert Expression1; 。<br>assert Expression1 : Expression2; 。<br>Expression1 应该总是产生一个布尔值。<br>Expression2 可以是得出一个值的任意表达式；这个值用于生成显示更多调试信息的字符串消息。<br>要在运行时启用断言，可以在启动 JVM 时使用 -enableassertions 或者 -ea 标记。要在运行时选择禁用断言，可以在启动 JVM 时使用 -da 或者 -disableassertions 标记。要在系统类中<br>启用或禁用断言，可使用 -esa 或 -dsa 标记。还可以在包的基础上启用或者禁用断言。<br>当然，实际场景下，我们会在 Spring 的源码中看到，它自己封装了 Assert 类，实现更方便的断言功能，并且，在生产环境下也启用。<br>另外，在单元测试中，也会使用自己封装的断言类，判断执行结果的正确与错误。</p>
+</blockquote>
+<h4 id="Java-对象创建的方式？"><a href="#Java-对象创建的方式？" class="headerlink" title="Java 对象创建的方式？"></a>Java 对象创建的方式？</h4><ol>
+<li>使用 new 关键字创建对象。</li>
+<li>使用 Class 类的 newInstance 方法(反射机制)。</li>
+<li>使用 Constructor 类的 newInstance 方法(反射机制)。</li>
+<li>使用 clone 方法创建对象。</li>
+<li>使用(反)序列化机制创建对象<h3 id="Java基础面试网址集合"><a href="#Java基础面试网址集合" class="headerlink" title="Java基础面试网址集合"></a>Java基础面试网址集合</h3></li>
+<li>(极客学院)[<a href="https://wiki.jikexueyuan.com/project/java-interview-bible/basic-concept.html]" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/java-interview-bible/basic-concept.html]</a></li>
+<li>(32道常见的Java基础面试题)[<a href="https://www.ituring.com.cn/article/507089]" target="_blank" rel="noopener">https://www.ituring.com.cn/article/507089]</a></li>
+<li>(Java基础知识)[<a href="https://github.com/Snailclimb/JavaGuide/blob/3dc5234d3a77d134e4768b17cc864c4cc1030e41/Java%E7%9B%B8%E5%85%B3/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md]" target="_blank" rel="noopener">https://github.com/Snailclimb/JavaGuide/blob/3dc5234d3a77d134e4768b17cc864c4cc1030e41/Java%E7%9B%B8%E5%85%B3/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md]</a></li>
+<li>()[]</li>
+<li>()[]</li>
+</ol>
 </the>
       
     </div>
