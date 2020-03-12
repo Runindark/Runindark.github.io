@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    《天净沙·我·mysql篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-我为阿里-mysql" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《天净沙·我·mysql篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/10/我为阿里-mysql/" class="article-date">
+  <time datetime="2020-03-10T03:03:04.084Z" itemprop="datePublished">2020-03-10</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="Mysql事务的特性-ACID"><a href="#Mysql事务的特性-ACID" class="headerlink" title="Mysql事务的特性 - ACID"></a>Mysql事务的特性 - ACID</h2><h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><blockquote>
+<p>和线程是一样的，意思就是要么成功，要么失败 =》 事务要么执行成功，要么执行失败</p>
+</blockquote>
+<h3 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h3><blockquote>
+<p>从一个一致性到另一个一致性是传递的，就是一个业务流程，一个环节不是一致性，下一个环节就会失败</p>
+</blockquote>
+<h3 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h3><blockquote>
+<p>数据库事务和事务之间是隔离的，也就是说事务A看不到事务B，相应的事务B也不晓得事务A干啥</p>
+</blockquote>
+<h3 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h3><blockquote>
+<p>也就是说，只要事务存入数据库的就是永久存在的，哪怕数据库出异常了，数据也还在</p>
+</blockquote>
+<h2 id="Mysql事务的出现的问题"><a href="#Mysql事务的出现的问题" class="headerlink" title="Mysql事务的出现的问题"></a>Mysql事务的出现的问题</h2><h3 id="事务会发生的意外"><a href="#事务会发生的意外" class="headerlink" title="事务会发生的意外"></a>事务会发生的意外</h3><h4 id="脏读（Select-没有规矩）"><a href="#脏读（Select-没有规矩）" class="headerlink" title="脏读（Select 没有规矩）"></a>脏读（Select 没有规矩）</h4><blockquote>
+<p>事务A插入了一个数据，但是人家事务A没有提交。结果事务B他没有规矩，他查了一下表，结果发现了事务A插入的数据。这就是脏读</p>
+</blockquote>
+<h4 id="不可重复读（Update-没有规矩）"><a href="#不可重复读（Update-没有规矩）" class="headerlink" title="不可重复读（Update 没有规矩）"></a>不可重复读（Update 没有规矩）</h4><blockquote>
+<p>事务A查询一条数据是A，但是事务b他没有规矩，他更新了数据A变成了B，当事务A再查这条数据的时候，发现变成了B，这就是不可重复读</p>
+</blockquote>
+<h4 id="幻读-（Insert-Delete-没有规矩）"><a href="#幻读-（Insert-Delete-没有规矩）" class="headerlink" title="幻读 （Insert Delete 没有规矩）"></a>幻读 （Insert Delete 没有规矩）</h4><blockquote>
+<p>事务A差某表，查出A条数据，事务B这时候删了几条数据，事务A此刻又去读了一下，发现数据少了，这就是不可重复读。</p>
+</blockquote>
+<h3 id="数据库隔离级别"><a href="#数据库隔离级别" class="headerlink" title="数据库隔离级别"></a>数据库隔离级别</h3><h4 id="未提交读"><a href="#未提交读" class="headerlink" title="未提交读"></a>未提交读</h4><blockquote>
+<p>事务之间可以读取到事务未提交的数据 （完美的符合了上面出现的所有问题）</p>
+</blockquote>
+<h4 id="提交读"><a href="#提交读" class="headerlink" title="提交读"></a>提交读</h4><blockquote>
+<p>顾名思义就是可以读取到已经提交的数据，引申一下，里面涉及到的一种“快照读”，也就是读历史确定的版本</p>
+</blockquote>
+<h4 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h4><blockquote>
+<p>也就是悲观锁读，当前的一个事务如果读取到该数据，那么给当前读取上锁，其它事务将无法再获取该数据，但是这个并不能限制事务继续插入数据，所以就会<br>引起幻读</p>
+</blockquote>
+<h4 id="串行化"><a href="#串行化" class="headerlink" title="串行化"></a>串行化</h4><blockquote>
+<p>顾名思义就是一个一个慢慢来，一次只能来一个，活该这么慢</p>
+</blockquote>
+<h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><blockquote>
+<p>Mysql所默认的一种存储引擎，满足ACID的事务要求，他使用了“一次性非锁定性读”（也就是给数据读取等添加版本，这个里面有些和上述的快照读概念差不<br>多）</p>
+</blockquote>
+<h3 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h3><blockquote>
+<p>依靠逗号来分割数据的一种存储方式</p>
+</blockquote>
+<h4 id="InnoDB的一些优点缺点"><a href="#InnoDB的一些优点缺点" class="headerlink" title="InnoDB的一些优点缺点"></a>InnoDB的一些优点缺点</h4><ol>
+<li>行锁粒度，粒度更小，更适合并发场景</li>
+<li>支持事务，有外键</li>
+<li>缺点： 缺点也很明显不支持全文搜索，可以用es搜索</li>
+</ol>
+<h2 id="Mysql数据库索引"><a href="#Mysql数据库索引" class="headerlink" title="Mysql数据库索引"></a>Mysql数据库索引</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><blockquote>
+<p>可以理解成一种排序后的数据结构，通过节点存储索引，之后在查到找相应的结果，通过数据结构加速，比如用二叉树，那么就可以通过节点左右比较减少<br>遍历查找的次数，当然了如果1 2 3 4 5 6 就会变成链表，如果是红黑树则解决了这个问题，但是会导致深度过深，因此使用B+树，降低深度，添加广度</p>
+</blockquote>
+<h3 id="常用的功能索引"><a href="#常用的功能索引" class="headerlink" title="常用的功能索引"></a>常用的功能索引</h3><h4 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h4><blockquote>
+<p>就是最基本的添加一个索引，用于加速查找</p>
+</blockquote>
+<h4 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h4><blockquote>
+<p>列值必须唯一，可以为空值，加速查找</p>
+</blockquote>
+<h4 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h4><blockquote>
+<p>利用主键作为索引，而且不可以为空，加速查找</p>
+</blockquote>
+<h4 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h4><blockquote>
+<p>就是查查找的数据也是索引值</p>
+</blockquote>
+<h4 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h4><blockquote>
+<p>几列合并成一个索引，但是遵循最左原则</p>
+</blockquote>
+<h4 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h4><blockquote>
+<p>全文分词查找，innoDB是做不到的，需要第三方，比如es等</p>
+</blockquote>
+<h3 id="使用索引存在的问题"><a href="#使用索引存在的问题" class="headerlink" title="使用索引存在的问题"></a>使用索引存在的问题</h3><blockquote>
+<p>使用索引的时候不可以随便使用，过度的使用索引会导致消耗大量的资源，热点核心业务的数据应该多使用索引<br>索引会浪费磁盘空间，不要创建非必要的索引,插入、更新、删除需要维护索引，带来额外的开销,索引过多，修改表的时候重构索引性能差<br>但是索引使用的时候可以减少查询次数，提高效率</p>
+</blockquote>
+<h2 id="Sql-的查询顺序"><a href="#Sql-的查询顺序" class="headerlink" title="Sql 的查询顺序"></a>Sql 的查询顺序</h2><ol>
+<li>from 从哪个表查询</li>
+<li>where 初步过滤条件</li>
+<li>group by 过滤后进行分组[重点]</li>
+<li>having 对分组后的数据进行二次过滤[重点]</li>
+<li>select 查看哪些结果字段</li>
+<li>order by 按照怎样的顺序进行排序返回[重点]</li>
+</ol>
+</the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/03/10/我为阿里-mysql/" data-id="ck7ogqqqu0000q0v1kczl95hk" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2020/03/11/我为阿里-Jvm/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            《天净沙·我·jvm篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/09/我为阿里/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">《天净沙·我·并发编程篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
