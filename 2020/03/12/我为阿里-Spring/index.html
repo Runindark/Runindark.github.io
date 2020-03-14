@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    《天净沙·我·Spring》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-我为阿里-Spring" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《天净沙·我·Spring》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/12/我为阿里-Spring/" class="article-date">
+  <time datetime="2020-03-12T15:02:23.758Z" itemprop="datePublished">2020-03-12</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br>[文章都是搬运艿艿的]<br>[<a href="http://svip.iocoder.cn/Java/Core/Interview/]" target="_blank" rel="noopener">http://svip.iocoder.cn/Java/Core/Interview/]</a></excerpt></p>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="Spring-核心组件-（8大模块）"><a href="#Spring-核心组件-（8大模块）" class="headerlink" title="Spring 核心组件 （8大模块）"></a>Spring 核心组件 （8大模块）</h2><h3 id="Spring-Core"><a href="#Spring-Core" class="headerlink" title="Spring Core"></a>Spring Core</h3><blockquote>
+<p>核心容易，主要是提供Ioc的依赖注入功能</p>
+</blockquote>
+<h3 id="Spring-Aspects"><a href="#Spring-Aspects" class="headerlink" title="Spring Aspects"></a>Spring Aspects</h3><blockquote>
+<p>为了让Spring可以更好的融合AspectJ，实际上也是切面</p>
+</blockquote>
+<h3 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h3><blockquote>
+<p>提供了面向切面编程的实现</p>
+</blockquote>
+<h3 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h3><blockquote>
+<p>数据库连接驱动</p>
+</blockquote>
+<h3 id="Spring-JMS"><a href="#Spring-JMS" class="headerlink" title="Spring JMS"></a>Spring JMS</h3><blockquote>
+<p>Java 消息服务（ Java Message Service  ， JMS ）</p>
+</blockquote>
+<h3 id="Spring-ORM"><a href="#Spring-ORM" class="headerlink" title="Spring ORM"></a>Spring ORM</h3><blockquote>
+<p>ORM的全称是Object Relational Mapping，即对象关系映射 ==&gt; 为Mybatis，Hibernate提供支持</p>
+</blockquote>
+<h3 id="Spring-Web"><a href="#Spring-Web" class="headerlink" title="Spring Web"></a>Spring Web</h3><blockquote>
+<p>为Web应用提供支持</p>
+</blockquote>
+<h3 id="Spring-Test"><a href="#Spring-Test" class="headerlink" title="Spring Test"></a>Spring Test</h3><blockquote>
+<p>顾名思义就是为了测试 Junit等</p>
+</blockquote>
+<h2 id="RestController-vs-Controller"><a href="#RestController-vs-Controller" class="headerlink" title="@RestController  vs @Controller"></a>@RestController  vs @Controller</h2><h3 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h3><blockquote>
+<p>如果是@Controler，Return的值将直接指向一个页面，或者用转发和重定向的方式<br>如果加上@ResponseBody 那么就是@Controller</p>
+</blockquote>
+<h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><blockquote>
+<p>也就是 前后分离 模式下最常用的解决方式</p>
+</blockquote>
+<h3 id="Request-Response-的过程"><a href="#Request-Response-的过程" class="headerlink" title="Request / Response 的过程"></a>Request / Response 的过程</h3><blockquote>
+<p>DispatcherServlet -&gt; Handler Mapping -&gt; Controller/RestController<br>如果是 @Controller则是继续到View层 ，如果是@RestController 直接返回Client</p>
+</blockquote>
+<h2 id="谈谈自己对IOC的理解"><a href="#谈谈自己对IOC的理解" class="headerlink" title="谈谈自己对IOC的理解"></a>谈谈自己对IOC的理解</h2><blockquote>
+<p>谈到Ioc就是一种托付的关系，最传统的应用所创建的对象等全部都托付给系统本身之间的<br>依赖,无论耦合度，都是在不断的变大，Ioc控制反转，也就是责任托付从系统本身变成了<br>由Ioc容器管理，我们只需要明白自己需要什么，不用去想怎么管理怎么创建，如果需要的话可以直接使用xml，注解等方式直接配置引用</p>
+</blockquote>
+<h2 id="Ioc初始化机制"><a href="#Ioc初始化机制" class="headerlink" title="Ioc初始化机制"></a>Ioc初始化机制</h2><blockquote>
+<p>XML &gt;读取&gt; Resource &gt;解析&gt; BeanDefinition &gt;注册&gt; BeanFactory</p>
+</blockquote>
+<blockquote>
+<p>xml 是程序员的配置 ，并根据反射机制可以通过BeanDefinition映射，在BeanFactory中创建出对象</p>
+</blockquote>
+<h2 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP 面向切面编程"></a>AOP 面向切面编程</h2><blockquote>
+<p>Aop就是一种想要把自己构造出来的方法切入到某个已经写好的类指定的方法之中</p>
+</blockquote>
+<h3 id="1-通知（Advice）"><a href="#1-通知（Advice）" class="headerlink" title="1.通知（Advice）"></a>1.通知（Advice）</h3><blockquote>
+<p>自己需要在某类的指定方法上实现的功能，日志，事务，安全等功能</p>
+</blockquote>
+<h3 id="2-连接点（JoinPoint）"><a href="#2-连接点（JoinPoint）" class="headerlink" title="2.连接点（JoinPoint）"></a>2.连接点（JoinPoint）</h3><blockquote>
+<p>就是Spring中可以插入通知的地方</p>
+</blockquote>
+<h3 id="3-切入点（Pointcut）"><a href="#3-切入点（Pointcut）" class="headerlink" title="3.切入点（Pointcut）"></a>3.切入点（Pointcut）</h3><blockquote>
+<p>就是在需要插入通知的方法重新实现一下，可以说是作为一个标记</p>
+</blockquote>
+<h3 id="4-切面（Aspect）"><a href="#4-切面（Aspect）" class="headerlink" title="4.切面（Aspect）"></a>4.切面（Aspect）</h3><blockquote>
+<p>就是切入点和通知放在一起，同时构成的一个类的某个位置</p>
+</blockquote>
+<h3 id="5-引入（introduction）"><a href="#5-引入（introduction）" class="headerlink" title="5.引入（introduction）"></a>5.引入（introduction）</h3><blockquote>
+<p>就是把切面的功能正式融入到类中使用</p>
+</blockquote>
+<h3 id="6-目标（target）"><a href="#6-目标（target）" class="headerlink" title="6.目标（target）"></a>6.目标（target）</h3><blockquote>
+<p>别切入的类</p>
+</blockquote>
+<h3 id="7-代理-proxy"><a href="#7-代理-proxy" class="headerlink" title="7.代理(proxy)"></a>7.代理(proxy)</h3><blockquote>
+<p>Java的动态代理机制　　</p>
+</blockquote>
+<h3 id="8-织入-weaving"><a href="#8-织入-weaving" class="headerlink" title="8.织入(weaving)"></a>8.织入(weaving)</h3><blockquote>
+<p>引入到类中后，开始正式的调用</p>
+</blockquote>
+<h3 id="串读理解"><a href="#串读理解" class="headerlink" title="串读理解"></a>串读理解</h3><h4 id="Java的动态代理机制"><a href="#Java的动态代理机制" class="headerlink" title="Java的动态代理机制"></a>Java的动态代理机制</h4><h5 id="Proxy-InvocationHandler"><a href="#Proxy-InvocationHandler" class="headerlink" title="Proxy + InvocationHandler"></a>Proxy + InvocationHandler</h5><blockquote>
+<p>让目标类implemet InvocationHandler<br>再调用的时候，利用Proxy的静态方法newProxyInstance() ，通过反射机制，调用目标类的方法等</p>
+</blockquote>
+<h5 id="CGLIB"><a href="#CGLIB" class="headerlink" title="CGLIB"></a>CGLIB</h5><blockquote>
+<p>生成目标类的一个子类</p>
+</blockquote>
+<h4 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h4><blockquote>
+<p>在理解切面之后，深入到方法本身，如何去插入一个另外写好的类，就是在程序运行时<br>利用动态代理的特点，在调用某个方法的时候，再调用proxy将另一个方法调用进去，<br>Before/After等，所以与其说是切入了方法，不如说是切入到了动态代理的执行过程中</p>
+</blockquote>
+<h2 id="SpringBean"><a href="#SpringBean" class="headerlink" title="SpringBean"></a>SpringBean</h2><h3 id="SpringBean-的作用域"><a href="#SpringBean-的作用域" class="headerlink" title="SpringBean 的作用域"></a>SpringBean 的作用域</h3><blockquote>
+<p>Request :每次HTTP请求都会创建一个新的Bean<br>Session :同一个HTTP Session共享一个Bean，不同Session使用不同Bean<br>singleton : 唯一的bean实例<br>prototype : 每次请求都会创建一个新的bean实例</p>
+</blockquote>
+<blockquote>
+<p>SpringBean没有解决线程安全问题<br>可以用ThreadLocal成员变量</p>
+</blockquote>
+<h3 id="Bean-和-Component"><a href="#Bean-和-Component" class="headerlink" title="@Bean 和  @Component"></a>@Bean 和  @Component</h3><h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><blockquote>
+<p>修饰方法级  可以用Autowired装配</p>
+</blockquote>
+<h4 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h4><blockquote>
+<p>用于修饰类级别 可以用@CompontScan装配</p>
+</blockquote>
+<h2 id="SpringMVC-工作流程"><a href="#SpringMVC-工作流程" class="headerlink" title="SpringMVC 工作流程"></a>SpringMVC 工作流程</h2><ol>
+<li>client 向 DispatcherServlet 发送请求</li>
+<li>DispatcherServlet根据请求信息调用HandlerMapping ，解析请求到handle</li>
+<li>解析到handle以后开始用HandlerAdapter适配器处理</li>
+<li>HandlerAdapter会根据Haddler调用真正的处理器处理请求和逻辑</li>
+<li>之后返回一个ModelAndView对象</li>
+<li>ViewResolver会把逻辑View查询具体的视图</li>
+<li>DispatcherServlet会把返回的Model给view 或者 Client</li>
+</ol>
+<h2 id="Spring-事务"><a href="#Spring-事务" class="headerlink" title="Spring 事务"></a>Spring 事务</h2><ol>
+<li>编程式事务：在代码中用</li>
+<li>声明式事务（xml，注解）：在配置文件中用</li>
+</ol>
+<blockquote>
+<p>隔离等问题跟数据库一致</p>
+</blockquote>
+</the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/03/12/我为阿里-Spring/" data-id="ck7r2ezb40001k4v1jlgzkn8u" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2020/03/13/我为阿里-网络协议/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            《天净沙·我·网络协议篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/11/我为阿里-Jvm/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">《天净沙·我·jvm篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

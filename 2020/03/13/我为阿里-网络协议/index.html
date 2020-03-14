@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    《天净沙·我·网络协议篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-我为阿里-网络协议" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《天净沙·我·网络协议篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/13/我为阿里-网络协议/" class="article-date">
+  <time datetime="2020-03-13T03:52:12.673Z" itemprop="datePublished">2020-03-13</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="五层协议体系结构"><a href="#五层协议体系结构" class="headerlink" title="五层协议体系结构"></a>五层协议体系结构</h2><ol start="5">
+<li>应用层<blockquote>
+<p>顾名思义就是上层的网络应用 域名，Http协议等</p>
+</blockquote>
+</li>
+<li>运输层<blockquote>
+<p>两台主机之间提供统用的数据传输服务</p>
+</blockquote>
+</li>
+<li>网络层<blockquote>
+<p>选择合适的路由进行数据交换</p>
+</blockquote>
+</li>
+<li>数据链路层<blockquote>
+<p>一段一段的将数据发送</p>
+</blockquote>
+</li>
+<li>物理层<blockquote>
+<p>物理主机之间的比特流交换</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="三次握手四次挥手"><a href="#三次握手四次挥手" class="headerlink" title="三次握手四次挥手"></a>三次握手四次挥手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p><img src="https://upload-images.jianshu.io/upload_images/7368936-abf0a9b7fc6c8eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/470/format/webp" alt=""></p>
+<ol>
+<li>第一次握手： 客户端（client）向接收端（server）发送标志SYN/ACK，但是 <strong>客户端什么都不知道（接收端直到了自己接收正常，也知道客户端发送正常）</strong> </li>
+<li>第二次握手： 接收端（server）向客户端（client）发送标志SYN/ACK数据包，现在<strong>客户端知道自己接收正常，自己发送正常，但是服务端不知道自己是不是发送正常</strong></li>
+<li>第三次握手， 客户端（client）向接收端（server）发送标志ACK数据包，现在<strong>客户端知道自己发送接收正常，服务端也直到自己发送接收正常</strong></li>
+</ol>
+<blockquote>
+<p>总结：三次握手的原因就是因为数据传输时单向的，对方接收后，发送方属于不知情着，所以才有了三次握手</p>
+</blockquote>
+<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p><img src="https://img-blog.csdn.net/20170606084851272?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXpjc3U=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<ol>
+<li>客户端向接收端发送Fin请求，告诉接收端说我这边没什么要发送的了</li>
+<li>接收端向客户端发送一个ACK，告诉客户端说我知道你这边没啥要发送的了</li>
+<li>接收端向客户端发送一个Fin，也告诉客户端说我也没什么要发送的了</li>
+<li>客户端也发送一个ACK给接收端，确认知道了接收端没什么要发送的了</li>
+</ol>
+<h2 id="TCP-VS-UDP"><a href="#TCP-VS-UDP" class="headerlink" title="TCP VS UDP"></a>TCP VS UDP</h2><blockquote>
+<p>TCP保证可靠的连接，UDP只负责交付数据，因此UDP占用的资源少，发送的数据多，TCP占用资源多，发送的数据较少，但是保证了数据传输的绝对稳定</p>
+</blockquote>
+<h3 id="TCP为啥稳定"><a href="#TCP为啥稳定" class="headerlink" title="TCP为啥稳定"></a>TCP为啥稳定</h3><ul>
+<li>TCP会把数据自动分成合适有序有编号的数据包</li>
+<li>TCP发送的时候会对头部和数据进行校验</li>
+<li>TCP会有流量控制，会设立缓冲区，每次发送的时候也是从缓冲区中读取发送</li>
+<li>发送超时会重新进行发送</li>
+</ul>
+</the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/03/13/我为阿里-网络协议/" data-id="ck7r2eza10000k4v1r4eay53b" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/03/12/我为阿里-Spring/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">《天净沙·我·Spring》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
