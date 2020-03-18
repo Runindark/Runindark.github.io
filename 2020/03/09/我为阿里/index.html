@@ -135,7 +135,7 @@
 </blockquote>
 <h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><h3 id="说说volatile的与sychronize的区别"><a href="#说说volatile的与sychronize的区别" class="headerlink" title="说说volatile的与sychronize的区别"></a>说说volatile的与sychronize的区别</h3><ol>
 <li>volatile 不是原子性的，sychronize是原子性的</li>
-<li>volatile和sychronize都保证了原子性</li>
+<li>volatile和sychronize都保证了可见性</li>
 <li>volatile是禁止了指令重排的</li>
 <li>不能写入 不能修饰写⼊操作依赖当前值的变量，⽐如num++、num=num+1</li>
 </ol>
@@ -259,7 +259,7 @@
 <p>简单来说就是线程在操作过程中，有其它线程将该变量更改后，又有另一个线程把他改回来，到最开始线程操作的时候，发现该值没有变化，则该线程操作成<br>功。加一个版本号可以解决问题，每次修改时都要查看版本号</p>
 </blockquote>
 <h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><h3 id="什么是AQS"><a href="#什么是AQS" class="headerlink" title="什么是AQS"></a>什么是AQS</h3><blockquote>
-<p>就是 java.util.concurrent (juc) 的一个工具包 全称是 AbstractQueuedSynchronizer  （抽象同步队列）<br>其中核心就是 一个int变量（用于表示同步状态），一个state（计数器），一个线程标记（谁加锁），一个阻塞队列（用于存储为拿到锁阻塞中的线程）</p>
+<p>就是 java.util.concurrent (juc) 的一个工具包 全称是 AbstractQueuedSynchronizer  （抽象同步队列）<br>其中核心就是 一个int变量（用于表示同步状态），一个state（计数器），一个线程标记（谁加锁），一个阻塞队列（用于存储未拿到锁阻塞中的线程）</p>
 </blockquote>
 <h3 id="部分核心方法"><a href="#部分核心方法" class="headerlink" title="部分核心方法"></a>部分核心方法</h3><h3 id="acquire-int-arg-源码讲解，好⽐加锁lock操作"><a href="#acquire-int-arg-源码讲解，好⽐加锁lock操作" class="headerlink" title="acquire(int arg) 源码讲解，好⽐加锁lock操作"></a>acquire(int arg) 源码讲解，好⽐加锁lock操作</h3><ol>
 <li>tryAcquire()尝试直接去获取资源，如果成功则直接返回,AQS⾥⾯未实现但没有定义成<br>abstract，因为独占模式下只⽤实现tryAcquire-tryRelease，⽽共享模式下只⽤实现<br>tryAcquireShared-tryReleaseShared，类似设计模式⾥⾯的适配器模式</li>
