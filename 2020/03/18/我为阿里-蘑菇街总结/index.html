@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    《天净沙·我·蘑菇街总结》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-我为阿里-蘑菇街总结" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《天净沙·我·蘑菇街总结》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/18/我为阿里-蘑菇街总结/" class="article-date">
+  <time datetime="2020-03-18T14:23:17.382Z" itemprop="datePublished">2020-03-18</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>2020-03-18 蘑菇街一面 是凉凉了 但是很高兴的是面试官真的很耐心 自己也发现了很多的问题和不足<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><h4 id="动态代理的两种方法"><a href="#动态代理的两种方法" class="headerlink" title="动态代理的两种方法"></a>动态代理的两种方法</h4><h5 id="Proxy-InvocationHandler"><a href="#Proxy-InvocationHandler" class="headerlink" title="Proxy + InvocationHandler"></a>Proxy + InvocationHandler</h5><p>被代理对象接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">(User user)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>被代理类接口实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"add user into database."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        user.setId(id);</span><br><span class="line">        System.out.println(<span class="string">"getUser from database."</span>);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代理（中间）类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyUtil</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object target;    <span class="comment">// 被代理的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"do sth before...."</span>);</span><br><span class="line">        Object result =  method.invoke(target, args);</span><br><span class="line">        System.out.println(<span class="string">"do sth after...."</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    ProxyUtil(Object target)&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getTarget</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> target;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTarget</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Object proxyedObject = <span class="keyword">new</span> UserServiceImpl();    <span class="comment">// 被代理的对象</span></span><br><span class="line">        ProxyUtil proxyUtils = <span class="keyword">new</span> ProxyUtil(proxyedObject);</span><br><span class="line">        <span class="comment">// 生成代理对象，对被代理对象的这些接口进行代理：UserServiceImpl.class.getInterfaces()</span></span><br><span class="line">        UserService proxyObject = (UserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), </span><br><span class="line">                    UserServiceImpl.class.getInterfaces(), proxyUtils);</span><br><span class="line">        proxyObject.getUser(<span class="number">1</span>);</span><br><span class="line">        proxyObject.addUser(<span class="keyword">new</span> User());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>核心则在于被代理的对象必须要有含有自己方法的接口，才可以使用Proxy+InvocationHandler，同时，代理类中主要是通过调用被重写的invoke（）方法。</p>
+</blockquote>
+<h5 id="CGlib"><a href="#CGlib" class="headerlink" title="CGlib"></a>CGlib</h5><p>Cglib代理的实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CGProxy</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object target;    <span class="comment">// 被代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CGProxy</span><span class="params">(Object target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object arg0, Method arg1, Object[] arg2, MethodProxy proxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"do sth before...."</span>);</span><br><span class="line">        Object result = proxy.invokeSuper(arg0, arg2);</span><br><span class="line">        System.out.println(<span class="string">"do sth after...."</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getProxyObject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Enhancer enhancer = <span class="keyword">new</span> Enhancer();</span><br><span class="line">        enhancer.setSuperclass(<span class="keyword">this</span>.target.getClass());    <span class="comment">// 设置父类</span></span><br><span class="line">        <span class="comment">// 设置回调</span></span><br><span class="line">        enhancer.setCallback(<span class="keyword">this</span>);    <span class="comment">// 在调用父类方法时，回调 this.intercept()</span></span><br><span class="line">        <span class="comment">// 创建代理对象</span></span><br><span class="line">        <span class="keyword">return</span> enhancer.create();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CGProxyTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Object proxyedObject = <span class="keyword">new</span> UserServiceImpl();    <span class="comment">// 被代理的对象</span></span><br><span class="line">        CGProxy cgProxy = <span class="keyword">new</span> CGProxy(proxyedObject);</span><br><span class="line">        UserService proxyObject = (UserService) cgProxy.getProxyObject();</span><br><span class="line">        proxyObject.getUser(<span class="number">1</span>);</span><br><span class="line">        proxyObject.addUser(<span class="keyword">new</span> User());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>与Proxy+InvocationHandler不同，Cglib是利用enhancer.create创造了一个代理对象，而这个大力对象的父类就是被代理类，利用enhancer.setSuperclass()指定，同时利用enhancer.setCallback()回调被重写的intercept，完成对方法的包裹</p>
+</blockquote>
+<h2 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h2><h3 id="聚合索引-和-非聚合索引"><a href="#聚合索引-和-非聚合索引" class="headerlink" title="聚合索引 和 非聚合索引"></a>聚合索引 和 非聚合索引</h3><blockquote>
+<p>聚合索引是 数据行的物理顺序与列值（一般是主键的那一列）的逻辑顺序相同，一个表中只能拥有一个聚集索引。<br>非聚合索引是 该索引中索引的逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以拥有多个非聚集索引<br>言外之意，索引是有序的，如果存储数据和索引一样有序就是聚合索引，非聚合索引就是数据不是和索引本身一样有序</p>
+</blockquote>
+<h3 id="聚簇索引和非聚簇索引"><a href="#聚簇索引和非聚簇索引" class="headerlink" title="聚簇索引和非聚簇索引"></a>聚簇索引和非聚簇索引</h3><blockquote>
+<p>数据和索引放在一起就是聚簇索引<br>地址和索引在一起，数据是通过地址再关联在一起是非聚簇索引</p>
+</blockquote>
+<h3 id="主索引，辅助索引"><a href="#主索引，辅助索引" class="headerlink" title="主索引，辅助索引"></a>主索引，辅助索引</h3><h3 id="聚合索引状态下"><a href="#聚合索引状态下" class="headerlink" title="聚合索引状态下"></a>聚合索引状态下</h3><blockquote>
+<p>就是根据主键值建立的索引就是主索引<br>辅助索引又叫二级索引，他的索引存主键的值</p>
+</blockquote>
+<h3 id="非聚合索引状态下"><a href="#非聚合索引状态下" class="headerlink" title="非聚合索引状态下"></a>非聚合索引状态下</h3><blockquote>
+<p>非聚簇索引的主索引和辅助索引的叶子节点的data都是存储的数据的物理地址，也就是说索引和数据并不是存储在一起的，数据的顺序和索引的顺序并没有任何关系，也就是索引顺序与数据物理排列顺序无关。</p>
+</blockquote>
+<h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><h4 id="插入缓存"><a href="#插入缓存" class="headerlink" title="插入缓存"></a>插入缓存</h4><ol>
+<li>正常情况下正常的插入速度很快</li>
+<li>但是如果使用UUID的话，需要离散的先访问非聚集索引索引页，判断非索引也是否在缓冲池中，若在，则直接插入，若没在则放入Insert Buffer中，在Insert Buffer 中合并后插入到索引页，提高了插入性能<h3 id="索引失效问题"><a href="#索引失效问题" class="headerlink" title="索引失效问题"></a>索引失效问题</h3></li>
+</ol>
+<h4 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h4><blockquote>
+<p>如果组合索引是abc那么用where a或者where a，b 或者where abc都可以，但是如果用 where b这样子的跳跃会导致索引失效</p>
+</blockquote>
+<h4 id="前导模糊系列"><a href="#前导模糊系列" class="headerlink" title="前导模糊系列"></a>前导模糊系列</h4><blockquote>
+<p>例：(like ‘%XX’或者like ‘%XX%’)</p>
+</blockquote>
+<h4 id="or失效"><a href="#or失效" class="headerlink" title="or失效"></a>or失效</h4><blockquote>
+<p>使用 or 的时候会导致索引失效，可以改用union</p>
+</blockquote>
+<h4 id="判断null"><a href="#判断null" class="headerlink" title="判断null"></a>判断null</h4><blockquote>
+<p>索引是b+树的排序结构，如果是null的话，导致节点不知道应该放在哪里</p>
+</blockquote>
+<h4 id="where-子句中使用-或-lt-gt-操作符"><a href="#where-子句中使用-或-lt-gt-操作符" class="headerlink" title="where 子句中使用!=或&lt;&gt;操作符"></a>where 子句中使用!=或&lt;&gt;操作符</h4><h4 id="in-和-not-in-也要慎用，"><a href="#in-和-not-in-也要慎用，" class="headerlink" title="in 和 not in 也要慎用，"></a>in 和 not in 也要慎用，</h4><blockquote>
+<p>select id from t where num in(1,2,3)</p>
+</blockquote>
+<h3 id="三范式"><a href="#三范式" class="headerlink" title="三范式"></a>三范式</h3><p><a href="https://blog.csdn.net/qq_43079376/article/details/93647335" target="_blank" rel="noopener">原文博客</a></p>
+<h4 id="属性原子性"><a href="#属性原子性" class="headerlink" title="属性原子性"></a>属性原子性</h4><h4 id="行可以唯一识别性"><a href="#行可以唯一识别性" class="headerlink" title="行可以唯一识别性"></a>行可以唯一识别性</h4><h4 id="数据信息不冲突"><a href="#数据信息不冲突" class="headerlink" title="数据信息不冲突"></a>数据信息不冲突</h4><h3 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h3><ol>
+<li>非主属性依赖主属性</li>
+<li>主属性也要依赖其它的非主属性</li>
+<li>非主属性不能被依赖<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="HashMap根据hashcode查找到对应位置的方法"><a href="#HashMap根据hashcode查找到对应位置的方法" class="headerlink" title="HashMap根据hashcode查找到对应位置的方法"></a>HashMap根据hashcode查找到对应位置的方法</h3><a href="https://blog.csdn.net/v123411739/article/details/78996181" target="_blank" rel="noopener">原帖地址</a></li>
+<li>拿到 key 的 hashCode 值</li>
+<li>将 hashCode 的高位参与运算，重新计算 hash 值</li>
+<li>将计算出来的 hash 值与 (table.length - 1) 进行 &amp; 运算<h3 id="原因解释如下"><a href="#原因解释如下" class="headerlink" title="原因解释如下"></a>原因解释如下</h3><blockquote>
+<p>首先拿到key的hashcode值，如果是并利用  hashcode ^ table.length  (table.length是2次幂)得到hash值，如果是与运算的话，假如table是初始化的16位，那么高位是无法进行运算的，结果值也就是被hashcode值的后四位所决定<br>之后用hash值 进行 hash &amp; (table.length)</p>
+</blockquote>
+<h2 id="线程池的拒绝策略"><a href="#线程池的拒绝策略" class="headerlink" title="线程池的拒绝策略"></a>线程池的拒绝策略</h2><h3 id="CallerRunsPolicy"><a href="#CallerRunsPolicy" class="headerlink" title="CallerRunsPolicy"></a>CallerRunsPolicy</h3>满了以后用调用线程池的线程去执行他<h3 id="DiscardPolicy"><a href="#DiscardPolicy" class="headerlink" title="DiscardPolicy"></a>DiscardPolicy</h3>直接拒绝，啥也不干<h3 id="AbortPolicy"><a href="#AbortPolicy" class="headerlink" title="AbortPolicy"></a>AbortPolicy</h3>报个错，然后直接拒绝，啥也不干<h3 id="DiscardOldestPolicy"><a href="#DiscardOldestPolicy" class="headerlink" title="DiscardOldestPolicy"></a>DiscardOldestPolicy</h3>抛出最先加入使用的线程</li>
+</ol>
+</the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/03/18/我为阿里-蘑菇街总结/" data-id="ck7zmgmii000038v1087642z2" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/03/16/我为阿里-字节血洗/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">《天净沙·我·被字节血洗篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
