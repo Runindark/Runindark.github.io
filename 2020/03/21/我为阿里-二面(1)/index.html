@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    《天净沙·我·二面面试题分析(1)》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-我为阿里-二面(1)" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《天净沙·我·二面面试题分析(1)》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/21/我为阿里-二面(1)/" class="article-date">
+  <time datetime="2020-03-21T14:16:51.176Z" itemprop="datePublished">2020-03-21</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="1-为什么用布隆过滤器（项目中有提到）"><a href="#1-为什么用布隆过滤器（项目中有提到）" class="headerlink" title="1.为什么用布隆过滤器（项目中有提到）"></a>1.为什么用布隆过滤器（项目中有提到）</h2><pre><code>有了解其他缓存的方式吗来实现吗
+</code></pre><h2 id="2-布隆过滤器的逻辑"><a href="#2-布隆过滤器的逻辑" class="headerlink" title="2.布隆过滤器的逻辑"></a>2.布隆过滤器的逻辑</h2><pre><code>K个hash函数怎么设计（说的用两个生成多个）：被问是最好的一种方式吗（我不是很清楚），
+有了解别人是怎么实现的吗（没有）
+为什么能够实现这个效果
+是怎么数学证明
+（对于别人告诉你的事情，有没有思考为什么可以这样）
+为什么是K个hash，为什么是M个bit位
+</code></pre><h2 id="3-cookie和session的区别"><a href="#3-cookie和session的区别" class="headerlink" title="3.cookie和session的区别"></a>3.cookie和session的区别</h2><pre><code>有看过cookie在浏览器中埋的是什么吗（没）
+</code></pre><p>了解概念的时候会去验证它吗（会）<br>前面没看到你去验证了</p>
+<h2 id="4-扫码登陆是怎么做到的（以微信为例），登陆他的web端是怎么搞的"><a href="#4-扫码登陆是怎么做到的（以微信为例），登陆他的web端是怎么搞的" class="headerlink" title="4.扫码登陆是怎么做到的（以微信为例），登陆他的web端是怎么搞的"></a>4.扫码登陆是怎么做到的（以微信为例），登陆他的web端是怎么搞的</h2><h2 id="5-web端如何和已经登陆的app端建立关联（二维码）"><a href="#5-web端如何和已经登陆的app端建立关联（二维码）" class="headerlink" title="5.web端如何和已经登陆的app端建立关联（二维码）"></a>5.web端如何和已经登陆的app端建立关联（二维码）</h2><pre><code>二维码要有什么信息才能建立关联
+</code></pre><h2 id="6-讲一下为什么会发生超卖"><a href="#6-讲一下为什么会发生超卖" class="headerlink" title="6.讲一下为什么会发生超卖"></a>6.讲一下为什么会发生超卖</h2><pre><code>数据库本身的能力怎么去解决
+    sql怎么写的
+    为什么用redis分布式锁而不是用mysql（数据库表会大）
+    为什么数据库表会大
+    数据库里都有哪些数据类型（int，bigint，把tinyint说成了smallint）
+</code></pre><h2 id="7-用redis是为了验证还是有真正思考过（为了验证）"><a href="#7-用redis是为了验证还是有真正思考过（为了验证）" class="headerlink" title="7.用redis是为了验证还是有真正思考过（为了验证）"></a>7.用redis是为了验证还是有真正思考过（为了验证）</h2><pre><code>没有思考过的问题不要瞎回答
+</code></pre><h2 id="8-讲一下redis锁（说了setnx-和expire-转换成set-）"><a href="#8-讲一下redis锁（说了setnx-和expire-转换成set-）" class="headerlink" title="8.讲一下redis锁（说了setnx()和expire()转换成set()）"></a>8.讲一下redis锁（说了setnx()和expire()转换成set()）</h2><pre><code>合并后还有什么问题吗（没执行完锁就失效了）
+lua脚本
+为什么lua脚本可以实现原子性（没有了解）
+</code></pre><h2 id="9-java中锁相关的概念（synchronized和AQS）"><a href="#9-java中锁相关的概念（synchronized和AQS）" class="headerlink" title="9. java中锁相关的概念（synchronized和AQS）"></a>9. java中锁相关的概念（synchronized和AQS）</h2><h3 id="讲一下synchronized"><a href="#讲一下synchronized" class="headerlink" title="讲一下synchronized"></a>讲一下synchronized</h3><h3 id="A和B都加synchronized，方法A加了static和方法B没有，有什么区别（答的很乱）"><a href="#A和B都加synchronized，方法A加了static和方法B没有，有什么区别（答的很乱）" class="headerlink" title="A和B都加synchronized，方法A加了static和方法B没有，有什么区别（答的很乱）"></a>A和B都加synchronized，方法A加了static和方法B没有，有什么区别（答的很乱）</h3><h3 id="synchronized优化的问题有了解吗"><a href="#synchronized优化的问题有了解吗" class="headerlink" title="synchronized优化的问题有了解吗"></a>synchronized优化的问题有了解吗</h3><h3 id="synchronized和JVM的内存关系"><a href="#synchronized和JVM的内存关系" class="headerlink" title="synchronized和JVM的内存关系"></a>synchronized和JVM的内存关系</h3><h3 id="了解java内存模型吗，JVM整体和并发的一些关系"><a href="#了解java内存模型吗，JVM整体和并发的一些关系" class="headerlink" title="了解java内存模型吗，JVM整体和并发的一些关系"></a>了解java内存模型吗，JVM整体和并发的一些关系</h3><blockquote>
+<p>Java内存模型就是定义程序中变量（静态变量、数组对象元素等，不包括局部变量、方法参数）的访问规则</p>
+</blockquote>
+<h4 id="内存模型操作的八个指令"><a href="#内存模型操作的八个指令" class="headerlink" title="内存模型操作的八个指令"></a>内存模型操作的八个指令</h4><p><a href="https://www.cnblogs.com/zzq6032010/p/10328399.html" target="_blank" rel="noopener">博客原文</a></p>
+<ul>
+<li><p>lock：作用于主内存变量，将该变量标识为一个线程独占的状态</p>
+</li>
+<li><p>unlock：作用于主内存变量，将独占状态释放</p>
+</li>
+<li><p>read：作用于主内存变量，将值拷贝到工作内存中</p>
+</li>
+<li><p>load：作用于工作内存中的变量，将值放到工作内存中的变量副本中</p>
+</li>
+<li><p>use：作用于工作内存中的变量，将值传给执行引擎</p>
+</li>
+<li><p>asign：作用于工作内存中的变量，将执行引擎中的值赋给工作内存中的变量</p>
+</li>
+<li><p>store：作用于工作内存中的变量，将值传给主内存</p>
+</li>
+<li><p>write：作用于主内存中的变量，将工作内存中返回的值放到主内存变量中</p>
+</li>
+</ul>
+<h3 id="讲一下AQS"><a href="#讲一下AQS" class="headerlink" title="讲一下AQS"></a>讲一下AQS</h3><pre><code>为什么要判断前一个节点的状态
+节点怎么被唤醒的
+为什么要这么写，会有这样的疑问吗          ·     
+</code></pre><h4 id="state为什么用voliatile"><a href="#state为什么用voliatile" class="headerlink" title="state为什么用voliatile"></a>state为什么用voliatile</h4><pre><code>可见是一个什么概念，为什么会有可见的现象
+工作缓存是什么概念，是物理概念还是逻辑概念，如果物理概念的话具体存在哪里呢
+操作系统中分了CPU缓存，主存，如果在主存的话，就一份呀，怎么会有拷贝的问题呢
+</code></pre></the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/03/21/我为阿里-二面(1)/" data-id="ck846loh00000isv14fv197ka" class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2020/03/22/我为阿里-二面知识点/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            《天净沙·我·二面知识点总结》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/18/我为阿里-蘑菇街总结/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">《天净沙·我·蘑菇街总结》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
