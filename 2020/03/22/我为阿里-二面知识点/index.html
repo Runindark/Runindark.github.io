@@ -85,7 +85,7 @@
 <h4 id="细致深入：Redis实现秒杀系统"><a href="#细致深入：Redis实现秒杀系统" class="headerlink" title="细致深入：Redis实现秒杀系统"></a>细致深入：Redis实现秒杀系统</h4><blockquote>
 <p>核心redis的操作命令，sextnx（细粒度上锁） + expire（强制锁释放）</p>
 <ol>
-<li>首先需要将秒杀的数据放到一个redis中，然后在操作redis的时候可以用setnx去操作数据，所谓细粒度锁是一个抽象概念，sexnx就是具体实现（其实更加直白的理解一些，普通的get/put不是一个原子操作，setnx是一个原子操作，所以可以作为一个细粒度锁）</li>
+<li>首先需要将秒杀的数据放到一个redis中，然后在操作redis的时候可以用setnx去操作数据，所谓细粒度锁是一个抽象概念，sexnx就是具体实现（其实更加直白的理解一些，普通的get/put是一个原子操作,但是一系列操作就不再是原子性的了，setnx是一个原子操作，所以可以作为一个细粒度锁）</li>
 <li>更加直接的来，就是将数据都加入到redis的list中，然后使用Lpop命令不断获取就ok（移除并返回列表的第一个元素）</li>
 </ol>
 </blockquote>
