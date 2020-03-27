@@ -158,12 +158,50 @@
 <blockquote>
 <p>SpringBean没有解决线程安全问题<br>可以用ThreadLocal成员变量</p>
 </blockquote>
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p><img src="https://www.javazhiyin.com/wp-content/uploads/2019/05/java0-1558500658.jpg" alt="Bean生命周期"></p>
+<ol>
+<li>创建调用构造函数</li>
+<li>set方法注入属性</li>
+<li>BeanNameAware</li>
+<li>BeanFactoryAware</li>
+<li>ApplicationContextAware</li>
+<li>BeanPostProcessor的before方法</li>
+<li>initializingBean</li>
+<li>自定义init方法</li>
+<li>BeanPostProcessor的after方法</li>
+<li>使用</li>
+<li>容器的销毁</li>
+<li>DisposableBean的destry</li>
+<li>自定义的销毁方法</li>
+</ol>
+<ul>
+<li><p>Spring启动，查找并加载需要被Spring管理的bean，进行Bean的实例化</p>
+</li>
+<li><p>Bean实例化后对将Bean的引入和值注入到Bean的属性中</p>
+</li>
+<li><p>如果Bean实现了BeanNameAware接口的话，Spring将Bean的Id传递给setBeanName()方法</p>
+</li>
+<li><p>如果Bean实现了BeanFactoryAware接口的话，Spring将调用setBeanFactory()方法，将BeanFactory容器实例传入</p>
+</li>
+<li><p>如果Bean实现了ApplicationContextAware接口的话，Spring将调用Bean的setApplicationContext()方法，将bean所在应用上下文引用传入进来。</p>
+</li>
+<li><p>如果Bean实现了BeanPostProcessor接口，Spring就将调用他们的postProcessBeforeInitialization()方法。</p>
+</li>
+<li><p>如果Bean 实现了InitializingBean接口，Spring将调用他们的afterPropertiesSet()方法。类似的，如果bean使用init-method声明了初始化方法，该方法也会被调用</p>
+</li>
+<li><p>如果Bean 实现了BeanPostProcessor接口，Spring就将调用他们的postProcessAfterInitialization()方法。</p>
+</li>
+<li><p>此时，Bean已经准备就绪，可以被应用程序使用了。他们将一直驻留在应用上下文中，直到应用上下文被销毁。</p>
+</li>
+<li><p>如果bean实现了DisposableBean接口，Spring将调用它的destory()接口方法，同样，如果bean使用了destory-method 声明销毁方法，该方法也会被调用。</p>
 <h3 id="Bean-和-Component"><a href="#Bean-和-Component" class="headerlink" title="@Bean 和  @Component"></a>@Bean 和  @Component</h3><h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><blockquote>
 <p>修饰方法级  可以用Autowired装配</p>
 </blockquote>
 <h4 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h4><blockquote>
 <p>用于修饰类级别 可以用@CompontScan装配</p>
 </blockquote>
+</li>
+</ul>
 <h2 id="SpringMVC-工作流程"><a href="#SpringMVC-工作流程" class="headerlink" title="SpringMVC 工作流程"></a>SpringMVC 工作流程</h2><ol>
 <li>client 向 DispatcherServlet 发送请求</li>
 <li>DispatcherServlet根据请求信息调用HandlerMapping ，解析请求到handle</li>

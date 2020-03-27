@@ -111,7 +111,7 @@
 <p>不一定，可以借助key-value的value进行判断</p>
 </blockquote>
 <h5 id="锁续约问题"><a href="#锁续约问题" class="headerlink" title="锁续约问题"></a>锁续约问题</h5><blockquote>
-<p><strong>Redission</strong><br>当成功的获取一个锁的时候，就会产生一个 watch dog 进行锁续期，每10秒去检查一次，然后重置成设定的过期时间<br>加锁机制是lua脚本<br>解锁过程就比较简单了，如果是程序计数器则继续进行-1，直到等于0，然后删除该key即可</p>
+<p><strong>Redission</strong><br>当成功的获取一个锁的时候，就会产生一个 watch dog 进行锁续期，每10秒去检查一次，然后重置成设定的过期时间<br>加锁机制是lua脚本<br>解锁过程就比较简单了，如果是程序计数器则继续进行-1，直到等于0，然后删除该key即可（unlock操作）</p>
 </blockquote>
 <h5 id="Lua原子性"><a href="#Lua原子性" class="headerlink" title="Lua原子性"></a>Lua原子性</h5><blockquote>
 <p>Redis 使用单个 Lua 解释器去运行所有脚本，并且， Redis 也保证脚本会以原子性(atomic)的方式执行： 当某个脚本正在运行的时候，不会有其他脚本或 Redis 命令被执行。 这和使用 MULTI / EXEC 包围的事务很类似。 在其他别的客户端看来，脚本的效果(effect)要么是不可见的(not visible)，要么就是已完成的(already completed)</p>
@@ -136,6 +136,9 @@
 <li><p>store：作用于工作内存中的变量，将值传给主内存</p>
 </li>
 <li><p>write：作用于主内存中的变量，将工作内存中返回的值放到主内存变量中</p>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><blockquote>
+<p>保证load与use必须相邻调用，即要use这个变量，必定先执行read/load，这样每次都能获取到最新的变量值；它又保证asign与store必须相邻调用，即在工作内存中将该变量改了之后，必定会先同步到主内存中</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><h3 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h3><blockquote>
@@ -164,6 +167,7 @@
 <h4 id="5-nextwaiter"><a href="#5-nextwaiter" class="headerlink" title="5. nextwaiter"></a>5. nextwaiter</h4><p>AQS中阻塞队列采用的是用双向链表保存，用prve和next相互链接。而AQS中条件队列是使用单向列表保存的，用<br>nextWaiter来连接。阻塞队列和条件队列并不是使用的相同的数据结构</p>
 </li>
 </ol>
+<p><a href="https://segmentfault.com/a/1190000015804888" target="_blank" rel="noopener">精髓原帖</a></p>
 <p>在Node节点的源码中有两个常量属性</p>
 <pre><code class="java"><span class="comment">// 共享模式</span>
 <span class="keyword">static</span> <span class="keyword">final</span> Node SHARED = <span class="keyword">new</span> Node();
@@ -172,6 +176,25 @@
 <span class="comment">// 其他模式</span>
 <span class="comment">// 其他非空值：条件等待节点（调用Condition的await方法的时候）</span>
 </code></pre>
+<h2 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><blockquote>
+<p>Channel(通道)，Buffer(缓冲区), Selector</p>
+</blockquote>
+<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><blockquote>
+<p>通道是双向的，通过一个Channel既可以进行读，也可以进行写</p>
+</blockquote>
+<h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><ul>
+<li><p>capacity:缓冲区数组的总长度</p>
+</li>
+<li><p>position:下一个要操作的数据元素的位置</p>
+</li>
+<li><p>limit:缓冲区数组中不可操作的下一个元素的位置：limit&lt;=capacity</p>
+</li>
+<li><p>mark:用于记录当前position的前一个位置或者默认是-1</p>
+</li>
+</ul>
+<h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><blockquote>
+<p>Selector类是NIO的核心类，Selector能够检测多个注册的通道上是否有事件发生，如果有事件发生，便获取事件然后针对每个事件进行相应的响应处理</p>
+</blockquote>
 </the>
       
     </div>
