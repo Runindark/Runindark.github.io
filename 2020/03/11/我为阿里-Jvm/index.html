@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    《天净沙·我·jvm篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |  Cat&#39;s blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-我为阿里-Jvm" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  《天净沙·我·jvm篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/11/我为阿里-Jvm/" class="article-date">
+  <time datetime="2020-03-11T07:41:05.384Z" itemprop="datePublished">2020-03-11</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Wortzahl:</span>
+            <span class="post-count">4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Lesezeit≈</span>
+            <span class="post-count">13 Minuten</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="Java的内存区域（运行时数据区）"><a href="#Java的内存区域（运行时数据区）" class="headerlink" title="Java的内存区域（运行时数据区）"></a>Java的内存区域（运行时数据区）</h2><h3 id="线程共享区"><a href="#线程共享区" class="headerlink" title="线程共享区"></a>线程共享区</h3><ol>
+<li>堆</li>
+<li>方法区 （方法区中包含运行时常量池）</li>
+</ol>
+<h3 id="线程私有区"><a href="#线程私有区" class="headerlink" title="线程私有区"></a>线程私有区</h3><ol>
+<li>虚拟机栈</li>
+<li>本地方法栈</li>
+<li>程序计数器<h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h3 id="Java1-8之后的变化"><a href="#Java1-8之后的变化" class="headerlink" title="Java1.8之后的变化"></a>Java1.8之后的变化</h3><blockquote>
+<p>线程共享的方法区糅合到了直接内存中的元空间</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="为什么每一个线程需要一个程序计数器"><a href="#为什么每一个线程需要一个程序计数器" class="headerlink" title="为什么每一个线程需要一个程序计数器"></a>为什么每一个线程需要一个程序计数器</h2><h3 id="程序计数器的作用"><a href="#程序计数器的作用" class="headerlink" title="程序计数器的作用"></a>程序计数器的作用</h3><blockquote>
+<p>是一块比较小的线程空间，可以当作字节码指令的指示器，字节码解释器通过程序计数器<br>来控制字节码指令，比如循环，跳转，分支，异常处理等</p>
+</blockquote>
+<h3 id="为啥线程需要程序计数器？"><a href="#为啥线程需要程序计数器？" class="headerlink" title="为啥线程需要程序计数器？"></a>为啥线程需要程序计数器？</h3><blockquote>
+<p>由于线程是不断切换的，所以线程在切换后，如何进行哪一步的继续操作，是需要程序计的<br>同时程序计数器是唯一一个不会出现OutOfMemoryError的内存区域</p>
+</blockquote>
+<h2 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h2><blockquote>
+<p>虚拟栈其实更通俗的讲也就是线程私有化的方法栈，用于执行线程中Java方法调用的内存模型，每次调用都是通过栈来传递的<br>其实Java内存中可以区分成栈空间，和堆空间，栈空间就是现在的虚拟机栈等，同共享<br>区的方法区一样，栈空间的栈帧依然包含局部变量表（各种基本数据类型和引用）<br>同程序计数器不同的是，虚拟机栈会出现超过栈数目的 StackOutOfFlow 以及超过内存<br>内存空间的OutOfMemoryError</p>
+</blockquote>
+<h3 id="Java的两种返回方式"><a href="#Java的两种返回方式" class="headerlink" title="Java的两种返回方式"></a>Java的两种返回方式</h3><ol>
+<li>return</li>
+<li>异常抛出</li>
+</ol>
+<blockquote>
+<p>方法每一次的调用都会压栈，同时每一次返回都会出栈，上面两个方法的调用都会导致<br>出栈</p>
+</blockquote>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><h2 id="本地方法栈是做什么的？"><a href="#本地方法栈是做什么的？" class="headerlink" title="本地方法栈是做什么的？"></a>本地方法栈是做什么的？</h2><blockquote>
+<p>本地方法栈和虚拟机栈不同，本地方法栈是用来执行Native修饰的方法，但是虚拟机栈<br>是用来执行Java的方法，但是对于HotSpot虚拟机来说，虚拟机栈和本地方法栈合并了<br>所以一样的可以推出，本地方法栈也有自己的栈帧等，栈帧里面也相应的有局部变量表<br>操作数栈，动态链接，出口信息等</p>
+</blockquote>
+<h2 id="堆-（GC堆）"><a href="#堆-（GC堆）" class="headerlink" title="堆 （GC堆）"></a>堆 （GC堆）</h2><blockquote>
+<p>堆是线程共享区的，也是Jvm管理的最大的内存空间，没有之一，几乎所有的对象实例和<br>都在这里分配内存，当然了线程中的类的实例等，都通过reference进行引用<br>由于垃圾大多数也都是由堆产生，因此也被称作为 GC堆</p>
+</blockquote>
+<h2 id="堆的分类"><a href="#堆的分类" class="headerlink" title="堆的分类"></a>堆的分类</h2><blockquote>
+<p>堆中可以粗略的说有 新生代和老年代 ，新生代用完以后可能就不会再引用，所以要更多的被释放掉<br>老年代则趋于稳定，长久的存在或被使用</p>
+</blockquote>
+<p>更加细致的划分</p>
+<blockquote>
+<p>被分为Eden区和From Survivor，To Survivor<br>大部分情况下，首先会再Eden区进行空间分配，在一次垃圾回收后，对象还存活则年龄加一<br>当年龄增加到默认的15岁，则进入到老年代，当然晋升的年龄阈值是可以调节的-XX:MaxTenuringThreshold</p>
+</blockquote>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><blockquote>
+<p>属于线程共享的内存区域，用于存放虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码量，主要是用于存放堆中的逻辑操作等。<br>方法区也就是永久代，永久代不用纠结就是HotSpot规定的一种规范方法区的一种实现</p>
+</blockquote>
+<pre><code class="java">-XX:PermSize=N <span class="comment">//⽅法区(永久代)初始⼤⼩</span>
+-XX:MaxPermSize=N <span class="comment">//⽅法区(永久代)最⼤⼤⼩,超过这个值将会抛出OutOfMemoryError异</span>
+常:java.lang.OutOfMemoryError: PermGen
+</code></pre>
+<blockquote>
+<p>不过到JDK1.8的时候已经被移除了，直接变成了元空间，也就是直接存入内存空间。</p>
+</blockquote>
+<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><blockquote>
+<p>是属于方法区的一部分，Class文件中有类型，方法，接口，版本等信息外，还有一些常量（最特征的就是final修饰的）<br>但是1.7之后这部分又去到了堆中开辟了一片空间，因此</p>
+</blockquote>
+<h3 id="运行时常量池包含什么"><a href="#运行时常量池包含什么" class="headerlink" title="运行时常量池包含什么"></a>运行时常量池包含什么</h3><h4 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h4><ol>
+<li>文本字符串</li>
+<li>final修饰的</li>
+<li>基本数据类型的值<h4 id="符号引用"><a href="#符号引用" class="headerlink" title="符号引用"></a>符号引用</h4></li>
+<li>类和结构完全限定名</li>
+<li>字段名称和描述符</li>
+<li>方法名称和描述符</li>
+</ol>
+<h2 id="Java对象的创建过程"><a href="#Java对象的创建过程" class="headerlink" title="Java对象的创建过程"></a>Java对象的创建过程</h2><h3 id="1-类加载检查"><a href="#1-类加载检查" class="headerlink" title="1. 类加载检查"></a>1. 类加载检查</h3><blockquote>
+<p>从常量池中定位new的符号引用，看看找个类是不是被加载，解析，初始化过。如果没有再执行相应的类加载过程</p>
+</blockquote>
+<h3 id="2-分配内存"><a href="#2-分配内存" class="headerlink" title="2. 分配内存"></a>2. 分配内存</h3><blockquote>
+<p>在堆中直接分配内存，在类加载后会直到该对象需要分配的大小，分配方法有两种（指针碰撞 和 空闲列表），分配方式的选择是由Java堆是否规整决定的</p>
+</blockquote>
+<h4 id="指针碰撞"><a href="#指针碰撞" class="headerlink" title="指针碰撞"></a>指针碰撞</h4><blockquote>
+<p>就是内存如果工整，那么直接就移动指针分配空间</p>
+</blockquote>
+<h4 id="空闲列表"><a href="#空闲列表" class="headerlink" title="空闲列表"></a>空闲列表</h4><blockquote>
+<p>内存不工整，类加载确定出空间后，进行“见缝插针”</p>
+</blockquote>
+<h4 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h4><h5 id="CAS乐观解决"><a href="#CAS乐观解决" class="headerlink" title="CAS乐观解决"></a>CAS乐观解决</h5><blockquote>
+<p>就是继续利用CAS算法尝试去获取内存空间，直到成功，虚拟机就是这么做的</p>
+</blockquote>
+<h5 id="TLAB解决"><a href="#TLAB解决" class="headerlink" title="TLAB解决"></a>TLAB解决</h5><blockquote>
+<p>在堆中给每个线程分配一丢丢空间，让他自己独有，分配的时候就先分配给TLAB空间，<br>但是这么做的后果就是空间浪费问题</p>
+</blockquote>
+<h3 id="3-初始化零值"><a href="#3-初始化零值" class="headerlink" title="3. 初始化零值"></a>3. 初始化零值</h3><blockquote>
+<p>不包括对象头 ，就是给一一些值赋0或者null</p>
+</blockquote>
+<h3 id="4-设置对象头"><a href="#4-设置对象头" class="headerlink" title="4. 设置对象头"></a>4. 设置对象头</h3><blockquote>
+<p>对象的hash码，分代年龄等，同时个synchronized锁也在对象头</p>
+</blockquote>
+<h3 id="5-执行init（）方法"><a href="#5-执行init（）方法" class="headerlink" title="5. 执行init（）方法"></a>5. 执行init（）方法</h3><blockquote>
+<p>可以理解为Jvm已经创建完成，但是这里才是按照程序员的意愿开始创建，有点感觉是构造方法执行</p>
+</blockquote>
+<h2 id="对象的访问方式"><a href="#对象的访问方式" class="headerlink" title="对象的访问方式"></a>对象的访问方式</h2><ol>
+<li>句柄</li>
+<li>直接访问</li>
+</ol>
+<blockquote>
+<p>二者的区别在于对于对象实例数据的处理上，句柄是先访问实例苏话剧的指针，在访问实例数据<br>直接指针是直接去Heap中去访问实例数据，不过相应的二者访问类型数据都是先去堆中访问类型数据指针再去方法区去拿到类型数据</p>
+</blockquote>
+<h3 id="优缺点分析"><a href="#优缺点分析" class="headerlink" title="优缺点分析"></a>优缺点分析</h3><blockquote>
+<p>如果是读取的话，看上面过程也就直到，直接指针直接读取会更快一些，但是同样的如果<br>进行删除操作等，需要一个一个的更改数据，效率差，如果是句柄的话直接地址赋null值<br>就可以了，这个赋null值其实和c++的回收是一样的，直接赋null，就证明这一块空间又<br>可以被分配利用了</p>
+</blockquote>
+<h2 id="对象的分配策略"><a href="#对象的分配策略" class="headerlink" title="对象的分配策略"></a>对象的分配策略</h2><blockquote>
+<p>大对象，长期存活对象分配到老年代，但是一般的对象有限分配到Eden区</p>
+</blockquote>
+<h3 id="Minor-GC，-Full-GC的区别"><a href="#Minor-GC，-Full-GC的区别" class="headerlink" title="Minor GC， Full GC的区别"></a>Minor GC， Full GC的区别</h3><blockquote>
+<p>MinorGC也就是新生代的垃圾回收，很频繁，而且速度快<br>FullGC是指老年代的垃圾回收，不是很频繁</p>
+</blockquote>
+<h2 id="对象的死亡判断"><a href="#对象的死亡判断" class="headerlink" title="对象的死亡判断"></a>对象的死亡判断</h2><h3 id="程序计数器法"><a href="#程序计数器法" class="headerlink" title="程序计数器法"></a>程序计数器法</h3><blockquote>
+<p>就是一个对象被引用一次那么计数器加一，如果引用失效那么计数器减一,如果为0，则<br>直接回收</p>
+</blockquote>
+<h3 id="可达性分析法"><a href="#可达性分析法" class="headerlink" title="可达性分析法"></a>可达性分析法</h3><blockquote>
+<p>形象的来说就是以GC Root作为起点，然后查看各个对象到GCRoot是否有一条路劲可以<br>连起来，如果连不起来则直接回收</p>
+</blockquote>
+<h4 id="补充：一般哪些可以作为GCRoot呢："><a href="#补充：一般哪些可以作为GCRoot呢：" class="headerlink" title="补充：一般哪些可以作为GCRoot呢："></a>补充：一般哪些可以作为GCRoot呢：</h4><blockquote>
+<p>通过System Class Loader或者Boot Class Loader加载的class对象，通过自定义类加载器加载的class不一定是GC Root<br>处于激活状态的线程<br>栈中的对象<br>JNI（Java Native Interface）栈中的对象<br>JNI中的全局对象<br>正在被用于同步的各种锁对象<br>JVM自身持有的对象，比如系统类加载器等</p>
+</blockquote>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><blockquote>
+<p>Java1.2之前定义引用就是reference如果指向的是内存空间的起始地址。</p>
+</blockquote>
+<h3 id="强引用"><a href="#强引用" class="headerlink" title="强引用"></a>强引用</h3><blockquote>
+<p>大多数使用的基本都是强引用，垃圾回收器则不会去回收他，及时空间不足，直接oom，也不会去回收强引用</p>
+</blockquote>
+<h3 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h3><blockquote>
+<p>区别于强引用，当发生内存不足的时候，才可以被垃圾回收掉。 也正是这样，可以用来<br>处理对内存比较敏感的高速缓存</p>
+</blockquote>
+<h3 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h3><blockquote>
+<p>区别于软引用，只要垃圾回收器扫描到这部分视作垃圾，那么就直接回收掉<br>可以配合一个引用队列，来查看是是否被GC回收</p>
+</blockquote>
+<h3 id="虚引用"><a href="#虚引用" class="headerlink" title="虚引用"></a>虚引用</h3><blockquote>
+<p>虚引用的实际用途不在乎是引用了什么对象，粗略的说可以说成一种 即将被GC回收的标<br>志，也是一种跟踪GC回收的一种方法，虚引用必须配合 引用队列来使用，即在某对象回<br>收之前，则虚引用入队，告诉Jvm该对象即将要被回收，可以在某对象被回收前做一些操作</p>
+</blockquote>
+<h2 id="废弃常量的判定方法"><a href="#废弃常量的判定方法" class="headerlink" title="废弃常量的判定方法"></a>废弃常量的判定方法</h2><blockquote>
+<p>如果是在常量池，而且没用String对象引用，那么就说他是废弃常量，如果内存回收需要的话，直接清理出去</p>
+</blockquote>
+<h2 id="如何判定一个类的废弃"><a href="#如何判定一个类的废弃" class="headerlink" title="如何判定一个类的废弃"></a>如何判定一个类的废弃</h2><h3 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h3><blockquote>
+<p>ClassLoader是一个类加载器，它的工作是将一个类的全限名在Jvm外部进行转化成一个<br>二进制流,转成二进制流是为了Jvm读取，但是是在虚拟机外部就转化成，这样的目的是<br>让应用程序自己可以选择这个类，这也是为啥在对象回收时，Jvm Rooter可以是<br>Classroader的原因</p>
+</blockquote>
+<h3 id="java-lang-Class"><a href="#java-lang-Class" class="headerlink" title="java.lang.Class"></a>java.lang.Class</h3><blockquote>
+<p>反射机制的核心，也就就是所有类自身的一个独有的镜子，在一个类被编译成.class文件的时候，在jvm中运行，会同时自动生成一个和自己创建的类想匹配的Class类</p>
+</blockquote>
+<h3 id="一个类废弃的判定方法"><a href="#一个类废弃的判定方法" class="headerlink" title="一个类废弃的判定方法"></a>一个类废弃的判定方法</h3><ol>
+<li>所有的实例已经被回收掉，堆中不再有这个类的实例</li>
+<li>该类的Classloader也已经被回收</li>
+<li>该类对应的java.lang.class文件没有在任何地方被引用，也无法在任何地方通过反射机制来访问该类</li>
+</ol>
+<h2 id="垃圾回收机制的算法"><a href="#垃圾回收机制的算法" class="headerlink" title="垃圾回收机制的算法"></a>垃圾回收机制的算法</h2><h3 id="无脑清空法-–-标记清除算法"><a href="#无脑清空法-–-标记清除算法" class="headerlink" title="无脑清空法 – 标记清除算法"></a>无脑清空法 – 标记清除算法</h3><blockquote>
+<p>标记需要回收的对象，然后标记完后，通过一轮回收直接把标记的位置回收</p>
+<ol>
+<li>效率差</li>
+<li>清理完空间不连续</li>
+</ol>
+</blockquote>
+<h3 id="复制填坑法-–-复制算法"><a href="#复制填坑法-–-复制算法" class="headerlink" title="复制填坑法 – 复制算法"></a>复制填坑法 – 复制算法</h3><blockquote>
+<p>将内存空间分成两份，然后将不需要回收的内存（活着的对象）复制到另一块空间去，保证整洁</p>
+<ol>
+<li>需要两份一样的空间</li>
+<li>复制的时候消耗太大</li>
+</ol>
+</blockquote>
+<h3 id="洁癖整理法-–-标记整理算法"><a href="#洁癖整理法-–-标记整理算法" class="headerlink" title="洁癖整理法 – 标记整理算法"></a>洁癖整理法 – 标记整理算法</h3><blockquote>
+<p>也是先标记，但是不同的是，标记以后直接向某一端直接移动，然后GC直接回收边界的无用的空间</p>
+</blockquote>
+<h3 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h3><blockquote>
+<p>分配空间的空间按照新生代和老年代区别，新生代可以用复制算法，老年代的内存大，而且多，可以使用 标记整理算法，也可以酌情标记清空算法</p>
+</blockquote>
+<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><h3 id="Serial-（年轻代）"><a href="#Serial-（年轻代）" class="headerlink" title="Serial （年轻代）"></a>Serial （年轻代）</h3><ol>
+<li>单线程收集器</li>
+<li>当进行单线程回收垃圾的时候，其它线程必须停止</li>
+<li>但是对一个客户端的还不错，毕竟切换没那么复杂，而且单线程自然可以调用的资源更多<h3 id="ParNew-（年轻代）"><a href="#ParNew-（年轻代）" class="headerlink" title="ParNew （年轻代）"></a>ParNew （年轻代）</h3><blockquote>
+<p>上述Serial的一个升级，其实就是升级成了多线程</p>
+</blockquote>
+</li>
+<li>多线程收集</li>
+<li>stop the world ，还是要停止所有的线程工作<h3 id="Parallel-Scavenge-（年轻代）"><a href="#Parallel-Scavenge-（年轻代）" class="headerlink" title="Parallel Scavenge （年轻代）"></a>Parallel Scavenge （年轻代）</h3><blockquote>
+<p>为了吞吐量而减少收集时间，提高收集次数的一种收集算法，（吞吐量：程序运行时间/CPU使用时长）<br>适合执行批量处理、订单处理</p>
+</blockquote>
+<h3 id="Serial-Old"><a href="#Serial-Old" class="headerlink" title="Serial Old"></a>Serial Old</h3><h3 id="Parallel-Old"><a href="#Parallel-Old" class="headerlink" title="Parallel Old"></a>Parallel Old</h3></li>
+</ol>
+<h3 id="CMS-（老年代）"><a href="#CMS-（老年代）" class="headerlink" title="CMS （老年代）"></a>CMS （老年代）</h3><blockquote>
+<p>HotSpot的第一款真正意义上的并发垃圾回收机制，是用的标记清除算法</p>
+</blockquote>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><h5 id="初始标记"><a href="#初始标记" class="headerlink" title="初始标记"></a>初始标记</h5><blockquote>
+<p>暂停掉所有的线程，标记一下与GC root相连的对象（可达性分析里面的那个GC Root）</p>
+</blockquote>
+<h5 id="并发标记"><a href="#并发标记" class="headerlink" title="并发标记"></a>并发标记</h5><blockquote>
+<p>继续类似可达性分析，标记一系列可达的的队形 GC Root Trancing</p>
+</blockquote>
+<h5 id="重新标记"><a href="#重新标记" class="headerlink" title="重新标记"></a>重新标记</h5><blockquote>
+<p>并发标记是并发的，重新标记是为了修正重新标记期间的用户变动</p>
+</blockquote>
+<h5 id="并发清除"><a href="#并发清除" class="headerlink" title="并发清除"></a>并发清除</h5><blockquote>
+<p>开始对标记的区域做清理</p>
+</blockquote>
+<ol>
+<li>对CPU资源敏感</li>
+<li>无法清理浮动垃圾<br>3 标记清除算法有太多的空间碎片<h3 id="G1"><a href="#G1" class="headerlink" title="G1"></a>G1</h3><blockquote>
+<p>面向服务器的垃圾回收器，针对配备多核处理起的cpu<br>宏观上是复制，微观上有标记整理算法<br>不区分内存块 Eden surviovor old在微观上还是被保留的</p>
+</blockquote>
+<h4 id="过程-1"><a href="#过程-1" class="headerlink" title="过程"></a>过程</h4><h5 id="初始标记-1"><a href="#初始标记-1" class="headerlink" title="初始标记"></a>初始标记</h5><h5 id="并发标记-1"><a href="#并发标记-1" class="headerlink" title="并发标记"></a>并发标记</h5><h5 id="最终标记"><a href="#最终标记" class="headerlink" title="最终标记"></a>最终标记</h5><h5 id="筛选回收"><a href="#筛选回收" class="headerlink" title="筛选回收"></a>筛选回收</h5></li>
+</ol>
+<blockquote>
+<p>过程其实大同小异，相比于CMS其实更多的在于标记的时候多了Remember Set，到了最终标记还有Remeber Set Log合并到了Remeber Set因此避免了浮动垃圾问题<br>Region在宏观是其实是复制原则，但是在Region的内部其实是标记整理算法<br>Region内部除了Eden s0 s1 old 还有超大对象，面对超大对象，会选择移动老年代的<br>对象来为超大内存的对象提供内存</p>
+</blockquote>
+<h2 id="Jvm类加载模式"><a href="#Jvm类加载模式" class="headerlink" title="Jvm类加载模式"></a>Jvm类加载模式</h2><ol>
+<li>加载<blockquote>
+<p>这个阶段会在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的入口</p>
+</blockquote>
+</li>
+<li>验证<blockquote>
+<p>了确保 Class 文件的字节流中包含的信息是否符合当前虚拟机的要求</p>
+</blockquote>
+</li>
+<li>准备<blockquote>
+<p>是正式为类变量分配内存并设置类变量的初始值阶段，即在方法区中分配这些变量所使用的内存空间。</p>
+</blockquote>
+</li>
+<li>解析<blockquote>
+<p>虚拟机将常量池中的符号引用替换为直接引用的过程</p>
+</blockquote>
+</li>
+<li>初始化<blockquote>
+<p>初始化阶段是类加载最后一个阶段，前面的类加载阶段之后，除了在加载阶段可以自定义类加载器以外，其它操作都由 JVM 主导。到了初始阶段，才开始真正执行类中定义的 Java 程序代码。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><ol>
+<li>启动类加载器<blockquote>
+<p>负责加载 JAVA_HOME\lib 目录中的，或通过-Xbootclasspath 参数指定路径中的，且被<br>虚拟机认可（按文件名识别，如 rt.jar）的类</p>
+</blockquote>
+</li>
+<li>扩展类加载器<blockquote>
+<p>负责加载 JAVA_HOME\lib\ext 目录中的，或通过 java.ext.dirs 系统变量指定路径中的类<br>库</p>
+</blockquote>
+</li>
+<li><p>应用程序类加载器</p>
+<blockquote>
+<p>负责加载用户路径（classpath）上的类库<br>利用双亲委派模型进行类的加载，通过继承java.lang.classloader实现自定义类加载器</p>
+</blockquote>
+<pre><code>                启动类加载器（Bootstrap ClassLoader）
+                                /\
+                                ||
+                扩展类加载器 （Extension ClassLoader）
+                                /\
+                                ||
+                应用程序类加载器 （Application ClassLoader）
+                        /\                  /\
+                        ||                  ||
+自定义加载器（User ClassLoader）    自定义加载器（UserClassLoader）
+</code></pre></li>
+</ol>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><blockquote>
+<p>当一个类收到类加载的请求，他首先不会尝试自己去加载这个类，而是把请求委托给父类去完成，每一层的类加载器都是如此（如上图，箭头向上），因此最终所有的加载类都应该送到启动类加载器去完成，只有当父类的加载器返回自己无法加载这个请求的时候，子类加载器才会自己尝试去加载。<br>采用双亲委派的一个好处是比如加载位于 rt.jar 包中的类 java.lang.Object，不管是哪个加载<br>器加载这个类，最终都是委托给顶层的启动类加载器进行加载，这样就保证了使用不同的类加载<br>器最终得到的都是同样一个 Object 对象</p>
+</blockquote>
+</the>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Belohnung
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright-Hinweis： </strong>
+              Sofern nicht anders angegeben, liegt das Urheberrecht aller Artikel in diesem Blog beim Autor. Nachdruck bitte Quelle angeben!
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://runindark.com/2020/03/11/我为阿里-Jvm/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/03/12/我为阿里-Spring/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            《天净沙·我·Spring》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/10/我为阿里-mysql/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">《天净沙·我·mysql篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        夜小猫
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Cat&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/旅行/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Suche">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<!-- 复制 -->
+
+  <link rel="stylesheet" href="/css/clipboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+  </div>
+</body>
+
+</html>

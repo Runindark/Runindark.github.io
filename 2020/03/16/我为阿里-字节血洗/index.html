@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    《天净沙·我·被字节血洗篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？ |  Cat&#39;s blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-我为阿里-字节血洗" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  《天净沙·我·被字节血洗篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/16/我为阿里-字节血洗/" class="article-date">
+  <time datetime="2020-03-16T13:15:03.321Z" itemprop="datePublished">2020-03-16</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Wortzahl:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Lesezeit≈</span>
+            <span class="post-count">9 Minuten</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br>总结了3.15日字节面试的一些问题，鲜血淋漓篇<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="高并发-为什么Synchronized可以保证线程的安全？"><a href="#高并发-为什么Synchronized可以保证线程的安全？" class="headerlink" title="高并发 - 为什么Synchronized可以保证线程的安全？"></a>高并发 - 为什么Synchronized可以保证线程的安全？</h2><p><a href="https://www.jianshu.com/p/7ddb0956590c" target="_blank" rel="noopener">博客参考</a></p>
+<blockquote>
+<p>JVM中对于同步方法和同步代码块是不一样的，本质上都有monitor对象，但是同步方法使用了monitorentre/monitorexit，而同步代码块则使用了ACC_SYNCHRONIZED标志（隐式）</p>
+</blockquote>
+<h3 id="对象头"><a href="#对象头" class="headerlink" title="对象头"></a>对象头</h3><blockquote>
+<p>Java中在JVM的处理上，每一个对象都会有一个对象头，monitor 存在于对象头的Mark Word 中(存储monitor引用指针)</p>
+</blockquote>
+<h3 id="Jvm对同步方法的处理（monitorenter-monitorexit）"><a href="#Jvm对同步方法的处理（monitorenter-monitorexit）" class="headerlink" title="Jvm对同步方法的处理（monitorenter/monitorexit）"></a>Jvm对同步方法的处理（monitorenter/monitorexit）</h3><h4 id="monitorenter"><a href="#monitorenter" class="headerlink" title="monitorenter"></a>monitorenter</h4><blockquote>
+<ol>
+<li>首先一个对象要有自己的monitor，当对象的monitor被占用的时候，则monitor被锁定，之后当一个线程需要获取该对象的时候，则需要调用monitorexit指令，首先要判断monitor的进入数，如果进入数为0，那么monitorenter进入成功，线程进入monitor，然后将进入数设为1，该线程则成为monitor的所有者。</li>
+<li>如果线程已经占有了monitor，只是重新进入，那么monitor的进入数+1</li>
+<li>如果其它线程在monitor被占领的时候来获取monitor那么，该线程则自动进入到阻塞状态，知道monitor的进入数为0，再重新尝试获取monitor的权限</li>
+</ol>
+</blockquote>
+<h3 id="monitorexit"><a href="#monitorexit" class="headerlink" title="monitorexit"></a>monitorexit</h3><blockquote>
+<ol>
+<li>执行monitorexit必须是该对象monitor的所有者</li>
+<li>monitorexit执行成功的时候，则monitor的进入数-1</li>
+</ol>
+</blockquote>
+<h3 id="Jvm对同步代码块的处理（ACC-SYNCHRONIZED）"><a href="#Jvm对同步代码块的处理（ACC-SYNCHRONIZED）" class="headerlink" title="Jvm对同步代码块的处理（ACC_SYNCHRONIZED）"></a>Jvm对同步代码块的处理（ACC_SYNCHRONIZED）</h3><blockquote>
+<ol>
+<li>对于同步代码块，其常量池多了ACC_SYNCHRONIZED标志，也是flag的地方多了ACC_SYNCHRONIZED</li>
+<li>同步代码块被调用的时候，JVM会调用指令去检查ACC_SYNCHRONIZED是否被设置，如果设置了则获取monitor，获取成功后则执行代码块中的内容，执行期间其它的线程将无法再获得monitor</li>
+</ol>
+</blockquote>
+<h3 id="wait-notify-notifyall"><a href="#wait-notify-notifyall" class="headerlink" title="wait/notify/notifyall"></a>wait/notify/notifyall</h3><blockquote>
+<ol>
+<li>wait/notify等方法也依赖于monitor对象，这就是为什么只有在同步的块或者方法中才能调用wait/notify等方法，否则会抛出java.lang.IllegalMonitorStateException的异常的原因</li>
+<li>要特别理解的一点是，与sleep方法不同的是wait方法调用完成后，线程将被暂停，但wait方法将会释放当前持有的监视器锁(monitor)，直到有线程调用notify/notifyAll方法后方能继续执行，而sleep方法只让线程休眠并不释放锁。同时notify/notifyAll方法调用后，并不会马上释放监视器锁，而是在相应的synchronized(){}/synchronized方法执行结束后才自动释放锁</li>
+</ol>
+</blockquote>
+<h3 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h3><ol>
+<li>//中断线程（实例方法）<br>public void Thread.interrupt();</li>
+<li>//判断线程是否被中断（实例方法）<br>public boolean Thread.isInterrupted();</li>
+<li>//判断是否被中断并清除当前中断状态（静态方法）<br>public static boolean Thread.interrupted();</li>
+</ol>
+<h3 id="Interrupt的作用"><a href="#Interrupt的作用" class="headerlink" title="Interrupt的作用"></a>Interrupt的作用</h3><blockquote>
+<p>可以直接中断阻塞的线程，但是<strong>无法阻塞获取锁或者拿到锁的线程</strong></p>
+</blockquote>
+<h2 id="JVM-private-final-a-1-请问他的创建的过程？"><a href="#JVM-private-final-a-1-请问他的创建的过程？" class="headerlink" title="JVM - private final a = 1; 请问他的创建的过程？"></a>JVM - private final a = 1; 请问他的创建的过程？</h2><h3 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h3><ol>
+<li>加载</li>
+<li>验证</li>
+<li>准备<blockquote>
+<p>在准备阶段就直接将将值进行替换，不占用内存空间</p>
+</blockquote>
+</li>
+<li>解析</li>
+<li>初始化</li>
+</ol>
+<h3 id="深入："><a href="#深入：" class="headerlink" title="深入："></a>深入：</h3><blockquote>
+<p>static 静态变量在正常情况下是 在准备阶段在方法区分配空间，但是直到最后的初始化阶段才正确的赋值<br>例： public static int value = 5<br>在准备阶段  value 已在方法区获得空间,但是值为0<br>在最后的初始化阶段才真正的编程 5 </p>
+</blockquote>
+<h3 id="加载，验证阶段的内容补充"><a href="#加载，验证阶段的内容补充" class="headerlink" title="加载，验证阶段的内容补充"></a>加载，验证阶段的内容补充</h3><h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><blockquote>
+<p>在加载阶段（可以参考java.lang.ClassLoader的loadClass()方法），虚拟机需要完成以下3件事情： </p>
+<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流（并没有指明要从一个Class文件中获取，可以从其他渠道，譬如：网络、动态生成、数据库等）； </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构； </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口； </li>
+</ol>
+</blockquote>
+<blockquote>
+<p>加载阶段和连接阶段（Linking）的部分内容（如一部分字节码文件格式验证动作）是交叉进行的，加载阶段尚未完成，连接阶段可能已经开始，但这些夹在加载阶段之中进行的动作，仍然属于连接阶段的内容，这两个阶段的开始时间仍然保持着固定的先后顺序。 </p>
+</blockquote>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><blockquote>
+<p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。<br>验证阶段大致会完成4个阶段的检验动作： </p>
+</blockquote>
+<blockquote>
+<ol>
+<li>文件格式验证：验证字节流是否符合Class文件格式的规范；例如：是否以魔术0xCAFEBABE开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。 </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>元数据验证：对字节码描述的信息进行语义分析（注意：对比javac编译阶段的语义分析），以保证其描述的信息符合Java语言规范的要求；例如：这个类是否有父类，除了java.lang.Object之外。 </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>字节码验证：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。 </li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>符号引用验证：确保解析动作能正确执行。 </li>
+</ol>
+</blockquote>
+<p>验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用-Xverifynone参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间</p>
+<h2 id="JVM-GC回收的时候那些垃圾是怎么被标识的？"><a href="#JVM-GC回收的时候那些垃圾是怎么被标识的？" class="headerlink" title="JVM - GC回收的时候那些垃圾是怎么被标识的？"></a>JVM - GC回收的时候那些垃圾是怎么被标识的？</h2><h3 id="语义双关注意"><a href="#语义双关注意" class="headerlink" title="语义双关注意"></a>语义双关注意</h3><blockquote>
+<p>可能面试官想问的是标记垃圾的方法（可达性分析和程序计数器法）<br>还可能是想问具体是怎么标记的？</p>
+</blockquote>
+<h3 id="相关的内容补充"><a href="#相关的内容补充" class="headerlink" title="相关的内容补充"></a>相关的内容补充</h3><h4 id="OopMap"><a href="#OopMap" class="headerlink" title="OopMap"></a>OopMap</h4><blockquote>
+<p>垃圾回收的时候需要对栈上的内存进行扫描，判断哪些位置存在Reference类型，但是如果是直接查找的话，会产生遍历的问题，这样是慢的。<br>所以HotSpot用OopMap对Reference进行存储，这样子就可以用空间换时间，避免了全栈的扫描</p>
+</blockquote>
+<h4 id="三色标记"><a href="#三色标记" class="headerlink" title="三色标记"></a>三色标记</h4><p><strong>并发标记</strong></p>
+<ol>
+<li>黑色：根对象，或者该对象与它的子对象都被扫描过（对象被标记了，且它的所有field也被标记完了）。</li>
+<li>灰色：对象本身被扫描，但还没扫描完该对象中的子对象（它的field还没有被标记或标记完）。</li>
+<li>白色：未被扫描对象，扫描完成所有对象之后，最终为白色的为不可达对象，既垃圾对象（对象没有被标记到）。<h4 id="卡表"><a href="#卡表" class="headerlink" title="卡表"></a>卡表</h4>(RememberSet)[<a href="https://img-blog.csdn.net/20170705174843116?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGZ6MDMzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center]" target="_blank" rel="noopener">https://img-blog.csdn.net/20170705174843116?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGZ6MDMzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center]</a></li>
+</ol>
+<blockquote>
+<p>以G1收集器为例，G1由于将内存空间分配成了Region，因此如果每个Region都去记录自己的对象引用了什么其它的对象，会造成很多不必要的开销，那么如果换个思维只记录自己的新生代被谁的老年代引用了就可以减小开销（因为新生代无论如何都是要被全部扫描的，记录不同Region新生代与新生代之间的引用是没有意义的，同时老年代很少，因此扫描老年代是不是引用其它新生代会更快），如果被记录的话，则直接假如到GcRoot中这样就可以避免一些不必要的扫描。<br>开始说卡表，每个Region被分成了若干个<strong>卡（Card）</strong>，这些<strong>Card</strong>都会记录在全局卡表中，<strong>Card</strong>中每个元素对应着内存区域中一个特定大小的内存块，这个内存块则被称之为<strong>卡页</strong>，一个卡页一般里面不只一个对象，所以卡页存在着跨Region引用，那么这样的元素的值标识为1。<br>这样在Minor GC时，只需要将变脏的Region(写屏障,这个事情是并发标记的时候完成的，直接加入到GcRoot可以提升效率)中的那个卡页加入GC Roots一并扫描即可。比起扫描老年代的所有对象，大大减少了扫描的数据量，提升了效率</p>
+</blockquote>
+<h2 id="TCP-的连接过程（从网络层去分析）"><a href="#TCP-的连接过程（从网络层去分析）" class="headerlink" title="TCP 的连接过程（从网络层去分析）"></a>TCP 的连接过程（从网络层去分析）</h2><blockquote>
+<p>TCP三次握手 四次招手</p>
+</blockquote>
+<h2 id="口述TCP是如何保证数据传输的？"><a href="#口述TCP是如何保证数据传输的？" class="headerlink" title="口述TCP是如何保证数据传输的？"></a>口述TCP是如何保证数据传输的？</h2><h2 id="线程共享的部分"><a href="#线程共享的部分" class="headerlink" title="线程共享的部分"></a>线程共享的部分</h2><ul>
+<li><p>堆  由于堆是在进程空间中开辟出来的，所以它是理所当然地被共享的；因此new出来的都是共享的（16位平台上分全局堆和局部堆，局部堆是独享的）</p>
+</li>
+<li><p>全局变量 它是与具体某一函数无关的，所以也与特定线程无关；因此也是共享的</p>
+</li>
+<li><p>静态变量 虽然对于局部变量来说，它在代码中是“放”在某一函数中的，但是其存放位置和全局变量一样，存于堆中开辟的.bss和.data段，是共享的</p>
+</li>
+<li><p>文件等公用资源  这个是共享的，使用这些公共资源的线程必须同步。Win32 提供了几种同步资源的方式，包括信号、临界区、事件和互斥体。</p>
+</li>
+</ul>
+<h2 id="深入到操作系统线程之间什么什么是独享的资源"><a href="#深入到操作系统线程之间什么什么是独享的资源" class="headerlink" title="深入到操作系统线程之间什么什么是独享的资源"></a>深入到操作系统线程之间什么什么是独享的资源</h2><ul>
+<li>栈 栈是独享的</li>
+<li>寄存器<h2 id="请问只要是加了Synchronized就安全了吗？"><a href="#请问只要是加了Synchronized就安全了吗？" class="headerlink" title="请问只要是加了Synchronized就安全了吗？"></a>请问只要是加了Synchronized就安全了吗？</h2><blockquote>
+<p>静态方法 和 实例方法  的区别</p>
+</blockquote>
+<h2 id="有关List集合的删改功能知道吗？"><a href="#有关List集合的删改功能知道吗？" class="headerlink" title="有关List集合的删改功能知道吗？"></a>有关List集合的删改功能知道吗？</h2><blockquote>
+<p>就是利用System.copy的功能往前或者往后移动一位<br>扩容机制就是利用调用EnsureCapacityInternal()方法去调用grow函数，再使用Arrays.copyOf进行扩容</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Java-线程池的实现"><a href="#Java-线程池的实现" class="headerlink" title="Java 线程池的实现"></a>Java 线程池的实现</h2><h3 id="线程池的优点"><a href="#线程池的优点" class="headerlink" title="线程池的优点"></a>线程池的优点</h3><p><a href="https://baijiahao.baidu.com/s?id=1641469444994560637&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">原帖</a><br>线程池能够对线程进行统一分配，调优和监控：</p>
+<ul>
+<li>降低资源消耗（线程无限制地创建，然后使用完毕后销毁）</li>
+<li>提高响应速度（无须创建线程）</li>
+<li>提高线程的可管理性</li>
+</ul>
+<h3 id="线程的执行过程"><a href="#线程的执行过程" class="headerlink" title="线程的执行过程"></a>线程的执行过程</h3><ol>
+<li>首先添加到核心线程池</li>
+<li>核心线程池满以后，直接进入阻塞队列</li>
+<li>阻塞队列满了以后判断最大核心数</li>
+<li>如果未达到核心线程数目，则线程池进行扩容创建一个Worker执行提交任务，新建的Worker会被添加到线程集合workers中</li>
+<li>如果超过maximumPoolSize会执行拒绝策略<h4 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h4></li>
+<li>调用线程执行 ： 就是调用其它的线程</li>
+<li>终止执行： 直接抛出RejectExecutionException异常</li>
+<li>丢弃任务： 直接丢弃，不会抛异常</li>
+<li>丢失老任务： 删除等待队列中最老的任务，然后重新执行</li>
+</ol>
+<h2 id="Mybatis缓存"><a href="#Mybatis缓存" class="headerlink" title="Mybatis缓存"></a>Mybatis缓存</h2></the>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Belohnung
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright-Hinweis： </strong>
+              Sofern nicht anders angegeben, liegt das Urheberrecht aller Artikel in diesem Blog beim Autor. Nachdruck bitte Quelle angeben!
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://runindark.com/2020/03/16/我为阿里-字节血洗/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/03/18/我为阿里-蘑菇街总结/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            《天净沙·我·蘑菇街总结》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/14/我为阿里-Redis/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">《天净沙·我·Redis篇》  双非菜鸡奇葩，面试项目框架，java java，卑微学子去哪？</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        夜小猫
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Cat&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/旅行/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Suche">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<!-- 复制 -->
+
+  <link rel="stylesheet" href="/css/clipboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+  </div>
+</body>
+
+</html>

