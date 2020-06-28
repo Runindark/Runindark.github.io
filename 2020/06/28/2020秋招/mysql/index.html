@@ -132,7 +132,7 @@
 <p>记录数据库的变更操作，例如delete，insert，update等操作，不会记录select，用于数据的恢复和复制，<br>记录形式为 一些sql语句还有一些事务id等内容</p>
 </blockquote>
 </li>
-<li>redo log<br><img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/2BGWl1qPxib3SEnwZ7m4kDYIic90VDw9Uj1RGy89ibSSS4ssEVjibWeibBziaDuQdjOL1zcjHIic6Okj0PfQ40O3Oktjw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt=""><blockquote>
+<li>redo log<br><img src="https://github.com/Runindark/Pictures/blob/master/Pictures/redolog.jpg?raw=true" alt=""><blockquote>
 <p>数据的读取或者说是修改操作，是先找到页，再读到内存，如果发生修改，读到内存后，还没来得及刷到磁盘，数据库gg了，那么数据容易丢失，但是redo log会记录页的变更内容，那么恢复数据库的话，就不会丢失数据了。</p>
 </blockquote>
 </li>
