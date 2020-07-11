@@ -228,7 +228,7 @@
 </ul>
 </li>
 <li>G1 （多线程，不区分新生代和老年代）<ul>
-<li>预览图<br><img src="![](https://c1.staticflickr.com/5/4678/40093686972_25da5b859f_z.jpg" alt="">)</li>
+<li>预览图<br><img src="https://c1.staticflickr.com/5/4678/40093686972_25da5b859f_z.jpg" alt=""></li>
 <li>分区 Region （G1对内存的使用以分区(Region)为单位，而对对象的分配则以卡片(Card)为单位。）<blockquote>
 <p>不区分老年代和年轻代都会直接被划分成Region，每个Region还会被细分为若干个大小为512 Byte的Card，卡片还会记录在全局卡片表(Global Card Table)中.<br>不同卡中的对象可能会互相引用，还可能是跨域Region引用，如果存在的话会直接<strong>写屏障（并发标记阶段）</strong></p>
 </blockquote>
