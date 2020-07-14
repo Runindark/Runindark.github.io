@@ -77,7 +77,7 @@
         <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h3 id="Jvm数据区"><a href="#Jvm数据区" class="headerlink" title="Jvm数据区"></a>Jvm数据区</h3><p><img src="https://github.com/Runindark/Pictures/blob/master/jvm_%E6%95%B0%E6%8D%AE%E5%8C%BA.png?raw=true" alt=""></p>
+<h3 id="Jvm数据区"><a href="#Jvm数据区" class="headerlink" title="Jvm数据区"></a>Jvm数据区</h3><p><img src="https://github.com/Runindark/Pictures/blob/master/jvm_%E6%95%B0%E6%8D%AE%E5%8C%BA.png?raw=true" alt="jvm"></p>
 <ul>
 <li>线程共享区<ul>
 <li>方法区（运行常量池）<br>  主要用于存放堆内存中的一些执行逻辑和变量，类的加载信息，常量，静态变量等一系列信息，和堆不同，方法去不需要频繁gc等操作，又叫<strong>永久代</strong></li>
@@ -162,8 +162,8 @@
 </ol>
 <h4 id="设置对象头"><a href="#设置对象头" class="headerlink" title="设置对象头"></a>设置对象头</h4><p>例如Synchronized关键字需要Mark Word中的monitor对象（MonitorExit，MonitorEnter）</p>
 <h3 id="对象的访问方式"><a href="#对象的访问方式" class="headerlink" title="对象的访问方式"></a>对象的访问方式</h3><ol>
-<li>句柄访问<br><img src="https://img2020.cnblogs.com/blog/1117609/202003/1117609-20200327223929343-1244300162.jpg" alt=""><br>reference -&gt; 句柄池中指针 -&gt; 实例数据</li>
-<li><p>直接访问<br><img src="https://img2020.cnblogs.com/blog/1117609/202003/1117609-20200327223943696-1024093458.jpg" alt=""><br>reference -&gt; 实例数据</p>
+<li>句柄访问<br><img src="https://img2020.cnblogs.com/blog/1117609/202003/1117609-20200327223929343-1244300162.jpg" alt="句柄"><br>reference -&gt; 句柄池中指针 -&gt; 实例数据</li>
+<li><p>直接访问<br><img src="https://img2020.cnblogs.com/blog/1117609/202003/1117609-20200327223943696-1024093458.jpg" alt="直接访问"><br>reference -&gt; 实例数据</p>
 </li>
 <li><p>句柄和直接访问的优缺点分析</p>
 <blockquote>
@@ -228,7 +228,7 @@
 </ul>
 </li>
 <li>G1 （多线程，不区分新生代和老年代）<ul>
-<li>预览图<br><img src="https://c1.staticflickr.com/5/4678/40093686972_25da5b859f_z.jpg" alt=""></li>
+<li>预览图<br><img src="https://c1.staticflickr.com/5/4678/40093686972_25da5b859f_z.jpg" alt="region"></li>
 <li>分区 Region （G1对内存的使用以分区(Region)为单位，而对对象的分配则以卡片(Card)为单位。）<blockquote>
 <p>不区分老年代和年轻代都会直接被划分成Region，每个Region还会被细分为若干个大小为512 Byte的Card，卡片还会记录在全局卡片表(Global Card Table)中.<br>不同卡中的对象可能会互相引用，还可能是跨域Region引用，如果存在的话会直接<strong>写屏障（并发标记阶段）</strong></p>
 </blockquote>
@@ -262,7 +262,7 @@
 <li>STAB<blockquote>
 <p>本质是上对对象的一次快照，快照的内容就是查看对象的颜色（三色标记）以维持并发的效率。</p>
 </blockquote>
-<h3 id="双清委派模型"><a href="#双清委派模型" class="headerlink" title="双清委派模型"></a>双清委派模型</h3><img src="https://upload-images.jianshu.io/upload_images/5982616-aad63782162c9ae5.png?imageMogr2/auto-orient/strip|imageView2/2/w/942/format/webp" alt=""><blockquote>
+<h3 id="双清委派模型"><a href="#双清委派模型" class="headerlink" title="双清委派模型"></a>双清委派模型</h3><img src="https://upload-images.jianshu.io/upload_images/5982616-aad63782162c9ae5.png?imageMogr2/auto-orient/strip|imageView2/2/w/942/format/webp" alt="双亲委派模型"><blockquote>
 <p>采用双亲委派模式的是好处是Java类随着它的类加载器一起具备了一种带有优先级的层次关系，通过这种层级关可以避免类的重复加载，当父亲已经加载了该类时，就没有必要子ClassLoader再加载一次。<br>而有了双亲委派模型，黑客自定义的java.lang.String类永远都不会被加载进内存。因为首先是最顶端的类加载器加载系统的java.lang.String类，最终自定义的类加载器无法加载java.lang.String类</p>
 </blockquote>
 </li>
