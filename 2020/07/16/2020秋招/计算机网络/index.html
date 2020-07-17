@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    计算机网络复习总结 |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-2020秋招/计算机网络" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络复习总结
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/07/16/2020秋招/计算机网络/" class="article-date">
+  <time datetime="2020-07-16T12:50:16.525Z" itemprop="datePublished">2020-07-16</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/秋招面试/">秋招面试</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="五层体系网络结构"><a href="#五层体系网络结构" class="headerlink" title="五层体系网络结构"></a>五层体系网络结构</h2><ul>
+<li>应用层<ul>
+<li>http协议</li>
+<li>dns协议</li>
+<li>smtp电子邮件协议</li>
+</ul>
+</li>
+<li>运输层<ul>
+<li>tcp</li>
+<li>udp</li>
+</ul>
+</li>
+<li>网络层<ul>
+<li>网络路由之间的数据传输</li>
+</ul>
+</li>
+<li>数据链路层<ul>
+<li>主机之间的数据传输</li>
+</ul>
+</li>
+<li>物理层<ul>
+<li>数据到主机之间的最低级传输</li>
+</ul>
+</li>
+</ul>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h3 id="三次握手，四次挥手"><a href="#三次握手，四次挥手" class="headerlink" title="三次握手，四次挥手"></a>三次握手，四次挥手</h3><p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019/7/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B2.png" alt="三次握手"></p>
+<ul>
+<li>客户端–发送带有 SYN 标志的数据包–一次握手–服务端</li>
+<li>服务端–发送带有 SYN/ACK 标志的数据包–二次握手–客户端</li>
+<li>客户端–发送带有带有 ACK 标志的数据包–三次握手–服务端</li>
+</ul>
+<p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019/7/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="四次挥手"></p>
+<ul>
+<li>客户端-发送一个 FIN，用来关闭客户端到服务器的数据传送</li>
+<li>服务器-收到这个 FIN，它发回一 个 ACK，确认序号为收到的序号加1 。和 SYN 一样，一个 FIN 将占用一个序号</li>
+<li>服务器-关闭与客户端的连接，发送一个FIN给客户端</li>
+<li>客户端-发回 ACK 报文确认，并将确认序号设置为收到序号加1</li>
+</ul>
+<h3 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h3><p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/tcp-vs-udp.jpg" alt="TCP和UDP"></p>
+<h3 id="TCP如何保证可靠传送"><a href="#TCP如何保证可靠传送" class="headerlink" title="TCP如何保证可靠传送"></a>TCP如何保证可靠传送</h3><ul>
+<li>TCP会自动把数据拆分成合适大小的数据块</li>
+<li>TCP会把切割好的数据块进行编号</li>
+<li>TCP会自动丢弃重复的数据</li>
+<li><strong>超时重传</strong></li>
+<li><strong>窗口滑动</strong></li>
+<li><strong>ARQ协议</strong></li>
+<li><strong>拥塞控制</strong>:TCP在网络拥塞的时候减少数据发送</li>
+<li>校验和: TCP保持它的首部和数据的校验和</li>
+</ul>
+<h4 id="窗口滑动"><a href="#窗口滑动" class="headerlink" title="窗口滑动"></a>窗口滑动</h4><blockquote>
+<p>TCP维护了<strong>发送端缓存窗口</strong>以及<strong>接收方缓存窗口</strong>，滑动窗口也可以理解为动态窗口，接受的时候接收端只能从<strong>接受缓存窗口中的数据</strong>去接受，发送方只能把数据发送到<strong>发送缓存窗口</strong>，<br>在带宽比较好的时候则窗口变大，速度也变大，太短较慢的时候窗口变小，这样子不会造成拥堵</p>
+</blockquote>
+<h4 id="ARQ协议"><a href="#ARQ协议" class="headerlink" title="ARQ协议"></a>ARQ协议</h4><ul>
+<li><p>停止等待ARQ协议</p>
+<blockquote>
+<p>每当发送一段数据，那么要等对方确认这段数据被接收，才会发送下一段数据;如果发送失败，则会触发<strong>超时重传</strong></p>
+</blockquote>
+</li>
+<li><p>连续ARQ协议</p>
+<blockquote>
+<p>发送数据的时候维护一个发送窗口，只要是处于发送窗口，就可以<strong>一直发送数据，不需要等接收方确认</strong>，每当接收到一个ACK则把窗口移动即可。<br>但是会存在回退的问题，如果发送5个分组，第3个丢失了，那么后面的全部都会丢失，只能把后三个重新传输一次</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><ul>
+<li>慢开始<blockquote>
+<p>由小到大逐渐增大发送窗口，也就是由小到大逐渐增大拥塞窗口数值。cwnd初始值为1，每经过一个传播轮次，拥塞窗口cwnd加倍</p>
+</blockquote>
+</li>
+<li>拥塞避免<blockquote>
+<p>拥塞避免算法的思路是让拥塞窗口cwnd缓慢增大，即每经过一个往返时间RTT就把发送放的cwnd加1</p>
+</blockquote>
+</li>
+<li>快重传<blockquote>
+<p>当接收方收到不是按照TCP编号排序的分组，则应当发送重新确认，一旦重新确认次数为3次，则立即重新传输丢失的分组</p>
+</blockquote>
+</li>
+<li><p>快恢复</p>
+<blockquote>
+<p>当收到三个重复确认，确认丢失的时候则将ssthresh门限减半，将cwnd设置为ssthresh的大小，并开始使用拥塞避免算法（因为能连续收到3个确认，则没必要再慢开始）</p>
+</blockquote>
+</li>
+<li><p>算法使用条件</p>
+<ul>
+<li>当cwnd&lt;ssthresh时，使用慢开始算法。</li>
+<li>当cwnd&gt;ssthresh时，改用拥塞避免算法。</li>
+<li>当cwnd=ssthresh时，慢开始与拥塞避免算法任意</li>
+</ul>
+</li>
+</ul>
+<h2 id="从输入Url到底发生了什么"><a href="#从输入Url到底发生了什么" class="headerlink" title="从输入Url到底发生了什么"></a>从输入Url到底发生了什么</h2><p><img src="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/url%E8%BE%93%E5%85%A5%E5%88%B0%E5%B1%95%E7%A4%BA%E5%87%BA%E6%9D%A5%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt=""></p>
+<p>url -&gt; 浏览器缓存 -&gt; dns -&gt; tcp -&gt; 服务端 -&gt; 返回请求 -&gt; 浏览器渲染</p>
+<h2 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h2><h3 id="http1-0-和-http1-1"><a href="#http1-0-和-http1-1" class="headerlink" title="http1.0 和 http1.1"></a>http1.0 和 http1.1</h3><ul>
+<li>http1.1把http1.0默认的短连接改为长连接</li>
+<li>http1.1新增状态码，比如410表示资源从服务器上删除</li>
+<li>http1.1头部引入range，http1.0一旦发送请求会把所有的内容都请求过来，通过range可以请求到自己需要的数据就好</li>
+<li>缓存处理，引入了更多的缓存策略</li>
+</ul>
+<h3 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h3><ul>
+<li>http默认使用80，https则默认使用443</li>
+<li>HTTPS协议需要到CA申请证书</li>
+<li><p>https运行再ssl之上<br><img src="http://mmbiz.qpic.cn/mmbiz_png/cmOLumrNib1cfBOtIMQ6JfSibJdd6QkQribXL5PwzkqQdmyY9egu2hpzzMCgz2F5HhhkdSNc5eYJ9UGMDBGjeCGiag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="https和http"></p>
+</li>
+<li><p>所有传输的内容都经过加密，<strong>加密采用对称加密</strong>，但对称加密的密钥用服务器方的<strong>证书进行了非对称加密</strong>。所以说，HTTP 安全性没有 HTTPS高，但是 HTTPS 比HTTP耗费更多服务器资源。</p>
+<ul>
+<li>对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等；</li>
+<li>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等</li>
+</ul>
+</li>
+</ul>
+</the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/07/16/2020秋招/计算机网络/" data-id="ckcqhgegb000054v14h9y9vqq" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/07/16/2020秋招/集合/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">Java集合复习总结</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

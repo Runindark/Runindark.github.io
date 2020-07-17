@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Java集合复习总结 |
+    
+    Cat&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-2020秋招/集合" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java集合复习总结
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/07/16/2020秋招/集合/" class="article-date">
+  <time datetime="2020-07-16T06:41:31.145Z" itemprop="datePublished">2020-07-16</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/秋招面试/">秋招面试</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>别问 问就是为了面试豁出了老命<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ul>
+<li>Vector<ul>
+<li>线程安全</li>
+</ul>
+</li>
+<li>ArrayList<ul>
+<li>基于数组实现</li>
+<li>适合读，不适合改</li>
+<li>线程不安全</li>
+</ul>
+</li>
+<li>LinkedList<ul>
+<li>基于链表实现</li>
+<li>适合修改，但不适合读</li>
+<li>线程不安全</li>
+</ul>
+</li>
+<li>CopyOnWriteArrayList<ul>
+<li>读写分离</li>
+<li>在执行修改操作的时候会复制一块新的空间</li>
+<li>写操作会出现进程阻塞，但是读操作不会</li>
+</ul>
+</li>
+<li>Collectionbs.synchronizedlist<ul>
+<li>线程安全所有方法都加了synchronized关键字</li>
+</ul>
+</li>
+</ul>
+<h3 id="ArrayList源码分析"><a href="#ArrayList源码分析" class="headerlink" title="ArrayList源码分析"></a>ArrayList源码分析</h3><ul>
+<li>扩容机制以及初始化<ul>
+<li>JDK1.7之前默认大小为10，JDk1.8之后，之后开始使用list集合才会分配10的空间</li>
+<li>1.5倍扩容</li>
+</ul>
+</li>
+<li>读写操作分析<ul>
+<li>扩容<br>扩容利用Arrays.copyOf() (在原来的数组中重新创建数组) 进行扩容</li>
+<li>插入或修改<br>利用System.arraycopy()进行操作，如果是删除，则向前移动，如果是插入则向后移动<h3 id="LinkedList源码分析"><a href="#LinkedList源码分析" class="headerlink" title="LinkedList源码分析"></a>LinkedList源码分析</h3></li>
+</ul>
+</li>
+<li>删除插入都比较容易双向链表的插入</li>
+<li><p>在指定位置插入数据</p>
+<ul>
+<li>toArray转化成对象数组</li>
+<li>之后遍历对象数组</li>
+<li>之后再插入<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2></li>
+</ul>
+</li>
+<li><p>hashmap</p>
+<ul>
+<li>线程不安全</li>
+<li>默认大小16</li>
+<li>可以存储值为null的key和value</li>
+<li>双倍扩容</li>
+</ul>
+</li>
+<li>hashtable<ul>
+<li>线程安全</li>
+<li>默认大小11</li>
+<li>不可以存储值为null的key和value</li>
+<li>2n+1倍扩容</li>
+</ul>
+</li>
+<li>concurrentHashmap<ul>
+<li>线程安全</li>
+<li>读取用cas，更改用synchronized</li>
+<li>发生hash冲突，会用cas写入</li>
+</ul>
+</li>
+</ul>
+<h3 id="HashMap源码分析"><a href="#HashMap源码分析" class="headerlink" title="HashMap源码分析"></a>HashMap源码分析</h3><ul>
+<li>参阅原帖<br>  <a href="https://blog.csdn.net/v123411739/article/details/78996181" target="_blank" rel="noopener">hashmap</a></li>
+<li>扩容机制和默认大小<br>  默认大小为16，扩容为双倍扩容</li>
+<li>链表转红黑树<br>  当链表节点超过8时，转为红黑树</li>
+<li>红黑树转链表<br>  6个节点红黑树转回链表</li>
+<li><p>定位哈希桶数组的位置<br>  <img src="https://img-blog.csdn.net/20180121151050372?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdjEyMzQxMTczOQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<ol>
+<li>获取map中 key的hash值</li>
+<li>将 hashCode 的高位参与运算，重新计算 hash 值（当table比较小的时候，让高位也参与运算）<ul>
+<li>hashcode 异或 hashcode高16位 以此获取hash值</li>
+<li>如果没有这一步，table长度为16，直接进行 与 运算，那么高28位的运算结果都是0，那么hash桶则只在15的区间内分布，那么hash冲突的概率就会上升。<br><img src="https://img-blog.csdn.net/20180721235229659?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3YxMjM0MTE3Mzk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></li>
+</ul>
+</li>
+<li>计算出来的 hash 值与 (table.length - 1) 进行 &amp; 运算</li>
+</ol>
+</li>
+<li><p>jdk1.7为头插法，jdk1.8改为尾插法</p>
+</li>
+</ul>
+</the>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://runindark.com/2020/07/16/2020秋招/集合/" data-id="ckcqhgegv000554v1pzp5w2f2" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集合/">集合</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2020/07/16/2020秋招/计算机网络/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            计算机网络复习总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/07/12/2020秋招/框架/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">框架复习总结</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 Cat&#39;s blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Cat&#39;s blog"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

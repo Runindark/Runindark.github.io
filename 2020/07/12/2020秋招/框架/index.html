@@ -25,7 +25,7 @@
   <section class="outer">
   
 
-<article id="post-2020秋招/Spring" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+<article id="post-2020秋招/框架" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
   
   <div class="article-inner">
     
@@ -46,7 +46,7 @@
 
     
       <div class="article-meta">
-        <a href="/2020/07/12/2020秋招/Spring/" class="article-date">
+        <a href="/2020/07/12/2020秋招/框架/" class="article-date">
   <time datetime="2020-07-12T15:12:55.051Z" itemprop="datePublished">2020-07-12</time>
 </a>
         
@@ -81,20 +81,23 @@
 <blockquote>
 <p>控制反转和依赖注入其实说的是一个东西，为了解耦，将创建对象的任务交付给Spring的容器来创建，而不是用new来创建。</p>
 </blockquote>
-<h2 id="Spring的作用域"><a href="#Spring的作用域" class="headerlink" title="Spring的作用域"></a>Spring的作用域</h2><ul>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h2><h3 id="bean的作用域"><a href="#bean的作用域" class="headerlink" title="bean的作用域"></a>bean的作用域</h3><ul>
 <li>Singleton : 单例，在IOC容器中只存在一个，会在容器内缓存</li>
 <li>prototype : 多例，利用getBean()频繁创建，同时也会频繁的销毁</li>
 <li>Web<ul>
-<li>request</li>
-<li>session</li>
-<li>global session<h2 id="静态代理和动态代理"><a href="#静态代理和动态代理" class="headerlink" title="静态代理和动态代理"></a>静态代理和动态代理</h2><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><blockquote>
-<p>A方法需要C方法来修饰，那么需要创建B实现A+C，之后调用B来实现<br><img src="https://i.loli.net/2020/07/12/in1JIsCrfOvyj8d.jpg" alt="静态代理.jpg"></p>
-</blockquote>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2></li>
+<li>request : 每一次 HTTP 请求都会产生一个新的bean，同时该bean仅在当前HTTP request内有效</li>
+<li>session : session 作用域表示该针对每一次 HTTP 请求都会产生一个新的 bean，同时该 bean 仅在当前 HTTP session 内有效</li>
+<li>global session</li>
 </ul>
 </li>
 </ul>
-<ul>
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p><img src="https://i.loli.net/2020/07/17/gtXnOM6Geyv4h1i.jpg" alt="bean生命周期.jpg"></p>
+<h2 id="静态代理和动态代理"><a href="#静态代理和动态代理" class="headerlink" title="静态代理和动态代理"></a>静态代理和动态代理</h2><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><blockquote>
+<p>A方法需要C方法来修饰，那么需要创建B实现A+C，之后调用B来实现<br><img src="https://i.loli.net/2020/07/12/in1JIsCrfOvyj8d.jpg" alt="静态代理.jpg"></p>
+</blockquote>
+<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><p><img src="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-10-11/49790288.jpg" alt=""></p>
+<p><img src="https://i.loli.net/2020/07/18/viBtdYRCmyUFW9O.jpg" alt="springmvc执行流程.jpg"></p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ul>
 <li>Proxy + InvocationHandler<br>被代理对象接口<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">(User user)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -112,6 +115,49 @@
 <blockquote>
 <p>与Proxy+InvocationHandler不同，Cglib是利用enhancer.create创造了一个代理对象，而这个大力对象的父类就是被代理类，利用enhancer.setSuperclass()指定，同时利用enhancer.setCallback()回调被重写的intercept，完成对方法的包裹</p>
 </blockquote>
+<h2 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h2><blockquote>
+<p>事务是<strong>一组</strong>操作，要么全部成功，要么全部失败</p>
+<ul>
+<li>事务特性 ACID<ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性</li>
+<li>持久性</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="事务分类"><a href="#事务分类" class="headerlink" title="事务分类"></a>事务分类</h3><ul>
+<li>声明式事务（推荐，@Transactional）</li>
+<li>编程式事务 （TransactionManager）<h3 id="事务隔离级别（和mysql一直）"><a href="#事务隔离级别（和mysql一直）" class="headerlink" title="事务隔离级别（和mysql一直）"></a>事务隔离级别（和mysql一直）</h3></li>
+</ul>
+<ul>
+<li>未提交读</li>
+<li>提交读</li>
+<li>可重复读</li>
+<li>串行化<h3 id="事务的传播行为"><a href="#事务的传播行为" class="headerlink" title="事务的传播行为"></a>事务的传播行为</h3></li>
+</ul>
+<ul>
+<li>PROPAGATION_REQUIRED（默认开启）<ul>
+<li>如果外部没有开启事务，则内部自己开启子事务</li>
+<li>如果外部开启事务，则内部和外部属于同一个事务</li>
+</ul>
+</li>
+<li>PROPAGATION_REQUIRES_NEW<ul>
+<li>不论外部有没有开启事务，则内部自己都开启子事务</li>
+<li>如果当前已存在事务，则直接挂起</li>
+</ul>
+</li>
+<li>PROPAGATION_NESTED<ul>
+<li>外部未开启事务，和require一样</li>
+<li>外部开启事务，则内部方法变成子事务，可以一起会滚，内部的子事务可以独立回滚</li>
+</ul>
+</li>
+<li>PROPAGATION_MANDATORY<ul>
+<li>如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。</li>
+</ul>
+</li>
+</ul>
 <h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><p><img src="https://i.loli.net/2020/07/12/CMxHmBaleUA7d8V.jpg" alt="JDBC.jpg"></p>
 <blockquote>
 <p>一般来说多使用PreparedStatement在执行之前会进行预编译<br>效率高于Statement,且能够有效防止SQL注入<br>PreparedStatement支持?占位符而不是直接拼接，提高可读性</p>
@@ -123,11 +169,13 @@
 <blockquote>
 <p>当一级缓存和耳机缓存同时打开的时候，先到二级缓存再到一级缓存</p>
 </blockquote>
+<p>调用GiraffeService无参构造函数<br>GiraffeService中利用set方法设置属性值<br>调用setBeanName:: Bean Name defined in context=giraffeService<br>调用setBeanClassLoader,ClassLoader Name = sun.misc.Launcher$AppClassLoader<br>调用setBeanFactory,setBeanFactory:: giraffe bean singleton=true<br>调用setEnvironment<br>调用setResourceLoader:: Resource File Name=spring-beans.xml<br>调用setApplicationEventPublisher<br>调用setApplicationContext:: Bean Definition Names=[giraffeService, org.springframework.context.annotation.CommonAnnotationBeanPostProcessor#0, com.giraffe.spring.service.GiraffeServicePostProcessor#0]<br>执行BeanPostProcessor的postProcessBeforeInitialization方法,beanName=giraffeService<br>调用PostConstruct注解标注的方法<br>执行InitializingBean接口的afterPropertiesSet方法<br>执行配置的init-method<br>执行BeanPostProcessor的postProcessAfterInitialization方法,beanName=giraffeService<br>Spring容器初始化完毕</p>
+<p>Bean容器找到配置文件中 Spring Bean 的定义。<br>Bean容器利用Java Reflection API创建一个Bean的实例。<br>如果涉及到一些属性值 利用set方法设置一些属性值。<br>如果Bean实现了BeanNameAware接口，调用setBeanName()方法，传入Bean的名字。<br>如果Bean实现了BeanClassLoaderAware接口，调用setBeanClassLoader()方法，传入ClassLoader对象的实例。<br>如果Bean实现了BeanFactoryAware接口，调用setBeanFactory()方法，传入BeanFactory对象的实例。<br>与上面的类似，如果实现了其他*Aware接口，就调用相应的方法。<br>如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessBeforeInitialization()方法<br>如果Bean实现了InitializingBean接口，执行afterPropertiesSet()方法。<br>如果Bean在配置文件中的定义包含init-method属性，执行指定的方法。<br>如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessAfterInitialization()方法<br>当要销毁Bean的时候，如果Bean实现了DisposableBean接口，执行destroy()方法。<br>当要销毁Bean的时候，如果Bean在配置文件中的定义包含destroy-method属性，执行指定的方法。</p>
 </the>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://runindark.com/2020/07/12/2020秋招/Spring/" data-id="ckcj90cjx0000lsv1oxe64y61" class="article-share-link">Share</a>
+      <a data-url="http://runindark.com/2020/07/12/2020秋招/框架/" data-id="ckcqhgehr000a54v1xn3l7ueb" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
 
@@ -138,6 +186,15 @@
   
     
   <nav class="article-nav">
+    
+      <a href="/2020/07/16/2020秋招/集合/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            Java集合复习总结
+          
+        </div>
+      </a>
     
     
       <a href="/2020/07/12/2020秋招/Redis/" class="article-nav-link">
