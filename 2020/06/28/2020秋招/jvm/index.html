@@ -262,15 +262,20 @@
 <li>STAB<blockquote>
 <p>本质是上对对象的一次快照，快照的内容就是查看对象的颜色（三色标记）以维持并发的效率。</p>
 </blockquote>
-<h3 id="双清委派模型"><a href="#双清委派模型" class="headerlink" title="双清委派模型"></a>双清委派模型</h3><img src="https://i.loli.net/2020/07/14/TGzqAd9XPJBQ1xN.jpg" alt="双亲委派模型.jpg"><blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Jvm什么时候发生full-gc"><a href="#Jvm什么时候发生full-gc" class="headerlink" title="Jvm什么时候发生full gc"></a>Jvm什么时候发生full gc</h3><ol>
+<li>永久代满的时候</li>
+<li>老年代空间不足</li>
+</ol>
+<h3 id="双清委派模型"><a href="#双清委派模型" class="headerlink" title="双清委派模型"></a>双清委派模型</h3><p><img src="https://i.loli.net/2020/07/14/TGzqAd9XPJBQ1xN.jpg" alt="双亲委派模型.jpg"></p>
+<blockquote>
 <p>采用双亲委派模式的是好处是Java类随着它的类加载器一起具备了一种带有优先级的层次关系，通过这种层级关可以避免类的重复加载，当父亲已经加载了该类时，就没有必要子ClassLoader再加载一次。<br>而有了双亲委派模型，黑客自定义的java.lang.String类永远都不会被加载进内存。因为首先是最顶端的类加载器加载系统的java.lang.String类，最终自定义的类加载器无法加载java.lang.String类</p>
 </blockquote>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <h4 id="双亲委派模型的破坏-借鉴CSDN博主的文章说的很完整了"><a href="#双亲委派模型的破坏-借鉴CSDN博主的文章说的很完整了" class="headerlink" title="双亲委派模型的破坏 (借鉴CSDN博主的文章说的很完整了)"></a>双亲委派模型的破坏 (借鉴CSDN博主的文章说的很完整了)</h4><blockquote>
 <p>原生的JDBC中Driver驱动本身只是一个接口，并没有具体的实现，具体的实现是由不同数据库类型去实现的。例如，MySQL的mysql-connector-.jar中的Driver类具体实现的。 原生的JDBC中的类是放在rt.jar包的，是由启动类加载器进行类加载的，在JDBC中的Driver类中需要动态去加载不同数据库类型的Driver类，而mysql-connector-.jar中的Driver类是用户自己写的代码，那启动类加载器肯定是不能进行加载的，既然是自己编写的代码，那就需要由应用程序启动类去进行类加载。于是乎，这个时候就引入线程上下文件类加载器(Thread Context ClassLoader)。有了这个东西之后，程序就可以把原本需要由启动类加载器进行加载的类，由应用程序类加载器去进行加载了。<br>————————————————<br>版权声明：本文为CSDN博主「Jack老师」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/luoyang_java/article/details/92598142" target="_blank" rel="noopener">https://blog.csdn.net/luoyang_java/article/details/92598142</a></p>
 </blockquote>
