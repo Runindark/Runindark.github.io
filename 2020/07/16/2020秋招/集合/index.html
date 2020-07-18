@@ -151,12 +151,12 @@
 <li>扩容机制和默认大小<br>  默认大小为16，扩容为双倍扩容</li>
 <li>链表转红黑树<br>  当链表节点超过8时，转为红黑树</li>
 <li>红黑树转链表<br>  6个节点红黑树转回链表</li>
-<li><p>定位哈希桶数组的位置<br>  <img src="https://img-blog.csdn.net/20180121151050372?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdjEyMzQxMTczOQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<li><p>定位哈希桶数组的位置<br>  <img src="https://i.loli.net/2020/07/18/O5SaVqh9uyYC7Q4.jpg" alt="hash桶.jpg"></p>
 <ol>
 <li>获取map中 key的hash值</li>
 <li>将 hashCode 的高位参与运算，重新计算 hash 值（当table比较小的时候，让高位也参与运算）<ul>
 <li>hashcode 异或 hashcode高16位 以此获取hash值</li>
-<li>如果没有这一步，table长度为16，直接进行 与 运算，那么高28位的运算结果都是0，那么hash桶则只在15的区间内分布，那么hash冲突的概率就会上升。<br><img src="https://img-blog.csdn.net/20180721235229659?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3YxMjM0MTE3Mzk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></li>
+<li>如果没有这一步，table长度为16，直接进行 与 运算，那么高28位的运算结果都是0，那么hash桶则只在15的区间内分布，那么hash冲突的概率就会上升。<br><img src="https://i.loli.net/2020/07/18/w2FxO7p1GjvJySU.jpg" alt="hashmap1.8优化.jpg"></li>
 </ul>
 </li>
 <li>计算出来的 hash 值与 (table.length - 1) 进行 &amp; 运算</li>
