@@ -99,6 +99,86 @@
 </blockquote>
 </li>
 </ol>
+<h2 id="Java中的IO"><a href="#Java中的IO" class="headerlink" title="Java中的IO"></a>Java中的IO</h2><ul>
+<li>BIO</li>
+<li>NIO<ul>
+<li>原理图<br>  <img src="https://i.loli.net/2020/07/25/PXLD8Msaf7IoAZ1.jpg" alt="nio基础模型.jpg"><ul>
+<li>channel<br>  数据通过channel到达buffer，之后从buffer再读取到线程</li>
+<li>buffer<br>  作为nio的重要实现，数据不需要像javaIO阻塞读取，而是可以一直被读取，而不影响线程的其它操作</li>
+<li>总结分析<br>  NIO是<strong>同步非阻塞IO</strong>，由于buffer的实现，那么假如有数据需要读取到线程中，那么可以先读取到channel，再读取到buffer，但是如果数据没有完全读取完，<strong>线程在buffer还在不停的被读入数据的同时做其它的操作</strong></li>
+</ul>
+</li>
+<li>selector<br>  <img src="https://i.loli.net/2020/07/25/ybOaCHgf5QPic36.jpg" alt="nio_selector.jpg"><br>  进一步的非阻塞，线程不会只是一个channel写入数据，单个线程可以利用selector控制多个channel写入数据</li>
+</ul>
+</li>
+<li>AIO<blockquote>
+<p>NIO的进化版本，同步的io需要线程本身的资源去读取，而非阻塞异步io，数据的读取过程由内核自己完成，当成功读取到线程中后，会有操作系统来提示线程数据读取完成。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h2><blockquote>
+<p>select，poll，epoll都是IO多路复用的机制。I/O多路复用就是通过一种机制，一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。</p>
+</blockquote>
+<ul>
+<li>select<ul>
+<li>维护了三个状态数组，分别是<ul>
+<li>fd_set* writefds</li>
+<li>fd_set* readfds</li>
+<li>fd_set* exceptfds</li>
+</ul>
+</li>
+<li>通过遍历这三个数组则可以获取到状态</li>
+<li><strong>问题：</strong> 单个进程可以监控的文件描述符有限，linux上是1024个</li>
+</ul>
+</li>
+<li><p>poll</p>
+<ul>
+<li><p>select的进化，三个数组变成一个pollfd链表</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pollfd</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> fd; <span class="comment">/* file descriptor */</span></span><br><span class="line">    <span class="keyword">short</span> events; <span class="comment">/* requested events to watch */</span></span><br><span class="line">    <span class="keyword">short</span> revents; <span class="comment">/* returned events witnessed */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>问题：</strong> 虽然说取消了1024的限制，但是如果变长，效率还是很差</p>
+</li>
+</ul>
+</li>
+<li><p>epoll</p>
+<ul>
+<li>将改进转移到内核中，将<strong>用户关系的文件描述符的事件</strong>存放到<strong>内核的一个事件表</strong>中</li>
+<li><p>epoll的操作过程</p>
+<ul>
+<li>int epoll_create(int size);、<br>  初始化<strong>内核中</strong>事件表的大小，size参数则是指定的大小，但是并不做限制，只是建议</li>
+<li><p>int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；</p>
+<ul>
+<li>epfd 是 epoll_create()的返回值</li>
+<li>op 是 add，mod，del （增删改查的操作）</li>
+<li>fd 监听的文件描述符</li>
+<li>epoll_event 表示监听的具体什么事件的数组  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">struct epoll_event &#123;</span><br><span class="line">    __uint32_t events;  /* Epoll events */</span><br><span class="line">    epoll_data_t data;  /* User data variable */</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    //events可以是以下几个宏的集合：</span><br><span class="line">    EPOLLIN ：表示对应的文件描述符可以读（包括对端SOCKET正常关闭）；</span><br><span class="line">    EPOLLOUT：表示对应的文件描述符可以写；</span><br><span class="line">    EPOLLPRI：表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）；</span><br><span class="line">    EPOLLERR：表示对应的文件描述符发生错误；</span><br><span class="line">    EPOLLHUP：表示对应的文件描述符被挂断；</span><br><span class="line">    EPOLLET： 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的。</span><br><span class="line">    EPOLLONESHOT：只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);<br>  epoll_create（）返回的<strong>内核处理的事件结果</strong></p>
+<ul>
+<li>epfd 是 epoll_wait的结果</li>
+<li>events 是内核上处理的事件的集合</li>
+<li>maxevent就是告诉内核这些事件有多大，小于创建时的size</li>
+<li>事件的超时事件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>epoll的工作方式</p>
+<ul>
+<li>LT : 可以暂时不处理，等下次再来处理</li>
+<li>ET ：需要立刻处理</li>
+</ul>
+</li>
+<li><p>epoll的全流程总结</p>
+<blockquote>
+<p>epoll首先需要利用epoll_create()去创建一个句柄，方便直接联系到内核<br>之后利用epoll_ctl()去为epoll_create()在内核中空间创建的时间表中，添加文件描述符，或为文件描述符添加，删除或者是修改事件<br>注意一个文件描述符可以添加很多的描述的事件<br>之后，由于内核中存在事件表，如果事件表发生某种变化，可以利用一种callback的方式回调到epoll中<br>这个时候如果调用epoll_wait则可以获取这些状态 （减少了轮询，而是直接通知到epoll）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
 </the>
       
     </div>
