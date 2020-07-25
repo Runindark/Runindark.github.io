@@ -169,8 +169,21 @@
 <blockquote>
 <p>当一级缓存和耳机缓存同时打开的时候，先到二级缓存再到一级缓存</p>
 </blockquote>
-<p>调用GiraffeService无参构造函数<br>GiraffeService中利用set方法设置属性值<br>调用setBeanName:: Bean Name defined in context=giraffeService<br>调用setBeanClassLoader,ClassLoader Name = sun.misc.Launcher$AppClassLoader<br>调用setBeanFactory,setBeanFactory:: giraffe bean singleton=true<br>调用setEnvironment<br>调用setResourceLoader:: Resource File Name=spring-beans.xml<br>调用setApplicationEventPublisher<br>调用setApplicationContext:: Bean Definition Names=[giraffeService, org.springframework.context.annotation.CommonAnnotationBeanPostProcessor#0, com.giraffe.spring.service.GiraffeServicePostProcessor#0]<br>执行BeanPostProcessor的postProcessBeforeInitialization方法,beanName=giraffeService<br>调用PostConstruct注解标注的方法<br>执行InitializingBean接口的afterPropertiesSet方法<br>执行配置的init-method<br>执行BeanPostProcessor的postProcessAfterInitialization方法,beanName=giraffeService<br>Spring容器初始化完毕</p>
-<p>Bean容器找到配置文件中 Spring Bean 的定义。<br>Bean容器利用Java Reflection API创建一个Bean的实例。<br>如果涉及到一些属性值 利用set方法设置一些属性值。<br>如果Bean实现了BeanNameAware接口，调用setBeanName()方法，传入Bean的名字。<br>如果Bean实现了BeanClassLoaderAware接口，调用setBeanClassLoader()方法，传入ClassLoader对象的实例。<br>如果Bean实现了BeanFactoryAware接口，调用setBeanFactory()方法，传入BeanFactory对象的实例。<br>与上面的类似，如果实现了其他*Aware接口，就调用相应的方法。<br>如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessBeforeInitialization()方法<br>如果Bean实现了InitializingBean接口，执行afterPropertiesSet()方法。<br>如果Bean在配置文件中的定义包含init-method属性，执行指定的方法。<br>如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessAfterInitialization()方法<br>当要销毁Bean的时候，如果Bean实现了DisposableBean接口，执行destroy()方法。<br>当要销毁Bean的时候，如果Bean在配置文件中的定义包含destroy-method属性，执行指定的方法。</p>
+<h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h2><h3 id="自动装配原理"><a href="#自动装配原理" class="headerlink" title="自动装配原理"></a>自动装配原理</h3><p>自动装配原理主要集中在@SpringbootApplication注解中</p>
+<ul>
+<li>@EnableAutoConfiguration<br>  启用 SpringBoot 的自动配置机制</li>
+<li>@Configuration<br>  启用 SpringBoot 的自动配置机制</li>
+<li>@ComponentScan<br>  扫描被@Component (@Service,@Controller)注解的bean，注解默认会扫描该类所在的包下所有的类</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/25/aXsUJvcjWm9nx3e.jpg" alt="Springboot自动装配原理.jpg"></p>
+<ol>
+<li>进入@SpringbootApplication</li>
+<li>利用@EnableAutoConfiguration注解开启自动装配</li>
+<li>在EnableAutoConfiguration接口的实现中利用@Import主节导入了 EnableAutoConfigurationImportSelector.class</li>
+<li>EnableAutoConfigurationImportSelector 的父类AutoConfigurationImportSelector利用List集合存储了配置信息</li>
+<li>具体是利用getCandidateConfigurations获取集合信息</li>
+<li>其中getcandidateConfiguration中是利用SpringFactoriesloader获取了配置对象</li>
+</ol>
 </the>
       
     </div>
