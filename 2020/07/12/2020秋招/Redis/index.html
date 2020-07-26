@@ -252,7 +252,7 @@
 <h3 id="概率统计"><a href="#概率统计" class="headerlink" title="概率统计"></a>概率统计</h3><blockquote>
 <p>可以看到bitmap已经是属于极致的优化了，但是还是不够，不管怎么说，为了一个统计功能，单一个对象就是12M,但是再多一些还是会很多<br>则使用 “估计的方法可能会好一些”，则使用 <strong>概率统计</strong></p>
 </blockquote>
-<h4 id="redis的实现"><a href="#redis的实现" class="headerlink" title="redis的实现"></a>redis的实现</h4><p>HLL中实际存储的是一个长度为mm的大数组SS，将待统计的数据集合划分成mm组，每组根据算法记录一个统计值存入数组中。数组的大小mm由算法实现方自己确定，redis中这个数组的大小是16834（2的14次方），m越大，基数统计的误差越小，但需要的内存空间也越大<br><img src="https://ae01.alicdn.com/kf/H6a46aeef20244412887a3a31173bebcc1.jpg" alt="hll的redis过程.jpg"></p>
+<h4 id="redis的实现"><a href="#redis的实现" class="headerlink" title="redis的实现"></a>redis的实现</h4><p>HLL中实际存储的是一个长度为mm的大数组SS，将待统计的数据集合划分成mm组，每组根据算法记录一个统计值存入数组中。数组的大小mm由算法实现方自己确定，redis中这个数组的大小是16834（2的14次方），m越大，基数统计的误差越小，但需要的内存空间也越大<br><img src="https://i.loli.net/2020/07/27/Sctp8ygmNfFUJ5K.jpg" alt="hll的redis过程.jpg"></p>
 <h4 id="hll的实现原理-伯努利试验"><a href="#hll的实现原理-伯努利试验" class="headerlink" title="hll的实现原理 - 伯努利试验"></a>hll的实现原理 - 伯努利试验</h4><ul>
 <li>伯努利实现也就是掷硬币实现，那么我们说假设存在第一次掷出正面所用的最多的次数为kmax，则可以提出假设</li>
 <li><p>假设：</p>
