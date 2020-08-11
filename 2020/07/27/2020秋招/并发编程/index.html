@@ -366,17 +366,75 @@
 <li>Value则是ThreadLocal中的值</li>
 </ul>
 </li>
-<li>扩容机制是（斐波那契数列）&amp;（初始化容量-1）<ul>
-<li>key.threadLocalHashCode &amp; (len-1);</li>
-<li>每当创建一个ThreadLocal对象，这个<code></code>ThreadLocal.nextHashCode 这个值就会增长 <code>0x61c88647</code> 。</li>
+<li>ThreadLoaclmap的桶的算法<ul>
+<li>int i = key.threadLocalHashCode &amp; (len-1);<ul>
+<li>key则是threadlocal</li>
+<li>threadLocalHashCode是threadlocal自己维护的</li>
+<li>threadLocalHashCode 是 每次添加一个对象后内部再加上一个斐波那契数 </li>
+<li>之后与容量做与运算，得到桶的位置</li>
 </ul>
 </li>
-<li>hash冲突的解决<ul>
-<li>如果发生hash冲突则是向后查找，直到找到空位插入进入</li>
 </ul>
 </li>
-<li>探测式清理</li>
-<li>启发式清理</li>
+<li>ThreadLocalMap.set()其实有四种情况需要考虑<ol>
+<li>通过hash计算得到的槽的数据是为空的（key为空，entry为空，也就是没有被占用）<ul>
+<li>直接插入槽位</li>
+</ul>
+</li>
+<li>通过hash计算发现得到的槽位的数据不为空，key不为空，entry也不为空，同时hash计算的key和找到的key是一样的<ul>
+<li>直接在槽位上更新数据</li>
+</ul>
+</li>
+<li>通过hash计算发现得到的槽位的数据都不为空，且key是不一样的，同时在找到key，entry为空的槽位之前，没有遇到key过期，entry不为空的情况<ul>
+<li><strong>由于threadlocalmap的hash冲突是向后找空插入的</strong></li>
+<li>因此直接向后查找，找到空的槽位直接插入就好</li>
+<li>如果是向后查找的过程中有了key相同的，也可以直接更新数据</li>
+</ul>
+</li>
+<li>通过hash计算发现得到的槽位的数据都不为空，且在找到key，entry为空的槽位之前，遇到了key过期，entry不为空的情况<ul>
+<li>由于ThreadlocalMap的key是维护的弱引用，因此会出现key被回收的情况</li>
+<li>会启用探测<br>  <img src="https://i.loli.net/2020/08/11/2kxVwjBRP9MFYWu.jpg" alt="探测A.jpg"><br>  往后遍历过程中，散列数组下标为7位置对应的Entry数据key为null，表明此数据key值已经被垃圾回收掉了<ol>
+<li>执行replaceStaleEntry()<ul>
+<li>初始化探测式清理过期数据扫描的开始位置：slotToExpunge = staleSlot = 7</li>
+</ul>
+</li>
+<li>以stableSlot为起点，向前进行探测<ul>
+<li>如果向前探测的过程中，遇到了key为null的，entry不为null的，也就是key过期的值，则更新slotToExpunge的值</li>
+<li>直到遇到空槽位，也就是key，entry都为null的位置，则停止向前的探测</li>
+</ul>
+</li>
+<li>之后执行stableSlot向后的探测 （又分成两钟情况）<ul>
+<li>找到了key值相同的槽位<ul>
+<li>则直接更新数据，且更新stableslot的下标</li>
+<li>然后进行过期清理，从slotToExpunge到staleSlot进行清理<br>  <img src="https://i.loli.net/2020/08/11/mcUnC3X57jbKNAq.jpg" alt="探测B.jpg"></li>
+</ul>
+</li>
+<li>没有找到key值相同的槽位<ul>
+<li>则向后继续查找，直到直到空槽位（key，entry都为空）则停止<br>  <img src="https://i.loli.net/2020/08/11/iIYeDugKmyVtTkd.jpg" alt="探测C.jpg"></li>
+<li>之后再执行过期清理，从slotToExpunge到staleSlot进行清理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>ThreadLocalmap清理过程<ul>
+<li>cleanSomeSlots（）启发式清理<ul>
+<li>启发式清理就是把i后移，直到全部探测清理完毕</li>
+</ul>
+</li>
+<li>expungeStaleEntries（）探测式清理<ul>
+<li>从index向后探测，如果是过期key则删除，同时size–，直到遍历到空槽</li>
+<li>之后对散列表重hash，把之前因为hash冲突而放到后面的key-value放到更接近槽的位置</li>
+</ul>
+</li>
+<li>实际上是cleanSomeSlots(expungeStaleEntry(slotToExpunge), len);</li>
+</ul>
+</li>
 </ul>
 <h2 id="原子类"><a href="#原子类" class="headerlink" title="原子类"></a>原子类</h2><p>AtomicInteger 为例</p>
 <ul>
@@ -396,6 +454,15 @@
   
     
   <nav class="article-nav">
+    
+      <a href="/2020/08/07/2020秋招/操作系统/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            操作系统
+          
+        </div>
+      </a>
     
     
       <a href="/2020/07/18/2020秋招/IO/" class="article-nav-link">
