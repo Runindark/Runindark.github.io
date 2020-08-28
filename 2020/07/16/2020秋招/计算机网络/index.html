@@ -167,6 +167,16 @@
 </ul>
 </li>
 </ul>
+<h3 id="time-wait-和-time-close"><a href="#time-wait-和-time-close" class="headerlink" title="time_wait 和 time_close"></a>time_wait 和 time_close</h3><p><img src="https://i.loli.net/2020/08/15/TzcfryQKVHuNICg.png" alt="time_close分析.png"><br>在图中的情况，由于SEQ=3被丢弃了，本质上这段tcp链接是不能复用了，但是第二次的时候，这段错误的TCP还是被使用，这样会导致错误不断的延续下去，同时数据也会发生错误。</p>
+<ul>
+<li>TIME_WAIT 表示主动关闭，CLOSE_WAIT 表示被动关闭。</li>
+<li>TIME_WAIT 是主动关闭链接时形成的，等待2MSL时间<ul>
+<li>等待2MSL是为了保证链接的上数据要么一定处理完成，要么别直接丢弃。不会干扰第二个链接的建立</li>
+<li>如果没有time_wait比较短，或者没有time_wait则会直接进入上图的那种错误情况</li>
+</ul>
+</li>
+<li>CLOSE_WAIT 是被动关闭连接是形成的。</li>
+</ul>
 <h2 id="从输入Url到底发生了什么"><a href="#从输入Url到底发生了什么" class="headerlink" title="从输入Url到底发生了什么"></a>从输入Url到底发生了什么</h2><p><img src="https://i.loli.net/2020/07/18/ILC5lzpTGd9KE6F.jpg" alt="url到前端.jpg"></p>
 <p>url -&gt; 浏览器缓存 -&gt; dns -&gt; tcp -&gt; 服务端 -&gt; 返回请求 -&gt; 浏览器渲染</p>
 <h2 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h2><h3 id="http1-0-和-http1-1"><a href="#http1-0-和-http1-1" class="headerlink" title="http1.0 和 http1.1"></a>http1.0 和 http1.1</h3><ul>

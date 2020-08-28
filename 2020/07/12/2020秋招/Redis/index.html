@@ -126,12 +126,12 @@
 </li>
 </ul>
 <h3 id="Redis内存回收策略"><a href="#Redis内存回收策略" class="headerlink" title="Redis内存回收策略"></a>Redis内存回收策略</h3><ul>
-<li>noeviction:返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令(大部分的写入指令，但DEL和几个例外)</li>
+<li>noeviction:不会回收策略,返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令(大部分的写入指令，但DEL和几个例外)</li>
 <li>allkeys-lru:尝试回收最少使用的键(LRU) ，使得新添加的数据有空间存放。</li>
 <li>volatile-lru:尝试回收最少使用的键(LRU) ，但仅限于在过期集合的键,使得新添加的数据有空间存放。</li>
 <li>allkeys-random:回收随机的键使得新添加的数据有空间存放。</li>
 <li>volatile-random:回收随机的键使得新添加的数据有空间存放，但仅限于在过期集合的键。</li>
-<li>volatile-ttl:回收在过期集合的键，并且优先回收存活时间(TTL) 较短的键，使得新添加的数据有空间存放。</li>
+<li>volatile-ttl:回收在过期集合的键，并且优先回收存活时间(TTL) 较短的键（剩余时间最短），使得新添加的数据有空间存放。</li>
 </ul>
 <h2 id="Redis的原子性保证"><a href="#Redis的原子性保证" class="headerlink" title="Redis的原子性保证"></a>Redis的原子性保证</h2><ul>
 <li>单指令原子性<blockquote>
@@ -321,6 +321,86 @@
 </blockquote>
 </li>
 </ul>
+<h2 id="redis集群"><a href="#redis集群" class="headerlink" title="redis集群"></a>redis集群</h2><h3 id="cluster原理"><a href="#cluster原理" class="headerlink" title="cluster原理"></a>cluster原理</h3><h3 id="哈希槽"><a href="#哈希槽" class="headerlink" title="哈希槽"></a>哈希槽</h3><p>在redis提供了cluster的集群维护方式后，与以往的哨兵模式不一样，哨兵模式下的节点的数据是一样的，但是cluster的出现，可以将<strong>数据水平切割</strong>，也就是说不同的节点可以负责不同部分的数据。<br>那么不同的数据如何知道怎么去找不同的节点呢，最开始有出现的是<strong>范围分片</strong>，也就是按照id顺序指定到不同的位置，但是存在热点数据会存在最后一个节点的问题，所以redis cluster使用了hash槽</p>
+<ul>
+<li>哈希槽是redis中利用bitmap维护的</li>
+<li>哈希槽有2^14个，也就是规定不同的哈希槽对应到不同的节点上<br><img src="https://i.loli.net/2020/08/13/Yw7v5XmBbFn6Kho.jpg" alt="哈希槽.jpg"></li>
+<li><p>hash槽定位 CRC16 &amp; (2^14-1)</p>
+</li>
+<li><p>哈希槽为什么是2^14次方呢<br>  <img src="https://i.loli.net/2020/08/13/k5hoIYTS6xtBZfX.jpg" alt="cluster.jpg"></p>
+<ul>
+<li>redis cluster的通信<ol>
+<li>利用cluster meet来进行通信为了让彼此知道存在</li>
+<li>节点一旦meet成功之后会定时进行ping/pong进行数据交换<ul>
+<li>其中维护了一个myslots[cluster_slots/8]的数组，大约是2kb，如果频繁通信的话数据量过大，因此如果是2^16次方的话会更大<ul>
+<li>每秒随机找五个节点进行ping，找出最早久没有通信的进行ping</li>
+<li>没0.1s找本地的节点链表，找找过timeout/2以上没进行通信的节点进行通信<br><img src="https://img2018.cnblogs.com/blog/725429/201908/725429-20190829164739879-973731722.jpg" alt="消息头"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="redis线程模型"><a href="#redis线程模型" class="headerlink" title="redis线程模型"></a>redis线程模型</h2><ul>
+<li><strong>socket（套接字）</strong>：多个socket发来请求</li>
+<li><strong>IO多路复用程序</strong>：监听套接字的请求</li>
+<li><strong>文件事件分派器</strong>：更具io多路复用监听到的事件，分派到不同的事件处理器</li>
+<li><strong>事件处理器</strong>：处理事件<ul>
+<li>连接请求应答器 ： 于对连接服务器监听套接字的客户端进行应答</li>
+<li>命令请求处理器 ： 从套接字中读入客户端发送的命令请求内容</li>
+<li>命令回复处理器 ： 将服务器执行命令后得到的命令回复通过套接字返回给客户端<br><img src="https://i.loli.net/2020/08/14/ZtXksiop4zql5CN.jpg" alt="redis线程模型01.jpg"></li>
+</ul>
+</li>
+</ul>
+<h3 id="完整流程："><a href="#完整流程：" class="headerlink" title="完整流程："></a>完整流程：</h3><ol>
+<li>服务器初始化，会把监听AE_READABLE事件的套接字与相应的<strong>应答处理器</strong>关联起来</li>
+<li>此时一个客户端向redis发起请求，那么监听AE_READABLE的套接字会产生AE_READABLE事件，同时触发<strong>应答处理器</strong></li>
+<li>应答处理器会<strong>创建客户端套接字</strong>，客户端状态</li>
+<li>同时再把<strong>客户端套接字和AE_READABLE事件相关联</strong></li>
+<li>客户端向主服务器发送一个命令请求</li>
+<li><strong>客户端套接字产生AE_READABLE事件</strong>，引发<strong>命令请求处理器</strong></li>
+<li>命令请求处理器处理后会产生相应的回复命令</li>
+<li>服务器会把<strong>客户端套接字AE_WRITABLE事件与命令回复处理器关联</strong></li>
+<li>命令回复处理器全部写入套接字后</li>
+<li>服务器就会解除客户端套接字的 AE_WRITABLE 事件与命令回复处理器之间的关联</li>
+</ol>
+<p>重要点规划：</p>
+<ul>
+<li>第一次连接之前，是依赖初始化的套接字去监听AE_READABLE的事件</li>
+<li>客户端套接字是单独创建的</li>
+<li>当客户端套接字发起命令，也就是连接到命令请求处理器，先是AE_READABLE事件，之后才是AE_WRITABLE 事件</li>
+<li>AE_WRITABLE 事件与命令回复处理器之间的关联才可以回复</li>
+</ul>
+<p><img src="https://i.loli.net/2020/08/14/j28flx3iMc7OgnI.jpg" alt="redis线程模型.jpg"></p>
+<h2 id="数据库和缓存双写一致"><a href="#数据库和缓存双写一致" class="headerlink" title="数据库和缓存双写一致"></a>数据库和缓存双写一致</h2><ol>
+<li>先更新数据库，再删缓存（较好）<ul>
+<li>失效：应用程序先从cache取数据，没有得到，则从数据库中取数据，成功后，放到缓存中。</li>
+<li>命中：应用程序从cache中取数据，取到后返回。</li>
+<li>更新：先把数据存到数据库中，成功后，再让缓存失效。</li>
+</ul>
+</li>
+<li>先删缓存，再更新数据库<br>（1）请求A进行写操作，删除缓存<br>（2）请求B查询发现缓存不存在<br>（3）请求B去数据库查询得到旧值<br>（4）<strong>请求B将旧值写入缓存</strong><br>（5）<strong>请求A将新值写入数据库</strong><br>那么旧值会一致存在缓存中，可以使用延迟淘汰的策略，比如延迟一秒，则淘汰全部的数据</li>
+</ol>
+<h2 id="实际的场景问题"><a href="#实际的场景问题" class="headerlink" title="实际的场景问题"></a>实际的场景问题</h2><ul>
+<li>MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据（LRU）<blockquote>
+<ol>
+<li>可以适当的增加缓存的过期时间，如果在redis中每次命中一次数据，那么就进行延长时间，到最后，热点数据相对来说时间会更长</li>
+<li>设置相应的淘汰策略，由于redisobject有最后使用的时间和引用次数，可以回收最少使用的键</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>监听套接字的 AE_READABLE 事件应该正处于监听状态，该事件所对应的处理器为<strong>连接应答处理器</strong></li>
+<li>，客户端发起请求，监听套接字将产生 AE_READABLE 事件， 触发连接应答处理器执行： 处理器会对客户端的连接请求进行应答</li>
+<li>然后创建客户端套接字， 以及客户端状态， 并将客户端套接字的 AE_READABLE 事件与<strong>命令请求处理器进行关联</strong>， 使得客户端可以向主服务器发送命令请求</li>
+<li>客户端向Redis服务器发送一个命令请求，那么客户端套接字将产生 AE_READABLE事件，引发命令请求处理器执行，处理器读取客户端的命令内容， 然后传给相关程序去执行</li>
+<li>执行命令将产生相应的命令回复，为了将这些命令回复传送回客户端，服务器会将客户端套接字的AE_WRITABLE事件与<strong>命令回复处理器</strong>进行关联：当客户端尝试读取命令回复的时候，客户端套接字将产生AE_WRITABLE事件， 触发命令回复处理器执行</li>
+<li>当命令回复处理器将命令回复全部写入到套接字之后， 服务器就会解除客户端套接字的AE_WRITABLE事件与命令回复处理器之间的关联。</li>
+</ol>
 </the>
       
     </div>
