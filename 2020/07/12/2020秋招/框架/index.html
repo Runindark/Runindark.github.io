@@ -180,9 +180,32 @@
 <li>进入@SpringbootApplication</li>
 <li>利用@EnableAutoConfiguration注解开启自动装配</li>
 <li>在EnableAutoConfiguration接口的实现中利用@Import主节导入了 EnableAutoConfigurationImportSelector.class</li>
-<li>EnableAutoConfigurationImportSelector 的父类AutoConfigurationImportSelector利用List集合存储了配置信息</li>
-<li>具体是利用getCandidateConfigurations获取集合信息</li>
+<li>EnableAutoConfigurationImportSelector 的父类AutoConfigurationImportSelector利用List集合存储了配置信息<ul>
+<li>在AutoConfigurationImportSelector中selectImports()方法详解<br><img src="https://i.loli.net/2020/09/01/R8P43xGkBav9ZNJ.jpg" alt="selectImport.jpg"></li>
+<li>第一步会优先的判断是不是开启了自动装配，如果没有开启的话则返回<strong>空数组</strong></li>
+<li>之后会找到一个spring-autoconfigure-metadata.properties的文件去预加载一些配置文件<ul>
+<li>tips：（这个文件是，如果要加载一个类，那么要加载这个类需要的其它的类或是配置）</li>
+</ul>
+</li>
+<li>之后利用 <strong>this.getCandidateConfigurations</strong> 在List中存储相关的配置文件</li>
+<li>之后用<strong>Set<string> exclusions = this.getExclusions</string></strong>去除list中的配置<ul>
+<li>tips：这个地方是@EnableAutoConfiguration上一些exclude、excludeName属性</li>
+</ul>
+</li>
+<li>最后返回一个String[]的数组</li>
+</ul>
+</li>
 <li>其中getcandidateConfiguration中是利用SpringFactoriesloader获取了配置对象</li>
+</ol>
+<h3 id="Springboot执行流程"><a href="#Springboot执行流程" class="headerlink" title="Springboot执行流程"></a>Springboot执行流程</h3><ol>
+<li>StopWatch stopWatch = new StopWatch();用来记录时间</li>
+<li>SpringApplicationRunListeners listeners = getRunListeners(args); listeners.starting();</li>
+<li>ConfigurableEnvironment environment = prepareEnvironment(listeners,applicationArguments); </li>
+<li>configureIgnoreBeanInfo(environment); // 获取系统属性</li>
+<li>context = createApplicationContext(); // 创建相应的环境</li>
+<li>exceptionReporters = getSpringFactoriesInstances(); //SpringBoot启动失败后异常处理相关的组件</li>
+<li>refreshContext(context); // 初始化容器</li>
+<li>afterRefresh（）// 后初始化 </li>
 </ol>
 </the>
       

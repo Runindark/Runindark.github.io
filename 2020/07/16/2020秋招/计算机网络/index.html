@@ -208,6 +208,30 @@
 </ul>
 </li>
 </ul>
+<h3 id="ssl过程"><a href="#ssl过程" class="headerlink" title="ssl过程"></a>ssl过程</h3><ol>
+<li>客户端发送请求<ul>
+<li>发送<strong>版本号</strong></li>
+<li>客户端生成一个<strong>随机数（第一个）</strong></li>
+<li>支持的<strong>加密方式</strong></li>
+</ul>
+</li>
+<li>服务器回应请求<ul>
+<li>确认版本号</li>
+<li>服务端生成一个<strong>随机数（第二个）</strong></li>
+<li>确认使用的加密方式</li>
+<li>发送<strong>证书</strong></li>
+</ul>
+</li>
+<li>客户端回应请求<ul>
+<li>客户端生成一个<strong>随机数（第三个）</strong></li>
+<li>将随机数用<strong>公匙</strong>加密，</li>
+</ul>
+</li>
+<li>服务端最后回应请求<ul>
+<li>服务端收到三个随机数后生成<strong>会话密匙</strong></li>
+</ul>
+</li>
+</ol>
 </the>
       
     </div>

@@ -209,9 +209,25 @@
 <h4 id="索引带来的问题"><a href="#索引带来的问题" class="headerlink" title="索引带来的问题"></a>索引带来的问题</h4><blockquote>
 <p>使用索引的时候不可以随便使用，过度的使用索引会导致消耗大量的资源，热点核心业务的数据应该多使用索引<br>索引会浪费磁盘空间，不要创建非必要的索引,插入、更新、删除需要维护索引，带来额外的开销,索引过多，修改表的时候重构索引性能差<br>但是索引使用的时候可以减少查询次数，提高效率</p>
 </blockquote>
+<h4 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h4></li>
+<li>在组合索引中没有遵循最左匹配的原则</li>
+<li>前导模糊查询 </li>
+<li>(like ‘%XX’或者like ‘%XX%’)</li>
+<li>使用or</li>
+<li>在where中使用了&gt;,&lt;,=等计算的符号</li>
+<li>判断为null<h3 id="sql查询慢的原因"><a href="#sql查询慢的原因" class="headerlink" title="sql查询慢的原因"></a>sql查询慢的原因</h3></li>
+<li>sql偶尔查询比较慢<ul>
+<li>服务器带宽，io性能</li>
+<li>或者是redolog啥的占据性能</li>
+</ul>
+</li>
+<li>sql查询一直都很慢<ul>
+<li>未使用索引</li>
+<li>索引失效<h3 id="查询的顺序"><a href="#查询的顺序" class="headerlink" title="查询的顺序"></a>查询的顺序</h3></li>
+</ul>
 </li>
 </ul>
-<h3 id="查询的顺序"><a href="#查询的顺序" class="headerlink" title="查询的顺序"></a>查询的顺序</h3><ol>
+<ol>
 <li>from 从哪个表查询</li>
 <li>where 初步过滤条件</li>
 <li>group by 过滤后进行分组[重点]</li>
