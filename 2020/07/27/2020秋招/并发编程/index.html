@@ -359,6 +359,14 @@
 </blockquote>
 </li>
 </ol>
+<h4 id="线程池的选择"><a href="#线程池的选择" class="headerlink" title="线程池的选择"></a>线程池的选择</h4><ol>
+<li>针对<strong>高并发，执行时间短的任务</strong>，线程池的核心线程数应为CPU核数+1，减少上下文切换</li>
+<li>针对<strong>并发不高，但是执行时间比较长</strong>的业务<ul>
+<li><strong>IO密集型</strong>，因为IO操作不占用CPU，所以不必要让CPU闲下来，应该设置较多线程数</li>
+<li><strong>计算密集型</strong>，因为计算需要大量占用CPU，则应该较少的设置核心线程数</li>
+</ul>
+</li>
+</ol>
 <h2 id="ThreadLoacl"><a href="#ThreadLoacl" class="headerlink" title="ThreadLoacl"></a>ThreadLoacl</h2><p><img src="https://i.loli.net/2020/07/28/nFbdPvGTR7IjLct.jpg" alt="ThreadLocal数据结构.jpg"></p>
 <ul>
 <li>每一个线程自己维护了ThreadLocalMap<ul>

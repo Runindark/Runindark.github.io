@@ -91,7 +91,34 @@
 </ul>
 </li>
 </ul>
-<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p><img src="https://i.loli.net/2020/07/17/gtXnOM6Geyv4h1i.jpg" alt="bean生命周期.jpg"></p>
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p><img src="https://i.loli.net/2020/07/17/gtXnOM6Geyv4h1i.jpg" alt="bean生命周期.jpg"><br>bean的生命周期分为四个阶段</p>
+<ol>
+<li>实例化 (createBeanInstance)<ul>
+<li>resolveBeforeInstantiation<ul>
+<li>InstantiationAwareBeanPostProcessor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性赋值(populateBean)</li>
+<li>初始化(initializeBean)<ul>
+<li>后置修正<ul>
+<li>检查是否实现了Aware类的接口</li>
+<li>然后判断（invokeAware） BeanNameAware,BeanFactoryAware,ApplicationContextAware接口</li>
+<li>BeanPostProcessor<ul>
+<li>postProcessBeforeInitialzation</li>
+<li>postConstruct</li>
+<li>postProcessAfterInitialzation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>InitializingBean 可以在正式完成前增加自定义逻辑</li>
+<li>为了减小侵入程度，bean提供了配置init-method，通过设置函数名，然后在InitializingBean中完成指定函数逻辑</li>
+</ul>
+</li>
+<li>销毁</li>
+</ol>
 <h2 id="静态代理和动态代理"><a href="#静态代理和动态代理" class="headerlink" title="静态代理和动态代理"></a>静态代理和动态代理</h2><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><blockquote>
 <p>A方法需要C方法来修饰，那么需要创建B实现A+C，之后调用B来实现<br><img src="https://i.loli.net/2020/07/12/in1JIsCrfOvyj8d.jpg" alt="静态代理.jpg"></p>
 </blockquote>
@@ -199,7 +226,10 @@
 </ol>
 <h3 id="Springboot执行流程"><a href="#Springboot执行流程" class="headerlink" title="Springboot执行流程"></a>Springboot执行流程</h3><ol>
 <li>StopWatch stopWatch = new StopWatch();用来记录时间</li>
-<li>SpringApplicationRunListeners listeners = getRunListeners(args); listeners.starting();</li>
+<li>SpringApplicationRunListeners listeners = getRunListeners(args); listeners.starting();<ul>
+<li>在start方法中使用ApplicationStartingEvent(this.application, this.args)); </li>
+</ul>
+</li>
 <li>ConfigurableEnvironment environment = prepareEnvironment(listeners,applicationArguments); </li>
 <li>configureIgnoreBeanInfo(environment); // 获取系统属性</li>
 <li>context = createApplicationContext(); // 创建相应的环境</li>
