@@ -228,14 +228,26 @@
 <li>StopWatch stopWatch = new StopWatch();用来记录时间</li>
 <li>SpringApplicationRunListeners listeners = getRunListeners(args); listeners.starting();<ul>
 <li>在start方法中使用ApplicationStartingEvent(this.application, this.args)); </li>
+<li>监听所有的启动事件</li>
 </ul>
 </li>
-<li>ConfigurableEnvironment environment = prepareEnvironment(listeners,applicationArguments); </li>
+<li>ConfigurableEnvironment environment = prepareEnvironment(listeners,applicationArguments); <ul>
+<li>创建运行时环境 StandardServletEnvironment</li>
+<li>配置配置<strong>PropertySources</strong></li>
+<li>配置<strong>Profiles</strong></li>
+</ul>
+</li>
 <li>configureIgnoreBeanInfo(environment); // 获取系统属性</li>
-<li>context = createApplicationContext(); // 创建相应的环境</li>
-<li>exceptionReporters = getSpringFactoriesInstances(); //SpringBoot启动失败后异常处理相关的组件</li>
+<li>context = createApplicationContext(); // 创建相应的环境<ul>
+<li>创建ApplicationContext</li>
+</ul>
+</li>
+<li>exceptionReporters = getSpringFactoriesInstances(); <ul>
+<li>SpringBoot启动失败后异常处理相关的组件</li>
+</ul>
+</li>
 <li>refreshContext(context); // 初始化容器</li>
-<li>afterRefresh（）// 后初始化 </li>
+<li>发送发送ApplicationReadyEvent事件</li>
 </ol>
 </the>
       
